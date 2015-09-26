@@ -1,3 +1,5 @@
 [user]
 	name = Mustangflyer
 	email = Mustangflyer@users.noreply.github.com
+[push]
+	default = simple
