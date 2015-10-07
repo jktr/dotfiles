@@ -1,0 +1,63 @@
+﻿###
+###  vlc 2.2.1
+###
+
+###
+### lines beginning with a '#' character are comments
+###
+
+[qt4] # Qt interface
+
+# Save the recently played items in the menu (boolean)
+qt-recentplay=0
+
+# List of words separated by | to filter (string)
+qt-recentplay-filter=*
+
+# Ask for network policy at start (boolean)
+qt-privacy-ask=0
+
+
+[freetype] # Freetype2 font renderer
+
+# Font (string)
+freetype-font=DejaVu Sans
+
+
+[alsa] # ALSA audio output
+
+# Audio output device (string)
+alsa-audio-device=plug:dmix
+
+
+[core] # core program
+
+# Remember the audio volume (boolean)
+volume-save=0
+
+# Audio output module (string)
+aout=alsa
+
+# Audio language (string)
+audio-language=en
+
+# Subtitle language (string)
+sub-language=en
+
+# VoD server module (string)
+vod-server=any
+
+# Play and exit (boolean)
+play-and-exit=1
+
+# Allow only one running instance (boolean)
+one-instance=1
+
+# Enqueue items into playlist in one instance mode (boolean)
+playlist-enqueue=1
+
+# Use media library (boolean)
+#media-library=0
+
+# Display playlist tree (boolean)
+playlist-tree=1

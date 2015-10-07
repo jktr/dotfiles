@@ -1,0 +1,42 @@
+!-------------------------------------------------------------------------------
+! Xft settings
+!-------------------------------------------------------------------------------
+
+Xft.dpi:                    96
+Xft.antialias:              true
+Xft.rgba:                   rgb
+Xft.hinting:                false
+Xft.hintstyle:              hintfull
+Xft.autohint:               true
+Xft.lcdfilter:              lcddefault
+
+!-------------------------------------------------------------------------------
+! URXVT settings
+!-----------------------------------------------------------------------------
+
+URxvt.internalBorder:       0
+URxvt.iso14755:             false
+
+! color
+URxvt.depth:                32
+URxvt.background:           #000000
+URxvt.foreground:           #c1c1c1
+
+! font
+URxvt.font:                 xft:DejaVuSansMono:pixelsize=12,xft:unifont:pixelsize=12
+URxvt.letterSpace:          -1
+
+! scroll
+URxvt.scrollStyle:          plain
+URxvt.scrollBar:            false
+URxvt.secondaryScreen:      1
+URxvt.secondaryScroll:      0
+
+! ext
+URxvt.perl-ext-common:      default,matcher
+URxvt.url-launcher:         firefox
+URxvt.matcher.button:       1
+
+! cursor
+URxvt.cursorBlink:          true
+URxvt.cursorUnderline:      true

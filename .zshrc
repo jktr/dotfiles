@@ -1,8 +1,13 @@
-## shopt misc
+### umask
+umask -S u=rwx,g=rx,o=
+
+
+### shopt misc
 setopt nomatch RM_STAR_WAIT
 unsetopt beep
 
-## comp
+
+### comp
 zstyle ':completion:*' completer _complete _ignored
 zstyle ':completion:*' expand prefix suffix
 zstyle ':completion:*' group-name '%d'
@@ -21,27 +26,26 @@ zstyle ':completion:*' verbose false
 zstyle :compinstall filename '/home/jktr/.zshrc'
 autoload -Uz compinit && compinit
 
-## history
+
+### history
 HISTFILE=~/.zsh_history
 HISTSIZE=500
 SAVEHIST=100
 setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE HIST_REDUCE_BLANKS HIST_VERIFY 
 unsetopt appendhistory
 
-## vars
+
+### vars
 export EDITOR='nano'
 export PAGER='less'
 export PATH="${PATH}:${HOME}/bin"
-if [[ -n "${DISPLAY}" ]]; then
-  export BROWSER=firefox
-else
-  export BROWSER=elinks
-fi
+export BROWSER=firefox
 
-## keys
+
+### keys
 bindkey -e
 typeset -g -A key
-### compat aliases
+# compat aliases
 key[Home]=${terminfo[khome]}
 key[End]=${terminfo[kend]}
 key[Insert]=${terminfo[kich1]}
@@ -52,7 +56,7 @@ key[Left]=${terminfo[kcub1]}
 key[Right]=${terminfo[kcuf1]}
 key[PageUp]=${terminfo[kpp]}
 key[PageDown]=${terminfo[knp]}
-### setup keys
+# setup keys
 [[ -n "${key[Home]}"     ]] && bindkey "${key[Home]}"     beginning-of-line
 [[ -n "${key[End]}"      ]] && bindkey "${key[End]}"      end-of-line
 [[ -n "${key[Insert]}"   ]] && bindkey "${key[Insert]}"   overwrite-mode
@@ -61,7 +65,7 @@ key[PageDown]=${terminfo[knp]}
 [[ -n "${key[Down]}"     ]] && bindkey "${key[Down]}"     down-line-or-history
 [[ -n "${key[Left]}"     ]] && bindkey "${key[Left]}"     backward-char
 [[ -n "${key[Right]}"    ]] && bindkey "${key[Right]}"    forward-char
-### console application mode compat
+# console application mode compat
 if [[ -n ${terminfo[smkx]} ]] && [[ -n ${terminfo[rmkx]} ]]; then
   zle-line-init   () { echoti smkx; }
   zle-line-finish () { echoti rmkx; }
@@ -69,8 +73,9 @@ if [[ -n ${terminfo[smkx]} ]] && [[ -n ${terminfo[rmkx]} ]]; then
   zle -N zle-line-finish
 fi
 
-## key macros
-### macros
+
+### key macros
+# macros
 user-kill-word-first () {
   zle beginning-of-line
   zle kill-word
@@ -102,15 +107,19 @@ bindkey '^[e' user-prepend
 zle -N user-append
 bindkey '^[r' user-append
 
-## color
+
+### color
 autoload -U colors && colors
 color_mode='--color=always'
-### base utils
+# base utils
 alias ls="ls -F $color_mode"
 alias grep="grep $color_mode"
-alias pacman="pacman $color_mode"
+alias dmesg="dmesg $color_mode"
+# others
+alias pacman='pacman --color always '
 
-## prompt
+
+### prompt
 setopt prompt_subst
 setprompt () {
   # color aliases
@@ -126,7 +135,7 @@ setprompt () {
   PR_C_ROOT="${PR_RED}"
   PR_C_LOCAL="${PR_GREEN}"
   PR_C_REMOTE="${PR_YELLOW}"
-  PE_C_NZEXIT="${PR_MAGENTA}"
+  PR_C_NZEXIT="${PR_MAGENTA}"
 
   # user part, with selective color
   if [[ $UID -ge 1000 ]]; then
@@ -147,17 +156,19 @@ setprompt () {
   # actually set prompt
   PS1=$'${PR_C_STATIC}[${PR_USER}${PR_C_STATIC}@${PR_HOST}${PR_C_STATIC}][${PR_C_PWD}%~${PR_C_STATIC}]${PR_USER_OP}${PR_WHITE}${PR_NONE} '
   PS2=$'%_>'
-  RPROMPT=$'%(?..[%?])'
+  RPROMPT=$'%(?..${PR_C_NZEXIT}[${PR_NONE}%?${PR_C_NZEXIT}]${PR_NONE})'
 }
 setprompt
 
-## alias
-alias systemctl-suspend='systemctl suspend; vlock -a'
-alias vlock='vlock -a'
-alias ll='ls -lh'
-alias la='ls -a'
-alias lla='ls -alh'
-alias less='less -r' # special seqs; for color
-alias pm='pacman'
-alias spm='sudo pacman'
+
+### alias
+alias systemctl-suspend='systemctl suspend; vlock 
+x-a '
+alias vlock='vlock -a '
+alias ll='ls -lh '
+alias la='ls -a '
+alias lla='ls -alh '
+alias less='less -r ' # special seqs; for color
+alias pm='pacman '
+alias spm='sudo pacman '
 

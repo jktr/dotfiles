@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /usr/bin/X -nolisten tcp "$@" "vt${XDG_VTNR}"
+exec /usr/bin/X -nolisten tcp -quiet -novtswitch "vt${XDG_VTNR}" "$@"

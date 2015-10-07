@@ -1,27 +1,32 @@
 #!/bin/sh
 
-sysresources=/etc/X11/xinit/.Xresources
+## merge in .Xresources
+
+sysrsrc=/etc/X11/xinit/.Xresources 
+usrrsrc=~/.Xresources
+[ -f "$sysrsrc" ] && xrdb -merge $sysrsrc
+[ -f "$usrrsrc" ] && xrdb -merge $usrrsrc
+
+
+## load keymaps
+
 sysmodmap=/etc/X11/xinit/.Xmodmap
+[ -f "$sysmodmap" ] && xmodmap $sysmodmap
 
-## merge in defaults and keymaps
-
-if [ -f $sysresources ]; then
-    xrdb -merge $sysresources
-fi
-
-if [ -f $sysmodmap ]; then
-    xmodmap $sysmodmap
-fi
 
 ## run global xinitrc.d files
 
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then
- for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
-  [ -x "$f" ] && . "$f"
- done
- unset f
+  for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+    [ -x "$f" ] && source "$f"
+  done
 fi
 
-## run applications
+
+## setup
+
+xset r rate 200 30
+
+## exec session
 
 exec i3

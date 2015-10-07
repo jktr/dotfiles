@@ -1,0 +1,139 @@
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+set $mod Mod4
+
+
+### font
+
+font pango:DejaVu Sans Mono 8
+
+
+### colors
+
+# class                  border   backgr.  text     indica.
+client.focused           #4c7899  #285577  #ffffff  #2e9ef4
+client.focused_inactive  #333333  #5f676a  #ffffff  #484e50
+client.unfocused         #333333  #222222  #888888  #292d2e
+client.urgent            #3f343a  #900000  #ffffff  #900000
+client.placeholder       #000000  #0c0c0c  #ffffff  #000000
+client.background        #ffffff
+
+### autostart
+
+#exec --no-startup-id i3-msg 'workspace web; exec firefox; workspace 1'
+exec --no-startup-id i3-msg 'workspace 1; exec urxvt; workspace 1'
+
+
+### commands
+
+bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Shift+q kill
+
+#bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+
+### focus
+
+# focus inheritance
+bindsym $mod+a focus parent
+#bindsym $mod+d focus child
+
+# focus positional
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+
+### layout
+
+# split
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+# move focused around
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# modes
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+Shift+space floating toggle
+
+# float
+floating_modifier $mod
+bindsym $mod+f fullscreen toggle
+bindsym $mod+space focus mode_toggle
+
+
+### workspaces
+
+# switch
+bindsym $mod+F1  workspace  1
+bindsym $mod+F2  workspace  2
+bindsym $mod+F3  workspace  3
+bindsym $mod+F4  workspace  4
+bindsym $mod+F5  workspace  5
+bindsym $mod+F6  workspace  6
+bindsym $mod+F7  workspace  7
+bindsym $mod+F8  workspace  8
+bindsym $mod+F9  workspace  9
+bindsym $mod+F10 workspace 10
+bindsym $mod+F11 workspace 11
+bindsym $mod+F12 workspace 12
+
+# move focused to workspace
+bindsym $mod+Shift+F1  move container to workspace  1
+bindsym $mod+Shift+F2  move container to workspace  2
+bindsym $mod+Shift+F3  move container to workspace  3
+bindsym $mod+Shift+F4  move container to workspace  4
+bindsym $mod+Shift+F5  move container to workspace  5
+bindsym $mod+Shift+F6  move container to workspace  6
+bindsym $mod+Shift+F7  move container to workspace  7
+bindsym $mod+Shift+F8  move container to workspace  8
+bindsym $mod+Shift+F9  move container to workspace  9
+bindsym $mod+Shift+F10 move container to workspace 10
+bindsym $mod+Shift+F11 move container to workspace 11
+bindsym $mod+Shift+F12 move container to workspace 12
+
+
+### meta
+
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+
+### resize
+
+mode "resize" {
+  bindsym Left resize shrink width 10 px or 10 ppt
+  bindsym Down resize grow height 10 px or 10 ppt
+  bindsym Up resize shrink height 10 px or 10 ppt
+  bindsym Right resize grow width 10 px or 10 ppt
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+
+### status bar 
+
+bar {
+  status_command i3status
+
+  position       top
+  tray_output    primary
+
+  font           pango:DejaVu Sans Mono, Icons 8
+  colors {
+    background   #000000
+    statusline   #c2c2c2
+  }
+}
