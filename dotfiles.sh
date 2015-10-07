@@ -63,6 +63,8 @@ symlinks_deploy () {
     for file in "${!files}"; do
       ln_dst="${!dest}/$file"
       ln_src="$dirname/$file"
+echo "$ln_src $ln_dst"
+#      mkdir -p $(dirname $ln_dst)
       if [ ! -e "$ln_dst" ]; then # if file doesn't exist yet
         vecho "creating symlink from $ln_dst to $ln_src"
         ln --symbolic "$ln_src" "$ln_dst"
