@@ -36,11 +36,12 @@ unsetopt appendhistory
 
 
 ### vars
+# apps
 export EDITOR='nano'
 export PAGER='less'
-export PATH="${PATH}:${HOME}/bin"
 export BROWSER=firefox
-
+# path
+export PATH="${PATH}:${HOME}/bin:${HOME}/develop/bin"
 
 ### keys
 bindkey -e
@@ -162,13 +163,13 @@ setprompt
 
 
 ### alias
-alias systemctl-suspend='systemctl suspend; vlock 
-x-a '
-alias vlock='vlock -a '
+# ls
 alias ll='ls -lh '
 alias la='ls -a '
 alias lla='ls -alh '
-alias less='less -r ' # special seqs; for color
+# pacman
 alias pm='pacman '
 alias spm='sudo pacman '
-
+# misc
+alias less='less -r ' # special seqs; for color
+alias heavy='du --max-depth=1 -h $(pwd) | sort -hr | head'
