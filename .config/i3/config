@@ -21,12 +21,12 @@ client.background        #ffffff
 ### autostart
 
 #exec --no-startup-id i3-msg 'workspace web; exec firefox; workspace 1'
-exec --no-startup-id i3-msg 'workspace scratchpad; exec i3-sensible-terminal; workspace 1'
+#exec --no-startup-id i3-msg 'exec i3-sensible-terminal; move scratchpad'
 
 ### commands
 
 bindsym $mod+Control+l exec i3lock --show-failed-attempts --color='000000'
-#bindsym $mod+m move scratchpad
+bindsym $mod+m move scratchpad
 bindsym $mod+o scratchpad show
 
 bindsym $mod+Return exec i3-sensible-terminal
@@ -132,6 +132,8 @@ bar {
   status_command i3status
 
   position       top
+  mode           hide
+  modifier       $mod
   tray_output    primary
 
   font           pango:DejaVu Sans Mono, Icons 8
