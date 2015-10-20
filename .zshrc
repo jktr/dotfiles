@@ -41,7 +41,7 @@ export EDITOR='nano'
 export PAGER='less'
 export BROWSER=firefox
 # path
-export PATH="${PATH}:${HOME}/bin:${HOME}/develop/bin"
+export PATH="${PATH}:${HOME}/bin:${HOME}/develop/bin:${HOME}/games/bin"
 # locale
 export LANG=en_US.UTF-8
 export LC_MESSAGES=C # unexpected, non-universal translations make for bad UX
