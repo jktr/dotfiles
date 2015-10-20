@@ -42,6 +42,10 @@ export PAGER='less'
 export BROWSER=firefox
 # path
 export PATH="${PATH}:${HOME}/bin:${HOME}/develop/bin"
+# locale
+export LANG=en_US.UTF-8
+export LC_MESSAGES=C # unexpected, non-universal translations make for bad UX
+
 
 ### keys
 bindkey -e
@@ -78,28 +82,28 @@ fi
 ### key macros
 # macros
 user-kill-word-first () {
-  zle beginning-of-line
-  zle kill-word
+    zle beginning-of-line
+    zle kill-word
 }
 user-prepend () {
-  read -k str
-  case "${str}" in
-    s) str='sudo ' ;;
-    m) str='man '  ;;
-    e) str='nano ' ;;
-    *) return 0 ;;
-  esac
-  zle beginning-of-line
-  zle -U ${str}
+    read -k str
+    case "${str}" in
+	s) str='sudo ' ;;
+	m) str='man '  ;;
+	e) str='nano ' ;;
+	*) return 0 ;;
+    esac
+    zle beginning-of-line
+    zle -U ${str}
 }
 user-append () {
-  read -k str
-  case "${str}" in
-    l) str=' | less' ;;
-    *) return 0 ;;
-  esac
-  zle end-of-line
-  zle -U ${str}
+    read -k str
+    case "${str}" in
+	l) str=' | less' ;;
+	*) return 0 ;;
+    esac
+    zle end-of-line
+    zle -U ${str}
 }
 zle -N user-kill-word-first
 bindkey '^[w' user-kill-word-first
@@ -123,43 +127,53 @@ alias pacman='pacman --color always '
 ### prompt
 setopt prompt_subst
 setprompt () {
-  # color aliases
-  for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
+    # color aliases
+    for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
     eval PR_$color='%{$fg[${(L)color}]%}'
-  done
-  PR_NONE="%{$reset_color%}"
+    done
+    PR_NONE="%{$reset_color%}"
 
-  # conf
-  PR_C_STATIC="${PR_BLUE}"
-  PR_C_PWD="${PR_GREEN}"
-  PR_C_USER="${PR_GREEN}"
-  PR_C_ROOT="${PR_RED}"
-  PR_C_LOCAL="${PR_GREEN}"
-  PR_C_REMOTE="${PR_YELLOW}"
-  PR_C_NZEXIT="${PR_MAGENTA}"
+    # conf
+    PR_C_STATIC="${PR_BLUE}"
+    PR_C_PWD="${PR_GREEN}"
+    PR_C_USER="${PR_GREEN}"
+    PR_C_ROOT="${PR_RED}"
+    PR_C_LOCAL="${PR_GREEN}"
+    PR_C_REMOTE="${PR_YELLOW}"
+    PR_C_NZEXIT="${PR_MAGENTA}"
 
-  # user part, with selective color
-  if [[ $UID -ge 1000 ]]; then
-    eval PR_USER='${PR_C_USER}%n'
-    eval PR_USER_OP='${PR_C_USER}%#'
-  elif [[ $UID -eq 0 ]]; then
-    eval PR_USER='${PR_C_ROOT}%n'
-    eval PR_USER_OP='${PR_C_ROOT}%#'
-  fi
+    # user part, with selective color
+    if [[ $UID -ge 1000 ]]; then
+	eval PR_USER='${PR_C_USER}%n'
+	eval PR_USER_OP='${PR_C_USER}%#'
+    elif [[ $UID -eq 0 ]]; then
+	eval PR_USER='${PR_C_ROOT}%n'
+	eval PR_USER_OP='${PR_C_ROOT}%#'
+    fi
 
-  # host part, with selective color
-  if [[ -n "$SSH_CLIENT" || -n "$SSH2_CLIENT" ]]; then
-    eval PR_HOST='${PR_C_REMOTE}%M'
-  else
-    eval PR_HOST='${PR_C_LOCAL}%M'
-  fi
-  
-  # actually set prompt
-  PS1=$'${PR_C_STATIC}[${PR_USER}${PR_C_STATIC}@${PR_HOST}${PR_C_STATIC}][${PR_C_PWD}%~${PR_C_STATIC}]${PR_USER_OP}${PR_WHITE}${PR_NONE} '
-  PS2=$'%_>'
-  RPROMPT=$'%(?..${PR_C_NZEXIT}[${PR_NONE}%?${PR_C_NZEXIT}]${PR_NONE})'
+    # host part, with selective color
+    if [[ -n "$SSH_CLIENT" || -n "$SSH2_CLIENT" ]]; then
+	eval PR_HOST='${PR_C_REMOTE}%M'
+    else
+	eval PR_HOST='${PR_C_LOCAL}%M'
+    fi
+    
+    # actually set prompt
+    PS1=$'${PR_C_STATIC}[${PR_USER}${PR_C_STATIC}@${PR_HOST}${PR_C_STATIC}][${PR_C_PWD}%~${PR_C_STATIC}]${PR_USER_OP}${PR_WHITE}${PR_NONE} '
+    PS2=$'%_>'
+    RPROMPT=$'%(?..${PR_C_NZEXIT}[${PR_NONE}%?${PR_C_NZEXIT}]${PR_NONE})'
 }
 setprompt
+
+
+### fn
+heavy () {
+    if [ -d "$1" ]; then
+	du --max-depth=1 -h "$1" | sort -hr
+    else
+	du --max-depth=1 -h "${PWD}" | sort -hr
+    fi
+}
 
 
 ### alias
@@ -172,4 +186,3 @@ alias pm='pacman '
 alias spm='sudo pacman '
 # misc
 alias less='less -r ' # special seqs; for color
-alias heavy='du --max-depth=1 -h $(pwd) | sort -hr | head'
