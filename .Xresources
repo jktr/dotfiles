@@ -14,7 +14,7 @@ Xft.lcdfilter:              lcddefault
 ! URXVT settings
 !-----------------------------------------------------------------------------
 
-URxvt.internalBorder:       0
+URxvt.internalBorder:       1
 URxvt.iso14755:             false
 
 ! color
@@ -25,6 +25,8 @@ URxvt.foreground:           #c1c1c1
 ! font
 URxvt.font:                 xft:DejaVuSansMono:pixelsize=12,xft:unifont:pixelsize=12
 URxvt.letterSpace:          -1
+URxvt.antialias:            true
+URxvt.hinting:              medium
 
 ! scroll
 URxvt.scrollStyle:          plain
@@ -40,3 +42,7 @@ URxvt.matcher.button:       1
 ! cursor
 URxvt.cursorBlink:          true
 URxvt.cursorUnderline:      true
+
+! transparency
+URxvt.transparent:          true
+URxvt.shading:              25
