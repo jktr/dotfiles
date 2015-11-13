@@ -1,81 +1,82 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+### init
+
 set $mod Mod4
 
 
-### font
+### appearance
 
+## font
 font pango:DejaVu Sans Mono 8
 
+## window
+new_window 1pixel
 
-### colors
-
+## colors
 # class                  border   backgr.  text     indica.
 client.focused           #4c7899  #285577  #ffffff  #2e9ef4
 client.focused_inactive  #333333  #5f676a  #ffffff  #484e50
 client.unfocused         #333333  #222222  #888888  #292d2e
 client.urgent            #3f343a  #900000  #ffffff  #900000
-client.placeholder       #000000  #0c0c0c  #ffffff  #000000
+#client.placeholder       #000000  #0c0c0c  #ffffff  #000000
 client.background        #ffffff
 
-### autostart
 
-#exec --no-startup-id i3-msg 'workspace web; exec firefox; workspace 1'
-#exec --no-startup-id i3-msg 'exec i3-sensible-terminal; move scratchpad'
+### UX commands
 
-### commands
-
-bindsym $mod+Control+l exec i3lock --show-failed-attempts --color='000000'
-bindsym $mod+m move scratchpad
-bindsym $mod+o scratchpad show
-
+bindsym $mod+Control+l exec i3lock --show-failed-attempts --color=000000 
 bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
-
-#bindsym $mod+d exec dmenu_run
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 
-### focus
+### focus binds
 
-# focus inheritance
+## focus inheritance
 bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
-# focus positional
+## focus positional
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
+## focus layers
+bindsym $mod+space focus mode_toggle
 
-### layout
 
-# split
+### layout binds
+
+## spawn
 bindsym $mod+h split h
 bindsym $mod+v split v
 
-# move focused around
+## move focused around
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# modes
+## display modes
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
-# float
+## float
 floating_modifier $mod
 bindsym $mod+f fullscreen toggle
-bindsym $mod+space focus mode_toggle
+
+## scratch
+bindsym $mod+m move scratchpad
+bindsym $mod+o scratchpad show
 
 
-### workspaces
+### workspace binds
 
-# switch
+## switch
 bindsym $mod+F1  workspace  1
 bindsym $mod+F2  workspace  2
 bindsym $mod+F3  workspace  3
@@ -89,7 +90,7 @@ bindsym $mod+F10 workspace 10
 bindsym $mod+F11 workspace 11
 bindsym $mod+F12 workspace 12
 
-# move focused to workspace
+## move focused to workspace
 bindsym $mod+Shift+F1  move container to workspace  1
 bindsym $mod+Shift+F2  move container to workspace  2
 bindsym $mod+Shift+F3  move container to workspace  3
@@ -104,20 +105,20 @@ bindsym $mod+Shift+F11 move container to workspace 11
 bindsym $mod+Shift+F12 move container to workspace 12
 
 
-### meta
+### meta binds
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'End i3 X session!?' -b 'Yes, exit i3.' 'i3-msg exit'"
 
 
-### resize
+### modes
 
 mode "resize" {
-  bindsym Left resize shrink width 10 px or 10 ppt
-  bindsym Down resize grow height 10 px or 10 ppt
-  bindsym Up resize shrink height 10 px or 10 ppt
-  bindsym Right resize grow width 10 px or 10 ppt
+  bindsym Left  resize shrink width  5 px or 5 ppt
+  bindsym Down  resize grow   height 5 px or 5 ppt
+  bindsym Up    resize shrink height 5 px or 5 ppt
+  bindsym Right resize grow   width  5 px or 5 ppt
 
   bindsym Return mode "default"
   bindsym Escape mode "default"
