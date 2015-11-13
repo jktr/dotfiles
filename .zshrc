@@ -19,10 +19,10 @@ zstyle ':completion:*' list-suffixes true
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=* r:|=*' ''
 zstyle ':completion:*' menu select=long
 zstyle ':completion:*' original false
+zstyle ':completion:*' verbose true
 zstyle ':completion:*' preserve-prefix '//[^/]##/'
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle ':completion:*' use-compctl false
-zstyle ':completion:*' verbose false
 zstyle :compinstall filename '/home/jktr/.zshrc'
 autoload -Uz compinit && compinit
 
@@ -39,13 +39,15 @@ unsetopt appendhistory
 # apps
 export EDITOR='nano'
 export PAGER='less'
-export BROWSER=firefox
+export TERMINAL='urxvtc'
+export BROWSER='firefox'
 # path
 export PATH="${PATH}:${HOME}/bin:${HOME}/develop/bin:${HOME}/games/bin"
 # locale
 export LANG=en_US.UTF-8
 export LC_MESSAGES=C # unexpected, non-universal translations make for bad UX
-
+# env
+export RXVT_SOCKET="/run/user/${UID}/urxvtd-${HOST}"
 
 ### keys
 bindkey -e
@@ -166,7 +168,7 @@ setprompt () {
 setprompt
 
 
-### fn
+### functions
 heavy () {
     if [ -d "$1" ]; then
 	du --max-depth=1 -h "$1" | sort -hr
@@ -186,3 +188,4 @@ alias pm='pacman '
 alias spm='sudo pacman '
 # misc
 alias less='less -r ' # special seqs; for color
+alias i3lock='i3lock --show-failed-attempts --color=000000 '
