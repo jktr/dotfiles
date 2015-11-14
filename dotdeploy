@@ -126,4 +126,4 @@ handle_targets () {
 
 handle_targets "$@"
 
-exit 42;
+exit 0

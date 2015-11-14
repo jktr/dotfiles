@@ -1,0 +1,30 @@
+# compound target
+dirs=(@ 'dir_home' 'dir_dev' 'dir_mm')
+
+# mkdirs in ~
+dir_home=(
+  . ..
+  d bin
+  d develop
+  d multimedia
+)
+
+# mkdirs in ~/develop
+dir_dev=( 
+  . ../develop
+  d bin
+  d experiments
+  d projects
+)
+
+# mkdirs in ~/multimedia
+dir_mm=(
+  . ../multimedia
+  d books
+  d books_dev
+  d docs
+  d music
+  d pics
+  d videos
+  f wallpaper 
+)
