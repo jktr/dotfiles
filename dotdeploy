@@ -1,0 +1,239 @@
+#!/bin/sh
+
+# dotdeploy - configurable dotfile and directory management
+#
+# Running this script looks for all *.deploy files in PWD,
+# and sources them. Consequently, those need sh compliant
+# syntax and definitions distinct from the script's.
+#
+# Example Usage:
+#   ./dotdeploy conffiles   # where example.deploy is in .
+#
+# Example conf:
+#   # in file: example.deploy
+#   conffiles=('conf_home') # defines a compound target
+#                           #  of sequential subtargets
+#   conf_home=(       # begin target definition
+#     . ~             # defines relative base source and base target for actions
+#     d bin           # mkdir ~/bin
+#     f .bash_history # touch ~/.bash_history
+#     @ . .bashrc     # ln -s ././.bashrc ~/.bashrc
+#   )                 # end target definition
+
+### hardcoded conf
+
+verbose=1
+
+
+### setup
+
+if [ "$verbose" = 1 ] ; then
+    alias vecho='echo \>'
+else
+    alias vecho='true '
+fi
+
+alias errcho='>&2 echo !> '
+
+
+### load user conf
+
+vecho "looking for .deploy files..."
+
+for conf in $PWD/*.deploy; do
+    vecho "  found: $(basename $conf)"
+    source $conf
+done
+
+
+### setup functions
+
+# $1 -> target base dir
+# $2 -> directory to create
+action_mkdir () {
+    vecho "    mkdir: $1/$2"
+    mkdir -p "$1/$2"
+}
+
+# $1 -> target base dir
+# $2 -> file to create
+action_mkfile () {
+    vecho "    touch: $1/$2"
+#    touch "$1/$2"
+}
+
+# $1 -> source base dir
+# $2 -> target base dir
+# $3 -> source directory for file, rel. to $1
+# $4 -> target file, rel. to $2
+action_symlink () {
+    vecho "    symln: $2/$4 -> $1/$3/$(basename $4)"
+#    ln -s "$1/$3/$(basename $4)" "$2/$4"
+}
+
+# $1 -> source base dir
+# $2 -> target base dir
+# $3 -> array of commands, arguments and $3
+handle_actions () {
+    vecho '    processing directives...'
+    source_base_dir="$1"
+    target_base_dir="$2"
+    shift 2
+    while [ ! $# -eq 0 ] ; do
+	case "$1" in
+	    d)
+		action_mkdir "$target_base_dir" "$2"
+		shift
+		;;
+	    f)
+		action_mkfile "$target_base_dir" "$2"
+		shift
+		;;
+	    @)
+                action_symlink "$source_base_dir" "$target_base_dir" "$2" "$3"
+	        shift 2	    
+	        ;;
+	    *)
+		errcho "illegal directive: $2"
+		;;
+	esac
+	shift
+    done    
+}
+
+# read a target
+# 1 - target name
+handle_target () {
+    if [ "${!1}" = '@' ] ; then
+        vecho "  compound: $1 (destructuring...)"
+        target_array="\${${1}[@]:1}"
+        for target in $(eval echo "$target_array"); do
+            handle_target "$target"
+        done
+    else
+        vecho "  target: $1";
+	arg_array="${1}[@]"
+	handle_actions "${!arg_array}"
+    fi
+}
+
+handle_targets () {
+    vecho 'handling targets...'
+    for target in "$@"; do
+	handle_target "$target"
+    done
+}
+
+handle_targets "$@"
+
+exit 42;
+
+### MORE SCRIPT SETUP
+
+alias errcho='>&2 echo'
+vecho () {
+  if [ "${verbose}" == 'VERBOSE' ]; then
+    echo "$@"
+  fi
+}
+
+
+### ACTIONS
+
+symlinks_deploy () {
+  for class in "${class[@]}"; do
+    dest="${class}_dest"
+    files="${class}_files[@]" # urgh
+    for file in "${!files}"; do
+      ln_dst="${!dest}/$file"
+      ln_src="$dirname/$file"
+echo "$ln_src $ln_dst"
+#      mkdir -p $(dirname $ln_dst)
+      if [ ! -e "$ln_dst" ]; then # if file doesn't exist yet
+        vecho "creating symlink from $ln_dst to $ln_src"
+        ln --symbolic "$ln_src" "$ln_dst"
+      else
+        if [ "$force" == 'FORCE' ]; then
+          errcho "creating symlink from $ln_dst to $ln_src: file already exists (manually created?), but you forced overwrite"
+          ln --symbolic --force "$ln_src" "$ln_dst"
+        else
+          errcho "failed: creating symlink from $ln_dst to $ln_src: file already exists"
+        fi
+      fi
+    done
+  done
+}
+
+symlinks_undeploy () {
+  for class in "${class[@]}"; do
+    dest="${class}_dest"
+    files="${class}_files[@]" # urgh
+    for file in "${!files}"; do
+      ln_dst="${!dest}/$file"
+      ln_src="$dirname/$file"
+      if [ -e "$ln_dst" ]; then # if a file exists at dest
+        if [ "$ln_src" -ef "$ln_dst" ]; then # if file links to expected local dotfile
+          vecho "removing link at $ln_dst"
+          rm "$ln_dst"
+        else
+          if [ "$force" == 'FORCE' ]; then 
+            errcho "removing file at $ln_dst: not linking to expected file (manually overwritten?), but you forced removal"
+            rm "$ln_dst"
+          else
+            errcho "failed: removing link at $ln_dst: not linking to expected file (manually overwritten?)"
+          fi
+        fi
+      else
+        errcho "failed: removing link at $ln_dst: no such file/link exists"
+      fi          
+    done
+  done
+}
+
+
+### COMMAND LINE PARSING
+
+# defaults
+action='DEPLOY'
+force='NOFORCE'
+verbose='NOVERBOSE'
+
+while [[ $# > 0 ]]; do
+  arg="$1"
+  case $arg in
+    'deploy')
+      action='DEPLOY'
+      ;;
+    'undeploy')
+      action='UNDEPLOY'
+      ;;
+    'redeploy')
+      action="REDEPLOY"
+      ;;
+    'force')
+      force='FORCE'
+      ;;
+    'verbose')
+      verbose='VERBOSE'
+      ;;
+    *)
+      ;;
+  esac
+  shift
+done
+
+
+### INVOKING
+
+case $action in
+  'DEPLOY')
+    symlinks_deploy
+    ;;
+  'UNDEPLOY')
+    symlinks_undeploy
+    ;;
+  'UNDEPLOY')
+    symlinks_undeploy
+    symlinks_deploy
+    ;;
+esac
