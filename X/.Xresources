@@ -23,7 +23,7 @@ URxvt.background:           #000000
 URxvt.foreground:           #c1c1c1
 
 ! font
-URxvt.font:                 xft:DejaVuSansMono:pixelsize=12,xft:unifont:pixelsize=12
+URxvt.font:                 xft:DejaVuSansMono:pixelsize=10,xft:unifont:pixelsize=10
 URxvt.letterSpace:          -1
 URxvt.antialias:            true
 URxvt.hinting:              medium

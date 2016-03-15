@@ -179,6 +179,9 @@ heavy () {
 
 
 ### alias
+# tree
+alias t='tree '
+alias d='tree -d '
 # ls
 alias ll='ls -lh '
 alias la='ls -a '

@@ -1,5 +1,7 @@
 [user]
-	name = Mustangflyer
-	email = Mustangflyer@users.noreply.github.com
+	name = mustangflyer
+	email = mustangflyer@users.noreply.github.com
 [push]
 	default = simple
+[core]
+	autocrlf = input
