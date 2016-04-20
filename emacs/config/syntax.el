@@ -1,7 +1,10 @@
 ;;; syntax.el
 ;;; customize file editing behaviour
 
-;; whitespace
+;; file encoding
+(prefer-coding-system 'utf-8)
+
+;; newlines
 (setq-default
   indicate-empty-lines t
   require-final-newline t)
