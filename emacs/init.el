@@ -1,32 +1,46 @@
-;;; UI
+;;; init.el
+;;; initialize emacs configuration, and load package/configs
 
-;; elements
-(when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-(when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-(setq inhibit-startup-screen t)
+;; helpers
 
-;; color
-(add-to-list 'default-frame-alist '(foreground-color . "#C2C2C2"))
-(add-to-list 'default-frame-alist '(background-color . "#000000"))
+(defun load-config (conf-dir conf-name)
+  (load (concat conf-dir "/" conf-name)))
 
-;; controls
-
-(require 'mouse)
-(xterm-mouse-mode t)
+(defun load-config-with-pkg-install (conf-dir pkg-name)
+  (unless (package-installed-p pkg-name)
+    (package-install pkg-name))
+  (load-config conf-dir pkg-name))
 
 
-;;; Packages & Modes
-
-;; repos
+;; setup repos
 (require 'package)
-(add-to-list 'package-archives'
-	     ("melpa-stable". "http://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives
+	     '("melpa-stable" . "http://stable.melpa.org/packages/"))
+(setq package-user-dir "~/.emacs.d/elpa/")
 (package-initialize)
 
-;; clojure mode
-(require 'clojure-mode)
+
+;; require packages
+(mapc (apply-partially 'load-config-with-pkg-install
+                       "~/.emacs.d/config-pkg")
+      '())
 
 
-;;; Editing Style
-(setq require-final-newline t)
+;; require configs for external packages
+(mapc (apply-partially 'load-config
+                       "~/.emacs.d/config-extern")
+      '("clojure"))
+
+
+;; load other configs
+(mapc (apply-partially 'load-config
+                       "~/.emacs.d/config")
+      '("syntax"
+	"wm"
+	"color"
+        "input-devices"))
+
+
+;; clean up helpers
+(fmakunbound 'load-config)
+(fmakunbound 'load-config-with-pkg-install)
