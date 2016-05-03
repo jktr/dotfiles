@@ -32,7 +32,8 @@
 ;; require configs for external packages
 (mapc (apply-partially 'load-config
                        "~/.emacs.d/config-extern")
-      '(clojure))
+      '(clojure
+        auctex))
 
 
 ;; load other configs

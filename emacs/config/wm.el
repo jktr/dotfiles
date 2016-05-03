@@ -2,9 +2,9 @@
 ;;; configure ui components and corresponign keybinds
 
 ;; elements
-(when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-(when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(when (fboundp 'menu-bar-mode)   (menu-bar-mode -1))
+(when (fboundp 'tool-bar-mode)   (tool-bar-mode -1))
+(when (fboundp 'scroll-bar-mode) (scroll-bar-mode nil))
 (setq inhibit-startup-screen t)
 
 ;; column display
