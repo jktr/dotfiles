@@ -30,9 +30,13 @@ xset r rate 200 30
 
 ## start daemons
 
-[ -x ~/.fehbg ]          && ~/.fehbg &
-[ -x /usr/bin/urxvtd ]   && urxvtd -q -f -o
-[ -x /usr/bin/redshift ] && redshift &
+# UI
+[ -x ~/.fehbg          ] && ~/.fehbg &
+[ -x /usr/bin/redshift ] && /usr/bin/redshift &
+
+# less overhead for many instances
+[ -x /usr/bin/urxvtd   ] && /usr/bin/urxvtd -q -f -o
+[ -x /usr/bin/emacs    ] && emacs --daemon 
 
 
 ## exec session

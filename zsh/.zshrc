@@ -1,13 +1,16 @@
 ### umask
+
 umask -S u=rwx,g=rx,o=
 
 
 ### shopt misc
+
 setopt nomatch RM_STAR_WAIT
 unsetopt beep
 
 
-### comp
+### completion
+
 zstyle ':completion:*' completer _complete _ignored
 zstyle ':completion:*' expand prefix suffix
 zstyle ':completion:*' group-name '%d'
@@ -28,6 +31,7 @@ autoload -Uz compinit && compinit
 
 
 ### history
+
 HISTFILE=~/.zsh_history
 HISTSIZE=500
 SAVEHIST=100
@@ -35,23 +39,36 @@ setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE HIST_REDUCE_BLANKS HIST_VERIFY
 unsetopt appendhistory
 
 
-### vars
-# apps
-export EDITOR='nano'
-export PAGER='less'
-export TERMINAL='urxvtc'
-export BROWSER='firefox'
-# path
-export PATH="${PATH}:${HOME}/bin:${HOME}/develop/bin:${HOME}/games/bin"
+### env-vars
+
 # locale
 export LANG=en_US.UTF-8
 export LC_MESSAGES=C # unexpected, non-universal translations make for bad UX
-# env
+
+# editor
+export EDITOR='emacsclient --tty --alternate-editor=nano'
+export VISUAL='emacsclient --create-frame --alternate-editor=emacs'
+
+# pager
+export PAGER='less'
+
+# terminal
+export TERMINAL='urxvtc'
+
+# www-browser
+export BROWSER='firefox'
+
+# path
+export PATH="${PATH}:${HOME}/bin:${HOME}/develop/bin:${HOME}/games/bin"
+
+# misc
 export RXVT_SOCKET="/run/user/${UID}/urxvtd-${HOST}"
 
 ### keys
+
 bindkey -e
 typeset -g -A key
+
 # compat aliases
 key[Home]=${terminfo[khome]}
 key[End]=${terminfo[kend]}
@@ -63,7 +80,8 @@ key[Left]=${terminfo[kcub1]}
 key[Right]=${terminfo[kcuf1]}
 key[PageUp]=${terminfo[kpp]}
 key[PageDown]=${terminfo[knp]}
-# setup keys
+
+# bind keys to zsh's readline replacement
 [[ -n "${key[Home]}"     ]] && bindkey "${key[Home]}"     beginning-of-line
 [[ -n "${key[End]}"      ]] && bindkey "${key[End]}"      end-of-line
 [[ -n "${key[Insert]}"   ]] && bindkey "${key[Insert]}"   overwrite-mode
@@ -72,7 +90,8 @@ key[PageDown]=${terminfo[knp]}
 [[ -n "${key[Down]}"     ]] && bindkey "${key[Down]}"     down-line-or-history
 [[ -n "${key[Left]}"     ]] && bindkey "${key[Left]}"     backward-char
 [[ -n "${key[Right]}"    ]] && bindkey "${key[Right]}"    forward-char
-# console application mode compat
+
+# compatibility for console mode applications
 if [[ -n ${terminfo[smkx]} ]] && [[ -n ${terminfo[rmkx]} ]]; then
   zle-line-init   () { echoti smkx; }
   zle-line-finish () { echoti rmkx; }
@@ -82,7 +101,8 @@ fi
 
 
 ### key macros
-# macros
+
+# defin fns
 user-kill-word-first () {
     zle beginning-of-line
     zle kill-word
@@ -92,7 +112,7 @@ user-prepend () {
     case "${str}" in
 	s) str='sudo ' ;;
 	m) str='man '  ;;
-	e) str='nano ' ;;
+	e) str='$EDITOR ' ;;
 	*) return 0 ;;
     esac
     zle beginning-of-line
@@ -107,6 +127,8 @@ user-append () {
     zle end-of-line
     zle -U ${str}
 }
+
+# bind to keys
 zle -N user-kill-word-first
 bindkey '^[w' user-kill-word-first
 zle -N user-prepend
@@ -116,17 +138,21 @@ bindkey '^[r' user-append
 
 
 ### color
+
 autoload -U colors && colors
 color_mode='--color=always'
+
 # base utils
 alias ls="ls -F $color_mode"
 alias grep="grep $color_mode"
 alias dmesg="dmesg $color_mode"
+
 # others
 alias pacman='pacman --color always '
 
 
 ### prompt
+
 setopt prompt_subst
 setprompt () {
     # color aliases
@@ -168,7 +194,30 @@ setprompt () {
 setprompt
 
 
-### functions
+### alias
+
+# tree
+alias t='tree '
+alias d='tree -d '
+
+# ls
+alias ll='ls -lh '
+alias la='ls -a '
+alias lla='ls -alh '
+
+# pacman
+alias pm='pacman '
+alias spm='sudo pacman '
+
+# emacs
+alias emacs='emacsclient --create-frame --no-wait --alternate-editor=emacs '
+
+# misc
+alias i3lock='i3lock --show-failed-attempts --color=000000 '
+
+
+### useful fns
+
 heavy () {
     if [ -d "$1" ]; then
 	du --max-depth=1 -h "$1" | sort -hr
@@ -177,18 +226,3 @@ heavy () {
     fi
 }
 
-
-### alias
-# tree
-alias t='tree '
-alias d='tree -d '
-# ls
-alias ll='ls -lh '
-alias la='ls -a '
-alias lla='ls -alh '
-# pacman
-alias pm='pacman '
-alias spm='sudo pacman '
-# misc
-alias less='less -r ' # special seqs; for color
-alias i3lock='i3lock --show-failed-attempts --color=000000 '
