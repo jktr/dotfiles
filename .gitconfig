@@ -5,3 +5,12 @@
 	default = simple
 [core]
 	autocrlf = input
+[alias]
+	st = status
+	br = branch
+	co = checkout
+	ci = commit -m
+	wt = worktree
+	ls = ls-files
+	last = log -1 HEAD
+	uncommit = reset --soft HEAD\\^
