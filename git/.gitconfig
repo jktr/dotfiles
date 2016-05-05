@@ -5,6 +5,7 @@
 	default = simple
 [core]
 	autocrlf = input
+	excludesfile = ~/.gitignore
 [alias]
 	st = status
 	br = branch
