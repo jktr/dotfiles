@@ -13,5 +13,5 @@
 	ci = commit -m
 	wt = worktree
 	ls = ls-files
-	last = log -1 HEAD
+	last = log -3 HEAD
 	uncommit = reset --soft HEAD\\^
