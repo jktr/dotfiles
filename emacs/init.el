@@ -4,49 +4,65 @@
 ;; helpers
 
 (defun load-config (conf-dir conf-name)
-  (load (concat conf-dir "/" (symbol-name conf-name))))
+  (load (concat conf-dir "/" (symbol-name conf-name)))) 
 
-(defun load-config-with-pkg-install (conf-dir pkg-name)
-  (unless (package-installed-p pkg-name)
-    (package-install pkg-name))
-  (load-config conf-dir pkg-name))
+(defun load-configs (conf-dir &rest configs)
+  (mapc (apply-partially 'load-config conf-dir) configs))
+       
+(defun load-package (conf-dir pkg)
+  (unless (package-installed-p pkg)
+    (package-install pkg))
+  (load-config conf-dir pkg))
 
-;; setup repo
+(defun load-packages (conf-dir &rest pkgs)
+  (mapc (apply-partially 'load-package conf-dir) pkgs))
+
+
+;; setup repos
+
 (require 'package)
 (mapc (apply-partially 'add-to-list 'package-archives)
       '(("melpa-stable" . "http://stable.melpa.org/packages/")
         ("marmalade"    . "http://marmalade-repo.org/packages/")))
 (setq package-user-dir "~/.emacs.d/elpa/")
 (package-initialize)
+(when (not package-archive-contents)
+  (package-refresh-contents))
 
 
-;; require packages
-(mapc (apply-partially 'load-config-with-pkg-install
-                       "~/.emacs.d/config-pkg")
-      '(rainbow-delimiters
-        darcula-theme
-        fill-column-indicator ; 80 cols rule
-        ))
+;; set up basic configuration for emacs
+
+(load-configs "~/.emacs.d/config"
+              'wm ; navigation & components
+              'color
+              'font
+              'syntax ; whitespace & encoding
+              'input-devices
+;              'backup
+              )
 
 
-;; require configs for external packages
-(mapc (apply-partially 'load-config
-                       "~/.emacs.d/config-extern")
-      '(clojure
-        auctex))
+;; set up repo-based packages, downloading as needed
+(load-packages "~/.emacs.d/config-pkg"
+               'rainbow-delimiters
+               'darcula-theme
+               'clojure-mode
+               'paredit
+               )
 
 
-;; load other configs
-(mapc (apply-partially 'load-config
-                       "~/.emacs.d/config")
-      '(wm ; navigation & components
-        color
-        font
-        syntax ; whitespace & encoding
-        input-devices
-        ))
+;; set up externally installed packages
+
+(load-configs "~/.emacs.d/config-extern"
+             'auctex  ; from distro package manager
+             'rainbow ; shipped with emacs
+             )
 
 
 ;; clean up helpers
-(fmakunbound 'load-config)
-(fmakunbound 'load-config-with-pkg-install)
+
+(mapc 'fmakunbound
+      '(load-config
+        load-configs
+        load-package
+        load-packages))
