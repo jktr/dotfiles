@@ -44,16 +44,26 @@
 
 ;; set up repo-based packages, downloading as needed
 (load-packages "~/.emacs.d/config-pkg"
-               'rainbow-delimiters
+  ;; autocomplete
+               'auto-complete
+               'which-key
+  ;; appearance
                'darcula-theme
-               'clojure-mode
+               'rainbow-delimiters
+  ;; markdown
+               'markdown-mode
+  ;; lisp
                'paredit
+  ;; clojure
+               'clojure-mode
+               'clojure-mode-extra-font-locking
+               'cider ; clj* repl
                )
 
 
 ;; set up externally installed packages
 
-(load-configs "~/.emacs.d/config-extern"
+(load-configs "~/.emacs.d/config-extern"           
              'auctex  ; from distro package manager
              'rainbow ; shipped with emacs
              )
@@ -66,3 +76,4 @@
         load-configs
         load-package
         load-packages))
+
