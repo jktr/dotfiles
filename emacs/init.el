@@ -50,6 +50,7 @@
   ;; appearance
                'darcula-theme
                'rainbow-delimiters
+               'rainbow-mode
   ;; markdown
                'markdown-mode
   ;; lisp
