@@ -85,8 +85,8 @@ export LC_MESSAGES=C # unexpected, non-universal translations make for bad UX
 
 # editor - requires some hacks b/c argument expansion with spaces
 mkdir -p "${HOME}/bin"
-echo -e '#!/bin/sh\nemacsclient --tty --alternate-editor=nano'           > ~/bin/EDITOR
-echo -e '#!/bin/sh\nemacsclient --create-frame --alternate-editor=emacs' > ~/bin/VISUAL
+echo -e '#!/bin/sh\nexec emacsclient --tty --alternate-editor=nano $@'           > ~/bin/EDITOR
+echo -e '#!/bin/sh\nexec emacsclient --create-frame --alternate-editor=emacs $@' > ~/bin/VISUAL
 chmod u=rwx,g=,o= ~/bin/{EDITOR,VISUAL}
 export EDITOR="${HOME}/bin/EDITOR"
 export VISUAL="${HOME}/bin/VISUAL"
