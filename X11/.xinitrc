@@ -30,13 +30,27 @@ xset r rate 200 30
 
 ## start daemons
 
+existp () {
+    # (portably) check for binary on path and execute permissions
+    local location=$(command -v $1)
+    test "$?" -eq "0" -a -x "$location"
+}
+
+existp_and_bg () {
+    if existp "$1"; then
+        nohup $1 &
+        disown
+    fi
+}
+
 # UI
-[ -x ~/.fehbg          ] && ~/.fehbg &
-[ -x /usr/bin/redshift ] && /usr/bin/redshift &
+existp_and_bg ~/.fehbg
+existp_and_bg redshift
+existp_and_bg dunst
 
 # less overhead for many instances
-[ -x /usr/bin/urxvtd   ] && /usr/bin/urxvtd -q -f -o
-[ -x /usr/bin/emacs    ] && emacs --daemon 
+existp urxvtd && /usr/bin/urxvtd -q -f -o
+existp emacs  && emacs --daemon 
 
 
 ## exec session
