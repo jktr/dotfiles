@@ -1,14 +1,4 @@
-### umask
-
-umask -S u=rwx,g=rx,o=
-
-
-### shopt misc
-
-setopt shwordsplit
-setopt nomatch RM_STAR_WAIT
-unsetopt beep
-
+# .zshrc
 
 ### completion
 
@@ -30,40 +20,6 @@ zstyle ':completion:*' use-compctl false
 zstyle :compinstall filename '/home/jktr/.zshrc'
 autoload -Uz compinit && compinit
 
-
-### history
-
-HISTFILE=~/.zsh_history
-HISTSIZE=500
-SAVEHIST=100
-setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE HIST_REDUCE_BLANKS HIST_VERIFY 
-unsetopt appendhistory
-
-
-### env-vars
-
-# locale
-export LANG=en_US.UTF-8
-export LC_MESSAGES=C # unexpected, non-universal translations make for bad UX
-
-# editor
-export EDITOR='emacsclient --tty --alternate-editor=nano'
-export VISUAL='emacsclient --create-frame --alternate-editor=emacs'
-
-# pager
-export PAGER='less'
-
-# terminal
-export TERMINAL='urxvtc'
-
-# www-browser
-export BROWSER='firefox'
-
-# path
-export PATH="${PATH}:${HOME}/bin:${HOME}/develop/bin:${HOME}/games/bin"
-
-# misc
-export RXVT_SOCKET="/run/user/${UID}/urxvtd-${HOST}"
 
 ### keys
 
@@ -99,6 +55,56 @@ if [[ -n ${terminfo[smkx]} ]] && [[ -n ${terminfo[rmkx]} ]]; then
   zle -N zle-line-init
   zle -N zle-line-finish
 fi
+
+### umask
+
+umask -S u=rwx,g=rx,o=
+
+
+### shopt misc
+
+setopt shwordsplit
+setopt nomatch RM_STAR_WAIT
+unsetopt beep
+
+
+### history
+
+HISTFILE=~/.zsh_history
+HISTSIZE=500
+SAVEHIST=100
+setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE HIST_REDUCE_BLANKS HIST_VERIFY 
+unsetopt appendhistory
+
+
+### env-vars
+
+# locale
+export LANG=en_US.UTF-8
+export LC_MESSAGES=C # unexpected, non-universal translations make for bad UX
+
+# editor - requires some hacks b/c argument expansion with spaces
+mkdir -p "~/bin"
+echo -e '#!/bin/sh\nemacsclient --tty --alternate-editor=nano'           > ~/bin/EDITOR
+echo -e '#!/bin/sh\nemacsclient --create-frame --alternate-editor=emacs' > ~/bin/VISUAL
+chmod u=rwx,g=,o= ~/bin/{EDITOR,VISUAL}
+export EDITOR="${HOME}/bin/EDITOR"
+export VISUAL="${HOME}/bin/VISUAL"
+
+# pager
+export PAGER='less'
+
+# terminal
+export TERMINAL='urxvtc'
+
+# www-browser
+export BROWSER='firefox'
+
+# path
+export PATH="${PATH}:${HOME}/bin:${HOME}/develop/bin:${HOME}/games/bin"
+
+# misc
+export RXVT_SOCKET="/run/user/${UID}/urxvtd-${HOST}"
 
 
 ### key macros
@@ -173,18 +179,18 @@ setprompt () {
 
     # user part, with selective color
     if [[ $UID -ge 1000 ]]; then
-	eval PR_USER='${PR_C_USER}%n'
-	eval PR_USER_OP='${PR_C_USER}%#'
+        eval PR_USER='${PR_C_USER}%n'
+        eval PR_USER_OP='${PR_C_USER}%#'
     elif [[ $UID -eq 0 ]]; then
-	eval PR_USER='${PR_C_ROOT}%n'
-	eval PR_USER_OP='${PR_C_ROOT}%#'
+        eval PR_USER='${PR_C_ROOT}%n'
+        eval PR_USER_OP='${PR_C_ROOT}%#'
     fi
 
     # host part, with selective color
     if [[ -n "$SSH_CLIENT" || -n "$SSH2_CLIENT" ]]; then
-	eval PR_HOST='${PR_C_REMOTE}%M'
+        eval PR_HOST='${PR_C_REMOTE}%M'
     else
-	eval PR_HOST='${PR_C_LOCAL}%M'
+        eval PR_HOST='${PR_C_LOCAL}%M'
     fi
     
     # actually set prompt
@@ -198,23 +204,26 @@ setprompt
 ### alias
 
 # tree
-alias t='tree '
-alias d='tree -d '
+alias t='tree'
+alias d='tree -d'
 
 # ls
-alias ll='ls -lh '
-alias la='ls -a '
-alias lla='ls -alh '
+alias ll='ls -lh'
+alias la='ls -a'
+alias lla='ls -alh'
 
 # pacman
-alias pm='pacman '
-alias spm='sudo pacman '
+alias pm='pacman'
+alias spm='sudo pacman'
 
 # emacs
-alias emacs='emacsclient --create-frame --no-wait --alternate-editor=emacs '
+alias emacs='emacsclient --tty --alternate-editor=nano'
+alias emax='emacsclient --create-frame --no-wait --alternate-editor=emacs'
 
 # misc
-alias i3lock='i3lock --show-failed-attempts --color=000000 '
+alias df='df -h'
+alias free='free -h'
+alias i3lock='i3lock --show-failed-attempts --color=000000'
 
 
 ### useful fns
