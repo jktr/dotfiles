@@ -84,7 +84,7 @@ export LANG=en_US.UTF-8
 export LC_MESSAGES=C # unexpected, non-universal translations make for bad UX
 
 # editor - requires some hacks b/c argument expansion with spaces
-mkdir -p "~/bin"
+mkdir -p "${HOME}/bin"
 echo -e '#!/bin/sh\nemacsclient --tty --alternate-editor=nano'           > ~/bin/EDITOR
 echo -e '#!/bin/sh\nemacsclient --create-frame --alternate-editor=emacs' > ~/bin/VISUAL
 chmod u=rwx,g=,o= ~/bin/{EDITOR,VISUAL}
@@ -220,7 +220,12 @@ alias spm='sudo pacman'
 alias emacs='emacsclient --tty --alternate-editor=nano'
 alias emax='emacsclient --create-frame --no-wait --alternate-editor=emacs'
 
+# cd
+alias ..='cd ..'
+alias ...='cd ...'
+
 # misc
+alias ln='ln -s'
 alias df='df -h'
 alias free='free -h'
 alias i3lock='i3lock --show-failed-attempts --color=000000'
