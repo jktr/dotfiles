@@ -1,17 +1,25 @@
 [user]
-	name = mustangflyer
-	email = mustangflyer@users.noreply.github.com
+  name = mustangflyer
+  email = mustangflyer@users.noreply.github.com
 [push]
-	default = simple
+  default = simple
 [core]
-	autocrlf = input
-	excludesfile = ~/.gitignore
+  autocrlf = input
+  excludesfile = ~/.gitignore
 [alias]
-	st = status
-	br = branch
-	co = checkout
-	ci = commit -m
-	wt = worktree
-	ls = ls-files
-	last = log -3 HEAD
-	uncommit = reset --soft HEAD\\^
+  a = add
+  b = branch
+  d = diff
+  f = fetch
+  i = commit
+  l = log
+  o = checkout
+  p = pull
+  s = status
+  ia = commit --amend
+  im = commit -m
+  ls = ls-files
+  wt = worktree
+  unadd = reset HEAD
+  uncommit = reset --soft HEAD\\^
+  changes = "!f() { git diff $1\\^ $1; }; f"
