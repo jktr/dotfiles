@@ -17,7 +17,7 @@
   p = pull
   s = status
   ia = commit --amend
-  im = commit -m
+  im = "!f() { git commit -m \"$*\"; }; f"
   ls = ls-files
   wt = worktree
   unadd = reset HEAD
