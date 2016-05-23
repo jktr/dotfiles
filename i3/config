@@ -27,13 +27,14 @@
   #    t        tabbed-mode
   #    v        split direction vertical
   #
-  #  (application shortcuts)
+  #  (X11 application shortcuts)
   #  Control+
   #    b        browser
-  #    e        text editor
+  #    e        text editor (visual)
+  #    i        irc client
+  #    m        multimedia player
   #    l        screenlocker
   #    return   terminal
-  #    
 
 ### init
 
@@ -66,6 +67,8 @@
   bindsym $mod+Control+Return  exec i3-sensible-terminal
   bindsym $mod+Control+b       exec firefox
   bindsym $mod+Control+e       exec i3-sensible-editor
+  bindsym $mod+Control+i       exec hexchat
+  bindsym $mod+Control+m       exec vlc
   bindsym $mod+Control+l       exec i3lock --show-failed-attempts --color=000000 
 
 
