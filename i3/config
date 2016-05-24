@@ -78,6 +78,7 @@
   bindsym $mod+Shift+2 restart
   bindsym $mod+Shift+3 reload
 
+
 ### focus binds
 
   ## focus inheritance
@@ -151,6 +152,7 @@
   bindsym $mod+Shift+F11 move container to workspace 11
   bindsym $mod+Shift+F12 move container to workspace 12
 
+
 ### modes
 
   mode "resize" {
@@ -164,6 +166,11 @@
   }
 
   bindsym $mod+r mode "resize"
+
+
+### options
+
+  popup_during_fullscreen leave_fullscreen
 
 
 ### status bar 
