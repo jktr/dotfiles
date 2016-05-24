@@ -11,5 +11,5 @@
 
 ;; spaces & tabs
 (setq-default
-  indent-tabs-mode nil
-  tab-width 2)
+  indent-tabs-mode nil ; selectively reactivated by smart-tab-mode
+  tab-width 8)

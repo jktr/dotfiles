@@ -44,6 +44,8 @@
 
 ;; set up repo-based packages, downloading as needed
 (load-packages "~/.emacs.d/config-pkg"
+  ;; syntax
+               'smart-tabs-mode
   ;; autocomplete
                'auto-complete
                'which-key
