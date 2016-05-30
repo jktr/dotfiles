@@ -34,6 +34,8 @@
   #    i        irc client
   #    m        multimedia player
   #    l        screenlocker
+  #    s        suspend (and lock screen)
+  #    t        torrent client
   #    return   terminal
 
 ### init
@@ -70,6 +72,8 @@
   bindsym $mod+Control+i       exec hexchat
   bindsym $mod+Control+m       exec vlc
   bindsym $mod+Control+l       exec i3lock --show-failed-attempts --color=000000 
+  bindsym $mod+Control+s       exec "i3lock --show-failed-attempts --color=000000 && systemctl suspend" 
+  bindsym $mod+Control+t       exec transmission-gtk
 
 
 ### meta binds
