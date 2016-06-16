@@ -19,7 +19,7 @@
   ia = commit --amend
   im = "!f() { git commit -m \"$*\"; }; f"
   ls = ls-files
-  wt = worktree
+  w = whatchanged
   unadd = reset HEAD
   uncommit = reset --soft HEAD\\^
   changes = "!f() { git diff $1\\^ $1; }; f"
