@@ -6,7 +6,6 @@ dot_home=(
   . ..
   d .config
   d .emacs.d
-  @ .     .fehbg
   @ .     .gitconfig
   @ .     .nvidia-settings-rc
   @ X11   .xinitrc
