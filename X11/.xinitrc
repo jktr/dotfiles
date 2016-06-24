@@ -1,58 +1,45 @@
 #!/bin/sh
 
-## merge in .Xresources
+## PATHS
 
-sysrsrc=/etc/X11/xinit/.Xresources 
+# commands
+xrdb=/usr/bin/xrdb
+xmodmap=/usr/bin/xmodmap
+
+# user
 usrrsrc=~/.Xresources
-[ -f "$sysrsrc" ] && xrdb -merge $sysrsrc
-[ -f "$usrrsrc" ] && xrdb -merge $usrrsrc
 
-
-## load keymaps
-
+# system
+sysrsrc=/etc/X11/xinit/.Xresources 
 sysmodmap=/etc/X11/xinit/.Xmodmap
-[ -f "$sysmodmap" ] && xmodmap $sysmodmap
+xinitrcd=/etc/X11/xinit/xinitrc.d
 
 
-## run global xinitrc.d files
+## X11 CONF
 
-if [ -d /etc/X11/xinit/xinitrc.d ] ; then
-  for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+# .Xresources
+[ -f "$sysrsrc" ] && $xrdb -merge $sysrsrc
+[ -f "$usrrsrc" ] && $xrdb -merge $usrrsrc
+
+# keymaps
+[ -f "$sysmodmap" ] && $xmodmap $sysmodmap
+
+# system xinitrc.d
+if [ -d $xinitrcd ] ; then
+  for f in $xinitrcd/*.sh ; do
     [ -x "$f" ] && source "$f"
   done
 fi
 
-
-## tweak X
-
-xset r rate 200 30
+# adjust keyboard repeat
+[ -x $xset ] && $xset r rate 200 30
 
 
-## start daemons
+## X11 DAEMONS
 
-existp () {
-    # (portably) check for binary on path and execute permissions
-    local location=$(command -v $1)
-    test "$?" -eq "0" -a -x "$location"
-}
-
-existp_and_bg () {
-    if existp "$1"; then
-        nohup $1 &
-        disown
-    fi
-}
-
-# UI
-existp_and_bg ~/.fehbg
-existp_and_bg redshift
-existp_and_bg dunst
-
-# less overhead for many instances
-existp urxvtd && /usr/bin/urxvtd -q -f -o
-existp emacs  && emacs --daemon 
+systemctl --user start X11.target
 
 
-## exec session
+## EXEC SESSION
 
 exec i3
