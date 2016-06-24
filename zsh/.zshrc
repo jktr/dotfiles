@@ -79,32 +79,11 @@ unsetopt appendhistory
 
 ### env-vars
 
-# locale
-export LANG=en_US.UTF-8
-export LC_MESSAGES=C # unexpected, non-universal translations make for bad UX
-
 # editor - requires some hacks b/c argument expansion with spaces
 mkdir -p "${HOME}/bin"
 echo -e '#!/bin/sh\nexec emacsclient --tty --alternate-editor=nano $@'           > ~/bin/EDITOR
 echo -e '#!/bin/sh\nexec emacsclient --create-frame --alternate-editor=emacs $@' > ~/bin/VISUAL
 chmod u=rwx,g=,o= ~/bin/{EDITOR,VISUAL}
-export EDITOR="${HOME}/bin/EDITOR"
-export VISUAL="${HOME}/bin/VISUAL"
-
-# pager
-export PAGER='less'
-
-# terminal
-export TERMINAL='urxvtc'
-
-# www-browser
-export BROWSER='firefox'
-
-# path
-export PATH="${PATH}:${HOME}/bin:${HOME}/develop/bin:${HOME}/games/bin"
-
-# misc
-export RXVT_SOCKET="/run/user/${UID}/urxvtd-${HOST}"
 
 
 ### key macros
@@ -225,11 +204,11 @@ alias ..='cd ..'
 alias ...='cd ...'
 
 # misc
-alias ln='ln -s'
 alias df='df -h'
 alias free='free -h'
 alias i3lock='i3lock --show-failed-attempts --color=000000'
-
+alias userctl='systemctl --user'
+alias where=whereis
 
 ### useful fns
 
