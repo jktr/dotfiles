@@ -93,6 +93,7 @@ action_symlink () {
 handle_actions () {
     vecho '    processing directives...'
     source_base_dir=$(cd "$1"; pwd)
+    [ -d "$2" ] || echo "      mkdir $2" && mkdir -p "$2"
     target_base_dir=$(cd "$2"; pwd)
     shift 2
     while [ ! $# -eq 0 ] ; do
