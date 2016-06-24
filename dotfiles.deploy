@@ -1,5 +1,5 @@
 # compound target
-dots=(@ 'dot_home' 'dot_emacs' 'dot_conf')
+dots=(@ 'dot_home' 'dot_emacs' 'dot_conf' 'systemd_user_units')
 
 # dotfiles in home
 dot_home=(
@@ -9,9 +9,11 @@ dot_home=(
   @ .     .fehbg
   @ .     .gitconfig
   @ .     .nvidia-settings-rc
-  @ X     .xinitrc
-  @ X     .xserverrc
-  @ X     .Xresources
+  @ X11   .xinitrc
+  @ X11   .xserverrc
+  @ X11   .Xresources
+  @ zsh   .zshenv
+  @ zsh   .zlogin
   @ zsh   .zshrc
 )
 
@@ -36,4 +38,17 @@ dot_conf=(
   @ vlc      vlc/vlc-qt-interface
   @ xdg      user-dirs.dirs
   @ xdg      user-dirs.locale
+)
+
+# systemd user units in .config/systemd/user
+systemd_user_units=(
+  . ../.config/systemd/user
+  @ systemd daemon.target
+  @ systemd emacsd.service
+  @ systemd urxvtd.service
+
+  @ systemd X11.target
+  @ systemd wallpaper.service
+  @ systemd redshift.service
+  @ systemd dunst.service
 )
