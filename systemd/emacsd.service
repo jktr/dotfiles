@@ -2,7 +2,9 @@
 Description=emacs server daemon
 
 [Service]
+Type=forking
 ExecStart=/usr/bin/emacs --daemon
+ExecStop=/usr/bin/emacsclient --eval "(kill-emacs)"
 
 [Install]
 WantedBy=daemon.target

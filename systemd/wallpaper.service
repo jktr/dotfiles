@@ -2,7 +2,7 @@
 Description=sets xroot to the current wallpaper
 
 [Service]
-ExecStart=%h/.fehbg
+ExecStart=/usr/bin/feh --bg-scale %h/.wallpaper
 
 [Install]
 WantedBy=X11.target
