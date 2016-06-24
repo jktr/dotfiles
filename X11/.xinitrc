@@ -5,6 +5,7 @@
 # commands
 xrdb=/usr/bin/xrdb
 xmodmap=/usr/bin/xmodmap
+xset=/usr/bin/xset
 
 # user
 usrrsrc=~/.Xresources
