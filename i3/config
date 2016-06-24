@@ -5,7 +5,7 @@
 
   # Super = $mod & floating_modifier
   # $mod+
-  #  (mundane DE-like actions | modes)
+  #  (mundane DE-like actions & modes)
   #    arrows  focus move positional
   #    d       dmenu
   #    f       fullscreen
@@ -13,7 +13,7 @@
   #    r       mode resize
   #    space   focus move layers
   #
-  #  (changing geometry & layout | risky things)
+  #  (changing geometry, layout, and risky things)
   #  Shift+
   #    0        kill (actually WM_DELETE, else X11 SIGKILL)
   #    1        i3 quit
@@ -32,8 +32,9 @@
   #    b        browser
   #    e        text editor (visual)
   #    i        irc client
-  #    m        multimedia player
+  #    m        multimedia
   #    l        screenlocker
+  #    p        e-mail client
   #    s        suspend (and lock screen)
   #    t        torrent client
   #    return   terminal
@@ -41,6 +42,24 @@
 ### init
 
   set $mod Mod4
+
+
+### UX commands / shortcuts
+
+  bindsym $mod+d               exec dmenu_run
+
+  bindsym $mod+Shift+0         kill
+
+  bindsym $mod+Control+Return  exec i3-sensible-terminal
+  bindsym $mod+Control+b       exec firefox
+  bindsym $mod+Control+e       exec i3-sensible-editor
+  bindsym $mod+Control+i       exec hexchat
+  bindsym $mod+Control+m       exec vlc
+  bindsym $mod+Control+l       exec i3lock --show-failed-attempts --color=000000
+  bindsym $mod+Control+p       exec thunderbird
+  bindsym $mod+Control+s       exec "i3lock --show-failed-attempts --color=000000 && systemctl suspend" 
+  bindsym $mod+Control+t       exec transmission-gtk
+
 
 ### appearance
 
@@ -58,23 +77,7 @@
   client.urgent            #3f343a  #900000  #ffffff  #900000
   #client.placeholder       #000000  #0c0c0c  #ffffff  #000000
   client.background        #ffffff
-
-
-### UX commands
-
-  bindsym $mod+d               exec dmenu_run
-
-  bindsym $mod+Shift+0         kill
-
-  bindsym $mod+Control+Return  exec i3-sensible-terminal
-  bindsym $mod+Control+b       exec firefox
-  bindsym $mod+Control+e       exec i3-sensible-editor
-  bindsym $mod+Control+i       exec hexchat
-  bindsym $mod+Control+m       exec vlc
-  bindsym $mod+Control+l       exec i3lock --show-failed-attempts --color=000000 
-  bindsym $mod+Control+s       exec "i3lock --show-failed-attempts --color=000000 && systemctl suspend" 
-  bindsym $mod+Control+t       exec transmission-gtk
-
+  
 
 ### meta binds
 
