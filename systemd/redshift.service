@@ -1,0 +1,8 @@
+[Unit]
+Description=display temperature adjustment daemon
+
+[Service]
+ExecStart=/usr/bin/redshift
+
+[Install]
+WantedBy=X11.target

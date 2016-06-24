@@ -1,0 +1,8 @@
+[Unit]
+Description=graphical notification daemon
+
+[Service]
+ExecStart=/usr/bin/dunst
+
+[Install]
+WantedBy=X11.target

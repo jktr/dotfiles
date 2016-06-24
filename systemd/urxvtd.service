@@ -1,0 +1,8 @@
+[Unit]
+Description=urxvt daemon
+
+[Service]
+ExecStart=/usr/bin/urxvtd --opendisplay
+
+[Install]
+WantedBy=daemon.target

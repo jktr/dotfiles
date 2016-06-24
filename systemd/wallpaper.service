@@ -1,0 +1,8 @@
+[Unit]
+Description=sets xroot to the current wallpaper
+
+[Service]
+ExecStart=%h/.fehbg
+
+[Install]
+WantedBy=X11.target
