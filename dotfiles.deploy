@@ -43,12 +43,12 @@ dot_conf=(
 # systemd user units in .config/systemd/user
 systemd_user_units=(
   . ../.config/systemd/user
-  @ systemd daemon.target
-  @ systemd emacsd.service
-  @ systemd urxvtd.service
+  l systemd daemon.target
+  l systemd emacsd.service
+  l systemd urxvtd.service
 
-  @ systemd X11.target
-  @ systemd wallpaper.service
-  @ systemd redshift.service
-  @ systemd dunst.service
+  l systemd X11.target
+  l systemd wallpaper.service
+  l systemd redshift.service
+  l systemd dunst.service
 )

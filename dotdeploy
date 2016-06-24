@@ -64,6 +64,46 @@ action_mkfile () {
 # $2 -> target base dir
 # $3 -> source directory for file, rel. to $1
 # $4 -> target file, rel. to $2
+action_mirror () {
+    local source="$1/$3/$(basename $4)"
+    local target="$2/$4"
+    vecho "    mirror: $target -> $source"
+    # check if file already exists
+    if [ -e "$target" ]; then
+        local already_file=$(file -b "$target")
+        errcho "      IGNORING!  target already is a file:"
+        errcho "        path:     $target"
+        errcho "        filetype: $already_file"
+    # no file exists, copying is safe
+    else 
+        cp "$source" "$target"
+    fi
+}
+
+# $1 -> source base dir
+# $2 -> target base dir
+# $3 -> source directory for file, rel. to $1
+# $4 -> target file, rel. to $2
+action_hardlink () {
+    local source="$1/$3/$(basename $4)"
+    local target="$2/$4"
+    vecho "    hardln: $target -> $source"
+    # check if file already exists
+    if [ -e "$target" ]; then
+        local already_file=$(file -b "$target")
+        errcho "      IGNORING!  target already is a file:"
+        errcho "        path:     $target"
+        errcho "        filetype: $already_file"
+    # no file exists, copying is safe
+    else 
+        cp -l "$source" "$target"
+    fi
+}
+
+# $1 -> source base dir
+# $2 -> target base dir
+# $3 -> source directory for file, rel. to $1
+# $4 -> target file, rel. to $2
 action_symlink () {
     local source="$1/$3/$(basename $4)"
     local target="$2/$4"
@@ -105,6 +145,14 @@ handle_actions () {
         f)
             action_mkfile "$target_base_dir" "$2"
             shift
+            ;;
+        l)
+            action_hardlink "$source_base_dir" "$target_base_dir" "$2" "$3"
+            shift 2
+            ;;
+        m)
+            action_mirror "$source_base_dir" "$target_base_dir" "$2" "$3"
+            shift 2
             ;;
         @)
             action_symlink "$source_base_dir" "$target_base_dir" "$2" "$3"
