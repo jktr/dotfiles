@@ -1,11 +1,15 @@
 [user]
   name = mustangflyer
   email = mustangflyer@users.noreply.github.com
+
 [push]
   default = simple
+
 [core]
   autocrlf = input
   excludesfile = ~/.gitignore
+  pager = less -x4
+
 [alias]
   a = add
   b = branch
