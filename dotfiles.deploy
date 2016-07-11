@@ -7,6 +7,7 @@ dot_home=(
   d .config
   d .emacs.d
   @ .     .gitconfig
+  @ .     .gitignore
   @ .     .nvidia-settings-rc
   @ X11   .xinitrc
   @ X11   .xserverrc
@@ -28,6 +29,8 @@ dot_emacs=(
 # dotfiles in .config
 dot_conf=(
   . ../.config
+  d dunst
+  @ dunst    dunst/dunstrc
   d i3
   @ i3       i3/config
   d i3status
