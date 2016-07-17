@@ -125,16 +125,8 @@ bindkey '^[r' user-append
 
 ### color
 
+# zsh
 autoload -U colors && colors
-color_mode='--color=always'
-
-# base utils
-alias ls="ls -F $color_mode"
-alias grep="grep $color_mode"
-alias dmesg="dmesg $color_mode"
-
-# others
-alias pacman='pacman --color always '
 
 
 ### prompt
@@ -215,16 +207,16 @@ alias where=whereis
 # prints process environment by pid or process name
 envof () {
   case $1 in
-    *[!0-9]*) # not number
+    ''|'-h'|'--help') # no args or help request
+      echo "Usage: envof (pid|progname)"
+      ;;
+    *[!0-9]*) # string has at least one non-numeric char
       for pid in $(pidof $1); do
         echo "----------- $pid -----------"
         xargs --null --max-args=1 < "/proc/$pid/environ"
       done
       ;;
-    '') # no args
-      echo "Usage: envof (pid|progname)"
-      ;;
-    *) # number
+    *) # args has only numeric chars
       xargs --null --max-args=1 < "/proc/$1/environ"
       ;;
   esac
