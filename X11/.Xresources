@@ -37,7 +37,7 @@ URxvt.secondaryScroll:      0
 ! ext
 URxvt.perl-ext-common:      default,matcher
 URxvt.url-launcher:         firefox
-URxvt.matcher.button:       1
+URxvt.matcher.button:       2
 
 ! cursor
 URxvt.cursorBlink:          true
