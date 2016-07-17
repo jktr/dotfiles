@@ -5,10 +5,12 @@ These are my configuration files for UNIX based systems.
 
 ## Why do this ?
 
-I got tired of opaque changes I made too long ago and that
-they're strewn across the /home/$USER tree, so putting them
-in a central, cloneable, and deployable directory, all
-versioned via git simply made sense from a maintainance
+I got tired of trying to figure out opaque config changes
+that I made far too long ago, and that those changes are
+strewn across the entire /home/$USER tree. As a result,
+I put them all in a central and cloneable directory from 
+which they're deployable directory. Also, it's all versioned
+properly via git. It simply makes sense from a maintainance
 point-of-view.
 
 
