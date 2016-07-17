@@ -20,7 +20,8 @@
 #     @ . .bashrc     # ln -s ././.bashrc ~/.bashrc
 #   )                 # end target definition
 
-### setup
+
+### setup output
 
 if [ "$1" = "-v" ] ; then
     alias vecho='echo '
@@ -42,7 +43,7 @@ for conf in $PWD/*.deploy; do
 done
 
 
-### setup functions
+### DSL actions
 
 # $1 -> target base dir
 # $2 -> directory to create
@@ -75,7 +76,7 @@ action_mirror () {
         errcho "        path:     $target"
         errcho "        filetype: $already_file"
     # no file exists, copying is safe
-    else 
+    else
         cp "$source" "$target"
     fi
 }
@@ -95,7 +96,7 @@ action_hardlink () {
         errcho "        path:     $target"
         errcho "        filetype: $already_file"
     # no file exists, copying is safe
-    else 
+    else
         cp -l "$source" "$target"
     fi
 }
@@ -122,10 +123,13 @@ action_symlink () {
         errcho "        path:     $target"
         errcho "        filetype: $already_file"
     # no file exists, symlinking is safe
-    else 
+    else
         ln -s "$source" "$target"
     fi
 }
+
+
+### DSL parsing & dispatch
 
 # $1 -> source base dir
 # $2 -> target base dir
@@ -156,14 +160,14 @@ handle_actions () {
             ;;
         @)
             action_symlink "$source_base_dir" "$target_base_dir" "$2" "$3"
-            shift 2     
+            shift 2
             ;;
         *)
             errcho "illegal directive: $2"
             ;;
     esac
     shift
-    done    
+    done
 }
 
 # read a target
@@ -182,13 +186,14 @@ handle_target () {
     fi
 }
 
-# 
+# $@ - targets to handle
 handle_targets () {
     vecho 'handling targets...'
     for target in "$@"; do
          handle_target "$target"
     done
 }
+
 
 handle_targets "$@"
 
