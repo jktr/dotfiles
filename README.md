@@ -9,7 +9,7 @@ I got tired of trying to figure out opaque config changes
 that I made far too long ago, and that those changes are
 strewn across the entire /home/$USER tree. As a result,
 I put them all in a central and cloneable directory from 
-which they're deployable directory. Also, it's all versioned
+which they're easily deployable. Also, it's all versioned
 properly via git. It simply makes sense from a maintainance
 point-of-view.
 
