@@ -1,0 +1,33 @@
+### .nanorc
+
+## UI
+
+set constantshow
+
+# wrap
+set nowrap
+set softwrap
+
+# whitespace
+set tabsize 4
+set tabstospaces
+
+
+## input
+
+set smooth # scrolling
+
+# keybinds
+set cut # to end of line with ^K
+set smarthome
+
+
+## extensions
+
+set speller aspell
+
+
+## files
+
+set locking
+set unix

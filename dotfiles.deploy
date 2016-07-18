@@ -3,11 +3,12 @@ dots=(@ 'dot_home' 'dot_emacs' 'dot_conf' 'systemd_user_units')
 
 # dotfiles in home
 dot_home=(
-  . ..
+  . $HOME
   d .config
   d .emacs.d
-  @ .     .gitconfig
-  @ .     .gitignore
+  @ git   .gitconfig
+  @ git   .gitignore
+  @ nano  .nanorc
   @ .     .nvidia-settings-rc
   @ X11   .xinitrc
   @ X11   .xserverrc
@@ -19,7 +20,7 @@ dot_home=(
 
 # dotfiles in .emacs.d
 dot_emacs=(
-  . ../.emacs.d
+  . $HOME/.emacs.d
   @ emacs init.el
   @ emacs config
   @ emacs config-pkg
@@ -28,7 +29,7 @@ dot_emacs=(
 
 # dotfiles in .config
 dot_conf=(
-  . ../.config
+  . $HOME/.config
   d dunst
   @ dunst    dunst/dunstrc
   d i3
@@ -44,7 +45,7 @@ dot_conf=(
 
 # systemd user units in .config/systemd/user
 systemd_user_units=(
-  . ../.config/systemd/user
+  . $HOME/.config/systemd/user
   l systemd daemon.target
   l systemd emacsd.service
   l systemd urxvtd.service
