@@ -1,5 +1,13 @@
 # .zshrc
 
+### misc shopt
+
+setopt shwordsplit
+setopt nomatch RM_STAR_WAIT
+unsetopt beep
+autoload -U colors && colors
+
+
 ### completion
 
 zstyle ':completion:*' completer _complete _ignored
@@ -56,35 +64,6 @@ if [[ -n ${terminfo[smkx]} ]] && [[ -n ${terminfo[rmkx]} ]]; then
   zle -N zle-line-finish
 fi
 
-### umask
-
-umask -S u=rwx,g=rx,o=
-
-
-### shopt misc
-
-setopt shwordsplit
-setopt nomatch RM_STAR_WAIT
-unsetopt beep
-
-
-### history
-
-HISTFILE=~/.zsh_history
-HISTSIZE=500
-SAVEHIST=100
-setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE HIST_REDUCE_BLANKS HIST_VERIFY 
-unsetopt appendhistory
-
-
-### env-vars
-
-# editor - requires some hacks b/c argument expansion with spaces
-mkdir -p "${HOME}/bin"
-echo -e '#!/bin/sh\nexec emacsclient --tty --alternate-editor=nano $@'           > ~/bin/EDITOR
-echo -e '#!/bin/sh\nexec emacsclient --create-frame --alternate-editor=emacs $@' > ~/bin/VISUAL
-chmod u=rwx,g=,o= ~/bin/{EDITOR,VISUAL}
-
 
 ### key macros
 
@@ -123,65 +102,105 @@ zle -N user-append
 bindkey '^[r' user-append
 
 
-### color
-
-# zsh
-autoload -U colors && colors
-
 
 ### prompt
 
 setopt prompt_subst
 setprompt () {
+
+  # expansion seqs
+  e_usr='%n'
+  e_usrsym='%#'
+  e_host='%M'
+  e_pwd='%~'
+  e_multiline_desc='%_'
+
   # color aliases
   for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
-  eval PR_$color='%{$fg[${(L)color}]%}'
+    eval PR_$color='%{$fg[${(L)color}]%}'
   done
-  PR_NONE="%{$reset_color%}"
 
-  # conf
-  PR_C_STATIC="${PR_BLUE}"
-  PR_C_PWD="${PR_GREEN}"
-  PR_C_USER="${PR_GREEN}"
-  PR_C_ROOT="${PR_RED}"
-  PR_C_LOCAL="${PR_GREEN}"
-  PR_C_REMOTE="${PR_YELLOW}"
-  PR_C_NZEXIT="${PR_MAGENTA}"
+  # color conf
+  c_reset="%{$reset_color%}"
+  c_delim="${PR_BLUE}"
+  c_pwd="${PR_GREEN}"
+  c_uid_root="${PR_RED}"
+  c_uid_sys="${PR_YELLOW}"
+  c_uid_usr="${PR_GREEN}"
+  c_host_local="${PR_GREEN}"
+  c_host_remote="${PR_YELLOW}"
+  c_nzexit="${PR_MAGENTA}"
 
   # user part, with selective color
-  if [[ $UID -ge 1000 ]]; then
-    eval PR_USER='${PR_C_USER}%n'
-    eval PR_USER_OP='${PR_C_USER}%#'
-  elif [[ $UID -eq 0 ]]; then
-    eval PR_USER='${PR_C_ROOT}%n'
-    eval PR_USER_OP='${PR_C_ROOT}%#'
+  if [[ $UID -eq 0 ]]; then
+    c_pr_usr="${c_uid_root}"
+    c_pr_usr_sym="${c_uid_root}"
+  elif [[ $UID -lt 1000 ]]; then
+    c_pr_usr="${c_uid_sys}"
+    c_pr_usr_sym="${c_uid_sys}"
+  else
+    c_pr_usr="${c_uid_usr}"
+    c_pr_usr_sym="${c_uid_usr}"
   fi
 
   # host part, with selective color
   if [[ -n "$SSH_CLIENT" || -n "$SSH2_CLIENT" ]]; then
-    eval PR_HOST='${PR_C_REMOTE}%M'
+    c_pr_host="${c_host_remote}"
   else
-    eval PR_HOST='${PR_C_LOCAL}%M'
+    c_pr_host="${c_host_local}"
   fi
     
   # actually set prompt
-  PS1=$'${PR_C_STATIC}[${PR_USER}${PR_C_STATIC}@${PR_HOST}${PR_C_STATIC}][${PR_C_PWD}%~${PR_C_STATIC}]${PR_USER_OP}${PR_WHITE}${PR_NONE} '
-  PS2=$'%_>'
-  RPROMPT=$'%(?..${PR_C_NZEXIT}[${PR_NONE}%?${PR_C_NZEXIT}]${PR_NONE})'
+  PS1=$'${c_delim}[${c_pr_usr}${e_usr}${c_delim}@${c_pr_host}${e_host}${c_delim}|${c_pwd}${e_pwd}${c_delim}]${c_pr_usr}${e_usrsym}${c_reset} '
+  PS2=$'${e_multiline_desc}>'
+  RPROMPT=$'%(?..${c_nzexit}[${c_reset}%?${c_nzexit}]${c_reset})'
 }
 setprompt
 
 
+### umask
+
+umask -S u=rwx,g=rx,o=
+
+
+### history
+
+HISTFILE=~/.zsh_history
+HISTSIZE=500
+SAVEHIST=100
+setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE HIST_REDUCE_BLANKS HIST_VERIFY
+unsetopt appendhistory
+
+
+### env-vars
+
+# editor - requires some hacks b/c argument expansion with spaces
+mkdir -p "${HOME}/bin"
+echo -e '#!/bin/sh\nexec emacsclient --tty --alternate-editor=nano $@'           > ~/bin/EDITOR
+echo -e '#!/bin/sh\nexec emacsclient --create-frame --alternate-editor=emacs $@' > ~/bin/VISUAL
+chmod u=rwx,g=,o= ~/bin/{EDITOR,VISUAL}
+
+
 ### alias
+
+color_mode='--color=auto'
+
+human_mode='--human'
+human_mode_gnu='--human-readable'
 
 # tree
 alias t='tree'
 alias d='tree -d'
 
 # ls
-alias ll='ls -lh'
-alias la='ls -a'
-alias lla='ls -alh'
+
+ls_opts="$color_mode $human_mode_gnu \
+--classify --group-directories-first --dereference-command-line --time-style='+%y-%m-%d %R'"
+
+alias  ls="ls $ls_opts"
+alias  ll="ls $ls_opts -l"
+alias  la="ls $ls_opts    --almost-all"
+alias lla="ls $ls_opts -l --almost-all"
 
 # pacman
 alias pm='pacman'
@@ -193,14 +212,19 @@ alias emax='emacsclient --create-frame --no-wait --alternate-editor=emacs'
 
 # cd
 alias ..='cd ..'
-alias ...='cd ...'
+alias ...='cd ../..'
+
+# misc (coreutils)
+alias df="df $human_mode_gnu"
+alias grep="grep $color_mode_gnu"
 
 # misc
-alias df='df -h'
-alias free='free -h'
+alias dmesg="dmesg $color_mode $human_mode"
+alias free="free $human_mode"
 alias i3lock='i3lock --show-failed-attempts --color=000000'
 alias userctl='systemctl --user'
-alias where=whereis
+alias where='whereis -b'
+
 
 ### useful fns
 
