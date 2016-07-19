@@ -57,9 +57,9 @@
   bindsym $mod+Control+g       exec steam
   bindsym $mod+Control+i       exec hexchat
   bindsym $mod+Control+m       exec vlc
-  bindsym $mod+Control+l       exec i3lock --show-failed-attempts --color=000000
+  bindsym $mod+Control+l       exec i3lock --color=000000
   bindsym $mod+Control+p       exec thunderbird
-  bindsym $mod+Control+s       exec "i3lock --show-failed-attempts --color=000000 && systemctl suspend" 
+  bindsym $mod+Control+s       exec "i3lock --color=000000 && systemctl suspend" 
   bindsym $mod+Control+t       exec transmission-gtk
 
 
