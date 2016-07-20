@@ -38,7 +38,7 @@ fi
 
 ## X11 DAEMONS
 
-systemctl --user start X11.target
+systemctl --user start X11.target &
 
 
 ## EXEC SESSION
