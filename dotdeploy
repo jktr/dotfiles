@@ -115,7 +115,7 @@ action_symlink () {
         errcho "      REPLACING! target already is a link:"
         errcho "        path:     $target"
         errcho "        readlink: $already_link"
-        ln -sf "$source" "$target"
+        ln -sfT "$source" "$target"
     # check if any other sort of file exists
     elif [ -e "$target" ]; then
         local already_file=$(file -b "$target")
