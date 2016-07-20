@@ -6,4 +6,4 @@ Environment='RXVT_SOCKET=/run/user/%U/urxvtd-%H'
 ExecStart=/usr/bin/urxvtd --opendisplay
 
 [Install]
-WantedBy=daemon.target
+WantedBy=X11.target

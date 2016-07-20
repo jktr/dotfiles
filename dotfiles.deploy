@@ -1,8 +1,8 @@
 # compound target
-dots=(@ 'dot_home' 'dot_emacs' 'dot_conf' 'systemd_user_units')
+dots=(@ 'home_dots' 'dot_emacs' 'dot_conf')
 
 # dotfiles in home
-dot_home=(
+home_dots=(
   . $HOME
   d .config
   d .emacs.d
@@ -20,38 +20,27 @@ dot_home=(
 
 # dotfiles in .emacs.d
 dot_emacs=(
-  . $HOME/.emacs.d
-  @ emacs init.el
-  @ emacs config
-  @ emacs config-pkg
-  @ emacs config-extern
+  emacs $HOME/.emacs.d
+  @ . init.el
+  @ . config
+  @ . config-pkg
+  @ . config-extern
 )
 
 # dotfiles in .config
 dot_conf=(
   . $HOME/.config
   d dunst
-  @ dunst    dunst/dunstrc
+  @ dunst         dunst/dunstrc
   d i3
-  @ i3       i3/config
+  @ i3            i3/config
   d i3status
-  @ i3status i3status/config
+  @ i3status      i3status/config
+  d systemd
+  @ systemd       systemd/user
   d vlc
-  @ vlc      vlc/vlcrc
-  @ vlc      vlc/vlc-qt-interface
-  @ xdg      user-dirs.dirs
-  @ xdg      user-dirs.locale
-)
-
-# systemd user units in .config/systemd/user
-systemd_user_units=(
-  . $HOME/.config/systemd/user
-  l systemd daemon.target
-  l systemd emacsd.service
-  l systemd urxvtd.service
-
-  l systemd X11.target
-  l systemd wallpaper.service
-  l systemd redshift.service
-  l systemd dunst.service
+  @ vlc           vlc/vlcrc
+  @ vlc           vlc/vlc-qt-interface
+  @ xdg           user-dirs.dirs
+  @ xdg           user-dirs.locale
 )
