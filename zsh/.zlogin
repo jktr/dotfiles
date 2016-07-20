@@ -7,4 +7,4 @@ echo -e '#!/bin/sh\nexec emacsclient --create-frame --alternate-editor=emacs $@'
 chmod u=rwx,g=,o= ~/bin/{EDITOR,VISUAL}
 
 ## systemd user units
-systemctl --user start daemon.target
+systemctl --user start daemon.target &!
