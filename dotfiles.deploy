@@ -6,16 +6,16 @@ home_dots=(
   . $HOME
   d .config
   d .emacs.d
-  @ git   .gitconfig
-  @ git   .gitignore
-  @ nano  .nanorc
-  @ .     .nvidia-settings-rc
-  @ X11   .xinitrc
-  @ X11   .xserverrc
-  @ X11   .Xresources
-  @ zsh   .zshenv
-  @ zsh   .zlogin
-  @ zsh   .zshrc
+  @ git    .gitconfig
+  @ git    .gitignore
+  @ nano   .nanorc
+  @ nvidia .nvidia-settings-rc
+  @ X11    .xinitrc
+  @ X11    .xserverrc
+  @ X11    .Xresources
+  @ zsh    .zshenv
+  @ zsh    .zlogin
+  @ zsh    .zshrc
 )
 
 # dotfiles in .emacs.d
