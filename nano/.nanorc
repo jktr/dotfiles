@@ -2,7 +2,7 @@
 
 ## UI
 
-set constantshow
+# set constantshow
 
 # wrap
 set nowrap
@@ -30,4 +30,4 @@ set speller aspell
 ## files
 
 set locking
-set unix
+# set unix
