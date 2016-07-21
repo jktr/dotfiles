@@ -220,6 +220,7 @@ alias grep="grep $color_mode_gnu"
 
 # misc
 alias dmesg="dmesg $color_mode $human_mode"
+alias feh='feh --magick-timeout 1'
 alias free="free $human_mode"
 alias i3lock='i3lock --show-failed-attempts --color=000000'
 alias userctl='systemctl --user'
