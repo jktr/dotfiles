@@ -2,7 +2,7 @@
 Description=urxvt daemon
 
 [Service]
-Environment='RXVT_SOCKET=/run/user/%U/urxvtd-%H'
+Environment='RXVT_SOCKET=/run/user/%U/urxvtd'
 ExecStart=/usr/bin/urxvtd --opendisplay
 
 [Install]
