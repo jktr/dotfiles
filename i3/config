@@ -1,67 +1,50 @@
 # i3 config file (v4)
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-### current binds
+### current bindings
+
+# $mod & floating_modifier is `Super`
+
+# $mod+
+#  # mundane DE-like actions & modes
+#  arrows  move focus
+#  d       dmenu
+#  f       fullscreen
+#  fn      focus workspace
+#  space   focus move layers
+#
+#  Tab     launch-mode  (exit with Esc / Return)
+#    b       browser
+#    e       editor
+#    g       games
+#    i       irc
+#    m       multimedia
+#    p       post/mail
+#    t       torrent
+#
+#  r       resize-mode  (exit with Esc / Return)
+#    Arrows    grow/shrink window in direction (+Shift for small increments)
+#
+#  s       session-mode  (exit with Esc / Return)
+#    0       kill (actually WM_DELETE, else X11 SIGKILL)
+#    1       i3 quit (with confirm dialog)
+#    2       i3 restart
+#    3       i3 reload config
+#
+#  # shift geometry, layout
+#  Shift+
+#    arrow    window focused move workspace
+#    fn       window move to other   workspace
+#    h        split direction horizontal
+#    r        rotate container / normal-mode
+#    space    window toggle float
+#    t        tabbed-mode
+#    v        split direction vertical
 
 
-  # Super = $mod & floating_modifier
-  # $mod+
-  #  (mundane DE-like actions & modes)
-  #    arrows  focus move positional
-  #    d       dmenu
-  #    f       fullscreen
-  #    fn      focus workspace
-  #    r       mode resize
-  #    space   focus move layers
-  #
-  #  (changing geometry, layout, and risky things)
-  #  Shift+
-  #    0        kill (actually WM_DELETE, else X11 SIGKILL)
-  #    1        i3 quit
-  #    2        i3 restart
-  #    3        i3 reload config
-  #    arrow    window move on current workspace
-  #    fn       window move to other   workspace
-  #    h        split direction horizontal
-  #    r        rotate container / normal-mode
-  #    space    window toggle float
-  #    t        tabbed-mode
-  #    v        split direction vertical
-  #
-  #  (X11 application shortcuts)
-  #  Control+
-  #    b        browser
-  #    e        text editor (visual)
-  #    g        games
-  #    i        irc client
-  #    m        multimedia
-  #    l        screenlocker
-  #    p        e-mail client
-  #    s        suspend (and lock screen)
-  #    t        torrent client
-  #    return   terminal
-
-### init
+### base
 
   set $mod Mod4
-
-
-### UX commands / shortcuts
-
-  bindsym $mod+d               exec dmenu_run
-
-  bindsym $mod+Shift+0         kill
-
-  bindsym $mod+Control+Return  exec i3-sensible-terminal
-  bindsym $mod+Control+b       exec firefox
-  bindsym $mod+Control+e       exec i3-sensible-editor
-  bindsym $mod+Control+g       exec steam
-  bindsym $mod+Control+i       exec hexchat
-  bindsym $mod+Control+m       exec vlc
-  bindsym $mod+Control+l       exec i3lock --color=000000
-  bindsym $mod+Control+p       exec thunderbird
-  bindsym $mod+Control+s       exec "i3lock --color=000000 && systemctl suspend" 
-  bindsym $mod+Control+t       exec transmission-gtk
 
 
 ### appearance
@@ -82,13 +65,6 @@
   client.background        #000000
   
 
-### meta binds
-
-  bindsym $mod+Shift+1 exec "i3-nagbar -t warning -m 'Quit i3!?' -b 'Yes, really!' 'i3-msg exit'"
-  bindsym $mod+Shift+2 restart
-  bindsym $mod+Shift+3 reload
-
-
 ### focus binds
 
   ## focus inheritance
@@ -107,7 +83,7 @@
 
 ### layout binds
 
-  ## spawn
+  ## split orientation
   bindsym $mod+h split h
   bindsym $mod+v split v
 
@@ -125,11 +101,9 @@
 
   ## float
   floating_modifier $mod
-  bindsym $mod+f fullscreen toggle
 
-  ## scratch
-  #bindsym $mod+m move scratchpad
-  #bindsym $mod+o scratchpad show
+  ## fullscreen
+  bindsym $mod+f fullscreen toggle
 
 
 ### workspace binds
@@ -163,23 +137,93 @@
   bindsym $mod+Shift+F12 move container to workspace 12
 
 
+### basic commands
+
+  bindsym $mod+d               exec dmenu_run
+
+  # ensure that we can alway open a terminal
+  bindsym $mod+Return exec i3-sensible-terminal
+
+
 ### modes
 
-  mode "resize" {
-    bindsym Left  resize shrink width  5 px or 5 ppt
-    bindsym Down  resize grow   height 5 px or 5 ppt
-    bindsym Up    resize shrink height 5 px or 5 ppt
-    bindsym Right resize grow   width  5 px or 5 ppt
+  ## launch-mode
+  # for launching X11 applications
+  set $m_x11launch  "<launch> [b]rowser [e]ditor [g]ames [i]rc [m]ultimedia [p]ost/mail [t]orrent"
+  mode $m_x11launch {
+
+    bindsym b exec firefox              ; mode "default"
+    bindsym e exec i3-sensible-editor   ; mode "default"
+    bindsym g exec steam                ; mode "default"
+    bindsym i exec hexchat              ; mode "default"
+    bindsym m exec vlc                  ; mode "default"
+    bindsym p exec thunderbird          ; mode "default"
+    bindsym t exec transmission-gtk     ; mode "default"
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
   }
 
-  bindsym $mod+r mode "resize"
+
+  ## resize-mode
+  # for resizing tiles
+  set $m_resize  "<resize>"
+  mode $m_resize {
+
+    set $resize_s  1
+    set $resize_m 10
+
+    # medium resize
+    bindsym Left  resize shrink width  $resize_m px or $resize_m ppt
+    bindsym Down  resize grow   height $resize_m px or $resize_m ppt
+    bindsym Up    resize shrink height $resize_m px or $resize_m ppt
+    bindsym Right resize grow   width  $resize_m px or $resize_m ppt
+
+    # small resize with Shift
+    bindsym Shift+Left  resize shrink width  $resize_s px or $resize_s ppt
+    bindsym Shift+Down  ressdfize grow   height $resize_s px or $resize_s ppt
+    bindsym Shift+Up    resize shrink height $resize_s px or $resize_s ppt
+    bindsym Shift+Right resize grow   width  $resize_s px or $resize_s ppt
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+  }
+
+
+  ## session-mode
+  # for meta-actions in the session
+  set $m_session "<session> [p]oweroff [l]ock [r]eboot [s]uspend | 0:WM_DELETE 1:exit 2:restart 3:reload"
+  mode $m_session {
+
+    # system power
+    bindsym r exec "i3-nagbar -t warning -m 'Reboot!?' -b 'Yes, REBOOT!' 'systemctl reboot'"       ; mode "default"
+    bindsym p exec "i3-nagbar -t warning -m 'Poweroff!?' -b 'Yes, POWEROFF!' 'systemctl poweroff'" ; mode "default"
+
+    # locking session
+    bindsym l exec "i3lock --color=000000"                       ; mode "default"
+    bindsym s exec "i3lock --color=000000 && systemctl suspend"  ; mode "default"
+
+    bindsym 0 kill       ; mode "default"
+
+    # i3 meta stuff
+    bindsym 1 exec "i3-nagbar -t warning -m 'Quit i3!?' -b 'Yes, EXIT i3!' 'i3-msg exit'" ; mode "default"
+    bindsym 2 restart    ; mode "default"
+    bindsym 3 reload     ; mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+  }
+
+
+  ## mode binds
+  bindsym $mod+s   mode $m_session
+  bindsym $mod+Tab mode $m_x11launch
+  bindsym $mod+r   mode $m_resize
 
 
 ### options
 
+  # prevents wondering why UI suddenly stopped responding
   popup_during_fullscreen leave_fullscreen
 
 
