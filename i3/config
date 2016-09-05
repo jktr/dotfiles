@@ -70,7 +70,7 @@
   font pango:DejaVu Sans Mono 8
 
   ## window
-  new_window 1pixel
+  new_window pixel 1
 
   ## colors
   # class                  border   backgr.  text     indica.
