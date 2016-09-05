@@ -230,16 +230,26 @@
 ### status bar 
 
   bar {
-    status_command i3status
 
     position       top
     mode           hide
     modifier       $mod
+
     tray_output    primary
+#    tray_padding   0
+
+    status_command i3status
 
     font           pango:DejaVu Sans Mono, Icons 8
+
     colors {
       background   #000000
       statusline   #c2c2c2
+
+      focused_workspace  #444444 #444444 #c2c2c2
+      active_workspace   #444444 #444444 #000000
+      inactive_workspace #444444 #000000 #666666
+      urgent_workspace   #900000 #000000 #666666
+#      binding_mode       #386941 #000000 #c2c2c2
     }
   }
