@@ -181,7 +181,7 @@
 
     # small resize with Shift
     bindsym Shift+Left  resize shrink width  $resize_s px or $resize_s ppt
-    bindsym Shift+Down  ressdfize grow   height $resize_s px or $resize_s ppt
+    bindsym Shift+Down  resize grow   height $resize_s px or $resize_s ppt
     bindsym Shift+Up    resize shrink height $resize_s px or $resize_s ppt
     bindsym Shift+Right resize grow   width  $resize_s px or $resize_s ppt
 
