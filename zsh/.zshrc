@@ -160,7 +160,7 @@ setprompt
 
 ### umask
 
-umask -S u=rwx,g=rx,o=
+umask -S u=rwx,g=,o=
 
 
 ### history
