@@ -1,5 +1,5 @@
 # compound target
-dots=(@ 'home_dots' 'dot_emacs' 'dot_conf')
+dots=(@ 'home_dots' 'dot_emacs' 'dot_conf' 'dot_localshare')
 
 # dotfiles in home
 home_dots=(
@@ -36,6 +36,8 @@ dot_conf=(
   @ i3            i3/config
   d i3status
   @ i3status      i3status/config
+  d mpd
+  @ mpd           mpd/mpd.conf
   d systemd
   @ systemd       systemd/user
   d vlc
@@ -43,4 +45,10 @@ dot_conf=(
   @ vlc           vlc/vlc-qt-interface
   @ xdg           user-dirs.dirs
   @ xdg           user-dirs.locale
+)
+
+# dotfiles in .local/share
+dot_localshare=(
+ . $HOME/.local/share
+ d mpd
 )
