@@ -38,6 +38,8 @@ dot_conf=(
   @ i3status      i3status/config
   d mpd
   @ mpd           mpd/mpd.conf
+  d ncmpcpp
+  @ ncmpcpp       ncmpcpp/config
   d systemd
   @ systemd       systemd/user
   d vlc
