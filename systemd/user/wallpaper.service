@@ -1,7 +1,9 @@
 [Unit]
-Description=sets xroot to the current wallpaper
+Description=xroot wallpaper setter
 
 [Service]
+Type=oneshot
+RemainAfterExit=yes
 ExecStart=/usr/bin/feh --no-fehbg --bg-scale %h/.wallpaper
 
 [Install]

@@ -8,4 +8,3 @@ ExecStop=/usr/bin/mpd --kill
 
 [Install]
 WantedBy=daemon.target
-
