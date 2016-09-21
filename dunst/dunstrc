@@ -1,121 +1,124 @@
 
 [shortcuts]
 
-    # format: ((ctrl|shift|modN)(+(ctrl|shift|mod#))*){0,1}keyname
+  # format: ((ctrl|shift|modN)(+(ctrl|shift|mod#))*){0,1}keyname
 
-    # Close notification.
-    close     = mod4+o
+  # Close notification.
+  close     = mod4+o
     
-    # Close all notifications.
-    close_all = mod4+shift+o
+  # Close all notifications.
+  close_all = mod4+shift+o
     
-    # Show head of history ring
-    history   = mod4+mod1+o
+  # Show head of history ring
+  history   = mod4+mod1+o
     
-    # Open contex dmenu
-    context   = mod4+ctrl+o  
+  # Open contex dmenu
+  context   = mod4+ctrl+o  
+
 
 [global]
 
-## text rendering
+### text rendering
 
-    #   %a  appname
-    #   %s  summary
-    #   %b  body
-    #   %i  iconname (including its path)
-    #   %I  iconname (without its path)
-    #   %p  progress value if set ([  0%] to [100%]) or nothing
-    format = "<i>%a</i>\n<b>%s</b>\n\n%b"
-
- # font
-    font = Monospace 8
-    line_height = 0
+  # %a  appname
+  # %s  summary
+  # %b  body
+  # %i  iconname (including its path)
+  # %I  iconname (without its path)
+  # %p  progress value if set ([  0%] to [100%]) or nothing
+  format = "<i>%a</i>\n<b>%s</b>\n\n%b"
+  
+  font = Monospace 8
+  line_height = 0
     
- # filling
-     # text alignment in box
-    alignment = center        
-    word_wrap = yes
+  alignment = center        
+  word_wrap = yes
     
- # markup
-     # GNOME Pango style
-    allow_markup = yes
-     # long text bounce disabled
-    bounce_freq = 0           
-    ignore_newline = no
-     # URLs (U) and actions (A)
-    show_indicators = no      
+  # GNOME Pango style
+  allow_markup = yes
+  
+  # long text bounce disabled
+  bounce_freq = 0           
+  ignore_newline = no
+  
+  # URLs (U) and actions (A)
+  show_indicators = no      
 
-## queueing logic
 
-    indicate_hidden = yes
+### queueing logic
+
+  indicate_hidden = yes
      
-     # sort by urgency
-    sort = yes                
+  # sort by urgency
+  sort = yes                
     
-    startup_notification = false
+  startup_notification = false
 
- # timeouts
-     # disable timeout after n seconds
-    idle_threshold = 120
-     # timer for old messages
-    show_age_threshold = 90   
+  # disable timeout after n seconds
+  idle_threshold = 120
+  
+  # timer for old messages
+  show_age_threshold = 90   
 
- # history
-    history_length = 20
-     # history won't timeout
-    sticky_history = yes      
+  history_length = 20
+  
+  # history won't timeout
+  sticky_history = yes      
 
-## geometry
 
- # positioning & resize
-     # [{widthPixels}]x{heightInNotifications}[+/-{x}+/-{y}]
-    geometry = "400x5-30+20"  
-    shrink = no
-     # between notifications, in px
-    separator_height = 2
-     # vertical   text padding, in px
-    padding = 8
-     # horizontal text padding, in px
-    horizontal_padding = 8    
-    
- # multi-monitor
-    monitor = 0
-     # don't warp messages around monitors
-    follow = none             
+### geometry
 
- # icons
-     # (left|right|off)
-    icon_position = off       
-    icon_folders = /usr/share/icons/Adwaita/16x16/status/:/usr/share/icons/Adwaita/16x16/devices/
+ # [{widthPixels}]x{heightInNotifications}[+/-{x}+/-{y}]
+ geometry = "400x5-30+20"  
+ shrink = no
+ 
+ # between notifications, in px
+ separator_height = 2
+ 
+ # vertical   text padding, in px
+ padding = 8
+ 
+ # horizontal text padding, in px
+ horizontal_padding = 8
+ 
+ monitor = 0
 
-## executables
+ # don't warp messages around monitors
+ follow = none             
 
- # handlers
-    dmenu = /usr/bin/dmenu -p dunst
-    browser = /usr/bin/firefox -new-tab
+ # (left|right|off)
+ icon_position = off       
+ icon_folders = /usr/share/icons/Adwaita/16x16/status/:/usr/share/icons/Adwaita/16x16/devices/
 
-## color
 
-    transparency = 0 # non-pseudo compositing transparency
-    
-    # (auto|foreground|frame|literal X11 color)
-    separator_color = frame   
+### executables
+
+  dmenu = /usr/bin/dmenu -p dunst
+  browser = /usr/bin/firefox -new-tab
+
+
+### color
+
+  transparency = 0
+   
+  # (auto|foreground|frame|literal X11 color)
+  separator_color = frame
 
 [frame]
     width = 3
-    color = "#aaaaaa"
+    color = "#444444"
 
 [urgency_low]
-    background = "#222222"
-    foreground = "#888888"
+    background = "#000000"
+    foreground = "#c2c2c2"
     timeout = 10
 
 [urgency_normal]
-    background = "#384474"
+    background = "#444444"
     foreground = "#c2c2c2"
     timeout = 10
 
 [urgency_critical]
-    background = "#FC3912"
-    foreground = "#000000"
+    background = "#900000"
+    foreground = "#c2c2c2"
     timeout = 0
