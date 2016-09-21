@@ -1,10 +1,13 @@
 ;;; components.el
 ;;; configure ui components and corresponign keybinds
 
+;; disable suspend keybinf
+(global-unset-key (kbd "C-z"))
+
 ;; elements
 (when (fboundp 'menu-bar-mode)   (menu-bar-mode -1))
 (when (fboundp 'tool-bar-mode)   (tool-bar-mode -1))
-(when (fboundp 'scroll-bar-mode) (scroll-bar-mode nil))
+(when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (setq inhibit-startup-screen t)
 
 ;; column display
