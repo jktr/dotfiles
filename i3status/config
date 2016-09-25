@@ -1,10 +1,4 @@
-# i3status configuration file.
-# see "man i3status" for documentation.
-
-# It is important that this file is edited as UTF-8.
-# The following line should contain a sharp s:
-# ß
-# If the above line is not correctly displayed, fix your editor first!
+# i3status config
 
 general {
     colors = true
@@ -18,7 +12,13 @@ general {
 
 
 order += 'disk /home'
-# order += 'disk /'
+#order += 'disk /'
+order += 'wireless _first_'
+order += 'ethernet _first_'
+#order += 'volume master'
+#order += 'battery 0'
+order += 'load'
+order += 'tztime local'
 
 disk '/home' {
     format = '%avail'
@@ -32,68 +32,25 @@ disk '/' {
     threshold_type = 'percentage_free'
 }
 
-
-order += 'wireless _first_'
-order += 'ethernet _first_'
-
 wireless _first_ {
-    format_up = 'w:%ip (%quality @%essid)'
-    format_down = 'w:D'
+    format_up = '%ip (%quality @%essid)'
+    format_down = 'X'
 }
 
 ethernet _first_ {
-    format_up = 'e:%ip'
-    format_down = 'e:D'
+    format_up = '%ip'
+    format_down = 'X'
 }
-
-
-order += 'load'
 
 load {
      format = '%1min'
 }
 
-
-# order += "cpu_temperature 0"
-# order += "cpu_temperature 1"
-# order += "cpu_temperature 2"
-# order += "cpu_temperature 3"
-
-cpu_temperature 0 {
-    format = '%degrees'
-    max_threshold = '55'
-    path = '/sys/devices/platform/coretemp.0/hwmon/hwmon0/temp2_input'
-}
-
-cpu_temperature 1 {
-    format = '%degrees'
-    max_threshold = '55'
-    path = '/sys/devices/platform/coretemp.0/hwmon/hwmon0/temp3_input'
-}
-
-cpu_temperature 2 {
-    format = '%degrees'
-    max_threshold = '55'
-    path = '/sys/devices/platform/coretemp.0/hwmon/hwmon0/temp4_input'
-}
-
-cpu_temperature 3 {
-    format = '%degrees'
-    max_threshold = '55'
-    path = '/sys/devices/platform/coretemp.0/hwmon/hwmon0/temp5_input'
-}
-
-
-# order += 'volume master'
-
 volume 'master' {
-    format = 'v:%volume' # in percent
-    format_muted = 'v:X'
+    format = '%volume' # in percent
+    format_muted = 'M'
     device = 'default'
 }
-
-
-# order += 'battery 0'
 
 battery '0' {
     format = '%status %remaining (%emptytime %consumption)'
@@ -105,11 +62,8 @@ battery '0' {
     hide_seconds = 'true'
 }
 
-
-order += 'tztime local'
-
 tztime local {
-        format = "%Y-%m-%d %H:%M:%S"
+    format = "%Y-%m-%d %H:%M:%S"
 }
 
 
