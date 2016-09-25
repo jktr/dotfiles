@@ -19,14 +19,14 @@ _prompt_git ()
     if [ -n "$sha" ]; then
         local ref="$(command git symbolic-ref --quiet HEAD 2> /dev/null)"
 
+        # branch
+        #   red    - diverged from origin
+        #   yellow - ahead or behind of origin
+        #   green  - up to date with origin
         if ! git show-ref origin/${ref#refs/heads/} &> /dev/null; then
             # if no remote exists
             ref="%F{green}${ref#refs/heads/}%f"
         else
-            # branch
-            #   red    - diverged from origin
-            #   yellow - ahead or behind of origin
-            #   green  - up to date with origin
             local ahead=$(git rev-list --count @{upstream}..HEAD)
             local behind=$(git rev-list --count HEAD..@{upstream})
             if [ $ahead -eq 0 ]; then
