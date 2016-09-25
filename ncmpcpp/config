@@ -1,5 +1,50 @@
-# ncmpcpp config
+### ncmpcpp config
+
+## mpd
 
 mpd_host = 127.0.0.1
 mpd_port = 6600
 mpd_music_dir = ~/multimedia/music
+
+
+## UI
+
+jump_to_now_playing_song_at_start = yes
+enable_window_title = no
+
+# style
+user_interface = alternative
+#alternative_header_first_line_format = "$8{%t}|{%f}$9"
+alternative_header_second_line_format = "{%a - %b (%y)}|{%D}"
+header_visibility = no
+playlist_shorten_total_times = yes
+
+# timeouts
+playlist_disable_highlight_delay = 1
+message_delay_time = 1
+
+# colors
+progressbar_elapsed_color = 2
+
+
+## input
+
+cyclic_scrolling = yes
+incremental_seeking = yes
+regular_expressions = perl
+
+# mouse
+mouse_list_scroll_whole_page = no
+lines_scrolled = 1
+
+# editing
+external_editor = /usr/bin/nano
+use_console_editor = yes
+
+
+## misc
+
+lyrics_directory = ~/.local/share/lyrics
+allow_for_physical_item_deletion = no
+ignore_leading_the = yes
+
