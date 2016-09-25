@@ -47,6 +47,8 @@ dot_conf=(
   @ vlc           vlc/vlc-qt-interface
   @ xdg           user-dirs.dirs
   @ xdg           user-dirs.locale
+  d zsh
+  @ zsh           zsh/zshrc.d
 )
 
 # dotfiles in .local/share
