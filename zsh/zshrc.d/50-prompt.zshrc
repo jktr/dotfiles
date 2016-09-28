@@ -15,43 +15,45 @@ _i_soft='%F{blue}@%f'
 # branch@commit if inside git repo
 _prompt_git ()
 {
-    local sha="$(command git rev-parse --short HEAD 2> /dev/null)"
-    if [ -n "$sha" ]; then
-        local ref="$(command git symbolic-ref --quiet HEAD 2> /dev/null)"
+    #! XXX: using this here is ~3x faster than `git ame-rev --name-only HEAD`
+    local ref="${$(git rev-parse --symbolic-full-name HEAD 2> /dev/null)#refs/heads/}"
+    if [ -n "$ref" ]; then
 
         # branch
         #   red    - diverged from origin
         #   yellow - ahead or behind of origin
         #   green  - up to date with origin
-        if ! git show-ref origin/${ref#refs/heads/} &> /dev/null; then
-            # if no remote exists
-            ref="%F{green}${ref#refs/heads/}%f"
+        if ! git rev-parse '@{upstream}' &> /dev/null; then # if no upstream exists
+            ref="%F{green}${ref}%f"
         else
-            local ahead=$(git rev-list --count @{upstream}..HEAD)
-            local behind=$(git rev-list --count HEAD..@{upstream})
-            if [ $ahead -eq 0 ]; then
-                if [ $behind -eq 0 ]; then
-                    ref="%F{green}${ref#refs/heads/}%f"
+            local n_ahead="$(git rev-list --count @{upstream}..HEAD)"
+            local n_behind="$(git rev-list --count HEAD..@{upstream})"
+
+            if [ $n_ahead -eq 0 ]; then
+                if [ $n_behind -eq 0 ]; then
+                    ref="%F{green}${ref}%f"
                 else
-                    ref="%F{yellow}${ref#refs/heads/}-${behind}%f"
+                    ref="%F{yellow}${ref}-${n_behind}%f"
                 fi
             else
-                if [ $behind -eq 0 ]; then
-                    ref="%F{yellow}${ref#refs/heads/}+${ahead}%f"
+                if [ $n_behind -eq 0 ]; then
+                    ref="%F{yellow}${ref}+${n_ahead}%f"
                 else
-                    ref="%F{red}${ref#refs/heads/}+${ahead}-${behind}%f"
+                    ref="%F{red}${ref}+${n_ahead}-${n_behind}%f"
                 fi
             fi
         fi
+
+        local sha="$(git rev-parse --short HEAD 2> /dev/null)"
         
         # commit
-        #   red    - unstaged changes present
-        #   yellow - staged changes present
+        #   red    - only unstaged changes present
+        #   yellow - some/all changes staged
         #   green  - default
-        if ! git diff-files --quiet --ignore-submodules --; then
-            sha="%F{red}${sha}%f"
-        elif ! git diff-index --cached --quiet HEAD --ignore-submodules --; then
+        if ! git diff-index --quiet --ignore-submodules --cached HEAD; then
             sha="%F{yellow}${sha}%f"
+        elif ! git diff-index --quiet --ignore-submodules HEAD; then
+            sha="%F{red}${sha}%f"
         else
             sha="%F{green}${sha}%f"
         fi
@@ -94,7 +96,6 @@ setprompt () {
 
     # exit status only if nonzero
     local nonzero_exit_p="%(0?..%F{red}%?%f${_i})"
-
     # exit status only if nonzero
     local jobs_p="%(1j.%F{cyan}%j%f${_i}.)"
 
