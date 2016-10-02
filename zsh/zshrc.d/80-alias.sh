@@ -20,10 +20,6 @@ setaliases () {
   alias  la="ls $ls_opts    --almost-all"
   alias lla="ls $ls_opts -l --almost-all"
 
-  # pacman
-  alias pm='pacman'
-  alias spm='sudo pacman'
-
   # emacs
   alias emacs='emacsclient --tty --alternate-editor=nano'
   alias emax='emacsclient --create-frame --no-wait --alternate-editor=emacs'

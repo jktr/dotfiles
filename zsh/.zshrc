@@ -9,7 +9,7 @@ else
 fi
 
 if [ -d $_zshrc_d ] ; then
-  for f in $_zshrc_d/*.zshrc ; do
+  for f in $_zshrc_d/*.sh ; do
     [ -r "$f" ] && source "$f"
   done
 fi
