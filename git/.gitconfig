@@ -15,16 +15,25 @@
   ap = add --patch
   b = branch
   d = diff
+  dw = diff --word-diff
   f = fetch
-  i = commit
-  ia = commit --amend
+  i = commit --short
+  ia = commit --amend --no-edit
+  iae = commit --amend
   im = "!f() { git commit -m \"$*\"; }; f"
-  l = log
-  ls = ls-files
+  l = log --shortstat --summary
   o = checkout
   p = pull
-  s = status
-  w = whatchanged
-  unadd = reset HEAD
-  uncommit = reset --soft HEAD\\^
-  changes = "!f() { git diff $1\\^ $1; }; f"
+  s = status --short --branch
+
+  autosquash = rebase -i --autosquash
+  fixup = commit --fixup
+
+  changes = "!f() { git diff "$1^" "$1"; }; f"
+
+  graph = log --graph --decorate --all --format=format:\
+'%C(yellow)%h%C(reset) %C(red)%aN%C(reset) %C(bold black)(%ar)%C(reset) \
+%C(dim magenta)%d%C(reset)%n%C(white)%s%C(reset)'
+
+  uncommit = reset --soft HEAD^
+
