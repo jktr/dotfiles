@@ -9,8 +9,8 @@ setopt PROMPT_SP
 
 # prompt component separator
 # placed here as it may be needed by shell functions
-_i='%F{blue}|%f'
-_i_soft='%F{blue}@%f'
+readonly _i='%F{blue}|%f'
+readonly _i_soft='%F{blue}@%f'
 
 
 # branch@commit if inside git repo
@@ -80,15 +80,15 @@ _prompt_git ()
 setprompt () {
 
     # delimiters
-    local p='%F{blue}[%f'  # prefix
-    local s=$'%F{blue}]%f' # suffix
+    local -r p='%F{blue}[%f'  # prefix
+    local -r s=$'%F{blue}]%f' # suffix
 
     # username & prompt sym
     #  red    - root
     #  yellow - capabilities are set
     #  green  - default
-    local username='%F{%(0#.red.%(!.yellow.green))}%n%f'
-    local prompt_sym='%F{%(!.red.green)}%#%f'
+    local -r username='%F{%(0#.red.%(!.yellow.green))}%n%f'
+    local -r prompt_sym='%F{%(!.red.green)}%#%f'
 
     # host
     #  yellow - remote over ssh
@@ -96,20 +96,20 @@ setprompt () {
     if [ -n "$SSH_CLIENT" -o \
          -n "$SSH2_CLIENT" -o \
          -n "$SSH_TTY" ]; then
-        local host='%F{yellow}%m%f'
+        local -r host='%F{yellow}%m%f'
     else
-        local host='%F{green}%m%f'
+        local -r host='%F{green}%m%f'
     fi
 
     #    local tty='%F{green}%y%f'
     #    local history_id='%F{green}%!%f'
-    local pwd='%F{green}%~%f'
-    local timestamp='%F{green}%D{%H:%M:%S}%f'
+    local -r pwd='%F{green}%~%f'
+    local -r timestamp='%F{green}%D{%H:%M:%S}%f'
 
     # exit status only if nonzero
-    local nonzero_exit_p="%(0?..%F{red}%?%f${_i})"
+    local -r nonzero_exit_p="%(0?..%F{red}%?%f${_i})"
     # exit status only if nonzero
-    local jobs_p="%(1j.%F{cyan}%j%f${_i}.)"
+    local -r jobs_p="%(1j.%F{cyan}%j%f${_i}.)"
 
     PS1="${p}${username}${_i_soft}${host}\$(_prompt_git)${_i}${pwd}${s}
 ${prompt_sym} "
