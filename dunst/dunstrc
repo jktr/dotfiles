@@ -1,3 +1,5 @@
+### dunstrc
+
 
 [shortcuts]
 
@@ -68,27 +70,27 @@
 
 ### geometry
 
- # [{widthPixels}]x{heightInNotifications}[+/-{x}+/-{y}]
- geometry = "400x5-30+20"  
- shrink = no
- 
- # between notifications, in px
- separator_height = 2
- 
- # vertical   text padding, in px
- padding = 8
- 
- # horizontal text padding, in px
- horizontal_padding = 8
- 
- monitor = 0
+  # [{widthPixels}]x{heightInNotifications}[+/-{x}+/-{y}]
+  geometry = "400x5-30+20"  
+  shrink = no
 
- # don't warp messages around monitors
- follow = none             
+  # between notifications, in px
+  separator_height = 2
 
- # (left|right|off)
- icon_position = off       
- icon_folders = /usr/share/icons/Adwaita/16x16/status/:/usr/share/icons/Adwaita/16x16/devices/
+  # vertical   text padding, in px
+  padding = 8
+
+  # horizontal text padding, in px
+  horizontal_padding = 8
+
+  monitor = 0
+
+  # don't warp messages around monitors
+  follow = none             
+
+  # (left|right|off)
+  icon_position = off       
+  icon_folders = /usr/share/icons/Adwaita/16x16/status/:/usr/share/icons/Adwaita/16x16/devices/
 
 
 ### executables
@@ -105,20 +107,20 @@
   separator_color = frame
 
 [frame]
-    width = 3
-    color = "#444444"
+  width = 3
+  color = "#444444"
 
 [urgency_low]
-    background = "#000000"
-    foreground = "#c2c2c2"
-    timeout = 10
+  background = "#000000"
+  foreground = "#c2c2c2"
+  timeout = 10
 
 [urgency_normal]
-    background = "#444444"
-    foreground = "#c2c2c2"
-    timeout = 10
+  background = "#444444"
+  foreground = "#c2c2c2"
+  timeout = 10
 
 [urgency_critical]
-    background = "#900000"
-    foreground = "#c2c2c2"
-    timeout = 0
+  background = "#900000"
+  foreground = "#c2c2c2"
+  timeout = 0
