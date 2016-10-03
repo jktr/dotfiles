@@ -117,7 +117,13 @@
 
 ### workspace binds
 
-  ## switch
+  ## cycle workspace
+  bindsym $mod+Mod1+Down  workspace prev
+  bindsym $mod+Mod1+Up    workspace next
+  bindsym $mod+Mod1+Left  workspace prev_on_output
+  bindsym $mod+Mod1+Right workspace next_on_output
+
+  ## focus workspace
   bindsym $mod+F1  workspace  1
   bindsym $mod+F2  workspace  2
   bindsym $mod+F3  workspace  3
