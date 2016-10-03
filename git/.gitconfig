@@ -17,7 +17,7 @@
   d = diff
   dw = diff --word-diff
   f = fetch
-  i = commit --short
+  i = commit
   ia = commit --amend --no-edit
   iae = commit --amend
   im = "!f() { git commit -m \"$*\"; }; f"
