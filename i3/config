@@ -3,47 +3,56 @@
 
 ### current bindings
 
-# $mod & floating_modifier is `Super`
-
-# $mod+
+# Super
 #  # mundane DE-like actions & modes
-#  arrows  move focus
-#  d       dmenu
-#  f       fullscreen
-#  fn      focus workspace
-#  space   focus move layers
+#  arrow            move focus
+#  d                dmenu
+#  f                fullscreen
+#  fn               focus workspace
+#  space            focus move layers
 #
-#  Tab     launch-mode  (exit with Esc / Return)
-#    b       browser
-#    e       editor
-#    g       games
-#    i       irc
-#    m       multimedia
-#    p       post/mail
-#    t       torrent
+#  Mod1
+#    arrows         move workspace next/prev
 #
-#  r       resize-mode  (exit with Esc / Return)
-#    Arrows    grow/shrink window in direction (+Shift for small increments)
+#  Tab              launch-mode  (exit with Esc / Return)
+#    b              browser
+#    e              editor
+#    g              games
+#    i              irc
+#    m              music
+#    p              post/mail
+#    t              torrent
+#    Mod1
+#      [bm]         # alternative applications
 #
-#  s       session-mode  (exit with Esc / Return)
-#    0       kill (actually WM_DELETE, else X11 SIGKILL)
-#    1       i3 quit (with confirm dialog)
-#    2       i3 restart
-#    3       i3 reload config
+#  r                resize-mode  (exit with Esc / Return)
+#    arrow          grow/shrink window in direction
+#    Shift
+#      arrow        same as ^^, but with small increments
 #
-#  # shift geometry, layout
-#  Shift+
-#    arrow    window focused move workspace
-#    fn       window move to other   workspace
-#    h        split direction horizontal
-#    r        rotate container / normal-mode
-#    space    window toggle float
-#    t        tabbed-mode
-#    v        split direction vertical
+#  s                session-mode  (exit with Esc / Return)
+#    k              kill (actually WM_DELETE, else X11 SIGKILL)
+#    l              lock screen
+#    p              poweroff
+#    q              i3 quit
+#    r              reboot
+#    s              lock screen and suspend
+#    1              i3 restart
+#    2              i3 reload config
+#
+#  Shift+           # shift geometry / layout
+#    arrow          window focused move workspace
+#    fn             window move to other   workspace
+#    h              split direction horizontal
+#    r              rotate container / normal-mode
+#    space          window toggle float
+#    t              tabbed-mode
+#    v              split direction vertical
 
 
 ### base
 
+  # see `$ xmodmap -pm` for valid modifiers
   set $mod Mod4
 
 
@@ -149,7 +158,7 @@
 
   ## launch-mode
   # for launching X11 applications
-  set $m_x11launch  "<launch> [b]rowser [e]ditor [g]ames [i]rc [m]ultimedia [p]ost/mail [t]orrent"
+  set $m_x11launch  "<launch> [b]rowser [e]ditor [g]ames [i]rc [m]usic [p]ost/mail [t]orrent"
   mode $m_x11launch {
 
     bindsym b exec firefox              ; mode "default"
@@ -192,23 +201,24 @@
 
   ## session-mode
   # for meta-actions in the session
-  set $m_session "<session> [p]oweroff [l]ock [r]eboot [s]uspend | 0:WM_DELETE 1:exit 2:restart 3:reload"
+  set $m_session "<session> [k]ill [l]ock [p]oweroff [q]uit [r]eboot [s]uspend | 1:restart 2:reload"
   mode $m_session {
 
     # system power
-    bindsym r exec "i3-nagbar -t warning -m 'Reboot!?' -b 'Yes, REBOOT!' 'systemctl reboot'"       ; mode "default"
+    bindsym r exec "i3-nagbar -t warning -m 'Reboot!?'   -b 'Yes, REBOOT!'   'systemctl reboot'"   ; mode "default"
     bindsym p exec "i3-nagbar -t warning -m 'Poweroff!?' -b 'Yes, POWEROFF!' 'systemctl poweroff'" ; mode "default"
 
     # locking session
     bindsym l exec "i3lock --color=000000"                       ; mode "default"
     bindsym s exec "i3lock --color=000000 && systemctl suspend"  ; mode "default"
 
-    bindsym 0 kill       ; mode "default"
+    # kill
+    bindsym k kill            ; mode "default"
 
     # i3 meta stuff
-    bindsym 1 exec "i3-nagbar -t warning -m 'Quit i3!?' -b 'Yes, EXIT i3!' 'i3-msg exit'" ; mode "default"
-    bindsym 2 restart    ; mode "default"
-    bindsym 3 reload     ; mode "default"
+    bindsym e exec "i3-nagbar -t warning -m 'Quit i3!?' -b 'Yes, EXIT i3!' 'i3-msg exit'" ; mode "default"
+    bindsym 1 restart    ; mode "default"
+    bindsym 2 reload     ; mode "default"
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
