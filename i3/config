@@ -170,10 +170,13 @@
     bindsym b exec firefox              ; mode "default"
     bindsym e exec i3-sensible-editor   ; mode "default"
     bindsym g exec steam                ; mode "default"
-    bindsym i exec hexchat              ; mode "default"
-    bindsym m exec vlc                  ; mode "default"
+    bindsym i exec i3-sensible-terminal -e irssi   ; mode "default"
+    bindsym m exec i3-sensible-terminal -e ncmpcpp ; mode "default"
     bindsym p exec thunderbird          ; mode "default"
     bindsym t exec transmission-gtk     ; mode "default"
+
+    bindsym Mod1+b exec chromium         ; mode "default"
+    bindsym Mod1+m exec vlc              ; mode "default"
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -215,8 +218,8 @@
     bindsym p exec "i3-nagbar -t warning -m 'Poweroff!?' -b 'Yes, POWEROFF!' 'systemctl poweroff'" ; mode "default"
 
     # locking session
-    bindsym l exec "i3lock --color=000000"                       ; mode "default"
-    bindsym s exec "i3lock --color=000000 && systemctl suspend"  ; mode "default"
+    bindsym l exec "i3lock --color=000000 --show-failed-attempts "                      ; mode "default"
+    bindsym s exec "i3lock --color=000000 --show-failed-attempts && systemctl suspend"  ; mode "default"
 
     # kill
     bindsym k kill            ; mode "default"
