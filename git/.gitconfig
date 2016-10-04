@@ -15,7 +15,9 @@
   ap = add --patch
   b = branch
   d = diff
+  dc = diff --cached
   dw = diff --word-diff
+  dcw = diff --cached --word-diff
   f = fetch
   i = commit
   ia = commit --amend --no-edit
