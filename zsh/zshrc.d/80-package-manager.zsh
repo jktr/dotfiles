@@ -10,23 +10,26 @@ if hash 'zypper' 2>/dev/null; then
     _pm[show]="zypper info"
     _pm[install]='sudo zypper install'
     _pm[list]='zypper search'
-    _pm[remove]='sudo zypper remove'
+    _pm[purge]='sudo zypper remove'
     _pm[search]='zypper search'
     _pm[upgrade]='sudo zypper upgrade'
+    _pm[refresh]='sudo zypper refresh'
 elif hash 'pacman' 2>/dev/null; then
     _pm[show]='pacman --query --info'
     _pm[install]='sudo pacman --sync'
     _pm[list]='pacman --query'
-    _pm[remove]='sudo pacman --remove --nosave --recursive --cascade'
+    _pm[purge]='sudo pacman --remove --nosave --recursive --cascade'
     _pm[search]='pacman --query --search'
-    _pm[upgrade]='sudo pacman --sync --refresh --sysupgrade'
+    _pm[upgrade]='sudo pacman --sysupgrade'
+    _pm[refresh]='sudo pacman --sync --refresh'
 elif hash 'apt-get' 2>/dev/null; then
     _pm[show]='apt-cache show'
     _pm[install]='sudo apt-get install'
     _pm[list]='dpkg --list'
-    _pm[remove]='sudo apt-get purge'
+    _pm[purge]='sudo apt-get purge'
     _pm[search]='apt-cache search'
     _pm[upgrade]='sudo apt-get dist-upgrade'
+    _pm[refresh]='sudo apt-get update'
 fi
 
 ## add shortended aliases
