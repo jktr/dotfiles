@@ -46,6 +46,7 @@
 (load-packages "~/.emacs.d/config-pkg"
   ;; syntax
                'smart-tabs-mode
+               'flycheck
   ;; autocomplete
                'auto-complete
                'which-key

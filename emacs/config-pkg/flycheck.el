@@ -1,0 +1,4 @@
+;;; flycheck.el
+
+(require 'flycheck)
+
