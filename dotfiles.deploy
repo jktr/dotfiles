@@ -1,13 +1,15 @@
 # compound target
-dots=(@ 'home_dots' 'dot_emacs' 'dot_conf' 'dot_localshare')
+dots=(@ 'home_dots' 'dot_lein' 'dot_emacs' 'dot_conf' 'dot_localshare')
 
-# dotfiles in home
 home_dots=(
   . $HOME
   d .config
   d .emacs.d
+  d .lein
   @ git    .gitconfig
   @ git    .gitignore
+  d .lein
+  @ leingingen .lein/profiles.clj
   @ nano   .nanorc
   @ nvidia .nvidia-settings-rc
   @ X11    .xinitrc
@@ -18,7 +20,11 @@ home_dots=(
   @ zsh    .zshrc
 )
 
-# dotfiles in .emacs.d
+dot_lein=(
+  leiningen $HOME/.lein
+  @ . profiles.clj
+)  
+
 dot_emacs=(
   emacs $HOME/.emacs.d
   @ . init.el
@@ -27,7 +33,6 @@ dot_emacs=(
   @ . config-extern
 )
 
-# dotfiles in .config
 dot_conf=(
   . $HOME/.config
   d dunst
@@ -51,7 +56,6 @@ dot_conf=(
   @ zsh           zsh/zshrc.d
 )
 
-# dotfiles in .local/share
 dot_localshare=(
  . $HOME/.local/share
  d mpd
