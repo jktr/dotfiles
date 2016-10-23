@@ -24,6 +24,8 @@
 #    t              torrent
 #    Mod1
 #      [bm]         # alternative applications
+#    Ctrl
+#      [m]          # runtime (re)configuration
 #
 #  r                resize-mode  (exit with Esc / Return)
 #    arrow          grow/shrink window in direction
@@ -175,8 +177,10 @@
     bindsym p exec thunderbird          ; mode "default"
     bindsym t exec transmission-gtk     ; mode "default"
 
-    bindsym Mod1+b exec chromium         ; mode "default"
-    bindsym Mod1+m exec vlc              ; mode "default"
+    bindsym Mod1+b exec chromium        ; mode "default"
+    bindsym Mod1+m exec vlc             ; mode "default"
+
+    bindsym Ctrl+m exec i3-sensible-terminal -e alsamixer ; mode "default"
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
