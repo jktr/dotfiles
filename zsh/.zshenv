@@ -35,5 +35,6 @@ ex=00;32:\
 "
 
 ## other
+export SSH_ASKPASS=''
 export RXVT_SOCKET="/run/user/${UID}/urxvtd"
 
