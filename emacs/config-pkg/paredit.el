@@ -8,7 +8,7 @@
 ;; other modes should do this in their config file
 (mapc (lambda (hook) (add-hook hook #'enable-paredit-mode))
       '(emacs-lisp-mode-hook
-        eval-expression-minitbuffer-setup-hook
+        eval-expression-minibuffer-setup-hook
         ielm-mode-hook
         lisp-mode-hook
         lisp-interaction-mode-hook
