@@ -20,8 +20,8 @@
           (mapc (lambda (file)
                   (let ((pkg (intern (file-name-base file))))
                     (unless (package-installed-p pkg)
-                      (package-install pkg)
-                      (load-file file))))
+                      (package-install pkg))
+                    (load-file file)))
                 (directory-files dir 't "\\.el$")))
         dirs))
 
