@@ -14,13 +14,28 @@ Xft.lcdfilter:              lcddefault
 ! URXVT settings
 !-----------------------------------------------------------------------------
 
+! bell
+URxvt.urgentOnBell:         true
+
+! border
 URxvt.internalBorder:       1
-URxvt.iso14755:             false
 
 ! color
 URxvt.depth:                32
 URxvt.background:           #000000
 URxvt.foreground:           #c1c1c1
+
+! compat
+URxvt.iso14755:             false
+
+! cursor
+URxvt.cursorBlink:          true
+URxvt.cursorUnderline:      true
+
+! ext
+URxvt.perl-ext-common:      default,matcher
+URxvt.url-launcher:         firefox
+URxvt.matcher.button:       2
 
 ! font
 URxvt.font:                 xft:DejaVuSansMono:pixelsize=10,xft:unifont:pixelsize=10
@@ -31,17 +46,9 @@ URxvt.hinting:              medium
 ! scroll
 URxvt.scrollStyle:          plain
 URxvt.scrollBar:            false
-URxvt.secondaryScreen:      1
-URxvt.secondaryScroll:      0
-
-! ext
-URxvt.perl-ext-common:      default,matcher
-URxvt.url-launcher:         firefox
-URxvt.matcher.button:       2
-
-! cursor
-URxvt.cursorBlink:          true
-URxvt.cursorUnderline:      true
+URxvt.secondaryScreen:      true
+URxvt.secondaryScroll:      false
+URxvt.secondaryWheel:       false
 
 ! transparency
 URxvt.transparent:          true
