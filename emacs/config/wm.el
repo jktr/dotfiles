@@ -1,7 +1,7 @@
-;;; components.el
+;;; wm.el
 ;;; configure ui components and corresponign keybinds
 
-;; disable suspend keybinf
+;; disable suspend keybind
 (global-unset-key (kbd "C-z"))
 
 ;; elements
