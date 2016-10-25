@@ -20,10 +20,6 @@ setaliases () {
   alias  la="ls $ls_opts    --almost-all"
   alias lla="ls $ls_opts -l --almost-all"
 
-  # emacs
-  alias emacs='emacsclient --tty --alternate-editor=nano'
-  alias emax='emacsclient --create-frame --no-wait --alternate-editor=emacs'
-
   # cd
   alias ..='cd ..'
   alias ...='cd ../..'
@@ -34,11 +30,21 @@ setaliases () {
 
   # misc
   alias dmesg="dmesg $color_mode $human_mode"
-  alias feh='feh --magick-timeout 1'
+  alias feh='feh --no-fehbg --magick-timeout 1'
   alias free="free $human_mode"
   alias i3lock='i3lock --show-failed-attempts --color=000000'
   alias userctl='systemctl --user'
+  alias kssh='ssh -K'
   alias where='whereis -b'
+
+  # display dependent
+  if [ -n "$DISPLAY" ]; then
+    alias emacs='emacsclient --create-frame --no-wait --alternate-editor=emacs'
+    alias mpv='mpv --wid=${WINDOWID}'
+  else
+    alias emacs='emacsclient --tty --alternate-editor=nano'
+    alias mpv='mpv --vo=drm'
+  fi
 }
 setaliases
 
