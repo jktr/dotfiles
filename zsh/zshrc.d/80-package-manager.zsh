@@ -19,7 +19,7 @@ elif hash 'pacman' 2>/dev/null; then
     _pm[install]='sudo pacman --sync'
     _pm[list]='pacman --query'
     _pm[purge]='sudo pacman --remove --nosave --recursive --cascade'
-    _pm[search]='pacman --query --search'
+    _pm[search]='pacman --sync --search'
     _pm[upgrade]='sudo pacman --sync --sysupgrade'
     _pm[refresh]='sudo pacman --sync --refresh'
 elif hash 'apt-get' 2>/dev/null; then
