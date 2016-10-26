@@ -9,7 +9,7 @@ echo -e '#!/bin/sh\nexec emacsclient --create-frame --alternate-editor=emacs $@'
 chmod u=rwx,g=,o= ~/bin/{EDITOR,VISUAL}
 
 # link to /run/user/UID from configs that don't know UID
-ln -s /run/user/${UID} ~/.local/run-user-dir
+ln -sf /run/user/${UID} ~/.local/run-user-dir
 
 ## systemd user units
 systemctl --user start daemon.target &!
