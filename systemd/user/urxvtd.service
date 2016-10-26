@@ -4,7 +4,7 @@ Documentation=man:urxvtd(1) man:urxvt(1)
 
 [Service]
 Environment='RXVT_SOCKET=/run/user/%U/urxvtd'
-ExecStart=/usr/bin/urxvtd --opendisplay
+ExecStart=/usr/bin/urxvtd
 
 [Install]
 WantedBy=X11.target
