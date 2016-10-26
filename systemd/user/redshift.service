@@ -1,5 +1,6 @@
 [Unit]
-Description=display temperature adjustment daemon
+Description=redshift
+Documentation=man:redshift(1)
 
 [Service]
 ExecStart=/usr/bin/redshift
