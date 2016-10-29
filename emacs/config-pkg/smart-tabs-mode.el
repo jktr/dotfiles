@@ -10,10 +10,9 @@
  'c
  'c++
  'java
+ 'javascript
+ 'cperl
  'python
+ 'ruby
+ 'nxml
  )
-
-;; (mapc (lambda (hook)
-;;         (setq indent-tabs-mode t)
-;;         (add-hook hook 'smart-tabs-mode))
-;;       '())
