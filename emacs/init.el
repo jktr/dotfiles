@@ -29,7 +29,7 @@
 
 (ensure-config-dirs
  "~/.emacs.d/config"
- "~/.emacs.d/config-extern")
+ "~/.emacs.d/config-site")
 
 (ensure-repos
  '("melpa-stable" . "http://stable.melpa.org/packages/")

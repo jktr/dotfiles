@@ -20,19 +20,6 @@ home_dots=(
   @ zsh    .zshrc
 )
 
-dot_lein=(
-  leiningen $HOME/.lein
-  @ . profiles.clj
-)  
-
-dot_emacs=(
-  emacs $HOME/.emacs.d
-  @ . init.el
-  @ . config
-  @ . config-pkg
-  @ . config-extern
-)
-
 dot_conf=(
   . $HOME/.config
   d dunst
@@ -54,6 +41,19 @@ dot_conf=(
   @ xdg           user-dirs.locale
   d zsh
   @ zsh           zsh/zshrc.d
+)
+
+dot_emacs=(
+  emacs $HOME/.emacs.d
+  @ . init.el
+  @ . config
+  @ . config-pkg
+  @ . config-site
+)
+
+dot_lein=(
+  leiningen $HOME/.lein
+  @ . profiles.clj
 )
 
 dot_localshare=(
