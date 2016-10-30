@@ -23,10 +23,15 @@ setaliases () {
   # cd
   alias ..='cd ..'
   alias ...='cd ../..'
+  alias ....='cd ../../..'
+
+  # grep
+  alias grep="grep $color_mode_gnu"
+  alias egrep="grep $color_mode_gnu --perl-regexp"
+  alias rgrep="grep $color_mode_gnu --recursive"
 
   # misc (coreutils)
   alias df="df $human_mode_gnu"
-  alias grep="grep $color_mode_gnu"
 
   # misc
   alias dmesg="dmesg $color_mode $human_mode"
