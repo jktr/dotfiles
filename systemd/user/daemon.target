@@ -1,3 +1,4 @@
 [Unit]
 Description=general user daemons
 
+AllowIsolate=yes
