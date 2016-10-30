@@ -35,7 +35,7 @@ fi
 if [ -x $xsession_usr ]; then
     if [ "$(file --dereference --brief --mime-type $xsession_usr)" = 'text/x-shellscript' ]; then
         # source user file so that we can try fallbacks if not exec'ing
-        source "$xsession_usr"
+        . "$xsession_usr"
     else
         exec "$xsession_usr"
     fi

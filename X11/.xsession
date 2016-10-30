@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/sh
+
 ### .xsession
 # sets up and exec's a custom X11 sessions
 # Previous site initialiation is assumed.
@@ -28,7 +29,7 @@ $xset r rate 200 30
 # start X11-dependant systemd units
 {
     systemctl --user import-environment XAUTHORITY DISPLAY
-    systemctl --user start X11.target &
+    systemctl --user start X11.target
 } &
 
 
