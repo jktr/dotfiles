@@ -1,11 +1,11 @@
 # compound target
-dots=(@ 'home_dots' 'dot_lein' 'dot_emacs' 'dot_conf' 'dot_localshare')
+dots=(@ 'home_dots' 'dot_conf' 'dot_emacs' 'dot_lein' 'dot_localshare' 'dot_ssh')
 
 home_dots=(
   . $HOME
   d .config
   d .emacs.d
-  d .lein
+  d .ssh
   @ git    .gitconfig
   @ git    .gitignore
   d .lein
@@ -59,6 +59,11 @@ dot_lein=(
 )
 
 dot_localshare=(
- . $HOME/.local/share
- d mpd
+  . $HOME/.local/share
+  d mpd
+)
+
+dot_ssh=(
+  ssh $HOME/.ssh
+  @ . config
 )

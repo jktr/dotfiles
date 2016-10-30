@@ -1,0 +1,29 @@
+### ssh config
+
+IgnoreUnknown GSSAPIRenewalForcesRekey
+
+Host github.com
+
+    User mustangflyer
+    IdentityFile ~/.ssh/%h.key
+
+Host *
+
+    # session reuse
+    ControlMaster auto
+    ControlPath ~/.local/run-user-dir/ssh_%r@%h_port%p
+
+    # session meta
+    Compression yes
+    EscapeChar ^~
+    Protocol 2
+
+    # hosts
+    HashKnownHosts yes
+    UpdateHostKeys ask
+
+    # auth
+    PasswordAuthentication   no
+    GSSAPIAuthentication     yes
+    GSSAPIRenewalForcesRekey yes
+

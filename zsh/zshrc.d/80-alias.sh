@@ -34,7 +34,6 @@ setaliases () {
   alias free="free $human_mode"
   alias i3lock='i3lock --show-failed-attempts --color=000000'
   alias userctl='systemctl --user'
-  alias kssh='ssh -K'
   alias where='whereis -b'
 
   # display dependent
