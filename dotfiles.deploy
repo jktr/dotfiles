@@ -13,6 +13,7 @@ home_dots=(
   @ nano   .nanorc
   @ nvidia .nvidia-settings-rc
   @ X11    .xinitrc
+  @ X11    .Xmodmap
   @ X11    .xserverrc
   @ X11    .Xresources
   @ zsh    .zshenv

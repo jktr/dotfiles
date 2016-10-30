@@ -1,0 +1,13 @@
+!!! .Xmodmap
+
+! disable capslock
+! TODO decide on a remapping for capslock:
+!   Meta? - get Alt back in emacs, but alt is kinda unused
+!   Ctrl/Escape - for easy reach, but requires relearning
+!   Hyper - extra modifier, but unsure of usefulness
+!   Undo/Redo - useful in emacs, but not (?) used elsewhere
+!   something else entirely?
+clear lock
+
+! natural scroll
+pointer = 1 2 3 5 4 7 6 8 9 10
