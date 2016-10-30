@@ -1,46 +1,53 @@
-#!/bin/sh
+### .xinitrc
+# sets up the X11 environment from scratch
 
-## PATHS
+## paths
 
-# commands
-xrdb=/usr/bin/xrdb
-xmodmap=/usr/bin/xmodmap
-xset=/usr/bin/xset
+xresources_sys='/etc/X11/xinit/.Xresources'
+xmodmap_sys='/etc/X11/xinit/.Xmodmap'
+xinitrcd_sys='/etc/X11/xinit/xinitrc.d'
 
-# user
-usrrsrc=~/.Xresources
-
-# system
-sysrsrc=/etc/X11/xinit/.Xresources 
-sysmodmap=/etc/X11/xinit/.Xmodmap
-xinitrcd=/etc/X11/xinit/xinitrc.d
+xsession_usr="${HOME}/.xsession"
 
 
-## X11 CONF
+## basic X11 initialization
 
-# .Xresources
-[ -f "$sysrsrc" ] && $xrdb -merge $sysrsrc
-[ -f "$usrrsrc" ] && $xrdb -merge $usrrsrc
+xmodmap=$(command -v xmodmap || echo 'true')
+xrdb=$(command -v xrdb || echo 'true')
+xset=$(command -v xset || echo 'true')
 
-# keymaps
-[ -f "$sysmodmap" ] && $xmodmap $sysmodmap
+# system's keymaps
+[ -r "$xmodmap_sys" ] && $xmodmap $xmodmap_sys
 
-# system xinitrc.d
-if [ -d $xinitrcd ] ; then
-  for f in $xinitrcd/*.sh ; do
+# system's .Xresources
+[ -r "$xresources_sys" ] && $xrdb -merge $xresrouces_sys
+
+# system's xinitrc.d
+if [ -d "$xinitrcd_sys" ] ; then
+  for f in "$xinitrcd"/*.sh ; do
     [ -x "$f" ] && source "$f"
   done
 fi
 
-# adjust keyboard repeat
-[ -x $xset ] && $xset r rate 200 30
 
+## user session (or setup file)
 
-## X11 DAEMONS
+if [ -x $xsession_usr ]; then
+    if [ "$(file --dereference --brief --mime-type $xsession_usr)" = 'text/x-shellscript' ]; then
+        # source user file so that we can try fallbacks if not exec'ing
+        source "$xsession_usr"
+    else
+        exec "$xsession_usr"
+    fi
+else
+    echo >&2 "Your $xsession_usr isn't executable!"
+fi
 
-systemctl --user start X11.target &
+## fallback
+## in case of missing, unexecutable, or non-exec'ing user session
 
+echo >&2 "Oh noes, something isn't right! Falling back to default X11 session."
 
-## EXEC SESSION
-
-exec i3
+# try to invoke user's TERMINAL, falling back to xterm
+[ -n "$TERMINAL" ] && exec "$TERMINAL"
+exec xterm

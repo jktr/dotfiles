@@ -13,13 +13,3 @@ ln -sf /run/user/${UID} ~/.local/run-user-dir
 
 ## systemd user units
 systemctl --user start daemon.target &!
-
-
-## systemd user units - X11 specific
-# this is done here and in .xinitrc as DMs might not source that file
-if [ -n "$DISPLAY" ]; then
-    {
-        systemctl --user import-environment XAUTHORITY DISPLAY
-        systemctl --user start X11.target
-    } &!
-fi

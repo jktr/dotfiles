@@ -15,6 +15,7 @@ home_dots=(
   @ X11    .xinitrc
   @ X11    .Xmodmap
   @ X11    .xserverrc
+  @ X11    .xsession
   @ X11    .Xresources
   @ zsh    .zshenv
   @ zsh    .zlogin
