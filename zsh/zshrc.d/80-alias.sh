@@ -26,9 +26,9 @@ setaliases () {
   alias ....='cd ../../..'
 
   # grep
-  alias grep="grep $color_mode_gnu"
+  alias grep="grep $color_mode_gnu --ignore-case"
   alias egrep="grep $color_mode_gnu --perl-regexp"
-  alias rgrep="grep $color_mode_gnu --recursive"
+  alias rgrep="grep $color_mode_gnu --recursive --ignore-case"
 
   # misc (coreutils)
   alias df="df $human_mode_gnu"
