@@ -7,37 +7,30 @@ declare -A _pm
 
 ## populate look-up table
 if hash 'zypper' 2>/dev/null; then
-    _pm[show]="zypper info"
-    _pm[install]='sudo zypper install'
+    _pm[if]="zypper info"
+    _pm[in]='sudo zypper install'
     _pm[list]='zypper search'
-    _pm[purge]='sudo zypper remove'
-    _pm[search]='zypper search'
-    _pm[upgrade]='sudo zypper upgrade'
-    _pm[refresh]='sudo zypper refresh'
+    _pm[rm]='sudo zypper remove'
+    _pm[se]='zypper search'
+    _pm[up]='sudo zypper upgrade'
+    _pm[ref]='sudo zypper refresh'
 elif hash 'pacman' 2>/dev/null; then
-    _pm[show]='pacman --query --info'
-    _pm[install]='sudo pacman --sync'
+    _pm[if]='pacman --sync --info'
+    _pm[in]='sudo pacman --sync'
     _pm[list]='pacman --query'
-    _pm[purge]='sudo pacman --remove --nosave --recursive --cascade'
-    _pm[search]='pacman --sync --search'
-    _pm[upgrade]='sudo pacman --sync --sysupgrade'
-    _pm[refresh]='sudo pacman --sync --refresh'
+    _pm[rm]='sudo pacman --remove --nosave --recursive --cascade'
+    _pm[se]='pacman --sync --search'
+    _pm[up]='sudo pacman --sync --sysupgrade'
+    _pm[ref]='sudo pacman --sync --refresh'
 elif hash 'apt-get' 2>/dev/null; then
-    _pm[show]='apt-cache show'
-    _pm[install]='sudo apt-get install'
+    _pm[if]='apt-cache show'
+    _pm[in]='sudo apt-get install'
     _pm[list]='dpkg --list'
-    _pm[purge]='sudo apt-get purge'
-    _pm[search]='apt-cache search'
-    _pm[upgrade]='sudo apt-get dist-upgrade'
-    _pm[refresh]='sudo apt-get update'
+    _pm[rm]='sudo apt-get purge'
+    _pm[se]='apt-cache search'
+    _pm[up]='sudo apt-get dist-upgrade'
+    _pm[ref]='sudo apt-get update'
 fi
-
-## add shortended aliases
-# XXX: This assumes uniqueness of 2-character prefixes.
-#      Later ones (in the iterator) will override earlier ones.
-for i in "${(@k)_pm}"; do
-    _pm[${i:0:2}]="${_pm[$i]}"
-done
 
 # runs command from look-up table
 package_manager () {
