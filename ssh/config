@@ -1,6 +1,6 @@
 ### ssh config
 
-IgnoreUnknown GSSAPIRenewalForcesRekey
+IgnoreUnknown GSSAPIRenewalForcesRekey,UpdateHostKeys
 
 Host github.com
 
