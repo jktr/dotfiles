@@ -1,13 +1,19 @@
 !!! .Xmodmap
 
-! disable capslock
-! TODO decide on a remapping for capslock:
-!   Meta? - get Alt back in emacs, but alt is kinda unused
-!   Ctrl/Escape - for easy reach, but requires relearning
-!   Hyper - extra modifier, but unsure of usefulness
-!   Undo/Redo - useful in emacs, but not (?) used elsewhere
-!   something else entirely?
-clear lock
+!! rotate keys
+! Caps_Lock -> Control_L
+! Control_L -> Escape
+! Escape -> Caps_Lock
 
-! natural scroll
+remove Lock = Caps_Lock
+remove Control = Control_L
+
+keysym Escape = Caps_Lock
+keysym Caps_Lock = Control_L
+keysym Control_L = Escape
+
+add Lock = Caps_Lock
+add Control = Control_L
+
+!! natural scroll
 pointer = 1 2 3 5 4 7 6 8 9 10
