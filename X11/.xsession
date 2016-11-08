@@ -16,6 +16,11 @@ xresources_usr="${HOME}/.Xresources"
 xmodmap=$(command -v xmodmap || echo 'true')
 xrdb=$(command -v xrdb || echo 'true')
 xset=$(command -v xset || echo 'true')
+setxkbmap=$(command -v setxkbmap || echo 'true')
+
+# set keyboard layout
+# alternative layout while alternate-graphic key is held
+$setxkbmap -option && $setxkbmap en_US,de -option grp:switch,nbsp:level2
 
 # load custom keyboard remappings
 [ -r "$xmodmap_usr" ] && $xmodmap $xmodmap_usr
