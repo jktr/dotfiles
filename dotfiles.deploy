@@ -8,6 +8,7 @@ home_dots=(
   d .ssh
   @ git    .gitconfig
   @ git    .gitignore
+  @ guile  .guile
   d .lein
   @ leingingen .lein/profiles.clj
   @ nano   .nanorc

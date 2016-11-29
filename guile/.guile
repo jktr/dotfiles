@@ -1,0 +1,3 @@
+;; for readline support in REPL
+(use-modules (ice-9 readline))
+(activate-readline)
