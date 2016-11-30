@@ -68,4 +68,5 @@ dot_ssh=(
   ssh $HOME/.ssh
   d keys
   @ . config
+  @ . config.d
 )

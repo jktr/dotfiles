@@ -2,15 +2,19 @@
 
 IgnoreUnknown GSSAPIRenewalForcesRekey,UpdateHostKeys
 
-Host github.com
 
-    User mustangflyer
+## includes
+
+Include config.d/*
+
+
+## defaults
 
 Host *
 
     # session reuse
     ControlMaster auto
-    ControlPath ~/.local/run-user-dir/ssh_%r@%h_port%p
+    ControlPath ~/.local/run-user-dir/ssh_%r@%h:%p
 
     # session meta
     Compression yes
