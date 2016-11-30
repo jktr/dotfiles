@@ -5,7 +5,6 @@ IgnoreUnknown GSSAPIRenewalForcesRekey,UpdateHostKeys
 Host github.com
 
     User mustangflyer
-    IdentityFile ~/.ssh/%h.key
 
 Host *
 
@@ -27,3 +26,5 @@ Host *
     GSSAPIAuthentication     yes
     GSSAPIRenewalForcesRekey yes
 
+    # ssh keys on per-host basis
+    IdentityFile ~/.ssh/keys/%h.key
