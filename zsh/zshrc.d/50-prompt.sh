@@ -19,10 +19,12 @@ readonly _i_soft='%F{blue}@%f'
 #     red    - diverged from origin
 #     yellow - ahead or behind of origin
 #     green  - up to date with origin
+#     cyan   - no remote exists
 #   commit-sha
 #     red    - only unstaged changes present
 #     yellow - some/all changes staged
 #     green  - default
+#     cyan   - this is a bare repo
 _prompt_git ()
 {
     if [ -n "$(git rev-parse --git-dir 2>/dev/null)" ]; then
@@ -33,13 +35,18 @@ _prompt_git ()
 
         # check if HEAD does not exist yet
         if [ "$ref" = 'HEAD' ]; then # if true, then HEAD does NOT exist
-            sha='%F{green}initial%f' # instead of not-yet-existing HEAD's SHA
-            ref='%F{green}master%f'
+            sha='%F{cyan}initial%f' # use 'initial' instead of $SHA
+            if git rev-parse '@{upstream}' &>/dev/null; then
+                ref='%F{green}master%f'
+            else
+                ref='%F{cyan}master%f'
+            fi
         else
-
             # set HEAD's SHA according to staging area's status
             sha="$(git rev-parse --short HEAD 2>/dev/null)"
-            if   ! git diff-index --quiet --ignore-submodules --cached HEAD; then
+            if "$(git rev-parse --is-bare-repository)" -eq 'true'; then
+                sha="%F{cyan}${sha}%f"
+            elif ! git diff-index --quiet --ignore-submodules --cached HEAD; then
                 sha="%F{yellow}${sha}%f"
             elif ! git diff-index --quiet --ignore-submodules HEAD; then
                 sha="%F{red}${sha}%f"
@@ -49,7 +56,7 @@ _prompt_git ()
 
             # set branch status according to (possibly missing) upstream
             if ! git rev-parse '@{upstream}' &>/dev/null; then
-                ref="%F{green}${ref}%f"
+                ref="%F{cyan}${ref}%f"
             else
                 local n_ahead="$(git rev-list --count @{upstream}..HEAD)"
                 local n_behind="$(git rev-list --count HEAD..@{upstream})"
