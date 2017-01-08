@@ -39,7 +39,6 @@ setaliases () {
   alias dmesg="dmesg $color_mode $human_mode"
   alias feh='feh --no-fehbg --magick-timeout 1'
   alias free="free $human_mode"
-  alias i3lock='i3lock --show-failed-attempts --color=000000'
   alias userctl='systemctl --user'
   alias where='whereis -b'
 
@@ -47,9 +46,11 @@ setaliases () {
   if [ -n "$DISPLAY" ]; then
     alias emacs='emacsclient --create-frame --no-wait --alternate-editor=emacs'
     alias mpv='mpv --wid=${WINDOWID}'
+    alias lock='i3lock --show-failed-attempts --color=000000'
   else
     alias emacs='emacsclient --tty --alternate-editor=nano'
     alias mpv='mpv --vo=drm'
+    alias lock='vlock -a'
   fi
 }
 setaliases
