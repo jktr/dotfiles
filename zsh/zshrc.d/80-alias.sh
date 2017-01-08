@@ -37,7 +37,7 @@ setaliases () {
 
   # misc
   alias dmesg="dmesg $color_mode $human_mode"
-  alias feh='feh --no-fehbg --magick-timeout 1'
+  alias feh='feh --no-fehbg --image-bg black --magick-timeout 1 --draw-filename --draw-exif
   alias free="free $human_mode"
   alias userctl='systemctl --user'
   alias where='whereis -b'
