@@ -41,6 +41,7 @@ setaliases () {
   alias free="free $human_mode"
   alias userctl='systemctl --user'
   alias where='whereis -b'
+  alias certview='openssl x509 -text -in'
 
   # display dependent
   if [ -n "$DISPLAY" ]; then
