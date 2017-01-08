@@ -8,8 +8,9 @@ setaliases () {
   local human_mode_gnu='--human-readable'
 
   # tree
-  alias t='tree'
-  alias d='tree -d'
+  alias   t='tree'
+  alias  tt='tree -d'
+  alias ttt='tree -dL 2'
 
   # ls
   local ls_opts="$color_mode $human_mode_gnu \
@@ -17,6 +18,7 @@ setaliases () {
 
   alias  ls="ls $ls_opts"
   alias  ll="ls $ls_opts -l"
+  alias lll="ls $ls_opts -l *"
   alias  la="ls $ls_opts    --almost-all"
   alias lla="ls $ls_opts -l --almost-all"
 
