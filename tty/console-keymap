@@ -1,0 +1,4 @@
+keymaps 0-255
+keycode 58 = Control
+keycode 29 = Escape
+keycode  1 = Caps_Lock
