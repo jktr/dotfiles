@@ -175,7 +175,7 @@
     bindsym i exec i3-sensible-terminal -e irssi   ; mode "default"
     bindsym m exec i3-sensible-terminal -e ncmpcpp ; mode "default"
     bindsym p exec thunderbird          ; mode "default"
-    bindsym t exec transmission-gtk     ; mode "default"
+    bindsym t exec i3-sensible-terminal -e transmission-remote-cli ; mode "default"
 
     bindsym Mod1+b exec chromium        ; mode "default"
     bindsym Mod1+m exec vlc             ; mode "default"
