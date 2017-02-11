@@ -5,14 +5,14 @@
 
 # Super
 #  # mundane DE-like actions & modes
-#  arrow            move focus
+#  hjkl             move focus
 #  d                dmenu
 #  f                fullscreen
 #  fn               focus workspace
 #  space            focus move layers
 #
 #  Mod1
-#    arrows         move workspace next/prev
+#    hjkl           move workspace next/prev
 #
 #  Tab              launch-mode  (exit with Esc / Return)
 #    b              browser
@@ -28,9 +28,9 @@
 #      [m]          # runtime (re)configuration
 #
 #  r                resize-mode  (exit with Esc / Return)
-#    arrow          grow/shrink window in direction
+#    hjkl           grow/shrink window in direction
 #    Shift
-#      arrow        same as ^^, but with small increments
+#      hjkl         same as ^^, but with small increments
 #
 #  s                session-mode  (exit with Esc / Return)
 #    k              kill (actually WM_DELETE, else X11 SIGKILL)
@@ -43,13 +43,13 @@
 #    2              i3 reload config
 #
 #  Shift+           # shift geometry / layout
-#    arrow          window focused move workspace
+#    hjkl           window focused move workspace
 #    fn             window move to other   workspace
-#    h              split direction horizontal
+#    u              split direction horizontal
+#    i              split direction vertical
 #    r              rotate container / normal-mode
 #    space          window toggle float
 #    t              tabbed-mode
-#    v              split direction vertical
 
 
 ### base
@@ -83,10 +83,10 @@
   #bindsym $mod+d focus child
 
   ## focus positional
-  bindsym $mod+Left  focus left
-  bindsym $mod+Down  focus down
-  bindsym $mod+Up    focus up
-  bindsym $mod+Right focus right
+  bindsym $mod+h focus left
+  bindsym $mod+j focus down
+  bindsym $mod+k focus up
+  bindsym $mod+l focus right
 
   ## focus layers
   bindsym $mod+space focus mode_toggle
@@ -95,14 +95,14 @@
 ### layout binds
 
   ## split orientation
-  bindsym $mod+h split h
-  bindsym $mod+v split v
+  bindsym $mod+u split h
+  bindsym $mod+i split v
 
   ## move focused around
-  bindsym $mod+Shift+Left  move left
-  bindsym $mod+Shift+Down  move down
-  bindsym $mod+Shift+Up    move up
-  bindsym $mod+Shift+Right move right
+  bindsym $mod+Shift+h move left
+  bindsym $mod+Shift+j move down
+  bindsym $mod+Shift+k move up
+  bindsym $mod+Shift+l move right
 
   ## display modes
   #bindsym $mod+s           layout   stacking
@@ -120,10 +120,10 @@
 ### workspace binds
 
   ## cycle workspace
-  bindsym $mod+Mod1+Down  workspace prev
-  bindsym $mod+Mod1+Up    workspace next
-  bindsym $mod+Mod1+Left  workspace prev_on_output
-  bindsym $mod+Mod1+Right workspace next_on_output
+  bindsym $mod+Mod1+j workspace prev
+  bindsym $mod+Mod1+k workspace next
+  bindsym $mod+Mod1+h workspace prev_on_output
+  bindsym $mod+Mod1+l workspace next_on_output
 
   ## focus workspace
   bindsym $mod+F1  workspace  1
@@ -196,16 +196,16 @@
     set $resize_m 10
 
     # medium resize
-    bindsym Left  resize shrink width  $resize_m px or $resize_m ppt
-    bindsym Down  resize grow   height $resize_m px or $resize_m ppt
-    bindsym Up    resize shrink height $resize_m px or $resize_m ppt
-    bindsym Right resize grow   width  $resize_m px or $resize_m ppt
+    bindsym h resize shrink width  $resize_m px or $resize_m ppt
+    bindsym j resize grow   height $resize_m px or $resize_m ppt
+    bindsym k resize shrink height $resize_m px or $resize_m ppt
+    bindsym l resize grow   width  $resize_m px or $resize_m ppt
 
     # small resize with Shift
-    bindsym Shift+Left  resize shrink width  $resize_s px or $resize_s ppt
-    bindsym Shift+Down  resize grow   height $resize_s px or $resize_s ppt
-    bindsym Shift+Up    resize shrink height $resize_s px or $resize_s ppt
-    bindsym Shift+Right resize grow   width  $resize_s px or $resize_s ppt
+    bindsym Shift+h resize shrink width  $resize_s px or $resize_s ppt
+    bindsym Shift+j resize grow   height $resize_s px or $resize_s ppt
+    bindsym Shift+k resize shrink height $resize_s px or $resize_s ppt
+    bindsym Shift+l resize grow   width  $resize_s px or $resize_s ppt
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
