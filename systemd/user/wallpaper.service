@@ -5,7 +5,7 @@ Documentation=man:feh(1)
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/usr/bin/feh --no-fehbg --bg-scale %h/.wallpaper
+ExecStart=/usr/bin/feh --no-fehbg --bg-fill %h/.wallpaper
 
 [Install]
 WantedBy=X11.target
