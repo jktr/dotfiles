@@ -14,6 +14,8 @@
   a = add
   ap = add --patch
   b = branch
+  c = clone --depth=1
+  ca = clone
   d = diff
   dc = diff --cached
   dw = diff --word-diff
