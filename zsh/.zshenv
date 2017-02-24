@@ -34,6 +34,9 @@ so=00;35:\
 ex=00;32:\
 "
 
+# less preprocessor
+export LESSOPEN="|/usr/bin/lesspipe.sh %s"
+
 ## other
 export SSH_ASKPASS=''
 export RXVT_SOCKET="/run/user/${UID}/urxvtd"
