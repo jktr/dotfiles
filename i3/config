@@ -229,7 +229,7 @@
     bindsym k kill            ; mode "default"
 
     # i3 meta stuff
-    bindsym e exec "i3-nagbar -t warning -m 'Quit i3!?' -b 'Yes, EXIT i3!' 'i3-msg exit'" ; mode "default"
+    bindsym e exec "i3-nagbar -t warning -m 'Quit i3!?' -b 'Yes, EXIT i3!' 'i3-msg exit; systemctl --user isolate daemon.target'" ; mode "default"
     bindsym 1 restart    ; mode "default"
     bindsym 2 reload     ; mode "default"
 
