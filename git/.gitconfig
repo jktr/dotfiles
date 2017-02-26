@@ -14,6 +14,8 @@
   a = add
   ap = add --patch
   b = branch
+  bd = branch --delete
+  bc = checkout -B
   c = clone --depth=1
   ca = clone
   d = diff
