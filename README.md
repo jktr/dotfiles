@@ -1,31 +1,34 @@
 # dotfiles
 
-These are my configuration files for UNIX based systems.
+These are my configuration files for unix-like systems.
 
 
 ## Why do this ?
 
-I got tired of trying to figure out opaque config changes
-that I made far too long ago, and that those changes are
-strewn across the entire /home/$USER tree. As a result,
-I put them all in a central and cloneable directory from 
-which they're easily deployable. Also, it's all versioned
-properly via git. It simply makes sense from a maintainance
+I got tired of trying to keep all the configs, the
+workarounds and the dependencies therein, the obscure
+changes, and the experimental features straight.  Then I
+realized that version control is the proper tool for this
+job, and I migrated everyting into this repo.  Now its
+centralized, (relatively) easy to manage, and properly
+versioned. It simply makes sense from a maintainance
 point-of-view.
 
 
 ## Branches and target systems
 
-Not all systems I work with have the same feature sets. Thus
-there are branches for specific systems, of which each one
-is a subset of **master**, and may contain some additional
-workarounds.
+Not all systems I work with have the same feature sets.
+There are branches for specific systems I work on (or have
+worked on), in case workarounds are needed for that system.
+The usual cause for these workaround is outdated software.
+There's no guarantee that any branches they're even remotely
+up-to-date, though.
 
-| branch   | system   | version |
-| -------- | -------- | ------- |
-| `master` | Arch     | latest  |
-| `laptop` | Debian   | testing |
-| `work`   | OpenSuSE | 42.1    |
+| branch          | system   | version |
+| --------------- | -------- | ------- |
+| `archlinux`     | Arch     | latest  |
+| `debian-jessie` | Debian   | testing |
+| `opensuse-42.1` | OpenSuSE | 42.1    |
 
 
 ## Deployment
