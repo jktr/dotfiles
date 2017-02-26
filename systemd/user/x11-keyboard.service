@@ -14,7 +14,7 @@ ExecStartPre=/usr/bin/xset r rate 200 30
 #  nbsp:level2         - S-SPC causes non-breaking space
 #  keybpad:pointerkeys - S-NumLock activates mousekeys
 ExecStartPre=/usr/bin/setxkbmap -option
-ExecStart=/usr/bin/setxkbmap en_US,de -option grp:switch,nbsp:level2,keypad:pointerkeys
+ExecStart=/usr/bin/setxkbmap -layout us -variant dvp -option nbsp:level2,keypad:pointerkeys
 
 # key modifications
 ExecStartPost=/usr/bin/xmodmap ${XDG_CONFIG_HOME}/X11/Xmodmap
