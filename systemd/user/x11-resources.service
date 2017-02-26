@@ -1,0 +1,12 @@
+[Unit]
+Description=X11 user resources
+Documentation=man:xrdb(1)
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+
+ExecStart=/usr/bin/xrdb -merge ${XDG_CONFIG_HOME}/X11/Xresources
+
+[Install]
+WantedBy=X11.target
