@@ -13,11 +13,8 @@ home_dots=(
   @ leingingen .lein/profiles.clj
   @ nano   .nanorc
   @ nvidia .nvidia-settings-rc
-  @ X11    .xinitrc
-  @ X11    .Xmodmap
   @ X11    .xserverrc
   @ X11    .xsession
-  @ X11    .Xresources
   @ zsh    .zshenv
   @ zsh    .zlogin
   @ zsh    .zshrc
@@ -40,6 +37,10 @@ dot_conf=(
   d vlc
   @ vlc           vlc/vlcrc
   @ vlc           vlc/vlc-qt-interface
+  d X11
+  @ X11           X11/xinitrc
+  @ X11           X11/Xmodmap
+  @ X11           X11/Xresources
   @ xdg           user-dirs.dirs
   @ xdg           user-dirs.locale
   d zsh
