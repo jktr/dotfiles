@@ -14,8 +14,6 @@ enable_window_title = no
 
 # style
 user_interface = alternative
-#alternative_header_first_line_format = "$8{%t}|{%f}$9"
-alternative_header_second_line_format = "{%a - %b (%y)}|{%D}"
 header_visibility = no
 playlist_shorten_total_times = yes
 
@@ -48,7 +46,7 @@ visualizer_output_name = "Visualization FIFO"
 visualizer_sync_interval = "30"
 visualizer_in_stereo = "yes"
 visualizer_type = "spectrum"
-visualizer_look = "-0"
+visualizer_look = "00"
 
 ## misc
 
