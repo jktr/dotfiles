@@ -5,17 +5,19 @@
 
 # Super
 #  # mundane DE-like actions & modes
-#  hjkl             move focus
+#  [htns]           move focus
+#  a/o              split direction horizontal/vertical
 #  d                dmenu
-#  f                fullscreen
-#  fn               focus workspace
+#  e                fullscreen
+#  f#               focus workspace
 #  space            focus move layers
 #
 #  Mod1
-#    hjkl           move workspace next/prev
+#    [htns]         move workspace next/prev
 #
-#  Tab              launch-mode  (exit with Esc / Return)
+#  Tab              launch-mode
 #    b              browser
+#    d              pay for refreshments at the office
 #    e              editor
 #    g              games
 #    i              irc
@@ -27,12 +29,12 @@
 #    Ctrl
 #      [m]          # runtime (re)configuration
 #
-#  r                resize-mode  (exit with Esc / Return)
-#    hjkl           grow/shrink window in direction
+#  u                resize-mode
+#    [htns]         grow/shrink window (large increments)
 #    Shift
-#      hjkl         same as ^^, but with small increments
+#      [htns]       grow/shrink window (small increments)
 #
-#  s                session-mode  (exit with Esc / Return)
+#  s                session-mode
 #    k              kill (actually WM_DELETE, else X11 SIGKILL)
 #    l              lock screen
 #    p              poweroff
@@ -43,13 +45,11 @@
 #    2              i3 reload config
 #
 #  Shift+           # shift geometry / layout
-#    hjkl           window focused move workspace
-#    fn             window move to other   workspace
-#    u              split direction horizontal
-#    i              split direction vertical
-#    r              rotate container / normal-mode
+#    [htns]         window focused move workspace
+#    fn             window move to other workspace
+#    o              rotate container / normal-mode
+#    a              tabbed-mode
 #    space          window toggle float
-#    t              tabbed-mode
 
 
 ### base
@@ -84,9 +84,9 @@
 
   ## focus positional
   bindsym $mod+h focus left
-  bindsym $mod+j focus down
-  bindsym $mod+k focus up
-  bindsym $mod+l focus right
+  bindsym $mod+t focus down
+  bindsym $mod+n focus up
+  bindsym $mod+s focus right
 
   ## focus layers
   bindsym $mod+space focus mode_toggle
@@ -95,35 +95,35 @@
 ### layout binds
 
   ## split orientation
-  bindsym $mod+u split h
-  bindsym $mod+i split v
+  bindsym $mod+a split h
+  bindsym $mod+o split v
 
   ## move focused around
   bindsym $mod+Shift+h move left
-  bindsym $mod+Shift+j move down
-  bindsym $mod+Shift+k move up
-  bindsym $mod+Shift+l move right
+  bindsym $mod+Shift+t move down
+  bindsym $mod+Shift+n move up
+  bindsym $mod+Shift+s move right
 
   ## display modes
   #bindsym $mod+s           layout   stacking
-  bindsym $mod+Shift+t     layout   tabbed
-  bindsym $mod+Shift+r     layout   toggle split
+  bindsym $mod+Shift+a     layout   tabbed
+  bindsym $mod+Shift+o     layout   toggle split
   bindsym $mod+Shift+space floating toggle
 
   ## float
   floating_modifier $mod
 
   ## fullscreen
-  bindsym $mod+f fullscreen toggle
+  bindsym $mod+e fullscreen toggle
 
 
 ### workspace binds
 
   ## cycle workspace
-  bindsym $mod+Mod1+j workspace prev
-  bindsym $mod+Mod1+k workspace next
   bindsym $mod+Mod1+h workspace prev_on_output
-  bindsym $mod+Mod1+l workspace next_on_output
+  bindsym $mod+Mod1+t workspace next_on_output
+  bindsym $mod+Mod1+n workspace prev
+  bindsym $mod+Mod1+s workspace next
 
   ## focus workspace
   bindsym $mod+F1  workspace  1
@@ -166,15 +166,16 @@
 
   ## launch-mode
   # for launching X11 applications
-  set $m_x11launch  "<launch> [b]rowser [e]ditor [g]ames [i]rc [m]usic [p]ost/mail [t]orrent"
+  set $m_x11launch  "<launch> [b]rowser [d]rinks [e]ditor [g]ames [i]rc [m]usic [p]ost/mail [t]orrent"
   mode $m_x11launch {
 
     bindsym b exec firefox              ; mode "default"
+    bindsym d exec "~/bin/pay-for-drinks 4"        ; mode "default"
     bindsym e exec i3-sensible-editor   ; mode "default"
     bindsym g exec steam                ; mode "default"
     bindsym i exec i3-sensible-terminal -e irssi   ; mode "default"
     bindsym m exec i3-sensible-terminal -e ncmpcpp ; mode "default"
-    bindsym p exec thunderbird          ; mode "default"
+    bindsym p workspace "mail"; exec thunderbird   ; mode "default"
     bindsym t exec i3-sensible-terminal -e transmission-remote-cli ; mode "default"
 
     bindsym Mod1+b exec chromium        ; mode "default"
@@ -197,15 +198,15 @@
 
     # medium resize
     bindsym h resize shrink width  $resize_m px or $resize_m ppt
-    bindsym j resize grow   height $resize_m px or $resize_m ppt
-    bindsym k resize shrink height $resize_m px or $resize_m ppt
-    bindsym l resize grow   width  $resize_m px or $resize_m ppt
+    bindsym t resize shrink height $resize_m px or $resize_m ppt
+    bindsym n resize grow   height $resize_m px or $resize_m ppt
+    bindsym s resize grow   width  $resize_m px or $resize_m ppt
 
     # small resize with Shift
     bindsym Shift+h resize shrink width  $resize_s px or $resize_s ppt
-    bindsym Shift+j resize grow   height $resize_s px or $resize_s ppt
-    bindsym Shift+k resize shrink height $resize_s px or $resize_s ppt
-    bindsym Shift+l resize grow   width  $resize_s px or $resize_s ppt
+    bindsym Shift+t resize shrink height $resize_s px or $resize_s ppt
+    bindsym Shift+n resize grow   height $resize_s px or $resize_s ppt
+    bindsym Shift+s resize grow   width  $resize_s px or $resize_s ppt
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -222,8 +223,8 @@
     bindsym p exec "i3-nagbar -t warning -m 'Poweroff!?' -b 'Yes, POWEROFF!' 'systemctl poweroff'" ; mode "default"
 
     # locking session
-    bindsym l exec "i3lock --color=000000 --show-failed-attempts "                      ; mode "default"
-    bindsym s exec "i3lock --color=000000 --show-failed-attempts && systemctl suspend"  ; mode "default"
+    bindsym l exec "i3lock --color=000000"                       ; mode "default"
+    bindsym s exec "i3lock --color=000000 && systemctl suspend"  ; mode "default"
 
     # kill
     bindsym k kill            ; mode "default"
@@ -239,9 +240,9 @@
 
 
   ## mode binds
-  bindsym $mod+s   mode $m_session
+  bindsym $mod+i   mode $m_session
   bindsym $mod+Tab mode $m_x11launch
-  bindsym $mod+r   mode $m_resize
+  bindsym $mod+u   mode $m_resize
 
 
 ### options
@@ -274,6 +275,6 @@
       active_workspace   #444444 #444444 #000000
       inactive_workspace #444444 #000000 #666666
       urgent_workspace   #900000 #900000 #c2c2c2
-      binding_mode       #386941 #000000 #c2c2c2
+#      binding_mode       #386941 #000000 #c2c2c2
     }
   }
