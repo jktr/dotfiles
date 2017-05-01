@@ -47,3 +47,9 @@ heavy () {
     fi
 }
 
+# generates new ssh key
+ssh-keygen () {
+    ssh-keygen -t ed25519
+               -f "~/.ssh/keys/id_ed25519_$1_$(date +%Y-%m-%d)"
+               -C "$HOST::$1::$2"
+}
