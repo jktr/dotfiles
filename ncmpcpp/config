@@ -2,8 +2,8 @@
 
 ## mpd
 
-mpd_host = ~/.local/run-user-dir/mpd
-#mpd_port = 6600
+mpd_host = localhost
+mpd_port = 6600
 mpd_music_dir = ~/multimedia/music
 
 
