@@ -11,6 +11,8 @@ home_dots=(
   @ guile  .guile
   d .lein
   @ leingingen .lein/profiles.clj
+  d .mutt
+  @ mutt   .mutt/muttrc
   @ nano   .nanorc
   @ nvidia .nvidia-settings-rc
   @ X11    .xserverrc

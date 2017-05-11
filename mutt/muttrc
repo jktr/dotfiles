@@ -1,0 +1,151 @@
+### muttrc
+
+set my_pw_kt = `zsh -c 'read -sE "?Enter secret for mail.konradtegtmeier.com:"'`
+
+
+## account hooks
+
+account-hook . "unset imap_user; unset imap_pass; unset tunnel"
+account-hook        "imaps://mail.uni-paderborn.de" "\
+    set imap_authenticators = gssapi:login \
+        imap_user   = jktr \
+        "
+account-hook        "imaps://mail.konradtegtmeier.com" "\
+    set imap_authenticators = login \
+        imap_user   = jktr \
+        imap_pass   = $my_pw_kt \
+        "
+        
+alternates "jktr@mail.(upb|uni-paderborn).de"
+alternates "@.*konradtegtmeier.com"
+subscribe "@lists"
+
+
+## mailboxes
+
+set folder = "imaps://mail.konradtegtmeier.com"
+
+  mailboxes = +INBOX
+  set spoolfile="+INBOX"
+
+  folder-hook         imaps://mail.konradtegtmeier.com "\
+    set folder      = imaps://mail.konradtegtmeier.com \
+        spoolfile   = +INBOX \
+        postponed   = +Drafts \
+        record      = +Sent \
+        from        = 'Konrad Tegtmeier <contact@konradtegtmeier.com> ' \
+        realname    = 'Konrad Tegtmeier' \
+        smtp_authenticators = 'plain' \
+        smtp_url    = smtps://jktr@mail.konradtegtmeier.com \
+        smtp_pass   = $my_pw_kt \
+        "
+
+
+set folder = "imaps://mail.uni-paderborn.de"
+
+  mailboxes = +INBOX
+  set spoolfile="+INBOX"
+
+  folder-hook         imaps://mail.uni-paderborn.de "\
+    set folder      = imaps://mail.uni-paderborn.de \
+        spoolfile   = +INBOX \
+        postponed   = +Drafts \
+        record      = +Sent \
+        from        = 'Konrad Tegtmeier <jktr@mail.uni-paderborn.de> ' \
+        realname    = 'Konrad Tegtmeier' \
+        smtp_authenticators = 'gssapi:plain' \
+        smtp_url    = smtps://jktr@mail.uni-paderborn.de \
+        "
+
+
+## macros
+
+macro index <F1> "y1<return><return>" # jump to mailbox number 12 (m.kt.com inbox)
+macro index <F2> "y5<return><return>"  # jump to mailbox number 6 (upb inbox)
+
+
+## imap
+
+set imap_check_subscribed
+set timeout      = 60
+set mail_check   = 120
+set header_cache = ~/.mutt/hcache
+
+
+## net
+
+set ssl_force_tls = yes
+set net_inc       = 5
+
+
+## sort
+
+set sort     = threads
+set sort_aux = last-date-received
+
+
+## colors
+
+set my_color_sel        = color2
+set my_color_sel_alt    = color0
+set my_color_err        = color1
+set my_color_sec        = color8
+set my_color_hypermedia = color3
+
+# index
+color indicator   $my_color_sel_alt $my_color_sel
+color tree        $my_color_sel     default
+
+# header
+color hdrdefault default default
+color header     $my_color_sel_alt $my_color_sel "^From"
+color header     $my_color_sel_alt $my_color_sel "^Subject"
+
+# gpg
+color body       $my_color_sec default "^gpg: Good signature.*"
+color body       $my_color_err default "^gpg: BAD signature.*"
+color body       $my_color_err default "^gpg: Can't check signature.*"
+color body       $my_color_sec default "^-----BEGIN PGP SIGNED MESSAGE-----"
+color body       $my_color_sec default "^-----BEGIN PGP SIGNATURE-----"
+color body       $my_color_sec default "^-----END PGP SIGNED MESSAGE-----"
+color body       $my_color_sec default "^-----END PGP SIGNATURE-----"
+color body       $my_color_sec default "^Version: GnuPG.*"
+color body       $my_color_sec default "^Comment: .*"
+
+# quote
+color quoted     $my_color_sel default
+
+# misc body
+color attachment $my_color_sel default
+color signature  $my_color_sel default
+
+## key info
+
+# mentions
+color body       color1 default \
+                   "(^| )(jktr|KT|(Josef )?[Kk]onrad|Tegtmeier([ -]Rottach)?)"
+
+# time
+color body       $my_color_hypermedia default \
+                   "[0-2]?[0-9](:[0-6]?[0-9])?(:[0-6]?[0-9]| Uhr)"
+# date
+color body       $my_color_hypermedia default \
+                   "[0-9]{4}([-][0-9]{2}){2,3}"
+color body       $my_color_hypermedia default \
+                   "(^| )([0-9]{1,2}[./]){1,2}([0-9]{4}|[0-9]{1,2}\\.?)"
+color body       $my_color_hypermedia default \
+                   "([0-9]{1,2}\\.?( ){0,2})?(January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|Aug|Sep|Oct|Nov|Dec)[. ]([0-9]{1,2}(st|nd|rd|th)?, )?([0-9]{4})?"
+color body       $my_color_hypermedia default \
+                   "([0-9]{1,2}\\.?( ){0,2})?(Januar|Februar|März|Mai|Juni|Juli|Oktober|Dezember|Mär|Okt|Dez)[. ]([0-9]{4})?"
+color body       $my_color_hypermedia default \
+                   "([Tt]oday|[Tt]omorrow|(Mon|Tues|Wednes|Thurs|Fri|Sattur|Sun)day)"
+color body       $my_color_hypermedia default \
+                   "([Hh]eute|[Mm]orgen|Mittwoch|(Mon|Diens|Donners|Frei|Sams|Sonn)tag)"
+                   
+# room numbers
+color body       $my_color_hypermedia default \
+                   "([A-Z] ?[0-9](\\.| )[0-9]{3}|P\\.[0-9]\\.[0-9]\\.[0-9]{2})"
+
+# hypermedia
+color body       $my_color_hypermedia default \
+                   "([a-zA-Z]+://)?([.+-a-z0-9]+@)?([a-zA-Z][-a-z0-9]+\\.)+(com|net|org|de|io)(/[.?#&=+-a-z0-9]+)*/?"
