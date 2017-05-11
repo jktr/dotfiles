@@ -1,6 +1,6 @@
-!-------------------------------------------------------------------------------
-! Xft settings
-!-------------------------------------------------------------------------------
+!!! Xresources
+
+!! Xft settings
 
 Xft.dpi:                    96
 Xft.antialias:              true
@@ -10,20 +10,17 @@ Xft.hintstyle:              hintfull
 Xft.autohint:               true
 Xft.lcdfilter:              lcddefault
 
-!-------------------------------------------------------------------------------
-! URXVT settings
-!-----------------------------------------------------------------------------
+
+!! URXVT settings
 
 ! bell
 URxvt.urgentOnBell:         true
 
-! border
-URxvt.internalBorder:       1
-
 ! color
 URxvt.depth:                32
-URxvt.background:           #000000
-URxvt.foreground:           #c1c1c1
+
+! border
+URxvt.internalBorder:       1
 
 ! compat
 URxvt.iso14755:             false
@@ -51,5 +48,52 @@ URxvt.secondaryScroll:      false
 URxvt.secondaryWheel:       false
 
 ! transparency
-URxvt.transparent:          true
+URxvt.transparent:          false
 URxvt.shading:              25
+
+
+!! general color settings
+
+*background:               #2b2b2b
+*foreground:               #d8d8d8
+
+*highlightcolor:           #214283
+*highlighttextcolor:       #d0d0d0
+
+*cursorcolor:              #2b2b2b
+*cursorcolor2:             #d8d8d8
+
+*pointercolorbackground:   #2b2b2b
+*pointercolorforeground:   #d8d8d8
+
+! color: black dark/light
+*color0:                   #000000
+*color8:                   #424445
+
+! color: red dark/light
+*color1:                   #D25252
+*color9:                   #CC7832
+
+! color: green dark/light
+*color2:                   #629755
+*color10:                  #CCDF32
+
+! color: yellow dark/light
+*color3:                   #b58900
+*color11:                  #FFC66D
+
+! color: blue dark/light
+*color4:                   #214283
+*color12:                  #79ABFF
+
+! color: magenta dark/light
+*color5:                   #9876AA
+*color13:                  #6c71c4
+
+! color: cyan dark/light
+*color6:                   #6897BB
+*color14:                  #79ABFF
+
+! color: white dark/light
+*color7:                   #C2C2C2
+*color15:                  #D8D8D8
