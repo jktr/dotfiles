@@ -175,7 +175,7 @@
     bindsym g exec steam                ; mode "default"
     bindsym i exec i3-sensible-terminal -e irssi   ; mode "default"
     bindsym m exec i3-sensible-terminal -e ncmpcpp ; mode "default"
-    bindsym p workspace "mail"; exec thunderbird   ; mode "default"
+    bindsym p workspace "12"; exec i3-sensible-terminal -e mutt ; mode "default"
     bindsym t exec i3-sensible-terminal -e transmission-remote-cli ; mode "default"
 
     bindsym Mod1+b exec chromium        ; mode "default"
