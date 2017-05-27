@@ -12,6 +12,7 @@ unsetopt NOTIFY
 
 # misc
 setopt AUTO_CD
+setopt INTERACTIVE_COMMENTS
 setopt SHWORDSPLIT
 setopt RM_STAR_WAIT
 setopt RC_QUOTES
