@@ -9,7 +9,7 @@
 (setq inhibit-startup-screen t)
 
 ;; let the WM (if graphical) manage windows
-(setq pop-up-frames 'graphic-only)
+;(setq pop-up-frames 'graphic-only)
 
 ;; move between windows
 (global-set-key (kbd "C-c h") 'windmove-left)
