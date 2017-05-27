@@ -14,7 +14,6 @@ home_dots=(
   d .mutt
   @ mutt   .mutt/muttrc
   @ nano   .nanorc
-  @ nvidia .nvidia-settings-rc
   @ X11    .xserverrc
   @ X11    .xsession
   @ zsh    .zshenv
