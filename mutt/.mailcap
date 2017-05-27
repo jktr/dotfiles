@@ -1,0 +1,7 @@
+### .mailcap
+## see RFC1524 for details
+
+text/html;              w3m -v -F -T text/html %s; nametemplate=%s.html; needsterminal
+
+application/pdf;        evince %s; test=test -n "$DISPLAY" 
+application/pdf;        less %s

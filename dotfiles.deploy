@@ -11,6 +11,7 @@ home_dots=(
   @ guile  .guile
   d .lein
   @ leingingen .lein/profiles.clj
+  @ mutt   .mailcap
   d .mutt
   @ mutt   .mutt/muttrc
   @ nano   .nanorc
