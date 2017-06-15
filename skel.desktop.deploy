@@ -1,20 +1,12 @@
 # compound target
-dirs=(@ 'dir_home' 'dir_dev' 'dir_mm')
+dirs=(@ 'dir_home' 'dir_mm')
 
-# mkdirs in ~
 dir_home=(
   . ..
   d bin
   d develop
+  d develop/bin
   d multimedia
-)
-
-# mkdirs in ~/develop
-dir_dev=( 
-  . ../develop
-  d bin
-  d experiments
-  d projects
 )
 
 # mkdirs in ~/multimedia
@@ -26,5 +18,4 @@ dir_mm=(
   d music
   d pics
   d videos
-  f wallpaper 
 )
