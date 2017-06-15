@@ -1,20 +1,25 @@
 # compound target
-dots=(@ 'home_dots' 'dot_conf' 'dot_emacs' 'dot_lein' 'dot_localshare' 'dot_ssh')
+dots=(@ 'home_dots' 'dot_conf' 'dot_emacs')
 
 home_dots=(
   . $HOME
   d .config
   d .emacs.d
-  d .ssh
   @ git    .gitconfig
   @ git    .gitignore
   @ guile  .guile
   d .lein
   @ leingingen .lein/profiles.clj
-  @ mutt   .mailcap
+  d .local/share/mpd
+  d .local/share/mpd/playlists
   d .mutt
+  @ mutt   .mailcap
   @ mutt   .mutt/muttrc
   @ nano   .nanorc
+  d .ssh
+  d .ssh/keys
+  @ ssh    .ssh/config
+  @ ssh    .ssh/config.d
   @ X11    .xserverrc
   @ X11    .xsession
   @ zsh    .zshenv
@@ -24,52 +29,21 @@ home_dots=(
 
 dot_conf=(
   . $HOME/.config
-  d dunst
-  @ dunst         dunst/dunstrc
-  d i3
-  @ i3            i3/config
-  d i3status
-  @ i3status      i3status/config
-  d mpd
-  @ mpd           mpd/mpd.conf
-  d ncmpcpp
-  @ ncmpcpp       ncmpcpp/config
-  d systemd
-  @ systemd       systemd/user
-  d vlc
-  @ vlc           vlc/vlcrc
-  @ vlc           vlc/vlc-qt-interface
-  d X11
-  @ X11           X11/xinitrc
-  @ X11           X11/Xmodmap
-  @ X11           X11/Xresources
-  @ xdg           user-dirs.dirs
-  @ xdg           user-dirs.locale
-  d zsh
-  @ zsh           zsh/zshrc.d
+  @ .       dunst
+  @ .       i3
+  @ .       i3status
+  @ .       mpd
+  @ .       ncmpcpp
+  @ .       systemd
+  @ .       X11
+  @ .       xdg
+  @ .       zsh
 )
 
 dot_emacs=(
   emacs $HOME/.emacs.d
-  @ . init.el
-  @ . config
-  @ . config-pkg
-  @ . config-site
-)
-
-dot_lein=(
-  leiningen $HOME/.lein
-  @ . profiles.clj
-)
-
-dot_localshare=(
-  . $HOME/.local/share
-  d mpd
-)
-
-dot_ssh=(
-  ssh $HOME/.ssh
-  d keys
-  @ . config
-  @ . config.d
+  @ .  init.el
+  @ .  config
+  @ .  config-pkg
+  @ .  config-site
 )
