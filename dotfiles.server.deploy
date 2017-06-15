@@ -1,0 +1,21 @@
+# compound target
+dots=(@ 'home_dots' 'dot_conf')
+
+home_dots=(
+  . $HOME
+  d .config
+  @ git    .gitconfig
+  @ git    .gitignore
+  @ nano   .nanorc
+  @ zsh    .zshenv
+  @ zsh    .zlogin
+  @ zsh    .zshrc
+)
+
+dot_conf=(
+  . $HOME/.config
+  @ .       htop
+  @ .       systemd
+  @ .       xdg
+  @ .       zsh
+)
