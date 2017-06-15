@@ -30,6 +30,7 @@ home_dots=(
 dot_conf=(
   . $HOME/.config
   @ .       dunst
+  @ .       htop
   @ .       i3
   @ .       i3status
   @ .       mpd
