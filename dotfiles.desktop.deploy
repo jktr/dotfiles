@@ -37,6 +37,7 @@ dot_conf=(
   @ .       ncmpcpp
   @ .       systemd
   @ .       transmission-remote-cli
+  @ .       tty
   @ .       X11
   @ .       xdg
   @ .       zsh

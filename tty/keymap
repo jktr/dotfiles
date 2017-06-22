@@ -1,0 +1,6 @@
+keymaps 0-255
+keycode 29 = Return
+keycode 28 = Control
+keycode 58 = Control
+keycode 97 = KP_Enter
+keycode 127 = Compose
