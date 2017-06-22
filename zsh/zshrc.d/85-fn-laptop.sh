@@ -1,5 +1,6 @@
 ### fn-laptop
 
+# retrieves current battery level
 battery_level () {    
     local -r bat="/sys/class/power_supply/BAT*"
 
@@ -10,6 +11,7 @@ battery_level () {
     echo "$bat: ${full}/${now} -> ${percent}"
 }
 
+# sets backlight brightness
 brightness () {
     local -r max=950
     local -r min=1
@@ -36,3 +38,6 @@ brightness () {
             ;;
     esac
 }
+
+# man sets /dev/sda to contiuouly spin to reduce wear
+alias nosleep-sda='sudo hdparm -B 128 -S 60 /dev/sda'
