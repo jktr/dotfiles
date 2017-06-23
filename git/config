@@ -1,15 +1,19 @@
 ### global git config
 
 [user]
-  name = Josef Konrad Tegtmeier-Rottach
+  name = J. Konrad Tegtmeier-Rottach
   email = jktr@0x16.de
-
-[push]
-  default = simple
+  useConfigOnly = true
 
 [core]
   autocrlf = input
   pager = less -x4
+
+[diff]
+  algorithm = minimal
+
+[log]
+  date = iso-strict
 
 [alias]
   a = add
