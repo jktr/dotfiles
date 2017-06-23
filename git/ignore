@@ -1,7 +1,6 @@
-### global gitignore ###
+### global git ignore
 
 # emacs
-
 \#*\#
 *~
 .\#*

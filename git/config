@@ -1,3 +1,5 @@
+### global git config
+
 [user]
   name = Josef Konrad Tegtmeier-Rottach
   email = jktr@0x16.de
@@ -7,7 +9,6 @@
 
 [core]
   autocrlf = input
-  excludesfile = ~/.gitignore
   pager = less -x4
 
 [alias]

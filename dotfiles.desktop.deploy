@@ -5,8 +5,6 @@ home_dots=(
   . $HOME
   d .config
   d .emacs.d
-  @ git    .gitconfig
-  @ git    .gitignore
   @ guile  .guile
   d .lein
   @ leingingen .lein/profiles.clj
@@ -30,6 +28,7 @@ home_dots=(
 dot_conf=(
   . $HOME/.config
   @ .       dunst
+  @ .       git
   @ .       htop
   @ .       i3
   @ .       i3status
