@@ -19,3 +19,8 @@ ttyinit () {
     reset
     sudo loadkeys ${XDG_CONFIG_HOME}/tty/keymap
 }
+
+# gets weather forecast
+wttr () {
+    curl "https://wttr.in/$@" 2>/dev/null | $PAGER -r
+}
