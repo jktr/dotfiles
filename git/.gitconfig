@@ -43,3 +43,4 @@
 
   uncommit = reset --soft HEAD^
 
+  unshallow = pull --unshallow
