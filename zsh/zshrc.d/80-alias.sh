@@ -26,6 +26,7 @@ setaliases () {
   alias ..='cd ..'
   alias ...='cd ../..'
   alias ....='cd ../../..'
+  alias //='cd -'
 
   # grep
   alias grep="grep $color_mode_gnu --ignore-case"
@@ -34,6 +35,7 @@ setaliases () {
 
   # misc (coreutils)
   alias df="df $human_mode_gnu"
+  alias cp='cp --reflink=auto'
 
   # misc
   alias dmesg="dmesg $color_mode $human_mode"
