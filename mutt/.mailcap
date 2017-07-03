@@ -3,5 +3,8 @@
 
 text/html;              w3m -v -F -T text/html %s; nametemplate=%s.html; needsterminal
 
+image;                  feh %s;  test=test -n "$DISPLAY"
+image;                  mpv --vo=drm --pause %s
+
 application/pdf;        evince %s; test=test -n "$DISPLAY" 
 application/pdf;        less %s
