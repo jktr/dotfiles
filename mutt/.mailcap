@@ -7,4 +7,4 @@ image;                  feh %s;  test=test -n "$DISPLAY"
 image;                  mpv --vo=drm --pause %s
 
 application/pdf;        evince %s; test=test -n "$DISPLAY" 
-application/pdf;        less %s
+application/pdf;        less %s; needsterminal
