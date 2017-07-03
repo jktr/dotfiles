@@ -8,3 +8,5 @@ image;                  mpv --vo=drm --pause %s
 
 application/pdf;        evince %s; test=test -n "$DISPLAY" 
 application/pdf;        less %s; needsterminal
+
+application;            libreoffice %s; test=test -n "$DISPLAY" # mostly MS Office attachments
