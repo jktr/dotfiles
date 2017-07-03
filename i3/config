@@ -181,7 +181,7 @@
     bindsym Mod1+b exec chromium        ; mode "default"
     bindsym Mod1+m exec vlc             ; mode "default"
 
-    bindsym Ctrl+m exec i3-sensible-terminal -e alsamixer ; mode "default"
+    bindsym Ctrl+m exec i3-sensible-terminal -e pulsemixer ; mode "default"
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
