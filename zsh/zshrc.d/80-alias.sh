@@ -48,6 +48,7 @@ setaliases () {
   alias userctl='systemctl --user'
   alias where='whereis -b'
   alias certview='openssl x509 -text -in'
+  alias mutt="mutt -F $XDG_CONFIG_HOME/mutt/muttrc"
 
   # display dependent
   if [ -n "$DISPLAY" ]; then

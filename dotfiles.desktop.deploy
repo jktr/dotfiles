@@ -11,8 +11,6 @@ home_dots=(
   d .local/share/mpd
   d .local/share/mpd/playlists
   d .mutt
-  @ mutt   .mailcap
-  @ mutt   .mutt/muttrc
   @ nano   .nanorc
   d .ssh
   d .ssh/keys
@@ -33,6 +31,7 @@ dot_conf=(
   @ .       i3
   @ .       i3status
   @ .       mpd
+  @ .       mutt
   @ .       ncmpcpp
   @ .       systemd
   @ .       transmission-remote-cli
