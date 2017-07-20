@@ -15,15 +15,18 @@ Xft.lcdfilter:              lcddefault
 
 ! bell
 URxvt.urgentOnBell:         true
-
-! color
-URxvt.depth:                32
+URxvt.visualBell:           false
 
 ! border
 URxvt.internalBorder:       1
 
+! color
+URxvt.depth:                32
+URxvt.reverseVideo:         true
+
 ! compat
 URxvt.iso14755:             false
+URxvt.iso14755_52:          false
 
 ! cursor
 URxvt.cursorBlink:          true
@@ -33,6 +36,7 @@ URxvt.cursorUnderline:      true
 URxvt.perl-ext-common:      default,matcher
 URxvt.url-launcher:         firefox
 URxvt.matcher.button:       2
+URxvt.print-pipe:           cat > $(TMPDIR=$HOME mktemp urxvt.XXXXXX)
 
 ! font
 URxvt.antialias:            true
@@ -49,16 +53,19 @@ URxvt.scrollStyle:          plain
 URxvt.scrollWithBuffer:     false
 URxvt.scrollBar:            false
 URxvt.secondaryScreen:      true
-URxvt.secondaryScroll:      false
-URxvt.secondaryWheel:       false
+URxvt.secondaryScroll:      true
+URxvt.secondaryWheel:       true
 
 ! scrollback
 URxvt.saveLines:            2000
 
 ! transparency
-URxvt.transparent:          false
-URxvt.shading:              25
+!URxvt.transparent:          false
+!URxvt.shading:              25
 
+! fading
+!URxvt.fading:               20
+!URxvt.fadeColor:            #2B2B2B
 
 !! general color settings
 !!   see urxvt(1) for detailed meanings
