@@ -53,47 +53,56 @@ URxvt.shading:              25
 
 
 !! general color settings
+!!   see urxvt(1) for detailed meanings
 
-*background:               #2b2b2b
-*foreground:               #d8d8d8
+*background:               #a9b7c6
+*foreground:               #2B2B2B
 
-*highlightcolor:           #214283
-*highlighttextcolor:       #d0d0d0
+!*colorBD:
+!*colorIT:
+!*colorUL:
 
-*cursorcolor:              #2b2b2b
-*cursorcolor2:             #d8d8d8
+!*underlineColor:
 
-*pointercolorbackground:   #2b2b2b
-*pointercolorforeground:   #d8d8d8
+!*highlightColor:
+!*highlightTextColor:
+
+*cursorColor:              #708183
+*cursorColor2:             #042028
+
+!*pointerColor:
+!*pointerColor2:
+!*pointerColorBackground:
+!*pointerColorForeground:
 
 ! color: black dark/light
-*color0:                   #2b2b2b
-*color8:                   #424445
+*color0:                   #042028
+*color8:                   #404040
 
 ! color: red dark/light
-*color1:                   #D25252
-*color9:                   #CC7832
+*color1:                   #c60007
+*color9:                   #cc7832
 
 ! color: green dark/light
 *color2:                   #629755
-*color10:                  #CCDF32
+*color10:                  #a6c25c
 
 ! color: yellow dark/light
-*color3:                   #b58900
-*color11:                  #FFC66D
+*color3:                   #fec66c
+*color11:                  #ffff00
 
 ! color: blue dark/light
-*color4:                   #214283
-*color12:                  #79ABFF
+*color4:                   #4e807d
+*color12:                  #6897bb
 
 ! color: magenta dark/light
-*color5:                   #9876AA
-*color13:                  #6c71c4
+*color5:                   #5859b7
+*color13:                  #9876aa
 
 ! color: cyan dark/light
-*color6:                   #6897BB
-*color14:                  #79ABFF
+*color6:                   #259185
+*color14:                  #00ffff
 
 ! color: white dark/light
-*color7:                   #C2C2C2
-*color15:                  #D8D8D8
+*color7:                   #808080
+*color15:                  #a9b7c6
