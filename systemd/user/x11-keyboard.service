@@ -10,14 +10,19 @@ RemainAfterExit=yes
 ExecStartPre=/usr/bin/xset r rate 200 30
 
 # load keymap & options:
-#  grp:switch          - AltGr switches to level2 keymap while held
-#  nbsp:level2         - S-SPC causes non-breaking space
-#  keybpad:pointerkeys - S-NumLock activates mousekeys
-ExecStartPre=/usr/bin/setxkbmap -option
-ExecStart=/usr/bin/setxkbmap -layout us -variant dvp -option nbsp:level2,keypad:pointerkeys
-
-# key modifications
-ExecStartPost=/usr/bin/xmodmap ${XDG_CONFIG_HOME}/X11/Xmodmap
+#  grp:shifts_toggle   - cycle keymaps on pressing both shifts
+#  grp_led:scroll      - scroll lock led on non-primary layout
+#  nbsp:level2         - non-breaking space on S-SPC
+#  keybpad:pointerkeys - toggle mousekeys on S-NumLock
+#  terminate:ctrl_alt_bksp - soft-kill X11
+ExecStart=/usr/bin/setxkbmap -layout 'us,us,de' -variant 'dvp,,' \
+                             -option -option \
+                             compose:menu,\
+                             grp:shifts_toggle,grp_led:scroll,\
+                             nbsp:level2,\
+                             keypad:pointerkeys,\
+                             terminate:ctrl_alt_bksp ;\
+          /usr/bin/xmodmap ${XDG_CONFIG_HOME}/X11/Xmodmap
 
 [Install]
 WantedBy=X11.target
