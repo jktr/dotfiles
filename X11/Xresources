@@ -46,10 +46,14 @@ URxvt.italicFont:           xft:DejaVuSansMono:Oblique:pixelsize=11,xft:unifont:
 
 ! scroll
 URxvt.scrollStyle:          plain
+URxvt.scrollWithBuffer:     false
 URxvt.scrollBar:            false
 URxvt.secondaryScreen:      true
 URxvt.secondaryScroll:      false
 URxvt.secondaryWheel:       false
+
+! scrollback
+URxvt.saveLines:            2000
 
 ! transparency
 URxvt.transparent:          false
