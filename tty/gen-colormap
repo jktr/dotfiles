@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# gen-colormap
+# derives a setvtrgb(8)-compatible colormap from X11/Xresources
+
+xresources=${1:-../X11/Xresources}
+
+for line in {1..3}; do
+    fields="$(( ${line}*2-1))-$(( ${line}*2 ))"
+    grep \*color\[0-9\] "$xresources" \
+        |cut -dr -f2- \
+        |sort -n \
+        |cut -d# -f2 \
+        |cut -c"$fields" \
+        |xargs -L1 -IK printf '%d,' 0xK \
+        |cut -d',' -f1-16
+done

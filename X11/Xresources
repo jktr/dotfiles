@@ -65,13 +65,14 @@ URxvt.saveLines:            2000
 
 ! fading
 !URxvt.fading:               20
-!URxvt.fadeColor:            #2B2B2B
+!URxvt.fadeColor:            #2b2b2b
+
 
 !! general color settings
 !!   see urxvt(1) for detailed meanings
 
 *background:               #a9b7c6
-*foreground:               #2B2B2B
+*foreground:               #2b2b2b
 
 !*colorBD:
 !*colorIT:
@@ -82,8 +83,8 @@ URxvt.saveLines:            2000
 !*highlightColor:
 !*highlightTextColor:
 
-*cursorColor:              #708183
-*cursorColor2:             #042028
+*cursorColor:              #a9b7c6
+*cursorColor2:             #2b2b2b
 
 !*pointerColor:
 !*pointerColor2:
@@ -91,32 +92,32 @@ URxvt.saveLines:            2000
 !*pointerColorForeground:
 
 ! color: black dark/light
-*color0:                   #042028
+*color0:                   #2b2b2b
 *color8:                   #404040
 
 ! color: red dark/light
-*color1:                   #c60007
+*color1:                   #990000
 *color9:                   #cc7832
 
 ! color: green dark/light
 *color2:                   #629755
-*color10:                  #a6c25c
+*color10:                  #a6c255
 
 ! color: yellow dark/light
-*color3:                   #fec66c
-*color11:                  #ffff00
+*color3:                   #aeae80
+*color11:                  #d9c767
 
 ! color: blue dark/light
-*color4:                   #4e807d
-*color12:                  #6897bb
+*color4:                   #3c4c72
+*color12:                  #214283
 
 ! color: magenta dark/light
 *color5:                   #5859b7
 *color13:                  #9876aa
 
 ! color: cyan dark/light
-*color6:                   #259185
-*color14:                  #00ffff
+*color6:                   #318495
+*color14:                  #7ca8c6
 
 ! color: white dark/light
 *color7:                   #808080
