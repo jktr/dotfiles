@@ -27,7 +27,7 @@ export BROWSER='firefox'
 # reverse broken link colors
 # XXX ideally this would hook into the dircolors db
 export LS_COLORS="${LS_COLORS}:\
-di=00;37:\
+di=01;37:\
 ln=00;36:mi=00;31:or=07;36:\
 so=00;35:\
 ex=00;32:\
