@@ -22,6 +22,7 @@ Host *
     Protocol 2
 
     # hosts
+    VisualHostKey  yes
     HashKnownHosts yes
     UpdateHostKeys ask
 
