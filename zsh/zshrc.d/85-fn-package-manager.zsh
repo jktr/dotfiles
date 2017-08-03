@@ -24,16 +24,6 @@ if >/dev/null command -v 'zypper'; then
     )
 elif >/dev/null command -v 'pacman'; then
     _pm=(
-        'if'   'pacman --sync --info'
-        'in'   'sudo pacman --sync'
-        'list' 'pacman --query'
-        'ref'  'sudo pacman --sync --refresh'
-        'rm'   'sudo pacman --remove --nosave --recursive --cascade'
-        'se'  'pacman --sync --search'
-        'up'   'sudo pacman --sync --sysupgrade'
-    )
-elif >/dev/null command -v 'apt'; then
-    _pm=(
         'files' 'pacman --query --list --quiet'
         'if'    'pacman --sync --info'
         'in'    'sudo pacman --sync'
