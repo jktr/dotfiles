@@ -15,50 +15,50 @@ if >/dev/null command -v 'zypper'; then
         'if'   'zypper info'
         'in'   'sudo zypper install'
         'list' 'zypper search'
+        'ref'  'sudo zypper refresh'
         'rm'   'sudo zypper remove'
         'se'   'zypper search'
         'up'   'sudo zypper upgrade'
-        'ref'  'sudo zypper refresh'
     )
 elif >/dev/null command -v 'pacman'; then
     _pm=(
         'if'   'pacman --sync --info'
         'in'   'sudo pacman --sync'
         'list' 'pacman --query'
+        'ref'  'sudo pacman --sync --refresh'
         'rm'   'sudo pacman --remove --nosave --recursive --cascade'
         'se'  'pacman --sync --search'
         'up'   'sudo pacman --sync --sysupgrade'
-        'ref'  'sudo pacman --sync --refresh'
     )
 elif >/dev/null command -v 'apt'; then
     _pm=(
         'if'   'apt show'
         'in'   'sudo apt install'
         'list' 'dpkg --list'
+        'ref'  'sudo apt update'
         'rm'   'apt purge'
         'se'   'apt search'
         'up'   'sudo apt upgrade'
-        'ref'  'sudo apt update'
     )
 elif >/dev/null command -v 'apt-get'; then
     _pm=(
         'if'   'apt-cache show'
         'in'   'sudo apt-get install'
         'list' 'dpkg --list'
+        'ref'  'sudo apt-get update'
         'rm'   'sudo apt-get purge'
         'se'   'apt-cache search'
         'up'   'sudo apt-get dist-upgrade'
-        'ref'  'sudo apt-get update'
     )
 elif >/dev/null command -v 'apk'; then
     _pm=(
         'if'   'apk info'
         'in'   'su - apk add --no-cache'
         'list' 'dpkg --list'
+        'ref'  'su - apk update'
         'rm'   'su - apk del'
         'se'   'apk search'
         'up'   'su - apk upgrade'
-        'ref'  'su - apk update'
     )
 fi
 
