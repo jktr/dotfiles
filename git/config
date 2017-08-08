@@ -15,6 +15,9 @@
 [log]
   date = iso-strict
 
+[transfer]
+  fsckObjects = true
+
 [alias]
   a = add
   ap = add --patch
