@@ -15,6 +15,7 @@ Host *
     # session reuse
     ControlMaster auto
     ControlPath ~/.local/run-user-dir/ssh_%r@%h:%p
+    ControlPersist 300
 
     # session meta
     Compression yes
