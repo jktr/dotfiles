@@ -2,7 +2,7 @@
 
 # retrieves current battery level
 battery_level () {    
-    local -r bat="/sys/class/power_supply/BAT*"
+    local -r bat=/sys/class/power_supply/BAT1
 
     full=$(< "${bat}/charge_full")
     now=$(< "${bat}/charge_now")

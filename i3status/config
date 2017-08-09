@@ -52,12 +52,13 @@ volume 'master' {
     device = 'default'
 }
 
-battery '0' {
+battery '1' {
     format = '%status %remaining (%emptytime %consumption)'
     format_down = 'NOBAT'
     low_threshold = '15'
     threshold_type = 'time' # in minutes
-    
+    path = '/sys/class/power_supply/BAT%d/uevent'
+
     last_full_capacity = 'true'
     hide_seconds = 'true'
 }
