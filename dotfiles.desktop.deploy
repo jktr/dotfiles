@@ -16,6 +16,7 @@ home_dots=(
   d .ssh/keys
   @ ssh    .ssh/config
   @ ssh    .ssh/config.d
+  @ tmux   .tmux.conf
   @ X11    .xserverrc
   @ X11    .xsession
   @ zsh    .zshenv
