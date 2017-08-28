@@ -1,10 +1,10 @@
 ### colors
 
-set my_color_sel        = color2
-set my_color_sel_alt    = color0
-set my_color_err        = color1
-set my_color_sec        = color8
-set my_color_hypermedia = color3
+set my_color_sel        = green
+set my_color_sel_alt    = black
+set my_color_err        = red
+set my_color_sec        = white
+set my_color_hypermedia = yellow
 
 # index
 color indicator   $my_color_sel_alt $my_color_sel
