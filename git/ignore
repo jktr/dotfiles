@@ -7,3 +7,12 @@
 
 # nano
 *.swp
+
+# manual backups
+*.bup
+
+# reasonably common archive formats
+*.zip
+*.rar
+*.tar
+*.tar.*
