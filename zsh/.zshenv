@@ -11,8 +11,11 @@ export XDG_CACHE_HOME="/tmp/.cache-${UID}"
 export XDG_RUNTIME_DIR="/run/user/${UID}"
 
 ## path
-export PATH="${PATH}:/sbin:/usr/sbin" # add sbin for restrictive defaults
-export PATH="${PATH}:${HOME}/bin:${HOME}/develop/bin:${HOME}/games/bin"
+export PATH="\
+/sbin:/bin:\
+/usr/sbin:/usr/bin:\
+/usr/local/sbin:/usr/local/bin:\
+${HOME}/bin:${HOME}/develop/bin:${HOME}/games/bin"
 
 ## universal
 # editor requires some hacks b/c argument expansion with spaces; see: .zlogin
