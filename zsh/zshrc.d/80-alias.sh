@@ -40,6 +40,7 @@ setaliases () {
   # misc (coreutils)
   alias df="df $human_mode_gnu"
   alias cp='cp --reflink=auto'
+  alias dd='dd status=progress'
 
   # misc
   alias dmesg="dmesg $color_mode $human_mode"
