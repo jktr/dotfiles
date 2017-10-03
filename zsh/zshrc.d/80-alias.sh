@@ -42,14 +42,17 @@ setaliases () {
   alias cp='cp --reflink=auto'
   alias dd='dd status=progress'
 
+  # misc (systemd)
+  alias userctl='systemctl --user'
+  alias journalctl='journalctl --reverse'
+
   # misc
+  alias certview='openssl x509 -text -in'
   alias dmesg="dmesg $color_mode $human_mode"
   alias feh='feh --no-fehbg --image-bg black --magick-timeout 1 --draw-filename --draw-exif'
   alias free="free $human_mode"
-  alias userctl='systemctl --user'
-  alias where='whereis -b'
-  alias certview='openssl x509 -text -in'
   alias mutt="mutt -F $XDG_CONFIG_HOME/mutt/muttrc"
+  alias where='whereis -b'
 
   # display dependent
   if [ -n "$DISPLAY" ]; then
