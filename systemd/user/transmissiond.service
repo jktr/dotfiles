@@ -1,5 +1,6 @@
 [Unit]
 Description=Transmission BitTorrent Daemon
+IgnoreOnIsolate=true
 
 [Service]
 Type=notify
