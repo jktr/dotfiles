@@ -36,6 +36,8 @@
   o = checkout
   p = pull
   s = status --short --branch
+  ss = submodule status
+  sp = submodule update --init
 
   autosquash = "!f() { git rebase -i --autosquash "$1^"; }; f"
   fixup = commit --fixup
@@ -44,6 +46,8 @@
     { git --no-pager log --max-count=1 --shortstat --color=always ${1:-HEAD};\
     echo; git --no-pager diff --color=always "${1:-HEAD}^" "${1:-HEAD}"; } \
     | $PAGER -r; }; f"
+
+  hof = "!f() { echo 'Entering /'; git $@; git submodule foreach git $@; }; f"
 
   graph = log --graph --decorate --all --format=format:\
 '%C(yellow)%h%C(reset) %C(red)%aN%C(reset) %C(bold black)(%ar)%C(reset) \
