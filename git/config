@@ -34,7 +34,7 @@
   im = "!f() { git commit -m \"$*\"; }; f"
   l = log --shortstat --summary
   o = checkout
-  p = pull
+  p = pull --rebase
   s = status --short --branch
   ss = submodule status
   sp = submodule update --init
