@@ -47,7 +47,7 @@
     echo; git --no-pager diff --color=always "${1:-HEAD}^" "${1:-HEAD}"; } \
     | $PAGER -r; }; f"
 
-  hof = "!f() { echo 'Entering /'; git $@; git submodule foreach git $@; }; f"
+  map = "!f() { echo 'Entering /'; git $@; git submodule foreach git $@; }; f"
 
   graph = log --graph --decorate --all --format=format:\
 '%C(yellow)%h%C(reset) %C(red)%aN%C(reset) %C(bold black)(%ar)%C(reset) \
