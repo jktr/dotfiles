@@ -18,6 +18,9 @@
 [log]
   date = iso-strict
 
+[submodule]
+  fetchJobs = 0
+
 [transfer]
   fsckObjects = true
 
