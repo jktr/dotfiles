@@ -32,7 +32,9 @@
   bc = checkout -B
   c = clone --depth=1
   d = diff
+  dw = diff --word-diff
   dc = diff --cached
+  dcw = diff --cached --word-diff
   f = fetch
   i = commit
   ia = commit --amend --no-edit
