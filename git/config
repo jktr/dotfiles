@@ -12,6 +12,9 @@
 [diff]
   algorithm = minimal
 
+[fetch]
+  prune = true
+
 [log]
   date = iso-strict
 
