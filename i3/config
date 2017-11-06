@@ -262,7 +262,7 @@
     tray_output    primary
 #    tray_padding   0
 
-    status_command i3status
+    status_command exec i3status
 
     font           pango:DejaVu Sans Mono, Icons 8
 
