@@ -3,49 +3,49 @@
 These are my configuration files for unix-like systems.
 
 
-## Why do this ?
+## Why do this?
 
-I got tired of trying to keep all the configs, the
-workarounds and the dependencies therein, the obscure
-changes, and the experimental features straight.  Then I
-realized that version control is the proper tool for this
-job, and I migrated everyting into this repo.  Now its
-centralized, (relatively) easy to manage, and properly
-versioned. It simply makes sense from a maintainance
-point-of-view.
+Personal configuration files (or dotfiles) tend to only grow in
+complexity as time goes on. In time, a veritable heap of workarounds,
+dependencies, and niceties is accumulated, and changes are made for
+reasons that later become intractible. I got tired of keeping all this
+straight, and manually managing these across systems on which I do
+work became tedious.
+
+Version control brings syncable, commented, and versioned changesets
+to the table; it simply makes sense from a maintainance standpoint.
+
+Maybe you'll get some use out of me publishing this, too.
 
 
 ## Branches and target systems
 
-Not all systems I work with have the same feature sets.
-There are branches for specific systems I work on (or have
-worked on), in case workarounds are needed for that system.
-The usual cause for these workaround is outdated software.
-There's no guarantee that any branches they're even remotely
-up-to-date, though.
-
-| branch          | system   | version |
-| --------------- | -------- | ------- |
-| `archlinux`     | Arch     | latest  |
-| `debian-jessie` | Debian   | testing |
-| `opensuse-42.1` | OpenSuSE | 42.1    |
+Not all of the systems I work with have the same feature sets, usually
+due to outdated software. The main branch is kept clean of conditional
+code, and configured for the latest versions of software when
+possible.  Distro-specific branches serve to collect the changesets
+needed for alternative, or older systems. Still, I make no guarantees
+when it comes to that any branches beside the main one.
 
 
 ## Deployment
 
-I mentioned deployment earlier.  The script `dotdeploy`
-(written in a bout of not-invented-here syndrome) takes care
-of getting the files where they're supposed to be. To do so,
-you must have a definition of the deployment process in a
-file ending in `.deploy`, which is then sourced.
+There's a script called `dotdeploy`, which I wrote in a
+bout of not-invented-here syndrome. It's used to getting these configs
+where they're supposed to be.
 
-See the repo's `.deploy` files and the script for examples
-on the DSL used, and how to extend it yourself.
+You'll want to clone this repo somewhere; I personally use
+~/.dotfiles.  There needs to be a file in a DSL describing deployment
+that ends in .deploy, and which is then processed by the script.
+sourced.
+
+It's not particularly documented, but see the repo's .deploy files and
+the script for an example of how to use this and extend it yourself.
 
 
 ## License
 
-Copyright (C) 2016 mustangflyer
+Copyright (C) 2017 Konrad Tegtmeier
 
 Files in this repository are free software: you can
 redistribute and/or modify them under the terms of the GNU
