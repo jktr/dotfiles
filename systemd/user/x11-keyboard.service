@@ -19,7 +19,6 @@ ExecStart=/usr/bin/setxkbmap -layout 'us,us,de' -variant 'dvp,,' \
                              -option -option \
                              compose:menu,\
                              grp:shifts_toggle,grp_led:scroll,\
-                             nbsp:level2,\
                              keypad:pointerkeys,\
                              terminate:ctrl_alt_bksp ;\
           /usr/bin/xmodmap ${XDG_CONFIG_HOME}/X11/Xmodmap
