@@ -35,7 +35,7 @@
   dw = diff --word-diff
   dc = diff --cached
   dcw = diff --cached --word-diff
-  f = fetch
+  f = fetch --recurse-submodules
   i = commit
   ia = commit --amend --no-edit
   iae = commit --amend
