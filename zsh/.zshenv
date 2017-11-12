@@ -40,7 +40,7 @@ ex=00;32:\
 export LESSOPEN="|/usr/bin/lesspipe.sh %s"
 
 ## other
-export SSH_ASKPASS=''
+export SSH_ASKPASS='/usr/bin/pinentry-curses'
 export READNULLCMD="$PAGER"
 export RXVT_SOCKET="/run/user/${UID}/urxvtd"
 export XINITRC="${XDG_CONFIG_HOME}/X11/xinitrc"

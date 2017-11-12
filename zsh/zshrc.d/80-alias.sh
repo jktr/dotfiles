@@ -33,9 +33,9 @@ setaliases () {
   alias egrep="grep $color_mode_gnu --perl-regexp"
   alias rgrep="grep $color_mode_gnu --recursive --ignore-case"
 
-  # quick and dirty encryption (please use gpg instead…)
-  alias encrypt='openssl enc -aes-256-cbc -base64 -in'
-  alias decrypt='openssl enc -d -aes-256-cbc -a -in'
+  # quick and dirty encryption
+  alias encrypt='gpg --symmetric --cipher-algo AES256 --armor'
+  alias decrypt='gpg --decrypt'
 
   # misc (coreutils)
   alias df="df $human_mode_gnu"

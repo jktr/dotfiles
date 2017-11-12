@@ -3,7 +3,11 @@
 [user]
   name = J. Konrad Tegtmeier-Rottach
   email = jktr@0x16.de
+  signingKey = 0x1BDE5F6203DF5C97
   useConfigOnly = true
+
+[commit]
+#  gpgSign = true
 
 [core]
   autocrlf = input
@@ -17,6 +21,10 @@
 
 [log]
   date = iso-strict
+  #showSignature = true
+
+[push]
+  gpgSign = if-asked
 
 [submodule]
   fetchJobs = 0
@@ -46,6 +54,7 @@
   s = status --short --branch
   ss = submodule status
   sp = submodule update --init
+  v = verify-commit
 
   autosquash = "!f() { git rebase -i --autosquash "$1^"; }; f"
   fixup = commit --fixup
