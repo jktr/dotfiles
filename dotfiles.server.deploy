@@ -1,16 +1,20 @@
 # compound target
-dots=(@ 'home_dots' 'dot_conf')
+server_dots=(@ 'server_home_dots' 'server_dot_conf')
 
-home_dots=(
+server_home_dots=(
   . $HOME
   d .config
+  d .gnupg
+  @ gnupg  .gnupg/gpg.conf
+  @ gnupg  .gnupg/gpg-agent.conf
   @ nano   .nanorc
+  @ tmux   .tmux.conf
   @ zsh    .zshenv
   @ zsh    .zlogin
   @ zsh    .zshrc
 )
 
-dot_conf=(
+server_dot_conf=(
   . $HOME/.config
   @ .       git
   @ .       htop

@@ -1,7 +1,7 @@
 # compound target
-dots=(@ 'home_dots' 'dot_conf' 'dot_emacs')
+desktop_dots=(@ 'desktop_home_dots' 'desktop_dot_conf' 'desktop_dot_emacs')
 
-home_dots=(
+desktop_home_dots=(
   . $HOME
   d .config
   d .emacs.d
@@ -24,7 +24,7 @@ home_dots=(
   @ zsh    .zshrc
 )
 
-dot_conf=(
+desktop_dot_conf=(
   . $HOME/.config
   @ .       dunst
   @ .       git
@@ -42,7 +42,7 @@ dot_conf=(
   @ .       zsh
 )
 
-dot_emacs=(
+desktop_dot_emacs=(
   emacs $HOME/.emacs.d
   @ .  init.el
   @ .  config
