@@ -43,5 +43,6 @@ set send_charset = 'us-ascii:utf-8'
 set fast_reply=yes
 #set edit_headers = yes
 
-## colors
+## external configs
+source "$XDG_CONFIG_HOME/mutt/muttrc.d/gpg"
 source "$XDG_CONFIG_HOME/mutt/muttrc.d/colors"
