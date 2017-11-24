@@ -17,12 +17,12 @@
 #
 #  Tab              launch-mode
 #    b              browser
-#    d              pay for refreshments at the office
 #    e              editor
 #    g              games
 #    i              irc
 #    m              music
 #    p              post/mail
+#    s              system status
 #    t              torrent
 #    Mod1
 #      [bm]         # alternative applications
@@ -166,7 +166,7 @@
 
   ## launch-mode
   # for launching X11 applications
-  set $m_x11launch  "<launch> [b]rowser [d]rinks [e]ditor [g]ames [i]rc [m]usic [p]ost/mail [t]orrent"
+  set $m_x11launch  "<launch> [b]rowser [e]ditor [g]ames [i]rc [m]usic [p]ost/mail [s]tatus [t]orrent"
   mode $m_x11launch {
 
     bindsym b exec firefox              ; mode "default"
@@ -176,6 +176,7 @@
     bindsym i exec i3-sensible-terminal -e irssi   ; mode "default"
     bindsym m exec i3-sensible-terminal -e ncmpcpp ; mode "default"
     bindsym p workspace "12"; exec i3-sensible-terminal -e mutt -F ~/.config/mutt/muttrc ; mode "default"
+    bindsym s exec i3-sensible-terminal -e htop ; mode "default"
     bindsym t exec i3-sensible-terminal -e transmission-remote-cli ; mode "default"
 
     bindsym Mod1+b exec chromium        ; mode "default"
