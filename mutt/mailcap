@@ -1,6 +1,7 @@
 ### .mailcap
-## see RFC1524 for details
+## https://tools.ietf.org/html/rfc1524.html
 
+text/plain;             less %s
 text/html;              w3m -T text/html %s; copiousoutput
 
 image;                  feh %s;  test=test -n "$DISPLAY"
@@ -9,4 +10,8 @@ image;                  mpv --vo=drm --pause %s
 application/pdf;        evince %s; test=test -n "$DISPLAY"
 application/pdf;        less %s; needsterminal
 
-application;            libreoffice %s; test=test -n "$DISPLAY" # mostly MS Office attachments
+application/msword      libreoffice %s; test=test -n "$DISPLAY"
+application/vnd.*       libreoffice %s; test=test -n "$DISPLAY"
+
+application;            emacsclient --create-frame --alternate-editor=emacs %s; test=test -n "$DISPLAY"
+application;            emacsclient --tty --alternate-editor=nano %s; needsterminal
