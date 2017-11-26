@@ -52,6 +52,7 @@
   o = checkout
   p = pull --rebase
   s = status --short --branch
+  si = status --short --branch --ignored
   ss = submodule status
   sp = submodule update --init
   v = verify-commit
