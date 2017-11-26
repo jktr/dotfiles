@@ -3,9 +3,10 @@ Description=Music Player Daemon (socket activation)
 Documentation=man:mpd(1)
 
 [Socket]
-ListenStream=127.0.0.1:6600
+ListenStream=%t/mpd
 SocketMode=0700
 KeepAlive=true
+PassCredentials=true
 
 [Install]
 WantedBy=daemon.target
