@@ -1,10 +1,7 @@
 ### .nanorc
 
-## UI
-
+# ui
 set constantshow
-
-# wrap
 set nowrap
 set softwrap
 
@@ -12,22 +9,16 @@ set softwrap
 set tabsize 4
 set tabstospaces
 
-
-## input
-
-set smooth # scrolling
+# scrolling
+set smooth
 
 # keybinds
 set cut # to end of line with ^K
 set smarthome
 
-
-## extensions
-
+# extensions
 set speller aspell
 
-
-## files
-
+# files
 set locking
 set unix

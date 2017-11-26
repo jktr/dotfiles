@@ -14,7 +14,6 @@ desktop_home_dots=(
   d .local/share/mpd
   d .local/share/mpd/playlists
   d .mutt
-  @ nano   .nanorc
   d .ssh
   d .ssh/keys
   @ ssh    .ssh/config
@@ -36,6 +35,7 @@ desktop_dot_conf=(
   @ .       i3status
   @ .       mpd
   @ .       mutt
+  @ .       nano
   @ .       ncmpcpp
   @ .       systemd
   @ .       transmission-remote-cli

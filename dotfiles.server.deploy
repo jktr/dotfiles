@@ -7,7 +7,6 @@ server_home_dots=(
   d .gnupg
   @ gnupg  .gnupg/gpg.conf
   @ gnupg  .gnupg/gpg-agent.conf
-  @ nano   .nanorc
   @ tmux   .tmux.conf
   @ zsh    .zshenv
   @ zsh    .zlogin
@@ -18,6 +17,7 @@ server_dot_conf=(
   . $HOME/.config
   @ .       git
   @ .       htop
+  @ .       nano
   @ .       systemd
   @ .       xdg
   @ .       zsh
