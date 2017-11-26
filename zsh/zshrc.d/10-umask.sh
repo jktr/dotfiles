@@ -1,3 +1,7 @@
 ### umask.zshrc
 
-umask -S u=rwx,g=,o=
+if [ $UID -eq 0 ]; then
+    umask -S u=rwx,g=rx,o=rx
+else
+    umask -S u=rwx,g=,o=
+fi
