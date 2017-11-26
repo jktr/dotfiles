@@ -39,8 +39,12 @@ ex=00;32:\
 # less preprocessor
 export LESSOPEN="|/usr/bin/lesspipe.sh %s"
 
+## ssh/gpg
+export GPG_TTY="$TTY"
+export SSH_ASKPASS=/usr/bin/pinentry
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
+
 ## other
-export SSH_ASKPASS='/usr/bin/pinentry-curses'
 export READNULLCMD="$PAGER"
 export RXVT_SOCKET="/run/user/${UID}/urxvtd"
 export XINITRC="${XDG_CONFIG_HOME}/X11/xinitrc"
