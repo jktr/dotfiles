@@ -41,7 +41,7 @@ use_console_editor = yes
 
 ## visualization
 
-visualizer_fifo_path = "~/.local/run-user-dir/mpd.fifo"
+visualizer_fifo_path = "~/.local/runtime/mpd.fifo"
 visualizer_output_name = "Visualization FIFO"
 visualizer_sync_interval = "30"
 visualizer_in_stereo = "yes"

@@ -8,8 +8,9 @@ echo -e '#!/bin/sh\nexec emacsclient --tty --alternate-editor=nano $@' > ~/bin/E
 echo -e '#!/bin/sh\nexec emacsclient --create-frame --alternate-editor=emacs $@' > ~/bin/VISUAL
 chmod u=rwx,g=,o= ~/bin/{EDITOR,VISUAL}
 
-# link to /run/user/UID from configs that don't know UID
-ln -sf /run/user/${UID} ~/.local/run-user-dir
+# allow configs to use runtime dir without
+ln -sf "$XDG_RUNTIME_DIR" ~/.local/runtime
+
 
 ## systemd user units
 systemctl --user start daemon.target &!

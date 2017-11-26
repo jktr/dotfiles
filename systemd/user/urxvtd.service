@@ -3,7 +3,7 @@ Description=urxvt daemon
 Documentation=man:urxvtd(1) man:urxvt(1)
 
 [Service]
-Environment='RXVT_SOCKET=/run/user/%U/urxvtd'
+Environment='RXVT_SOCKET=%t/urxvtd'
 ExecStart=/usr/bin/urxvtd
 
 [Install]
