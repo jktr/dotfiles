@@ -52,6 +52,7 @@ setaliases () {
   alias feh='feh --no-fehbg --image-bg black --magick-timeout 1 --draw-filename --draw-exif'
   alias free="free $human_mode"
   alias mutt="mutt -F $XDG_CONFIG_HOME/mutt/muttrc"
+  alias torcurl='curl -x socks5h://localhost:9050'
   alias where='whereis -b'
 
   # display dependent
