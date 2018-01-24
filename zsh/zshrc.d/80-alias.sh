@@ -39,7 +39,7 @@ setaliases () {
 
   # misc (coreutils)
   alias df="df $human_mode_gnu"
-  alias cp='cp --reflink=auto'
+  alias cp='cp --reflink=auto --sparse=auto'
   alias dd='dd status=progress'
 
   # misc (systemd)
