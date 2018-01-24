@@ -25,7 +25,7 @@
 #    s              system status
 #    t              torrent
 #    Mod1
-#      [bm]         # alternative applications
+#      [bmd]         # alternative applications
 #    Ctrl
 #      [m]          # runtime (re)configuration
 #
@@ -156,7 +156,8 @@
 
 ### basic commands
 
-  bindsym $mod+d               exec dmenu_run
+  bindsym $mod+d      exec dmenu_run
+  bindsym $mod+Mod1+d exec passmenu
 
   # ensure that we can alway open a terminal
   bindsym $mod+Return exec i3-sensible-terminal

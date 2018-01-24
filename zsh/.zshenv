@@ -43,6 +43,7 @@ export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
 
 ## other
 export LESSOPEN="|/usr/bin/lesspipe.sh %s"
+export PASSWORD_STORE_X_SELECTION=primary
 export READNULLCMD="$PAGER"
 export RXVT_SOCKET="${XDG_RUNTIME_DIR}/urxvtd"
 export XINITRC="${XDG_CONFIG_HOME}/X11/xinitrc"
