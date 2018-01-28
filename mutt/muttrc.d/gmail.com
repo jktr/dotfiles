@@ -1,4 +1,4 @@
-set my_gmail_secret=`openssl enc -d -aes-256-cbc -a -in ~/.gmail.com.secret`
+set my_gmail_secret=`gpg --decrypt ~/.password-store/imap.gmail.com.gpg 2>/dev/null`
 
 account-hook imaps://imap.gmail.com "\
   set imap_authenticators = login \
