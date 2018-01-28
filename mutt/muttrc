@@ -42,6 +42,7 @@ set forward_format = 'Fwd: %s'
 set send_charset = 'us-ascii:utf-8'
 set fast_reply=yes
 #set edit_headers = yes
+set date_format = '!%a %FT%T%z'
 
 ## external configs
 source "$XDG_CONFIG_HOME/mutt/muttrc.d/gpg"
