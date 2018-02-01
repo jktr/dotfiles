@@ -1,4 +1,4 @@
-### history.zshrc
+### history
 
 setopt APPEND_HISTORY
 setopt HIST_FCNTL_LOCK

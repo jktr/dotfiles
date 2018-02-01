@@ -1,4 +1,4 @@
-### umask.zshrc
+### umask
 
 if [ $UID -eq 0 ]; then
     umask -S u=rwx,g=rx,o=rx

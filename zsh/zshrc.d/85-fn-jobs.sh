@@ -1,6 +1,7 @@
 ### fn-jobs
 
 # prints process environment by pid or process name
+# htop's 'E' can do this, too
 envof () {
     case $1 in
         ''|'-h'|'--help') # no args or help request

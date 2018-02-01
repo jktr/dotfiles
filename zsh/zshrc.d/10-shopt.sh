@@ -1,4 +1,4 @@
-### shopt.zshrc
+### shopt
 
 # globbing
 unsetopt NULL_GLOB

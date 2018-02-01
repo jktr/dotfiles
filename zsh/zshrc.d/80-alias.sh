@@ -1,4 +1,4 @@
-### alias.zshrc
+### alias
 
 setaliases () {
 

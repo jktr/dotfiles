@@ -1,4 +1,4 @@
-### completion.zshrc
+### completion
 
 zstyle ':completion:*' completer _complete _ignored
 zstyle ':completion:*' expand prefix suffix

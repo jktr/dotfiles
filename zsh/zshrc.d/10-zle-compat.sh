@@ -1,4 +1,4 @@
-### zle-compat.zshrc
+### zle-compat
 
 bindkey -e
 typeset -g -A key

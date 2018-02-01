@@ -1,4 +1,4 @@
-### packag-manager.sh
+### package-manager
 
 # This provides higher-level package management
 # by translating some really common operations

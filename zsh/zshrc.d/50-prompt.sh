@@ -1,4 +1,4 @@
-### prompt.zshrc
+### prompt
 
 # parameter expansion, command substitution and arithmetic expansion
 # does not affect command status. 
