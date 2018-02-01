@@ -81,34 +81,6 @@ _prompt_git ()
     fi
 }
 
-# "HH:MM:SS"
-#
-#   branch
-#     red    - diverged from origin
-#     yellow - ahead or behind of origin
-#     green  - up to date with origin
-#     cyan   - no remote exists
-#   commit-sha
-#     red    - only unstaged changes present
-#     yellow - some/all changes staged
-#     green  - default
-#     cyan   - this is a bare repo
-_prompt_time ()
-{
-    local timestamp=$(date +%T)
-
-    case $timestamp in
-        23*|0[0-6]*)
-            timestamp="%F{red}${timestamp}%f"
-            ;;
-        21*|22*|0[7-8]*)
-            timestamp="%F{yellow}${timestamp}%f"
-            ;;
-        *)
-            timestamp="%F{green}${timestamp}%f"
-            ;;
-    esac
-    echo "$timestamp"
 }
 
 
@@ -147,11 +119,14 @@ setprompt () {
     # exit status only if nonzero
     local -r jobs_p="%(1j.%F{cyan}%j%f${_i}.)"
 
+    # HH:MM:SS timestamp
+    local -r timestamp="%F{green}%D{%T}%f"
+
     PS1="${p}${username}${_i_soft}${host}\$(_prompt_git)${_i}${pwd}${s}
 ${prompt_sym} "
 
     PS2="%F{green}%_%f${_i}${prompt_sym}"
 
-    RPROMPT="${p}${nonzero_exit_p}${jobs_p}\$(_prompt_time)${s}"
+    RPROMPT="${p}${nonzero_exit_p}${jobs_p}${timestamp}${s}"
 }
 setprompt
