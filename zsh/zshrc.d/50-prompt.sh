@@ -1,7 +1,7 @@
 ### prompt
 
 # parameter expansion, command substitution and arithmetic expansion
-# does not affect command status. 
+# does not affect command status.
 setopt PROMPT_SUBST
 
 # preserve partial lines
@@ -27,60 +27,60 @@ readonly _i_soft='%F{blue}@%f'
 #     cyan   - this is a bare repo
 _prompt_git ()
 {
-    if [ -n "$(git rev-parse --git-dir 2>/dev/null)" ]; then
+    if [ -z "$(git rev-parse --git-dir 2>/dev/null)" ]; then
+        return # not a git dir
+    fi
 
-        #! XXX: using this here is ~3x faster than `git name-rev --name-only HEAD`
-        local ref="${$(git rev-parse --symbolic-full-name HEAD 2>/dev/null)#refs/heads/}"
-        local sha
+    #! XXX: using this here is ~3x faster than `git name-rev --name-only HEAD`
+    local ref="${$(git rev-parse --symbolic-full-name HEAD 2>/dev/null)#refs/heads/}"
+    local sha
 
-        # check if HEAD does not exist yet
-        if [ "$ref" = 'HEAD' ]; then # if true, then HEAD does NOT exist
-            sha='%F{cyan}initial%f' # use 'initial' instead of $SHA
-            if git rev-parse '@{upstream}' &>/dev/null; then
-                ref='%F{green}master%f'
-            else
-                ref='%F{cyan}master%f'
-            fi
+    # check if HEAD does not exist yet
+    if [ "$ref" = 'HEAD' ]; then # if true, then HEAD does NOT exist
+        sha='%F{cyan}initial%f' # use 'initial' as commit hash
+        if git rev-parse '@{upstream}' &>/dev/null; then
+            ref='%F{green}master%f'
         else
-            # set HEAD's SHA according to staging area's status
-            sha="$(git rev-parse --short HEAD 2>/dev/null)"
-            if "$(git rev-parse --is-bare-repository)" -eq 'true'; then
-                sha="%F{cyan}${sha}%f"
-            elif ! git diff-index --quiet --ignore-submodules --cached HEAD; then
-                sha="%F{yellow}${sha}%f"
-            elif ! git diff-index --quiet --ignore-submodules HEAD; then
-                sha="%F{red}${sha}%f"
-            else
-                sha="%F{green}${sha}%f"
-            fi
+            ref='%F{cyan}master%f'
+        fi
+    else
+        # set HEAD's SHA according to staging area's status
+        sha="$(git rev-parse --short HEAD 2>/dev/null)"
+        if "$(git rev-parse --is-bare-repository)" -eq 'true'; then
+            sha="%F{cyan}${sha}%f"
+        elif ! git diff-index --quiet --ignore-submodules --cached HEAD; then
+            sha="%F{yellow}${sha}%f"
+        elif ! git diff-index --quiet --ignore-submodules HEAD; then
+            sha="%F{red}${sha}%f"
+        else
+            sha="%F{green}${sha}%f"
+        fi
 
-            # set branch status according to (possibly missing) upstream
-            if ! git rev-parse '@{upstream}' &>/dev/null; then
-                ref="%F{cyan}${ref}%f"
-            else
-                local n_ahead="$(git rev-list --count @{upstream}..HEAD)"
-                local n_behind="$(git rev-list --count HEAD..@{upstream})"
+        # set branch status according to (possibly missing) upstream
+        # this only uses local tracking information
+        if ! git rev-parse '@{upstream}' &>/dev/null; then
+            ref="%F{cyan}${ref}%f"
+        else
+            local n_ahead="$(git rev-list --count @{upstream}..HEAD)"
+            local n_behind="$(git rev-list --count HEAD..@{upstream})"
 
-                if [ $n_ahead -eq 0 ]; then
-                    if [ $n_behind -eq 0 ]; then
-                        ref="%F{green}${ref}%f"
-                    else
-                        ref="%F{yellow}${ref}-${n_behind}%f"
-                    fi
+            if [ $n_ahead -eq 0 ]; then
+                if [ $n_behind -eq 0 ]; then
+                    ref="%F{green}${ref}%f"
                 else
-                    if [ $n_behind -eq 0 ]; then
-                        ref="%F{yellow}${ref}+${n_ahead}%f"
-                    else
-                        ref="%F{red}${ref}+${n_ahead}-${n_behind}%f"
-                    fi
+                    ref="%F{yellow}${ref}-${n_behind}%f"
+                fi
+            else
+                if [ $n_behind -eq 0 ]; then
+                    ref="%F{yellow}${ref}+${n_ahead}%f"
+                else
+                    ref="%F{red}${ref}+${n_ahead}-${n_behind}%f"
                 fi
             fi
         fi
-
-        echo "${_i}${ref}${_i_soft}${sha}"
     fi
-}
 
+    echo "${_i}${ref}${_i_soft}${sha}"
 }
 
 
@@ -110,13 +110,14 @@ setprompt () {
         local -r host='%F{green}%m%f'
     fi
 
-    #    local tty='%F{green}%y%f'
-    #    local history_id='%F{green}%!%f'
+    # path
     local -r pwd='%F{green}%~%f'
 
-    # exit status only if nonzero
+    #local history_id='%F{green}%!%f'
+
+    # exit status (if nonzero)
     local -r nonzero_exit_p="%(0?..%F{red}%?%f${_i})"
-    # exit status only if nonzero
+    # bg jobs (if any)
     local -r jobs_p="%(1j.%F{cyan}%j%f${_i}.)"
 
     # HH:MM:SS timestamp
