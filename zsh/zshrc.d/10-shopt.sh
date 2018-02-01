@@ -2,7 +2,7 @@
 
 # globbing
 unsetopt NULL_GLOB
-setopt NO_MATCH
+setopt NOMATCH
 setopt GLOB_STAR_SHORT
 
 # jobs
