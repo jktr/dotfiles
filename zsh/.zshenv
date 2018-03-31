@@ -41,9 +41,12 @@ export GPG_TTY="$TTY"
 export SSH_ASKPASS=/usr/bin/pinentry
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
 
+## pass
+export PASSWORD_STORE_CLIP_TIME=10
+export PASSWORD_STORE_X_SELECTION=primary
+
 ## other
 export LESSOPEN="|/usr/bin/lesspipe.sh %s"
-export PASSWORD_STORE_X_SELECTION=primary
 export READNULLCMD="$PAGER"
 export RXVT_SOCKET="${XDG_RUNTIME_DIR}/urxvtd"
 export XINITRC="${XDG_CONFIG_HOME}/X11/xinitrc"
