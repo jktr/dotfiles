@@ -29,3 +29,23 @@ colortest () {
         done
     done
 }
+
+# submit file/stdin to pastebin, optionally signing it
+paste () {
+    local -r pastebin='https://0x0.st'
+
+    if [ "$1" = '--sign' ]; then
+        local -r filter='gpg --clearsign --output -'
+        shift
+    else
+        local -r filter='cat'
+    fi
+
+    if [ -n "$1" ]; then
+        local -r file="$1"
+    else
+        local -r file='-'
+    fi
+
+    $filter "$file" | curl -F'file=@-' "$pastebin"
+}
