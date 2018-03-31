@@ -47,6 +47,7 @@ setaliases () {
   alias journalctl='journalctl --reverse'
 
   # misc
+  alias cal='cal -3'
   alias cert-view='openssl x509 -text -in'
   alias cert-scrape='openssl s_client -showcerts -prexit -connect </dev/null'
   alias dmesg="dmesg $color_mode $human_mode"
