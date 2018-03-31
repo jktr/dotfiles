@@ -69,7 +69,7 @@
 
   ## colors
   # class                  border   backgr.  text     indica.
-  client.focused           #386941  #386941  #c2c2c2  #3A827A
+  client.focused           #808080  #808080  #c2c2c2  #cc7832
   client.focused_inactive  #444444  #444444  #c2c2c2  #444444
   client.unfocused         #444444  #444444  #c2c2c2  #444444
   client.urgent            #900000  #900000  #c2c2c2  #900000
