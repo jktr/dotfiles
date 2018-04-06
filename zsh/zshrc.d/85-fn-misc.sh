@@ -31,7 +31,7 @@ colortest () {
 }
 
 # submit file/stdin to pastebin, optionally signing it
-paste () {
+pastebin () {
     local -r pastebin='https://0x0.st'
 
     if [ "$1" = '--sign' ]; then
