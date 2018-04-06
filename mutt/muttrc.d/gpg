@@ -1,8 +1,10 @@
 ### gpg
 
 set crypt_use_gpgme = yes
+
 set crypt_autosign  = yes
-set crypt_opportunistic_encrypt = yes
+set crypt_replyencrypt = yes
+set crypt_opportunistic_encrypt = no
 
 set pgp_use_gpg_agent  = yes
 set pgp_sign_as        = 0x1BDE5F6203DF5C97
