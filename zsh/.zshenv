@@ -46,7 +46,7 @@ export PASSWORD_STORE_CLIP_TIME=10
 export PASSWORD_STORE_X_SELECTION=primary
 
 ## other
-export GOPATH="$HOME/develop/.go"
+export GOPATH="$HOME/develop/go"
 export LESSOPEN="|/usr/bin/lesspipe.sh %s"
 export READNULLCMD="$PAGER"
 export RXVT_SOCKET="${XDG_RUNTIME_DIR}/urxvtd"
