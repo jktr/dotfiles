@@ -22,6 +22,18 @@ if >/dev/null command -v 'zypper'; then
         'up'    'sudo zypper upgrade'
         'who'   'zypper search --provides --match-exact'
     )
+elif >/dev/null command -v 'yaourt'; then
+    _pm=(
+        'files' 'pacman --query --list --quiet'
+        'if'    'yaourt --sync --info'
+        'in'    'yaourt --sync'
+        'list'  'pacman --query'
+        'ref'   'yaourt --sync --refresh'
+        'rm'    'sudo pacman --remove --nosave --recursive --cascade'
+        'se'    'yaourt --sync --search'
+        'up'    'yaourt --sync --sysupgrade'
+        'who'   'pacman --query --owns'
+    )
 elif >/dev/null command -v 'pacman'; then
     _pm=(
         'files' 'pacman --query --list --quiet'
