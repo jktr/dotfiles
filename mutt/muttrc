@@ -48,3 +48,4 @@ set date_format = '!%a %FT%T%z'
 ## external configs
 source "$XDG_CONFIG_HOME/mutt/muttrc.d/gpg"
 source "$XDG_CONFIG_HOME/mutt/muttrc.d/colors"
+source "$XDG_CONFIG_HOME/mutt/muttrc.d/neomutt"
