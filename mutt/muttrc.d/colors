@@ -62,4 +62,4 @@ color body       $my_color_hypermedia default \
 
 # hypermedia
 color body       $my_color_hypermedia default \
-                   '([a-zA-Z]+://)?([.+-a-z0-9]+@)?([a-zA-Z][-a-z0-9]+\\.)+(com|net|org|de|io)(/[.?#&=+-a-z0-9]+)*/?'
+                   '([a-zA-Z]+://)?([-.+a-z0-9]+@)?([a-zA-Z][-a-z0-9]+\\.)+(com|net|org|de|io)(/[-.?#&=+a-z0-9]+)*/?'
