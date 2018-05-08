@@ -6,16 +6,16 @@
   # format: ((ctrl|shift|modN)(+(ctrl|shift|mod#))*){0,1}keyname
 
   # Close notification.
-  close     = mod4+o
+  close     = mod4+c
     
   # Close all notifications.
-  close_all = mod4+shift+o
+  close_all = mod4+shift+c
     
   # Show head of history ring
-  history   = mod4+mod1+o
+  history   = mod4+mod1+c
     
   # Open contex dmenu
-  context   = mod4+ctrl+o  
+  context   = mod4+ctrl+c
 
 
 [global]
