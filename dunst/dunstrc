@@ -37,7 +37,7 @@
   word_wrap = yes
     
   # GNOME Pango style
-  allow_markup = yes
+  markup = yes
   
   # long text bounce disabled
   bounce_freq = 0           
@@ -89,8 +89,8 @@
   follow = none             
 
   # (left|right|off)
-  icon_position = off       
-  icon_folders = /usr/share/icons/Adwaita/16x16/status/:/usr/share/icons/Adwaita/16x16/devices/
+  icon_position = off
+  icon_path = /usr/share/icons/Adwaita/16x16/status/:/usr/share/icons/Adwaita/16x16/devices/
 
 
 ### executables
@@ -106,9 +106,8 @@
   # (auto|foreground|frame|literal X11 color)
   separator_color = frame
 
-[frame]
-  width = 3
-  color = "#444444"
+  frame_width = 3
+  frame_color = "#444444"
 
 [urgency_low]
   background = "#000000"
