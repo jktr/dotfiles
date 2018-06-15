@@ -20,15 +20,6 @@ color header     $my_color_sel_alt $my_color_sel '^Subject'
 # gpg
 color body       $my_color_sec default '([A-F0-9]{4} ?){5,10}'
 color body       $my_color_sec default '(0x)?[A-F0-9]{8}'
-color body       $my_color_sec default '^gpg: Good signature.*'
-color body       $my_color_err default '^gpg: BAD signature.*'
-color body       $my_color_err default "^gpg: Can't check signature.*"
-color body       $my_color_sec default '^-----BEGIN PGP SIGNED MESSAGE-----'
-color body       $my_color_sec default '^-----BEGIN PGP SIGNATURE-----'
-color body       $my_color_sec default '^-----END PGP SIGNED MESSAGE-----'
-color body       $my_color_sec default '^-----END PGP SIGNATURE-----'
-color body       $my_color_sec default '^Version: GnuPG.*'
-color body       $my_color_sec default '^Comment: .*'
 
 # quote
 color quoted     $my_color_sel default
