@@ -47,7 +47,7 @@ color body       $my_color_datetime default \
 color body       $my_color_datetime default \
                    '([0-9]{1,2}(\.|st|nd|rd|th))? (Januar|Februar|März|Mai|Juni?|Juli?|Oktober|Dezember|Mär|Okt|Dez)[. ]([0-9]{4})?'
 color body       $my_color_datetime default \
-                   '([Tt]oday|[Tt]omorrow|(Mon|Tues?|Wednes|Thu(rs)?|Fri|Sat(ur)?|Sun)(day)?[ .,])'
+                   '([Tt]oday|[Tt]omorrow|(Mon|Tues?|Wed(nes)?|Thu(rs)?|Fri|Sat(ur)?|Sun)(day)?[ .,])'
 color body       $my_color_datetime default \
                    '([Hh]eute|[Mm]orgen|Mittwoch|Montag|Dienstag|Donnerstag|Freitag|Samstag|Sonntag)'
                    
