@@ -34,6 +34,7 @@ desktop_dot_conf=(
   @ .       i3
   @ .       i3status
   @ .       mpd
+  @ .       mpv
   @ .       mutt
   @ .       nano
   @ .       ncmpcpp
