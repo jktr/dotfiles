@@ -1,9 +1,15 @@
 ### fn-misc
 
-# looks up args via duck duck go
+# looks up args via duckduckgo
 w3d () {
     local -r params="$*"
     w3m 'https://duckduckgo.com/?q='"${params//\ /+}" 
+}
+
+# looks up args via duck duck go, using $1 as bang
+w3b () {
+    local -r params="$*"
+    w3m 'https://duckduckgo.com/?q='!"${params//\ /+}"
 }
 
 # sets up tty color and layout
