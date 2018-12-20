@@ -1,11 +1,8 @@
 ### ssh config
 
-IgnoreUnknown GSSAPIRenewalForcesRekey,UpdateHostKeys
+## includes
 
-
-## includes
-
-Include config.d/*
+Include config.d/*.conf
 
 
 ## defaults
@@ -14,13 +11,12 @@ Host *
 
     # session reuse
     ControlMaster auto
-    ControlPath ~/.local/runtime/ssh_%r@%h:%p
+    ControlPath /run/user/%i/%C.ssh
     ControlPersist 300
 
     # session meta
     Compression yes
     EscapeChar ^~
-    Protocol 2
 
     # hosts
     VisualHostKey  yes
@@ -29,10 +25,8 @@ Host *
 
     # auth
     PasswordAuthentication   no
-    GSSAPIAuthentication     yes
-    GSSAPIRenewalForcesRekey yes
 
-    # ssh keys on per-host basis
+    # ssh keys on per-host basis
     IdentityFile ~/.ssh/keys/%h
 
     # algo (https://wiki.mozilla.org/Security/Guidelines/OpenSSH)
