@@ -67,9 +67,14 @@
 
   map = "!f() { echo 'Entering /'; git $@; git submodule foreach git $@; }; f"
 
-  graph = log --graph --decorate --all --format=format:\
-'%C(yellow)%h%C(reset) %C(red)%aN%C(reset) %C(bold black)(%ar)%C(reset) \
-%C(dim magenta)%d%C(reset)%n%C(white)%s%C(reset)'
+  graph = log --graph --all --format=format:\
+'%C(yellow)%h\
+%C(bold black) %G?%C(reset)\
+%C(blue) %aN\
+%C(bold black) (%ar)%C(reset)\
+%C(green)%d%C(reset)\
+%n\
+%C(white)%s'
 
   uncommit = reset --soft HEAD^
 
