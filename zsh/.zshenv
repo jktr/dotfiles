@@ -12,9 +12,9 @@ export XDG_RUNTIME_DIR="/run/user/${UID}"
 
 ## path
 export PATH="\
-/sbin:/bin:\
-/usr/sbin:/usr/bin:\
-/usr/local/sbin:/usr/local/bin:\
+/usr/bin:/usr/sbin:\
+/bin:/sbin:\
+/usr/local/bin:/usr/local/sbin:\
 ${HOME}/bin:${HOME}/develop/bin:${HOME}/games/bin"
 
 ## universal
