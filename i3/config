@@ -16,19 +16,22 @@
 #    [htns]         move workspace next/prev
 #
 #  Tab              launch-mode
-#    b              browser
-#    e              editor
-#    g              games
-#    i              irc
-#    m              music
-#    p              post/mail
-#    s              system status
-#    t              torrent
-#    v              voice chat
-#    Mod1
-#      [bv]         # alternative applications
-#    Ctrl
-#      [m]          # runtime (re)configuration
+#    a              applications
+#      b            browser
+#      e            editor
+#      g            games
+#      i            irc
+#      l            library (books)
+#      m            music
+#      p            post (email)
+#      s            system status
+#      t            torrent
+#      v            voice chat
+#      Mod1
+#        [bv]       # alternative applications
+#      Ctrl
+#        [m]        # runtime (re)configuration
+#    s              system
 #
 #  u                resize-mode
 #    [htns]         grow/shrink window (large increments)
@@ -166,45 +169,93 @@
 
 ### modes
 
-  ## launch-mode
-  # for launching X11 applications
-  set $m_x11launch  "<launch> [b]rowser [e]ditor [g]ames [i]rc [m]usic [p]ost/mail [s]tatus [t]orrent [v]oice-chat"
-  mode $m_x11launch {
+  ## menu mode
+  set $m_menu "<menu> [l]aunch [s]ystem [u]tils"
+  mode $m_menu {
 
-    bindsym b exec firefox                         ; mode "default"
-    bindsym d exec "~/bin/pay-for-drinks 4"        ; mode "default"
-    bindsym e exec i3-sensible-editor              ; mode "default"
-    bindsym g exec steam-native                    ; mode "default"
-    bindsym i exec i3-sensible-terminal -e irssi   ; mode "default"
-    bindsym m exec i3-sensible-terminal -e ncmpcpp ; mode "default"
-    bindsym p workspace "12"; exec i3-sensible-terminal -e neomutt -F ~/.config/mutt/muttrc ; mode "default"
-    bindsym s exec i3-sensible-terminal -e htop    ; mode "default"
-    bindsym t exec i3-sensible-terminal -e transmission-remote-cli ; mode "default"
-    bindsym v exec mumble                          ; mode "default"
+    bindsym l mode $m_launch
+    bindsym s mode $m_system
+    bindsym u mode $m_utils
 
-    bindsym Mod1+b exec chromium                   ; mode "default"
-    bindsym Mod1+m exec vlc                        ; mode "default"
+    bindsym Return mode default
+    bindsym Escape mode default
+  }
+  bindsym $mod+Tab mode $m_menu
 
-    bindsym Ctrl+m exec i3-sensible-terminal -e pulsemixer ; mode "default"
+  ## launch mode
+  set $m_launch  "<launch> [b]rowser [e]ditor [g]ames [i]rc [l]ibrary [m]usic [p]ost/email [t]orrent [v]oice-chat"
+  mode $m_launch {
 
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+    # applications
+    bindsym b exec firefox                         ; mode default
+    bindsym d exec "~/bin/pay-for-drinks 4"        ; mode default
+    bindsym e exec i3-sensible-editor              ; mode default
+    bindsym g exec steam-native                    ; mode default
+    bindsym i exec i3-sensible-terminal -e irssi   ; mode default
+    bindsym l exec calibre                         ; mode default
+    bindsym m exec i3-sensible-terminal -e ncmpcpp ; mode default
+    bindsym p workspace "12"; exec i3-sensible-terminal -e neomutt -F ~/.config/mutt/muttrc ; mode default
+    bindsym t exec i3-sensible-terminal -e transmission-remote-cli ; mode default
+    bindsym v exec mumble                          ; mode default
+
+    # alternatives
+    bindsym Mod1+b exec chromium                   ; mode default
+    bindsym Mod1+m exec vlc                        ; mode default
+
+    # controls
+    bindsym Ctrl+m exec i3-sensible-terminal -e pulsemixer ; mode default
+
+    bindsym Return mode default
+    bindsym Escape mode $m_menu
   }
 
+  ## system mode
+  set $m_system "<session> [h]top [k]ill [l]ock [p]oweroff [q]uit [r]eboot [s]uspend | 1:restart 2:reload"
+  mode $m_system {
 
-  ## resize-mode
-  # for resizing tiles
-  set $m_resize  "<resize>"
+    # status
+    bindsym h exec i3-sensible-terminal -e htop ; mode default
+
+# system power
+    bindsym r exec "i3-nagbar -t warning -m 'Reboot!?'   -b 'Yes, REBOOT!'   'systemctl reboot'"   ; mode default
+    bindsym p exec "i3-nagbar -t warning -m 'Poweroff!?' -b 'Yes, POWEROFF!' 'systemctl poweroff'" ; mode default
+
+    # locking session
+    bindsym l exec "i3lock --color=000000"                      ; mode default
+    bindsym s exec "i3lock --color=000000 && systemctl suspend" ; mode default
+
+    # kill
+    bindsym k kill ; mode default
+
+    # i3 meta stuff
+    bindsym e exec "i3-nagbar -t warning -m 'Quit i3!?' -b 'Yes, EXIT i3!' 'i3-msg exit; systemctl --user isolate daemon.target'" ; mode default
+    bindsym 1 restart    ; mode default
+    bindsym 2 reload     ; mode default
+
+    bindsym Return mode default
+    bindsym Escape mode $m_menu
+  }
+
+  ## utils mode
+  set $m_utils "<utils>"
+  mode $m_utils {
+
+    bindsym Return mode default
+    bindsym Escape mode $m_menu
+  }
+
+  ## resize
+  set $m_resize  "<rotate & resize>"
   mode $m_resize {
 
     set $resize_s  1
     set $resize_m 10
 
     # medium resize
-    bindsym h resize shrink width  $resize_m px or $resize_m ppt
+    bindsym h resize grow   width  $resize_m px or $resize_m ppt
     bindsym t resize shrink height $resize_m px or $resize_m ppt
     bindsym n resize grow   height $resize_m px or $resize_m ppt
-    bindsym s resize grow   width  $resize_m px or $resize_m ppt
+    bindsym s resize shrink width  $resize_m px or $resize_m ppt
 
     # small resize with Shift
     bindsym Shift+h resize shrink width  $resize_s px or $resize_s ppt
@@ -212,42 +263,16 @@
     bindsym Shift+n resize grow   height $resize_s px or $resize_s ppt
     bindsym Shift+s resize grow   width  $resize_s px or $resize_s ppt
 
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+    # rotate
+    bindsym Ctrl+h exec "xrandr --output LVDS-1 --rotate left"     ; mode default
+    bindsym Ctrl+t exec "xrandr --output LVDS-1 --rotate normal"   ; mode default
+    bindsym Ctrl+n exec "xrandr --output LVDS-1 --rotate inverted" ; mode default
+    bindsym Ctrl+s exec "xrandr --output LVDS-1 --rotate right"    ; mode default
+
+    bindsym Return mode default
+    bindsym Escape mode default
   }
-
-
-  ## session-mode
-  # for meta-actions in the session
-  set $m_session "<session> [k]ill [l]ock [p]oweroff [q]uit [r]eboot [s]uspend | 1:restart 2:reload"
-  mode $m_session {
-
-    # system power
-    bindsym r exec "i3-nagbar -t warning -m 'Reboot!?'   -b 'Yes, REBOOT!'   'systemctl reboot'"   ; mode "default"
-    bindsym p exec "i3-nagbar -t warning -m 'Poweroff!?' -b 'Yes, POWEROFF!' 'systemctl poweroff'" ; mode "default"
-
-    # locking session
-    bindsym l exec "i3lock --color=000000"                       ; mode "default"
-    bindsym s exec "i3lock --color=000000 && systemctl suspend"  ; mode "default"
-
-    # kill
-    bindsym k kill            ; mode "default"
-
-    # i3 meta stuff
-    bindsym e exec "i3-nagbar -t warning -m 'Quit i3!?' -b 'Yes, EXIT i3!' 'i3-msg exit; systemctl --user isolate daemon.target'" ; mode "default"
-    bindsym 1 restart    ; mode "default"
-    bindsym 2 reload     ; mode "default"
-
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-  }
-
-
-  ## mode binds
-  bindsym $mod+i   mode $m_session
-  bindsym $mod+Tab mode $m_x11launch
-  bindsym $mod+u   mode $m_resize
-
+  bindsym $mod+u mode $m_resize
 
 ### options
 
@@ -255,7 +280,7 @@
   popup_during_fullscreen leave_fullscreen
 
 
-### status bar 
+### status bar
 
   bar {
 
