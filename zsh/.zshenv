@@ -17,7 +17,7 @@ export PATH="\
 /usr/local/bin:/usr/local/sbin:\
 ${HOME}/bin:${HOME}/develop/bin:${HOME}/games/bin"
 
-## universal
+## preferred applications
 # editor requires some hacks b/c argument expansion with spaces; see: .zlogin
 export EDITOR="${HOME}/bin/EDITOR"
 export VISUAL="${HOME}/bin/VISUAL"
@@ -45,8 +45,15 @@ export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
 export PASSWORD_STORE_CLIP_TIME=10
 export PASSWORD_STORE_X_SELECTION=primary
 
-## other
+## go
 export GOPATH="$HOME/develop/go"
+export PATH="$PATH:$GOPATH/bin"
+
+## ruby
+export GEM_HOME="$HOME/develop/gems"
+export PATH="$PATH:$GEM_HOME/ruby/latest/bin"
+
+## other
 export LESSOPEN="|/usr/bin/lesspipe.sh %s"
 export READNULLCMD="$PAGER"
 export RXVT_SOCKET="${XDG_RUNTIME_DIR}/urxvtd"
