@@ -27,7 +27,8 @@ readonly _i_soft='%F{blue}@%f'
 #     cyan   - this is a bare repo
 _prompt_git ()
 {
-    if [ -z "$(git rev-parse --git-dir 2>/dev/null)" ]; then
+    local dot_git="$(git rev-parse --git-dir 2>/dev/null)"
+    if [ -z "$dot_git" ]; then
         return # not a git dir
     fi
 
@@ -35,9 +36,8 @@ _prompt_git ()
     local ref="${$(git rev-parse --symbolic-full-name HEAD 2>/dev/null)#refs/heads/}"
     local sha
 
-    # check if HEAD does not exist yet
-    if [ "$ref" = 'HEAD' ]; then # if true, then HEAD does NOT exist
-        sha='%F{cyan}initial%f' # use 'initial' as commit hash
+    if [ "$ref" = 'HEAD' ]; then # no initial commit yet
+        sha='%F{cyan}initial%f'
         if git rev-parse '@{upstream}' &>/dev/null; then
             ref='%F{green}master%f'
         else
@@ -46,11 +46,12 @@ _prompt_git ()
     else
         # set HEAD's SHA according to staging area's status
         sha="$(git rev-parse --short HEAD 2>/dev/null)"
+
         if "$(git rev-parse --is-bare-repository)" -eq 'true'; then
             sha="%F{cyan}${sha}%f"
         elif ! git diff-index --quiet --ignore-submodules --cached HEAD; then
             sha="%F{yellow}${sha}%f"
-        elif ! git diff-index --quiet --ignore-submodules HEAD; then
+        elif ! git -C "$dot_git/.." diff-index --quiet --ignore-submodules HEAD; then
             sha="%F{red}${sha}%f"
         else
             sha="%F{green}${sha}%f"
