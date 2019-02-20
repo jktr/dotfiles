@@ -41,12 +41,12 @@ URxvt.print-pipe:           cat > $(TMPDIR=$HOME mktemp urxvt.XXXXXX)
 ! font
 URxvt.antialias:            true
 URxvt.hinting:              medium
-URxvt.letterSpace:          -1
+URxvt.letterSpace:          -1.8
 URxvt.lineSpace:            1
-URxvt.font:                 xft:DejaVuSansMono:pixelsize=11,xft:unifont:pixelsize=11
-URxvt.boldFont:             xft:DejaVuSansMono:Bold:pixelsize=11,xft:unifont:pixelsize=11
-URxvt.italicFont:           xft:DejaVuSansMono:Oblique:pixelsize=11,xft:unifont:pixelsize=11
-!URxvt.boldItalicFont:       xft:DejaVuSansMono:BoldOblique:pixelsize=11,xft:unifont:pixelsize=11
+URxvt.font:                 xft:DejaVuSansMono:pixelsize=13,xft:unifont:pixelsize=13
+URxvt.boldFont:             xft:DejaVuSansMono:Bold:pixelsize=13,xft:unifont:pixelsize=13
+URxvt.italicFont:           xft:DejaVuSansMono:Oblique:pixelsize=13,xft:unifont:pixelsize=13
+!URxvt.boldItalicFont:       xft:DejaVuSansMono:BoldOblique:pixelsize=13,xft:unifont:pixelsize=13
 
 ! scroll
 URxvt.scrollStyle:          plain
