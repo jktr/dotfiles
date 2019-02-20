@@ -15,7 +15,7 @@ Xft.lcdfilter:              lcddefault
 
 ! bell
 URxvt.urgentOnBell:         true
-URxvt.visualBell:           false
+URxvt.visualBell:           true
 
 ! border
 URxvt.internalBorder:       1
