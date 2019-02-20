@@ -43,8 +43,8 @@ setaliases () {
   alias dd='dd status=progress'
 
   # misc (systemd)
-  alias userctl='systemctl --user'
-  alias journalctl='journalctl --reverse'
+  alias userctl='systemctl --user --lines 0'
+  alias systemctl='systemctl --lines 0'
 
   # misc
   alias cal='cal -3'
