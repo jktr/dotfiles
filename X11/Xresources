@@ -53,7 +53,7 @@ URxvt.scrollStyle:          plain
 URxvt.scrollWithBuffer:     false
 URxvt.scrollBar:            false
 URxvt.secondaryScreen:      true
-URxvt.secondaryScroll:      true
+URxvt.secondaryScroll:      false
 URxvt.secondaryWheel:       true
 
 ! scrollback
