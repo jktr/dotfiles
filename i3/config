@@ -24,7 +24,7 @@
   client.urgent            #900000  #900000  #c2c2c2  #900000
   #client.placeholder       #000000  #000000  #c2c2c2  #000000
   client.background        #000000
-  
+
 
 ### focus binds
 
@@ -204,10 +204,10 @@
     bindsym s resize shrink width  $resize_m px or $resize_m ppt
 
     # small resize with Shift
-    bindsym Shift+h resize shrink width  $resize_s px or $resize_s ppt
+    bindsym Shift+h resize grow   width  $resize_s px or $resize_s ppt
     bindsym Shift+t resize shrink height $resize_s px or $resize_s ppt
     bindsym Shift+n resize grow   height $resize_s px or $resize_s ppt
-    bindsym Shift+s resize grow   width  $resize_s px or $resize_s ppt
+    bindsym Shift+s resize shrink width  $resize_s px or $resize_s ppt
 
     # rotate
     bindsym Ctrl+h exec "xrandr --output LVDS-1 --rotate left"     ; mode default
