@@ -1,60 +1,6 @@
 # i3 config file (v4)
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-### current bindings
-
-# Super
-#  # mundane DE-like actions & modes
-#  [htns]           move focus
-#  a/o              split direction horizontal/vertical
-#  d                dmenu
-#  e                fullscreen
-#  f#               focus workspace
-#  space            focus move layers
-#
-#  Mod1
-#    [htns]         move workspace next/prev
-#
-#  Tab              launch-mode
-#    a              applications
-#      b            browser
-#      e            editor
-#      g            games
-#      i            irc
-#      l            library (books)
-#      m            music
-#      p            post (email)
-#      s            system status
-#      t            torrent
-#      v            voice chat
-#      Mod1
-#        [bv]       # alternative applications
-#      Ctrl
-#        [m]        # runtime (re)configuration
-#    s              system
-#
-#  u                resize-mode
-#    [htns]         grow/shrink window (large increments)
-#    Shift
-#      [htns]       grow/shrink window (small increments)
-#
-#  s                session-mode
-#    k              kill (actually WM_DELETE, else X11 SIGKILL)
-#    l              lock screen
-#    p              poweroff
-#    q              i3 quit
-#    r              reboot
-#    s              lock screen and suspend
-#    1              i3 restart
-#    2              i3 reload config
-#
-#  Shift+           # shift geometry / layout
-#    [htns]         window focused move workspace
-#    fn             window move to other workspace
-#    o              rotate container / normal-mode
-#    a              tabbed-mode
-#    space          window toggle float
-
 
 ### base
 
