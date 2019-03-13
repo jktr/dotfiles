@@ -1,0 +1,18 @@
+### accounts
+
+# ensure credentials aren't leaked accross accounts
+account-hook . "unset imap_user imap_pass"
+
+# all accounts
+#source "$XDG_CONFIG_HOME/mutt/accounts/0x16.de"
+source "$XDG_CONFIG_HOME/mutt/accounts/gmail.com"
+source "$XDG_CONFIG_HOME/mutt/accounts/mail.uni-paderborn.de"
+
+# default account
+set folder = imaps://mail.uni-paderborn.de
+set spoolfile = +INBOX
+
+# mbox keybinds
+#macro index <F2> '<sync-mailbox><change-folder>imaps://mail.0x16.de/<enter>'
+macro index <F3> '<sync-mailbox><change-folder>imaps://imap.gmail.com/<enter>'
+macro index <F4> '<sync-mailbox><change-folder>imaps://mail.uni-paderborn.de/<enter>'

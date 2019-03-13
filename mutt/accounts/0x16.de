@@ -1,22 +1,20 @@
-account-hook imaps://mail.0x16.de "\
-  set imap_authenticators = login \
-      imap_user           = jktr \
-      imap_pass           = ''"
+mailboxes imaps://mail.0x16.de
 
 alternates '@.*(0x16.de|konradtegtmeier.com)'
 
-set folder = imaps://mail.0x16.de
+account-hook imaps://mail.0x16.de "\
+  set imap_authenticators = login \
+      imap_user           = jktr \
+      imap_pass           = '' \
+  "
 
-  mailboxes = +INBOX
-  set spoolfile="+INBOX"
-
-  folder-hook imaps://mail.0x16.de "\
-    set folder      = imaps://mail.0x16.de \
-        spoolfile   = +INBOX \
-        postponed   = +Drafts \
-        record      = +Sent \
-        from        = 'jktr@0x16.de' \
-        realname    = 'J. Konrad Tegtmeier-Rottach' \
-        smtp_url    = smtps://jktr@mail.0x16.de \
-        smtp_authenticators = 'plain' \
-        smtp_pass   = ''"
+folder-hook imaps://mail.0x16.de "\
+  set folder      = imaps://mail.0x16.de \
+      spoolfile   = +INBOX \
+      postponed   = +Drafts \
+      record      = +Sent \
+      from        = jktr@0x16.de \
+      realname    = 'J. Konrad Tegtmeier-Rottach' \
+      smtp_url            = smtps://jktr@mail.0x16.de \
+      smtp_authenticators = plain \
+  "

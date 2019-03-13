@@ -1,17 +1,5 @@
 ### muttrc
 
-## accounts
-
-account-hook . "unset imap_user; unset imap_pass"
-
-source "$XDG_CONFIG_HOME/mutt/accounts/0x16.de"
-source "$XDG_CONFIG_HOME/mutt/accounts/gmail.com"
-source "$XDG_CONFIG_HOME/mutt/accounts/mail.uni-paderborn.de"
-
-macro index <F2> '<sync-mailbox><change-folder>imaps://mail.0x16.de/<enter>'
-macro index <F3> '<sync-mailbox><change-folder>imaps://imap.gmail.com/<enter>'
-macro index <F4> '<sync-mailbox><change-folder>imaps://mail.uni-paderborn.de/<enter>'
-
 ## contacts
 set alias_file     = "$XDG_CONFIG_HOME/mutt/aliases"
 set sort_alias     = alias
@@ -36,6 +24,7 @@ set sleep_time   = 0
 set delete       = yes
 set index_format = '%4C [%Z] %23.23F | %s'
 set folder_format = '%3C %N  %f'
+set browser_abbreviate_mailboxes = no
 unignore List-Archive: X-RSS-URL:
 
 ## outbound
@@ -46,6 +35,7 @@ set fast_reply=yes
 set date_format = '!%a %FT%T%z'
 
 ## external configs
+source "$XDG_CONFIG_HOME/mutt/muttrc.d/accounts"
 source "$XDG_CONFIG_HOME/mutt/muttrc.d/gpg"
 source "$XDG_CONFIG_HOME/mutt/muttrc.d/colors"
 source "$XDG_CONFIG_HOME/mutt/muttrc.d/neomutt"
