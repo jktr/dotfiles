@@ -33,7 +33,7 @@
   font = Monospace 8
   line_height = 0
     
-  alignment = center        
+  alignment = center
   word_wrap = yes
     
   # GNOME Pango style
@@ -71,7 +71,7 @@
 ### geometry
 
   # [{widthPixels}]x{heightInNotifications}[+/-{x}+/-{y}]
-  geometry = "400x5-30+20"  
+  geometry = "490x5-30+20"
   shrink = no
 
   # between notifications, in px
