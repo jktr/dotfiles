@@ -4,9 +4,9 @@
 
 account-hook . "unset imap_user; unset imap_pass"
 
-source "$XDG_CONFIG_HOME/mutt/muttrc.d/mail.0x16.de"
-source "$XDG_CONFIG_HOME/mutt/muttrc.d/gmail.com"
-source "$XDG_CONFIG_HOME/mutt/muttrc.d/mail.upb.de"
+source "$XDG_CONFIG_HOME/mutt/accounts/0x16.de"
+source "$XDG_CONFIG_HOME/mutt/accounts/gmail.com"
+source "$XDG_CONFIG_HOME/mutt/accounts/mail.uni-paderborn.de"
 
 macro index <F2> '<sync-mailbox><change-folder>imaps://mail.0x16.de/<enter>'
 macro index <F3> '<sync-mailbox><change-folder>imaps://imap.gmail.com/<enter>'
