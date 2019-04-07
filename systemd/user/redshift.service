@@ -1,9 +1,10 @@
 [Unit]
 Description=redshift
 Documentation=man:redshift(1)
+PartOf=wayland.target
 
 [Service]
 ExecStart=/usr/bin/redshift
 
 [Install]
-WantedBy=X11.target
+WantedBy=wayland.target

@@ -1,0 +1,10 @@
+## swaylock
+
+# appearance
+color=710B03
+image=~/.wallpaper
+indicator-radius=80
+hide-keyboard-layout
+
+# behaviour
+show-failed-attempts

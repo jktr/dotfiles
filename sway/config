@@ -1,0 +1,125 @@
+### base
+
+  set $mod Mod4
+  set $terminal urxvtc
+
+  exec systemctl --user import-environment DISPLAY
+  exec systemctl --user start wayland.target
+  exec_always /usr/bin/xrdb ~/.config/X11/Xresources
+
+  bindsym $mod+d      exec dmenu_run
+  bindsym $mod+Mod1+d exec passmenu
+
+  # ensure that we can always open a terminal
+  bindsym $mod+Return exec $terminal
+  bindsym $mod+Mod1+Return exec urxvt
+
+
+### include
+
+  include config.d/*.conf
+
+
+### appearance
+
+  ## border
+  default_border pixel 1
+  default_floating_border pixel 1
+
+  ## font
+  font pango:DejaVu Sans Mono 8
+
+  ## colors
+  # class                  border   backgr.  text     indica. child-border
+  client.focused           #808080  #808080  #c2c2c2  #cc7832 #808080
+  client.focused_inactive  #444444  #444444  #c2c2c2  #444444 #444444
+  client.unfocused         #444444  #444444  #c2c2c2  #444444 #444444
+  client.urgent            #900000  #900000  #c2c2c2  #900000 #900000
+
+
+### focus
+
+  focus_follows_mouse yes
+  focus_wrapping no
+
+  ## focus inheritance
+  #bindsym $mod+a focus parent
+  #bindsym $mod+d focus child
+
+  ## focus positional
+  bindsym $mod+h focus left
+  bindsym $mod+t focus up
+  bindsym $mod+n focus down
+  bindsym $mod+s focus right
+
+  ## focus layers
+  bindsym $mod+space focus mode_toggle
+
+
+### layout
+
+  ## split orientation
+  bindsym $mod+a split horizontal
+  bindsym $mod+o split vertical
+
+  ## move focused around
+  bindsym $mod+Shift+h move left
+  bindsym $mod+Shift+t move down
+  bindsym $mod+Shift+n move up
+  bindsym $mod+Shift+s move right
+
+  ## display modes
+  bindsym $mod+Shift+a layout tabbed
+  bindsym $mod+Shift+o layout stacking
+  bindsym $mod+Shift+e layout toggle split
+
+
+### fullscreen
+
+  bindsym $mod+e fullscreen toggle
+  popup_during_fullscreen leave_fullscreen
+
+
+### floating windows
+
+  floating_modifier $mod
+
+  bindsym $mod+i sticky toggle
+  bindsym $mod+Shift+space floating toggle
+
+
+### workspace binds
+
+  ## cycle workspace
+  bindsym $mod+Mod1+h workspace prev_on_output
+  bindsym $mod+Mod1+t workspace next_on_output
+  bindsym $mod+Mod1+n workspace prev
+  bindsym $mod+Mod1+s workspace next
+
+  ## focus workspace
+  bindsym $mod+F1  workspace  1
+  bindsym $mod+F2  workspace  2
+  bindsym $mod+F3  workspace  3
+  bindsym $mod+F4  workspace  4
+  bindsym $mod+F5  workspace  5
+  bindsym $mod+F6  workspace  6
+  bindsym $mod+F7  workspace  7
+  bindsym $mod+F8  workspace  8
+  bindsym $mod+F9  workspace  9
+  bindsym $mod+F10 workspace 10
+  bindsym $mod+F11 workspace 11
+  bindsym $mod+F12 workspace 12
+
+  ## move focused to workspace
+  bindsym $mod+Shift+F1  move container to workspace  1
+  bindsym $mod+Shift+F2  move container to workspace  2
+  bindsym $mod+Shift+F3  move container to workspace  3
+  bindsym $mod+Shift+F4  move container to workspace  4
+  bindsym $mod+Shift+F5  move container to workspace  5
+  bindsym $mod+Shift+F6  move container to workspace  6
+  bindsym $mod+Shift+F7  move container to workspace  7
+  bindsym $mod+Shift+F8  move container to workspace  8
+  bindsym $mod+Shift+F9  move container to workspace  9
+  bindsym $mod+Shift+F10 move container to workspace 10
+  bindsym $mod+Shift+F11 move container to workspace 11
+  bindsym $mod+Shift+F12 move container to workspace 12

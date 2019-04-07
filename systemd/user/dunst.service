@@ -1,9 +1,10 @@
 [Unit]
 Description=graphical notification daemon
 Documentation=man:dunst(1)
+PartOf=wayland.target
 
 [Service]
 ExecStart=/usr/bin/dunst
 
 [Install]
-WantedBy=X11.target
+WantedBy=wayland.target

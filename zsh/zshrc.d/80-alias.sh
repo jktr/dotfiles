@@ -65,7 +65,7 @@ setaliases () {
   # display dependent
   if [ -n "$DISPLAY" ]; then
     alias mpv='mpv --wid=${WINDOWID}'
-    alias lock='i3lock --show-failed-attempts --color=000000'
+    alias lock=swaylock
   else
     alias mpv='mpv --gpu-context=drm'
     alias lock='vlock -a'

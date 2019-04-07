@@ -19,8 +19,6 @@ desktop_home_dots=(
   @ ssh    .ssh/config.d
   @ task   .taskrc
   @ tmux   .tmux.conf
-  @ X11    .xserverrc
-  @ X11    .xsession
   @ zsh    .zshenv
   @ zsh    .zprofile
   @ zsh    .zshrc
@@ -31,7 +29,6 @@ desktop_dot_conf=(
   @ .       dunst
   @ .       git
   @ .       htop
-  @ .       i3
   @ .       i3status
   @ .       mpd
   @ .       mpv
@@ -40,9 +37,9 @@ desktop_dot_conf=(
   @ .       ncmpcpp
   @ .       python
   @ .       systemd
+  @ .       sway
+  @ .       swaylock
   @ .       transmission-remote-cli
-  @ .       tty
-  @ .       X11
   @ .       xdg
   @ .       zsh
 )
