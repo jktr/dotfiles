@@ -13,7 +13,7 @@ set tabstospaces
 set smooth
 
 # keybinds
-set cut # to end of line with ^K
+set cutfromcursor
 set smarthome
 
 # extensions
