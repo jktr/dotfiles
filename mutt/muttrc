@@ -7,7 +7,11 @@ set reverse_alias  = yes
 source $alias_file 
 
 ## net
-set ssl_force_tls = yes
+set ssl_force_tls   = yes
+set ssl_use_sslv3   = no
+set ssl_use_tlsv1   = no
+set ssl_use_tlsv1_1 = no
+set ssl_use_tlsv1_2 = yes
 
 ## imap
 set imap_check_subscribed
