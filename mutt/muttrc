@@ -39,7 +39,5 @@ set fast_reply=yes
 set date_format = '!%a %FT%T%z'
 
 ## external configs
-source "$XDG_CONFIG_HOME/mutt/muttrc.d/accounts"
-source "$XDG_CONFIG_HOME/mutt/muttrc.d/gpg"
-source "$XDG_CONFIG_HOME/mutt/muttrc.d/colors"
-source "$XDG_CONFIG_HOME/mutt/muttrc.d/neomutt"
+# XXX: 'source' command doesn't glob
+`find $XDG_CONFIG_HOME/mutt/muttrc.d/ -type f | xargs -IXXX echo -n 'source "XXX";'`
