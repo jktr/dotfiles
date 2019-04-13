@@ -2,15 +2,12 @@
 
 # ui
 set constantshow
-set nowrap
 set softwrap
 
 # whitespace
 set tabsize 4
 set tabstospaces
-
-# scrolling
-set smooth
+set finalnewline
 
 # keybinds
 set cutfromcursor
@@ -21,4 +18,3 @@ set speller aspell
 
 # files
 set locking
-set unix
