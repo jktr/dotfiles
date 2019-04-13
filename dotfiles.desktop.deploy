@@ -22,7 +22,7 @@ desktop_home_dots=(
   @ X11    .xserverrc
   @ X11    .xsession
   @ zsh    .zshenv
-  @ zsh    .zlogin
+  @ zsh    .zprofile
   @ zsh    .zshrc
 )
 
