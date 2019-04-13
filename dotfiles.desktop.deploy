@@ -8,7 +8,6 @@ desktop_home_dots=(
   d .gnupg
   @ gnupg  .gnupg/gpg.conf
   @ gnupg  .gnupg/gpg-agent.conf
-  @ guile  .guile
   d .lein
   @ leingingen .lein/profiles.clj
   d .local/share/mpd
