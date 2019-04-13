@@ -49,6 +49,7 @@
   iae = commit --amend
   im = "!f() { git commit -m \"$*\"; }; f"
   l = log --shortstat --summary
+  ls = ls-files
   o = checkout
   p = pull --rebase
   s = status --short --branch
