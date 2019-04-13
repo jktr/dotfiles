@@ -13,7 +13,7 @@ set ssl_force_tls = yes
 set imap_check_subscribed
 set timeout      = 60
 set mail_check   = 120
-set header_cache = "$XDG_DATA_HOME/mutt/hcache"
+set header_cache = "`mktemp --directory --tmpdir=$XDG_CACHE_HOME mutt.XXXXXXXXXX`"
 #set message_cachedir =
 
 ## mailbox
