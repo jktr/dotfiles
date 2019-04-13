@@ -13,6 +13,6 @@ set folder = imaps://mail.uni-paderborn.de
 set spoolfile = +INBOX
 
 # mbox keybinds
-#macro index <F2> '<sync-mailbox><change-folder>imaps://mail.0x16.de/<enter>'
+#macro index <F2> '<sync-mailbox><change-folder>imaps://imap.service.0x16.de/<enter>'
 macro index <F3> '<sync-mailbox><change-folder>imaps://imap.gmail.com/<enter>'
 macro index <F4> '<sync-mailbox><change-folder>imaps://mail.uni-paderborn.de/<enter>'
