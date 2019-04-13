@@ -18,9 +18,8 @@ export PATH="\
 ${HOME}/bin:${HOME}/develop/bin:${HOME}/games/bin"
 
 ## preferred applications
-# editor requires some hacks b/c argument expansion with spaces; see: .zlogin
-export EDITOR="${HOME}/bin/EDITOR"
-export VISUAL="${HOME}/bin/VISUAL"
+export EDITOR='emacsclient --alternate-editor=nano  --tty'
+export VISUAL='emacsclient --alternate-editor=emacs --create-frame'
 export PAGER='less'
 export TERMINAL='urxvtc'
 export BROWSER='firefox'
