@@ -27,15 +27,12 @@
 
 ;; init
 
-(ensure-config-dirs
- "~/.emacs.d/config"
- "~/.emacs.d/config-site")
+(ensure-config-dirs "~/.emacs.d/config")
 
 (ensure-repos
  '("melpa-stable" . "http://stable.melpa.org/packages/")
  '("marmalade"    . "http://marmalade-repo.org/packages/")
 )
 
-(ensure-package-dirs
- "~/.emacs.d/config-pkg")
+(ensure-package-dirs "~/.emacs.d/config-pkg")
 

@@ -51,5 +51,4 @@ desktop_dot_emacs=(
   @ .  init.el
   @ .  config
   @ .  config-pkg
-  @ .  config-site
 )

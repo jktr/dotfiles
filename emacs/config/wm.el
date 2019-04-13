@@ -12,16 +12,16 @@
 ;(setq pop-up-frames 'graphic-only)
 
 ;; move between windows
-(global-set-key (kbd "C-c h") 'windmove-left)
-(global-set-key (kbd "C-c j") 'windmove-down)
-(global-set-key (kbd "C-c k") 'windmove-up)
-(global-set-key (kbd "C-c l") 'windmove-right)
+;(global-set-key (kbd "C-c h") 'windmove-left)
+;(global-set-key (kbd "C-c j") 'windmove-down)
+;(global-set-key (kbd "C-c k") 'windmove-up)
+;(global-set-key (kbd "C-c l") 'windmove-right)
 
 ;; resize windows
-(global-set-key (kbd "C-c C-h") 'shrink-window-horizontally)
-(global-set-key (kbd "C-c C-j") 'shrink-window)
-(global-set-key (kbd "C-c C-k") 'enlarge-window)
-(global-set-key (kbd "C-c C-l") 'enlarge-window-horizontally)
+;(global-set-key (kbd "C-c C-h") 'shrink-window-horizontally)
+;(global-set-key (kbd "C-c C-j") 'shrink-window)
+;(global-set-key (kbd "C-c C-k") 'enlarge-window)
+;(global-set-key (kbd "C-c C-l") 'enlarge-window-horizontally)
 
 ;; disable suspend keybind
 ;;   * next to massively overloaded C-x
