@@ -12,7 +12,6 @@ desktop_home_dots=(
   @ leingingen .lein/profiles.clj
   d .local/share/mpd
   d .local/share/mpd/playlists
-  d .mutt
   d .ssh
   d .ssh/keys
   @ ssh    .ssh/config

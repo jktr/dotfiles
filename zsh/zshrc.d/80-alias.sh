@@ -56,7 +56,7 @@ setaliases () {
   alias dmesg="dmesg $color_mode $human_mode"
   alias feh='feh --no-fehbg --image-bg black --conversion-timeout 1 --draw-filename --draw-exif'
   alias free="free $human_mode"
-  alias mutt="neomutt -F $XDG_CONFIG_HOME/mutt/muttrc"
+  alias mutt=neomutt
   alias torcurl='curl -x socks5h://localhost:9050'
 
   # display dependent

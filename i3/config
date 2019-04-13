@@ -174,7 +174,7 @@
     bindsym i exec i3-sensible-terminal -e irssi   ; mode default
     bindsym l exec calibre                         ; mode default
     bindsym m exec i3-sensible-terminal -e ncmpcpp ; mode default
-    bindsym p workspace "12"; exec i3-sensible-terminal -e neomutt -F ~/.config/mutt/muttrc ; mode default
+    bindsym p workspace "12"; exec i3-sensible-terminal -e neomutt ; mode default
     bindsym t exec i3-sensible-terminal -e transmission-remote-cli ; mode default
     bindsym v exec mumble                          ; mode default
 
