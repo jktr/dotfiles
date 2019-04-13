@@ -18,8 +18,8 @@ export PATH="\
 ${HOME}/bin:${HOME}/develop/bin:${HOME}/games/bin"
 
 ## preferred applications
-export EDITOR='emacsclient --alternate-editor=nano  --tty'
-export VISUAL='emacsclient --alternate-editor=emacs --create-frame'
+export EDITOR='emacsclient --alternate-editor=nano --tty'
+export VISUAL='emacsclient --alternate-editor=nano --tty'
 export PAGER='less'
 export TERMINAL='urxvtc'
 export BROWSER='firefox'

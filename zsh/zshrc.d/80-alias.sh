@@ -46,6 +46,10 @@ setaliases () {
   alias userctl='systemctl --user --lines 0'
   alias systemctl='systemctl --lines 0'
 
+  # misc (emacs)
+  alias vemacs='emacsclient --create-frame --no-wait --alternate-editor=emacs'
+  alias emacs='emacsclient --tty --alternate-editor=nano'
+
   # misc
   alias cert-view='openssl x509 -text -in'
   alias cert-scrape='openssl s_client -showcerts -prexit -connect </dev/null'
@@ -57,11 +61,9 @@ setaliases () {
 
   # display dependent
   if [ -n "$DISPLAY" ]; then
-    alias emacs='emacsclient --create-frame --no-wait --alternate-editor=emacs'
     alias mpv='mpv --wid=${WINDOWID}'
     alias lock='i3lock --show-failed-attempts --color=000000'
   else
-    alias emacs='emacsclient --tty --alternate-editor=nano'
     alias mpv='mpv --vo=drm'
     alias lock='vlock -a'
   fi
