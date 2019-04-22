@@ -30,8 +30,8 @@
 (ensure-config-dirs "~/.emacs.d/config")
 
 (ensure-repos
- '("melpa-stable" . "http://stable.melpa.org/packages/")
- '("marmalade"    . "http://marmalade-repo.org/packages/")
+ '("melpa-stable" . "https://stable.melpa.org/packages/")
+; '("marmalade"    . "https://marmalade-repo.org/packages/")
 )
 
 (ensure-package-dirs "~/.emacs.d/config-pkg")
