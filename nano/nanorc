@@ -7,7 +7,6 @@ set softwrap
 # whitespace
 set tabsize 4
 set tabstospaces
-set finalnewline
 
 # keybinds
 set cutfromcursor
