@@ -26,6 +26,7 @@ set sort         = threads
 set sort_aux     = last-date-received
 set sleep_time   = 0
 set delete       = yes
+set flag_safe    = yes
 set index_format = '%4C [%Z] %23.23F | %s'
 set folder_format = '%3C %N  %f'
 set browser_abbreviate_mailboxes = no

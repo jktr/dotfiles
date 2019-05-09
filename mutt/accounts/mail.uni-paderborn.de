@@ -15,6 +15,7 @@ folder-hook imaps://mail.uni-paderborn.de "\
       spoolfile   = +INBOX \
       postponed   = +Drafts \
       record      = +Sent \
+      trash       = +Trash \
       from        = jktr@mail.uni-paderborn.de \
       realname    = 'J. Konrad Tegtmeier-Rottach' \
       smtp_url            = smtps://jktr@mail.uni-paderborn.de \

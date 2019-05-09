@@ -14,6 +14,7 @@ folder-hook imaps://imap.gmail.com "\
       spoolfile   = +INBOX \
       postponed   = +[Gmail]/Drafts \
       record      = +[Gmail]/'Sent Mail' \
+      trash       = +[Gmail]/'Trash' \
       from        = konrad.tegtmeier@gmail.com \
       realname    = 'J. Konrad Tegtmeier-Rottach' \
       smtp_url            = smtps://konrad.tegtmeier@smtp.gmail.com \

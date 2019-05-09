@@ -13,6 +13,7 @@ folder-hook imaps://imap.service.0x16.de "\
       spoolfile   = +INBOX \
       postponed   = +Drafts \
       record      = +Sent \
+      trash       = +Trash \
       from        = jktr@0x16.de \
       realname    = 'J. Konrad Tegtmeier-Rottach' \
       smtp_url            = smtps://jktr@smtp.service.0x16.de \
