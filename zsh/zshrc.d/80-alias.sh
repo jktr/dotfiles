@@ -8,7 +8,7 @@ setaliases () {
   local human_mode_gnu='--human-readable'
 
   # tree
-  alias   t='tree'
+  alias   t='tree -a'
   alias  tt='tree -d'
   alias ttt='tree -dL 2'
 
