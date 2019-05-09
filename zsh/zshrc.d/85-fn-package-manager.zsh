@@ -83,11 +83,13 @@ elif >/dev/null command -v 'apk'; then
         'who'   'apk info --who-owns'
     )
 fi
-
-_pm['usage']='echo usage: pm [CMD [ARGS]]'
             
 # runs command from look-up table
 pm () {
-    echo \$ ${_pm[${@[1]:-'usage'}]} ${@: 2}
-    ${_pm[${@[1]:-'usage'}]} ${@: 2}
+    local cmd="${_pm[${@[1]}]:-help} ${@: 2}"
+    echo "\$ $cmd"
+    case "$cmd" in
+        help*) echo "commands: ${(kzo)_pm}" ;;
+        *) $cmd ;;
+    esac
 }
