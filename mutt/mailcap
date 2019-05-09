@@ -13,5 +13,5 @@ application/pdf;        less %s; needsterminal
 application/msword      libreoffice %s; test=test -n "$DISPLAY"
 application/vnd.*       libreoffice %s; test=test -n "$DISPLAY"
 
-application;            emacsclient --create-frame --alternate-editor=emacs %s; test=test -n "$DISPLAY"
-application;            emacsclient --tty --alternate-editor=nano %s; needsterminal
+application;            $VISUAL %s; test=test -n "$DISPLAY"
+application;            $EDITOR %s; needsterminal
