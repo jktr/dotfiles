@@ -5,7 +5,7 @@ text/plain;             less %s
 text/html;              w3m -T text/html %s; copiousoutput
 
 image;                  feh %s;  test=test -n "$DISPLAY"
-image;                  mpv --vo=drm --pause %s
+image;                  mpv --gpu-context=drm --pause %s
 
 application/pdf;        evince %s; test=test -n "$DISPLAY"
 application/pdf;        less %s; needsterminal

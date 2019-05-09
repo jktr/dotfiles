@@ -65,7 +65,7 @@ setaliases () {
     alias mpv='mpv --wid=${WINDOWID}'
     alias lock='i3lock --show-failed-attempts --color=000000'
   else
-    alias mpv='mpv --vo=drm'
+    alias mpv='mpv --gpu-context=drm'
     alias lock='vlock -a'
   fi
 }
