@@ -1,0 +1,9 @@
+[Unit]
+Description=Load TTY keymap tweaks
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/loadkeys /etc/vkeymap.conf
+
+[Install]
+WantedBy=getty.target
