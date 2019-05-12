@@ -8,7 +8,6 @@ export LC_MESSAGES=C # unexpected, non-universal translations make for bad UX
 export XDG_DATA_HOME="${HOME}/.local/share"
 export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_CACHE_HOME="/tmp/.cache-${UID}"
-export XDG_RUNTIME_DIR="/run/user/${UID}"
 
 ## path
 export PATH="\
