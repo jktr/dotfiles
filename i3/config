@@ -168,7 +168,6 @@
 
     # applications
     bindsym b exec firefox                         ; mode default
-    bindsym d exec "~/bin/pay-for-drinks 4"        ; mode default
     bindsym e exec i3-sensible-editor              ; mode default
     bindsym g exec steam-native                    ; mode default
     bindsym i exec i3-sensible-terminal -e irssi   ; mode default
