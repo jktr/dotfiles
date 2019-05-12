@@ -93,32 +93,32 @@ URxvt.saveLines:            2000
 
 ! color: black dark/light
 *color0:                   #2b2b2b
-*color8:                   #404040
+*color8:                   #444440
 
 ! color: red dark/light
-*color1:                   #990000
-*color9:                   #cc7832
+*color1:                   #c03030
+*color9:                   #b86842
 
 ! color: green dark/light
 *color2:                   #629755
 *color10:                  #a6c255
 
 ! color: yellow dark/light
-*color3:                   #aeae80
+*color3:                   #a8a878
 *color11:                  #d9c767
 
 ! color: blue dark/light
-*color4:                   #3c4c72
-*color12:                  #214283
+*color4:                   #3c4c62
+*color12:                  #305088
 
 ! color: magenta dark/light
-*color5:                   #5859b7
+*color5:                   #6b5070
 *color13:                  #9876aa
 
 ! color: cyan dark/light
-*color6:                   #318495
+*color6:                   #317475
 *color14:                  #7ca8c6
 
 ! color: white dark/light
-*color7:                   #808080
+*color7:                   #808890
 *color15:                  #a9b7c6
