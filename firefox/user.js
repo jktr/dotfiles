@@ -19,3 +19,6 @@ user_pref("font.name.serif.x-western", "sans-serif");
 user_pref("general.warnOnAboutConfig", false); // I'll be careful; I promise!
 user_pref("middlemouse.contentLoadURL", false); // X11 PRIMARY Selection
 user_pref("reader.parse-on-load.enabled", false);
+
+// theming
+user_pref("ui.systemUsesDarkTheme", 1);
