@@ -58,6 +58,7 @@ setaliases () {
   alias free="free $human_mode"
   alias mutt=neomutt
   alias nmtui='nmtui connect'
+  alias ss='ss --numeric'
   alias torcurl='curl -x socks5h://localhost:9050'
 
   # display dependent
