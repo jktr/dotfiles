@@ -52,6 +52,7 @@ export GEM_HOME="$HOME/develop/gems"
 export PATH="$PATH:$GEM_HOME/ruby/latest/bin"
 
 ## other
+export IDF_PATH="$HOME/develop/esp/esp-idf"
 export LESSOPEN="|/usr/bin/lesspipe.sh %s"
 export READNULLCMD="$PAGER"
 export RXVT_SOCKET="${XDG_RUNTIME_DIR}/urxvtd"
