@@ -87,9 +87,9 @@ fi
 # runs command from look-up table
 pm () {
     local cmd="${_pm[${@[1]}]:-help} ${@: 2}"
-    echo "\$ $cmd"
+    >&2 echo "\$ $cmd"
     case "$cmd" in
         help*) echo "commands: ${(kzo)_pm}" ;;
-        *) $cmd ;;
+        *) ${=cmd} ;;
     esac
 }
