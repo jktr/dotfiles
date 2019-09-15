@@ -1,0 +1,18 @@
+## taskrc
+
+data.location=~/.local/share/task
+
+# themes
+include ~/.dotfiles/task/dark-gray-256.theme
+
+# defaults
+default.due=eoww
+default.command=next
+
+# urgency
+urgency.annotations.coefficient=.0
+
+# misc
+report.next.sort=due+,urgency-
+report.list.sort=due+,urgency-
+dateformat=Y-M-D
