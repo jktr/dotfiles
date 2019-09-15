@@ -38,6 +38,7 @@ desktop_dot_conf=(
   @ .       mutt
   @ .       nano
   @ .       ncmpcpp
+  @ .       python
   @ .       systemd
   @ .       transmission-remote-cli
   @ .       tty

@@ -43,13 +43,15 @@ export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
 export PASSWORD_STORE_CLIP_TIME=10
 export PASSWORD_STORE_X_SELECTION=primary
 
-## go
+## development
+# go
 export GOPATH="$HOME/develop/go"
 export PATH="$PATH:$GOPATH/bin"
-
-## ruby
+# ruby
 export GEM_HOME="$HOME/develop/gems"
 export PATH="$PATH:$GEM_HOME/ruby/latest/bin"
+# python
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"
 
 ## other
 export IDF_PATH="$HOME/develop/esp/esp-idf"
