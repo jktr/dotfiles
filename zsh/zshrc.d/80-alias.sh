@@ -57,6 +57,7 @@ setaliases () {
   alias dmesg="dmesg $color_mode $human_mode"
   alias feh='feh --no-fehbg --image-bg black --conversion-timeout 1 --draw-filename --draw-exif'
   alias free="free $human_mode"
+  alias icat='kitty +kitten icat'
   alias mutt=neomutt
   alias nmtui='nmtui connect'
   alias ss='ss --numeric'

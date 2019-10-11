@@ -10,64 +10,6 @@ Xft.hintstyle:              hintfull
 Xft.autohint:               true
 Xft.lcdfilter:              lcddefault
 
-
-!! URXVT settings (partial compat with xterm)
-
-! bell
-URxvt.urgentOnBell:         true
-URxvt.visualBell:           true
-
-! border
-URxvt.internalBorder:       1
-
-! color
-URxvt.depth:                32
-URxvt.reverseVideo:         false
-
-! compat
-URxvt.iso14755:             false
-URxvt.iso14755_52:          false
-
-! cursor
-URxvt.cursorBlink:          true
-URxvt.cursorUnderline:      true
-
-! ext
-URxvt.perl-ext-common:      default,matcher
-URxvt.url-launcher:         firefox
-URxvt.matcher.button:       2
-URxvt.print-pipe:           cat > $(TMPDIR=$HOME mktemp urxvt.XXXXXX)
-
-! font
-URxvt.antialias:            true
-URxvt.hinting:              medium
-URxvt.letterSpace:          -1.8
-URxvt.lineSpace:            1
-URxvt.font:                 xft:DejaVuSansMono:pixelsize=14,xft:unifont:pixelsize=14
-URxvt.boldFont:             xft:DejaVuSansMono:Bold:pixelsize=14,xft:unifont:pixelsize=14
-URxvt.italicFont:           xft:DejaVuSansMono:Oblique:pixelsize=14,xft:unifont:pixelsize=14
-!URxvt.boldItalicFont:       xft:DejaVuSansMono:BoldOblique:pixelsize=14,xft:unifont:pixelsize=14
-
-! scroll
-URxvt.scrollStyle:          plain
-URxvt.scrollWithBuffer:     false
-URxvt.scrollBar:            false
-URxvt.secondaryScreen:      true
-URxvt.secondaryScroll:      false
-URxvt.secondaryWheel:       true
-
-! scrollback
-URxvt.saveLines:            2000
-
-! transparency
-!URxvt.transparent:          false
-!URxvt.shading:              25
-
-! fading
-!URxvt.fading:               20
-!URxvt.fadeColor:            #2b2b2b
-
-
 !! general color settings
 !!   see urxvt(1) for detailed meanings
 

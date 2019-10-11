@@ -20,7 +20,7 @@ ${HOME}/bin:${HOME}/develop/bin:${HOME}/games/bin"
 export EDITOR='emacsclient --alternate-editor=nano --tty'
 export VISUAL='emacsclient --alternate-editor=nano --tty'
 export PAGER='less'
-export TERMINAL='urxvtc'
+export TERMINAL='kitty -1'
 export BROWSER='firefox'
 
 ## ls colors

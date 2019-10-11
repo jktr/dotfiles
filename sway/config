@@ -1,7 +1,7 @@
 ### base
 
   set $mod Mod4
-  set $terminal urxvtc
+  set $terminal kitty --single-instance
 
   exec systemctl --user import-environment DISPLAY
   exec systemctl --user start wayland.target
@@ -11,9 +11,8 @@
   bindsym $mod+Mod1+d exec passmenu
 
   # ensure that we can always open a terminal
-  bindsym $mod+Return exec $terminal
-  bindsym $mod+Mod1+Return exec urxvt
-
+  bindsym $mod+Return      exec $terminal
+  bindsym $mod+Mod1+Return exec kitty
 
 ### include
 
