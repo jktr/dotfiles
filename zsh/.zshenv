@@ -21,7 +21,11 @@ export EDITOR='emacsclient --alternate-editor=nano --tty'
 export VISUAL='emacsclient --alternate-editor=nano --tty'
 export PAGER='less'
 export TERMINAL='kitty -1'
-export BROWSER='firefox'
+if [ -n "$WAYLAND_DISPLAY" ]; then
+  export BROWSER='firefox'
+else
+  export BROWSER='w3m'
+fi
 
 ## ls colors
 # prefer muted colors
