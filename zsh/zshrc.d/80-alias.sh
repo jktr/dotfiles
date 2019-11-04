@@ -58,6 +58,7 @@ setaliases () {
   alias feh='feh --no-fehbg --image-bg black --conversion-timeout 1 --draw-filename --draw-exif'
   alias free="free $human_mode"
   alias icat='kitty +kitten icat'
+  alias irssi='irssi --config=<(sed "$(grep "PASSWORD_MANAGER" $XDG_CONFIG_HOME/irssi/config|cut -d\" -f2|cut -d":" -f2|xargs -IXXX sh -c '\''echo s\|PASSWORD_MANAGER:XXX\|$(pass XXX|head -1)\|'\'' |tr "\n" ";")" $XDG_CONFIG_HOME/irssi/config) --home $XDG_DATA_HOME/irssi/'
   alias mutt=neomutt
   alias nmtui='nmtui connect'
   alias ss='ss --numeric'

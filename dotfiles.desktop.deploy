@@ -30,6 +30,7 @@ desktop_dot_conf=(
   @ .       git
   @ .       htop
   @ .       i3status
+  @ .       irssi
   @ .       kitty
   @ .       mpd
   @ .       mpv
