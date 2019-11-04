@@ -10,8 +10,6 @@ desktop_home_dots=(
   @ gnupg  .gnupg/gpg-agent.conf
   d .lein
   @ leingingen .lein/profiles.clj
-  d .local/share/mpd
-  d .local/share/mpd/playlists
   @ mutt   .urlview
   d .ssh
   d .ssh/keys
@@ -32,7 +30,6 @@ desktop_dot_conf=(
   @ .       i3status
   @ .       irssi
   @ .       kitty
-  @ .       mpd
   @ .       mpv
   @ .       mutt
   @ .       nano
