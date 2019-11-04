@@ -10,7 +10,7 @@ export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_CACHE_HOME="/tmp/.cache-${UID}"
 
 ## path
-export PATH="\
+export PATH="${PATH}:\
 /usr/bin:/usr/sbin:\
 /bin:/sbin:\
 /usr/local/bin:/usr/local/sbin:\
