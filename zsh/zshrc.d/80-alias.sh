@@ -14,11 +14,12 @@ setaliases () {
 
   # ls
   local ls_opts="$color_mode $human_mode_gnu \
---classify --group-directories-first --dereference-command-line --time-style='+%y-%m-%d %R'"
+--classify --group-directories-first \
+--time-style='+%y-%m-%d %R'"
 
-  alias  ls="ls $ls_opts"
-  alias  ll="ls $ls_opts -l"
-  alias lll="ls $ls_opts -l *"
+  alias  ls="ls $ls_opts --ignore-backups"
+  alias  ll="ls $ls_opts -l --ignore-backups"
+  alias lll="ls $ls_opts -l --ignore-backups *"
   alias  la="ls $ls_opts    --almost-all"
   alias lla="ls $ls_opts -l --almost-all"
 
