@@ -40,7 +40,6 @@ ex=00;32:\
 
 ## ssh/gpg
 export GPG_TTY="$TTY"
-export SSH_ASKPASS=/usr/bin/pinentry
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
 
 ## pass

@@ -7,7 +7,6 @@ desktop_home_dots=(
   d .emacs.d
   d .gnupg
   @ gnupg  .gnupg/gpg.conf
-  @ gnupg  .gnupg/gpg-agent.conf
   d .lein
   @ leingingen .lein/profiles.clj
   @ mutt   .urlview
