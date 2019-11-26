@@ -55,6 +55,7 @@ setaliases () {
   alias cert-view='openssl x509 -text -in'
   alias cert-scrape='openssl s_client -showcerts -prexit -connect </dev/null'
   alias dmesg="dmesg $color_mode $human_mode"
+  alias env='env|sort'
   alias feh='feh --no-fehbg --image-bg black --conversion-timeout 1 --draw-filename --draw-exif'
   alias free="free $human_mode"
   alias icat='kitty +kitten icat'
