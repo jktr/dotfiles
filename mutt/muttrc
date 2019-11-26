@@ -43,4 +43,4 @@ set date_format = '!%a %FT%T%z'
 
 ## external configs
 # XXX: 'source' command doesn't glob
-`find $XDG_CONFIG_HOME/mutt/muttrc.d/ -type f | xargs -IXXX echo -n 'source "XXX";'`
+`find $XDG_CONFIG_HOME/mutt/muttrc.d -type f|sort| xargs -IXXX echo -n 'source "XXX";'`

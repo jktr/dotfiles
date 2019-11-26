@@ -5,7 +5,7 @@ account-hook . "unset imap_user imap_pass"
 
 # all accounts
 # XXX: 'source' command doesn't glob
-`find $XDG_CONFIG_HOME/mutt/accounts/ -type f | xargs -IXXX echo -n 'source "XXX";'`
+`find $XDG_CONFIG_HOME/mutt/accounts -type f|sort|xargs -IXXX echo -n 'source "XXX";'`
 
 # default account
 set folder = imaps://mail.uni-paderborn.de
