@@ -5,7 +5,6 @@
                               (set-face-attribute
                                'default frame
                                :height 95
-                               ;; :font "DejaVu Sans Mono"
                                ))))
   (if (daemonp)
       (add-hook 'after-make-frame-functions setup-font-for-frame)

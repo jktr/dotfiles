@@ -1,15 +1,5 @@
 !!! Xresources
 
-!! Xft settings
-
-Xft.dpi:                    96
-Xft.antialias:              true
-Xft.rgba:                   rgb
-Xft.hinting:                false
-Xft.hintstyle:              hintfull
-Xft.autohint:               true
-Xft.lcdfilter:              lcddefault
-
 !! general color settings
 !!   see urxvt(1) for detailed meanings
 

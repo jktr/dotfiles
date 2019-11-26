@@ -25,9 +25,6 @@
   default_border pixel 1
   default_floating_border pixel 1
 
-  ## font
-  font pango:DejaVu Sans Mono 8
-
   ## colors
   # class                  border   backgr.  text     indica. child-border
   client.focused           #808080  #808080  #c2c2c2  #cc7832 #808080

@@ -15,7 +15,6 @@ user_pref("browser.download.useDownloadDir", false); // ff doesn't respect XDG
 user_pref("browser.newtabpage.enhanced", false); // not useful w/ CTR
 user_pref("browser.urlbar.suggest.history", false);
 user_pref("browser.urlbar.suggest.openpage", false);
-user_pref("font.name.serif.x-western", "sans-serif");
 user_pref("general.warnOnAboutConfig", false); // I'll be careful; I promise!
 user_pref("middlemouse.contentLoadURL", false); // X11 PRIMARY Selection
 user_pref("reader.parse-on-load.enabled", false);
