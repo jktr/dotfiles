@@ -12,6 +12,18 @@ setopt PROMPT_SP
 readonly _i='%F{blue}|%f'
 readonly _i_soft='%F{blue}@%f'
 
+_prompt_nix () {
+    if [ -n "${IN_NIX_SHELL}" ]; then
+        local -r inputs="$(<<<"${buildInputs}" tr ' ' '\n'|cut -d '-' -f2|grep -v zsh|sort|paste -sd:)"
+        case "${IN_NIX_SHELL}" in
+            pure)   local -r nix="%F{green}${inputs}" ;;
+            impure) local -r nix="%F{yellow}${inputs}" ;;
+#            *)      local -r nix="%F{red}${inputs}" ;;
+        esac
+        echo "${_i}${nix}"
+    fi
+}
+
 
 # "branch@commit" if inside git repo
 #
@@ -25,8 +37,7 @@ readonly _i_soft='%F{blue}@%f'
 #     yellow - some/all changes staged
 #     green  - default
 #     cyan   - this is a bare repo
-_prompt_git ()
-{
+_prompt_git () {
     local dot_git="$(git rev-parse --git-dir 2>/dev/null)"
     if [ -z "$dot_git" ]; then
         return # not a git dir
@@ -124,7 +135,7 @@ setprompt () {
     # HH:MM:SS timestamp
     local -r timestamp="%F{green}%D{%T}%f"
 
-    PS1="${p}${username}${_i_soft}${host}\$(_prompt_git)${_i}${pwd}${s}
+    PS1="${p}${username}${_i_soft}${host}\$(_prompt_nix)\$(_prompt_git)${_i}${pwd}${s}
 ${prompt_sym} "
 
     PS2="%F{green}%_%f${_i}${prompt_sym}"

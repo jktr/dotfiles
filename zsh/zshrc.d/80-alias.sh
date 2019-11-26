@@ -51,9 +51,18 @@ setaliases () {
   alias vemacs='emacsclient --create-frame --no-wait --alternate-editor=emacs'
   alias emacs='emacsclient --tty --alternate-editor=nano'
 
-  # misc
+  # ffmpeg
+  alias ffmpeg='ffmpeg -hide_banner'
+  alias ffprobe='ffprobe -hide_banner'
+  alias ffplay='ffplay -hide_banner'
+
+  # nixos
+  alias nix-shell='nix-shell --packages zsh --command "exec zsh"'
+
+  # openssl
   alias cert-view='openssl x509 -text -in'
   alias cert-scrape='openssl s_client -showcerts -prexit -connect </dev/null'
+
   alias dmesg="dmesg $color_mode $human_mode"
   alias env='env|sort'
   alias feh='feh --no-fehbg --image-bg black --conversion-timeout 1 --draw-filename --draw-exif'
