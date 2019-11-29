@@ -82,8 +82,20 @@ elif >/dev/null command -v 'apk'; then
         'up'    'su - apk upgrade'
         'who'   'apk info --who-owns'
     )
+elif >/dev/null command -v 'nix'; then
+    _pm=(
+        #'files' ''
+        'if'    'nix-env --query --available --description'
+        'in'    'nix-env --uninstall'
+        #'list'  ''
+        'ref'   'sudo nix-channel --update'
+        'rm'    'nix-env --install --remove-all'
+        'se'    'nix search'
+        'up'    'sudo nixos-rebuild switch'
+        'who'   'realpath'
+    )
 fi
-            
+
 # runs command from look-up table
 pm () {
     local cmd="${_pm[${@[1]}]:-help} ${@: 2}"
