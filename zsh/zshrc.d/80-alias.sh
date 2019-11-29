@@ -64,6 +64,8 @@ setaliases () {
   alias nmtui='nmtui connect'
   alias ss='ss --numeric'
   alias torcurl='curl -x socks5h://localhost:9050'
+  alias token='dd if=/dev/urandom bs=32 count=1 status=none|sha256sum|cut -d" " -f1'
+  alias webcam='mpv --profile=low-latency --untimed /dev/video0'
 
   # display dependent
   if [ -n "$DISPLAY" ]; then
