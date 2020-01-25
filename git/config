@@ -12,22 +12,41 @@
 [core]
   autocrlf = input
   pager = less -x4
+  whitespace = tab-in-indent
+
+[blame]
+  coloring = highlightRecent
+
+[checkout]
+  defaultRemote = origin
+
+[color "blame"]
+  recent = blue,12 month ago,white,1 month ago,red
 
 [diff]
   algorithm = minimal
+  colorMoved = true
+  colorMovedWS = ignore-space-change
+  mnemonicPrefix = true
 
 [fetch]
   prune = true
+  parallel = 0
 
 [log]
   date = iso-strict
   #showSignature = true
 
 [push]
+  followTags = true
   gpgSign = if-asked
 
-[submodule]
-  fetchJobs = 0
+[rebase]
+  abbreviateCommands = true
+
+[status]
+  short = true
+  branch = true
 
 [transfer]
   fsckObjects = true
@@ -51,12 +70,12 @@
   l = log --shortstat --summary
   ls = ls-files
   o = checkout
-  p = pull --rebase
-  s = status --short --branch
-  si = status --short --branch --ignored
+  p = pull --rebase=interactive --autostash
+  s = status
   ss = submodule status
-  sp = submodule update --init
   v = verify-commit
+
+  initial = commit --message 'initial commit'
 
   fixup = commit --no-gpg-sign --fixup
   autosquash = "!f() { git rebase -i --autosquash "$1^"; }; f"
