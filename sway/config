@@ -87,9 +87,9 @@
 ### workspace binds
 
   ## cycle workspace
-  bindsym $mod+Mod1+h workspace prev_on_output
-  bindsym $mod+Mod1+t workspace next_on_output
-  bindsym $mod+Mod1+n workspace prev
+  bindsym $mod+Mod1+h workspace prev
+  bindsym $mod+Mod1+t workspace prev_on_output
+  bindsym $mod+Mod1+n workspace next_on_output
   bindsym $mod+Mod1+s workspace next
 
   ## focus workspace
