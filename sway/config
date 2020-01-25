@@ -4,7 +4,7 @@
   set $terminal kitty
 
   exec systemctl --user import-environment DISPLAY
-  exec systemctl --user start wayland.target
+  exec systemctl --user start graphical-session.target
   exec_always /usr/bin/xrdb ~/.config/X11/Xresources
 
   bindsym $mod+d      exec dmenu_run
