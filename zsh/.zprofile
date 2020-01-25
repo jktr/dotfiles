@@ -11,5 +11,12 @@ if [ $XDG_VTNR -eq 1 ] && [ -z "$WAYLAND_DISPLAY" ]; then
   export WAYLAND_DISPLAY=wayland-$RANDOM
   . ~/.zshenv
 
+  # XXX: various wayland compatability settings
+  export XDG_SESSION_TYPE=wayland
+  export MOZ_ENABLE_WAYLAND=1
+  export SDL_VIDEODRIVER=wayland
+  export QT_QPA_PLATFORM=wayland
+  export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+
   exec sway
 fi

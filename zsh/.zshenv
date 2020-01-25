@@ -59,6 +59,5 @@ export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"
 ## other
 export IDF_PATH="$HOME/develop/esp/esp-idf"
 export LESSOPEN="|lesspipe.sh %s"
-export MOZ_ENABLE_WAYLAND=1
 export READNULLCMD="$PAGER"
 export RXVT_SOCKET="${XDG_RUNTIME_DIR}/urxvtd"
