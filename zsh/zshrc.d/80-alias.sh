@@ -32,7 +32,7 @@ setaliases () {
   # grep
   alias grep="grep $color_mode_gnu --ignore-case"
   alias egrep="grep $color_mode_gnu --perl-regexp"
-  alias rgrep="grep $color_mode_gnu --recursive --ignore-case --exclude-dir=.git"
+  alias rgrep="grep $color_mode_gnu --recursive --ignore-case --exclude-dir=.git --exclude='*~'"
 
   # quick and dirty encryption
   alias encrypt='gpg --symmetric --cipher-algo AES256 --armor'
