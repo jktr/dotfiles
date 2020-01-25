@@ -1,0 +1,54 @@
+## mako config
+
+# color
+
+progress-color=over #5588aaff
+text-color=#c2c2c2
+background-color=#444444
+border-color=#444444
+
+# ui
+
+border-radius=3
+width=350
+height=400
+group-by=app-name,summary,body
+
+# behaviour
+
+default-timeout=5000
+max-history=32
+
+# format
+
+format=%a\n<b>%s</b>\n%b
+[grouped]
+format=%a (%g)\n<b>%s</b>\n%b
+
+# urgency
+
+[urgency=low]
+background-color=#444444BB
+border-color=#44444444
+default-timeout=2000
+
+[urgency=normal]
+default-timeout=5000
+
+[urgency=high]
+border-color=#900000
+default-timeout=0
+
+# per-app overrides
+
+[app-name=notify-send]
+format=<b>%s</b>\n%b
+history=0
+
+[app-name=mutt]
+format=<b>📩 %s</b>\n%b
+#history=0
+
+[app-name=mpd]
+format=<b>🎶 %s</b>\n%b
+width=400

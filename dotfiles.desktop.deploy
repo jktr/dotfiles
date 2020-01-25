@@ -23,12 +23,12 @@ desktop_home_dots=(
 
 desktop_dot_conf=(
   . $HOME/.config
-  @ .       dunst
   @ .       git
   @ .       htop
   @ .       i3status
   @ .       irssi
   @ .       kitty
+  @ .       mako
   @ .       mpv
   @ .       mutt
   @ .       nano

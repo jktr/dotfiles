@@ -1,0 +1,13 @@
+[Unit]
+Description=mako notification daemon
+Documentation=man:mako(1) man:makoctl(1)
+PartOf=graphical-session.target
+
+[Service]
+Type=dbus
+BusName=org.freedesktop.Notifications
+ExecStart=/run/current-system/sw/bin/mako
+ExecReload=/run/current-system/sw/bin/makoctl reload
+
+[Install]
+WantedBy=graphical-session.target

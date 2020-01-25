@@ -6,7 +6,7 @@ set abort_noattach = ask-yes
 set attach_keyword = "(attach|attached|attachments?|anbei|[Aa]nhang|anhängen|angehängt|anhänge|hängt an)"
 
 # https://neomutt.org/feature/new-mail
-set new_mail_command="notify-send --expire-time 5000 --app-name mutt 'new email' '%n new / %u unread in %b folders' &"
+set new_mail_command="notify-send --app-name mutt 'new email' '%n new / %u unread in %b folders' &"
 
 # https://neomutt.org/feature/progress
 color progress brightwhite red
