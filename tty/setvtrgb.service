@@ -1,9 +1,0 @@
-[Unit]
-Description=Set TTY color scheme
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/setvtrgb /etc/vcolormap.conf
-
-[Install]
-WantedBy=getty.target

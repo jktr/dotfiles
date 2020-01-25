@@ -12,13 +12,6 @@ w3b () {
     w3m 'https://duckduckgo.com/?q='!"${params//\ /+}"
 }
 
-# sets up tty color and layout
-ttyinit () {
-    setvtrgb ${XDG_CONFIG_HOME}/tty/colormap
-    reset
-    sudo loadkeys ${XDG_CONFIG_HOME}/tty/keymap
-}
-
 # gets weather forecast
 wttr () {
     curl "https://wttr.in/$@" 2>/dev/null | $PAGER -r
