@@ -32,6 +32,11 @@ key[F1]=${terminfo[kf1]}
 [[ -n "${key[Right]}"    ]] && bindkey "${key[Right]}"    forward-char
 [[ -n "${key[AltRight]}" ]] && bindkey "${key[AltRight]}" emacs-forward-word
 
+autoload -Uz run-help
+autoload -Uz run-help-sudo
+autoload -Uz run-help-git
+[[ -n "${key[F1]}" ]] && bindkey "${key[F1]}" run-help
+
 # compatibility for console mode applications
 if [[ -n ${terminfo[smkx]} ]] && [[ -n ${terminfo[rmkx]} ]]; then
   zle-line-init   () { echoti smkx; }
