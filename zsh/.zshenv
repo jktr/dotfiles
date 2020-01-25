@@ -50,9 +50,6 @@ export PASSWORD_STORE_X_SELECTION=primary
 # go
 export GOPATH="$HOME/develop/go"
 export PATH="$PATH:$GOPATH/bin"
-# ruby
-export GEM_HOME="$HOME/develop/gems"
-export PATH="$PATH:$GEM_HOME/ruby/latest/bin"
 # python
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"
 
