@@ -1,7 +1,7 @@
 ### base
 
   set $mod Mod4
-  set $terminal kitty --single-instance
+  set $terminal kitty
 
   exec systemctl --user import-environment DISPLAY
   exec systemctl --user start wayland.target

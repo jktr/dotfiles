@@ -20,7 +20,7 @@ ${HOME}/bin:${HOME}/develop/bin:${HOME}/games/bin"
 export EDITOR='emacsclient --alternate-editor=nano --tty'
 export VISUAL='emacsclient --alternate-editor=nano --tty'
 export PAGER='less'
-export TERMINAL='kitty -1'
+export TERMINAL='kitty'
 if [ -n "$WAYLAND_DISPLAY" ]; then
   export BROWSER='firefox'
 else
