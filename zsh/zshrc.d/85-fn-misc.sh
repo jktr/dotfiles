@@ -1,12 +1,27 @@
 ### fn-misc
 
+# fuzzy movement and execution via fzf
+ff () {
+    unset f
+    f="$(fzf --cycle --multi)" # mutable, not local
+    [ -n "$f" ] || return
+    [ $(wc -l <<< "$f") -eq 1 ] && cd "$(dirname "$f")"
+    if [ $# -ne 0 ]; then
+        cd -
+        eval "$@ $(tr '\n' ' ' <<< "$f")"
+    else
+        [ $(wc -l <<< "$f") -ne 1 ] && return
+        echo "$f"
+    fi
+}
+
 # looks up args via duckduckgo
 w3d () {
     local -r params="$*"
     w3m 'https://duckduckgo.com/?q='"${params//\ /+}" 
 }
 
-# looks up args via duck duck go, using $1 as bang
+# looks up args via duckduckgo, using $1 as bang
 w3b () {
     local -r params="$*"
     w3m 'https://duckduckgo.com/?q='!"${params//\ /+}"
@@ -18,7 +33,7 @@ wttr () {
 }
 
 # print colors w/ escape codes
-colortest () {
+swath () {
     for x in {0..8}; do
         for i in {30..37}; do
             for a in {40..47}; do
