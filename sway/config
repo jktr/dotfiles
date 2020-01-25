@@ -5,7 +5,6 @@
 
   exec systemctl --user import-environment DISPLAY
   exec systemctl --user start graphical-session.target
-  exec_always /usr/bin/xrdb ~/.config/X11/Xresources
 
   bindsym $mod+d      exec dmenu_run
   bindsym $mod+Mod1+d exec passmenu
