@@ -14,5 +14,7 @@
 # reasonably common archive formats
 *.zip
 *.rar
+*.xz
+*.zst
 *.tar
 *.tar.*
