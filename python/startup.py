@@ -35,3 +35,14 @@ def slurp(f):
             return yaml.safe_load(fh)
         else:
             return [l.strip() for l in fh]
+
+def figure3d(v=1, l=('X','Y','Z')):
+    from mpl_toolkits.mplot3d import Axes3D
+    f = plt.figure().gca(projection='3d')
+    f.set_xlabel(l[0])
+    f.set_ylabel(l[1])
+    f.set_zlabel(l[2])
+    f.set_xlim3d([-v,v])
+    f.set_ylim3d([-v,v])
+    f.set_zlim3d([-v,v])
+    return f
