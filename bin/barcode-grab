@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+readonly f="/tmp/qr-$UID.jpg"
+
+grim -g "$(slurp)" "$f"
+code="$(zbarimg "$f" 2>/dev/null)"
+if [ -t 1 ]; then
+    echo "$code"
+else
+    notify-send barcode -- "$code"
+fi
