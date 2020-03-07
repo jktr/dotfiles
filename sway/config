@@ -3,10 +3,11 @@
   set $mod Mod4
   set $terminal kitty
 
-  exec systemctl --user import-environment DISPLAY
-  exec systemctl --user start graphical-session.target
   set $exec      exec with-journal
   set $exec_term exec $terminal with-journal --ncurses
+
+  exec_always systemctl --user import-environment WAYLAND_DISPLAY DISPLAY DBUS_SESSION_BUS_ADDRESS
+  exec_always systemctl --user start graphical-session.target
 
   bindsym $mod+d      exec dmenu_run
   bindsym $mod+Mod1+d exec passmenu
