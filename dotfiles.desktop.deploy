@@ -11,6 +11,8 @@ desktop_home_dots=(
   . $HOME
   d .config
   d .emacs.d
+  d .ghc
+  @ ghc    .ghc/ghci.conf
   d .gnupg
   @ gnupg  .gnupg/gpg.conf
   d .lein
