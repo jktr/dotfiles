@@ -1,5 +1,10 @@
 # compound target
-desktop_dots=(@ 'desktop_home_dots' 'desktop_dot_conf' 'desktop_dot_emacs')
+desktop_dots=(@ 'desktop_bins' 'desktop_home_dots' 'desktop_dot_conf' 'desktop_dot_emacs')
+
+desktop_bins=(
+  bin $HOME/bin
+  @ . with-journal
+)
 
 desktop_home_dots=(
   . $HOME

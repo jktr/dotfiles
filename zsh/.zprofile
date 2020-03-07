@@ -16,5 +16,5 @@ if [ "$XDG_VTNR" -eq 1 ] && [ -z "$WAYLAND_DISPLAY" ]; then
   export XDG_SESSION_TYPE=wayland
   export MOZ_ENABLE_WAYLAND=1
 
-  exec sway
+  exec systemd-cat --identifier=sway sway
 fi

@@ -5,6 +5,8 @@
 
   exec systemctl --user import-environment DISPLAY
   exec systemctl --user start graphical-session.target
+  set $exec      exec with-journal
+  set $exec_term exec $terminal with-journal --ncurses
 
   bindsym $mod+d      exec dmenu_run
   bindsym $mod+Mod1+d exec passmenu

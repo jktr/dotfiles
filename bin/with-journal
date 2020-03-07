@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+readonly journal='systemd-cat --stderr-priority=notice --'
+
+case "$1" in
+    --ncurses)
+        shift
+        exec "$@" 1>&2 2>&- 2> >(exec $journal)
+        ;;
+    *)
+        exec $journal "$@"
+esac
