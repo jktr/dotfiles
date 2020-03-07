@@ -10,11 +10,11 @@ envof () {
         *[!0-9]*) # string has at least one non-numeric char
             for pid in $(pidof $1); do
                 echo "----------- $pid -----------"
-                xargs --null --max-args=1 < "/proc/${pid}/environ"
+                xargs --null --max-args=1 < "/proc/${pid}/environ" |sort
             done
             ;;
         *) # args has only numeric chars
-            xargs --null --max-args=1 < "/proc/$1/environ"
+            xargs --null --max-args=1 < "/proc/$1/environ" |sort
             ;;
     esac
 }
