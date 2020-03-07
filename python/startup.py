@@ -10,6 +10,7 @@ import collections as coll
 from pprint import pprint as print
 
 import numpy as np
+import matplotlib; matplotlib.use('module://matplotlib-backend-kitty')
 import matplotlib.pyplot as plt
 import pandas as pd
 
