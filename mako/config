@@ -17,7 +17,7 @@ group-by=app-name,summary,body
 # behaviour
 
 default-timeout=5000
-max-history=32
+max-history=5
 
 # format
 
@@ -47,7 +47,7 @@ history=0
 
 [app-name=mutt]
 format=<b>📩 %s</b>\n%b
-#history=0
+history=0
 
 [app-name=mpd]
 format=<b>🎶 %s</b>\n%b
