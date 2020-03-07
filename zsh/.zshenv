@@ -7,14 +7,12 @@ export LC_MESSAGES=C # unexpected, non-universal translations make for bad UX
 ## xdg
 export XDG_DATA_HOME="${HOME}/.local/share"
 export XDG_CONFIG_HOME="${HOME}/.config"
-export XDG_CACHE_HOME="/tmp/.cache-${UID}"
+export XDG_CACHE_HOME="${XDG_RUNTIME_DIR}/cache"
 
 ## path
-export PATH="${PATH}:\
-/usr/bin:/usr/sbin:\
-/bin:/sbin:\
-/usr/local/bin:/usr/local/sbin:\
-${HOME}/bin:${HOME}/develop/bin:${HOME}/games/bin"
+for p in bin develop/bin games/bin; do
+    export PATH="${PATH}:${HOME}/${p}"
+done
 
 ## preferred applications
 export EDITOR='emacsclient --alternate-editor=nano --tty'
@@ -40,21 +38,24 @@ ex=00;32:\
 
 ## ssh/gpg
 export GPG_TTY="$TTY"
-export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
+#export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
 
 ## pass
 export PASSWORD_STORE_CLIP_TIME=10
 export PASSWORD_STORE_X_SELECTION=primary
 
-## development
-# go
-export GOPATH="$HOME/develop/go"
-export PATH="$PATH:$GOPATH/bin"
-# python
-export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"
-
 ## other
-export IDF_PATH="$HOME/develop/esp/esp-idf"
+export IDF_PATH="${HOME}/develop/esp/esp-idf"
 export LESSOPEN="|lesspipe.sh %s"
-export READNULLCMD="$PAGER"
-export RXVT_SOCKET="${XDG_RUNTIME_DIR}/urxvtd"
+#export READNULLCMD="${PAGER}"
+#export RXVT_SOCKET="${XDG_RUNTIME_DIR}/urxvtd"
+
+
+## development
+
+# go
+export GOPATH="${HOME}/develop/go"
+export PATH="${PATH}:${GOPATH}/bin"
+
+# python
+export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/startup.py"
