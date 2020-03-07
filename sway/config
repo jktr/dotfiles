@@ -12,8 +12,9 @@
   bindsym $mod+Mod1+d exec passmenu
 
   # ensure that we can always open a terminal
-  bindsym $mod+Return      exec $terminal
-  bindsym $mod+Mod1+Return exec kitty
+  bindsym $mod+Return     exec $terminal
+  bindsym $mod+Alt+Return exec kitty
+
 
 ### include
 
@@ -84,14 +85,15 @@
   bindsym $mod+i sticky toggle
   bindsym $mod+Shift+space floating toggle
 
+#  for_window [floating] opacity set 0.75
 
 ### workspace binds
 
   ## cycle workspace
-  bindsym $mod+Mod1+h workspace prev
-  bindsym $mod+Mod1+t workspace prev_on_output
-  bindsym $mod+Mod1+n workspace next_on_output
-  bindsym $mod+Mod1+s workspace next
+  bindsym $mod+Alt+h workspace prev
+  bindsym $mod+Alt+t workspace prev_on_output
+  bindsym $mod+Alt+n workspace next_on_output
+  bindsym $mod+Alt+s workspace next
 
   ## focus workspace
   bindsym $mod+F1  workspace  1
