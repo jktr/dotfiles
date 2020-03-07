@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+
+# $1 len
+# $2 phrase
+abbrev () {
+    if [ "${#2}" -gt "$1" ]; then
+        echo "${2:0:$(( $1 - 1 ))}…"
+    else
+        echo "$2"
+    fi
+}
+
+<<< "$(ncmpcpp --current-song $'{%t}|{%f}\n%a\n%A\n%b\n%D\n' 2>/dev/null)" \
+    readarray -t info
+
+readonly title="${info[0]}"
+readonly artist="${info[1]}"
+readonly aartist="${info[2]}"
+readonly album="${info[3]}"
+         dir="${info[4]}"
+
+[ -n "$title" ] || exit 1
+
+if [ -z "$dir" ]; then
+    # Internet Radio handling
+    summary="${title##* - }"
+else
+    # XXX manual truncate
+    summary="$(abbrev 35 "$title")"
+fi
+body=()
+
+# album line
+if [ -n "$album" ]; then
+    # XXX manual truncate
+    body+=("$(abbrev 40 "$album")")
+elif [ -n "$dir" ]; then
+    # walk up directory tree until meaningful name is found
+    # XXX very specific to my music sorting style
+    while [ "$dir" != '.' ]; do
+        case "$(basename "$dir")" in
+            MP3|FLAC|DISK*) ;;
+            *)
+                # XXX manual truncate
+                body+=("$(abbrev 40 "$(basename "$dir")")")
+                break
+                ;;
+        esac
+        dir="$(dirname "$dir")"
+    done
+fi
+
+# artist line
+if [ -n "$artist" ]; then
+    if [ -n "$aartist" ] && [ "$aartist" != "$artist" ] && [ "$aartist" != 'Various Artists' ]; then
+        body+=("$artist — $aartist")
+    else
+        body+=("$artist")
+    fi
+elif [ -n "$aartist" ]; then
+    body+=("$aartist")
+elif [ -z "$dir" ]; then
+    # Internet Radio handling
+    body+=("${title%% - *}")
+fi
+
+export IFS=$'\n'
+notify-send --app-name mpd -- "$summary" "${body[*]}"

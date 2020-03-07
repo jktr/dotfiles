@@ -4,6 +4,7 @@ desktop_dots=(@ 'desktop_bins' 'desktop_home_dots' 'desktop_dot_conf' 'desktop_d
 desktop_bins=(
   bin $HOME/bin
   @ . barcode-grab
+  @ . notify-song
   @ . with-journal
 )
 
