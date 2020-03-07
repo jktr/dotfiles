@@ -15,9 +15,10 @@ order += 'disk /home'
 #order += 'disk /'
 order += 'wireless _first_'
 order += 'ethernet _first_'
-order += 'battery all'
+order += 'ethernet wg0'
 order += 'volume master'
-order += 'load'
+#order += 'load'
+order += 'battery all'
 order += 'tztime local'
 
 disk '/home' {
@@ -33,13 +34,20 @@ disk '/' {
 }
 
 wireless _first_ {
-    format_up = '%ip (%quality @%essid)'
-    format_down = 'X'
+    format_up = '@%essid'
+#    format_up = '%ip (%quality %essid)'
+    format_down = 'wifi'
 }
 
 ethernet _first_ {
-    format_up = '%ip'
-    format_down = 'X'
+    format_up = 'eth'
+#    format_up = '%ip'
+    format_down = 'eth'
+}
+
+ethernet wg0 {
+    format_up = 'vpn'
+    format_down = 'vpn'
 }
 
 load {
@@ -53,8 +61,12 @@ volume 'master' {
 }
 
 battery 'all' {
-    format = '%status %remaining (%emptytime %consumption)'
+#    format = '%status %remaining (%emptytime %consumption)'
+    format = '%status %remaining'
     format_down = 'B'
+    status_chr = '▲'
+    status_bat = '▼'
+    status_full = '🔌︎'
     low_threshold = '15'
     threshold_type = 'time' # in minutes
     path = '/sys/class/power_supply/BAT%d/uevent'
