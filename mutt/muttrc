@@ -33,7 +33,8 @@ set help         = no
 set index_format = '%4C [%Z] %23.23F | %s'
 set folder_format = '%3C %N  %f'
 set browser_abbreviate_mailboxes = no
-unignore List-Archive: X-RSS-URL:
+ignore User-Agent
+unignore List-Archive X-RSS-URL Reply-To
 
 ## outbound
 set forward_format = 'Fwd: %s'
