@@ -1,7 +1,7 @@
 ### prompt
 
-# parameter expansion, command substitution and arithmetic expansion
-# does not affect command status.
+# parameter expansion, command substitution, and arithmetic expansion
+# Does not affect command status.
 setopt PROMPT_SUBST
 
 # preserve partial lines
@@ -13,15 +13,14 @@ readonly _i='%F{blue}|%f'
 readonly _i_soft='%F{blue}@%f'
 
 _prompt_nix () {
-    if [ -n "${IN_NIX_SHELL}" ]; then
-        local -r inputs="$(<<<"${buildInputs}" tr ' ' '\n'|cut -d '-' -f2|grep -v zsh|sort|paste -sd:)"
-        case "${IN_NIX_SHELL}" in
-            pure)   local -r nix="%F{green}${inputs}" ;;
-            impure) local -r nix="%F{yellow}${inputs}" ;;
-#            *)      local -r nix="%F{red}${inputs}" ;;
-        esac
-        echo "${_i}${nix}"
-    fi
+    case "${IN_NIX_SHELL}" in
+        pure)   local -r color='%F{green}'  ;;
+        impure) local -r color='%F{yellow}' ;;
+        '')     return ;;
+        *)      local -r color="%F{red}"    ;;
+    esac
+    local -r inputs="$(<<<"${buildInputs}" tr ' ' '\n'|cut -d- -f2|grep -v zsh|sort -u|paste -sd:)"
+    echo "${_i}${color}${inputs}"
 }
 
 
@@ -39,9 +38,7 @@ _prompt_nix () {
 #     cyan   - this is a bare repo
 _prompt_git () {
     local dot_git="$(git rev-parse --git-dir 2>/dev/null)"
-    if [ -z "$dot_git" ]; then
-        return # not a git dir
-    fi
+    [ -n "$dot_git" ] || return # not a git dir
 
     #! XXX: using this here is ~3x faster than `git name-rev --name-only HEAD`
     local ref="${$(git rev-parse --symbolic-full-name HEAD 2>/dev/null)#refs/heads/}"
@@ -73,8 +70,8 @@ _prompt_git () {
         if ! git rev-parse '@{upstream}' &>/dev/null; then
             ref="%F{cyan}${ref}%f"
         else
-            local n_ahead="$(git rev-list --count @{upstream}..HEAD)"
-            local n_behind="$(git rev-list --count HEAD..@{upstream})"
+            local -r n_ahead="$(git rev-list --count @{upstream}..HEAD)"
+            local -r n_behind="$(git rev-list --count HEAD..@{upstream})"
 
             if [ $n_ahead -eq 0 ]; then
                 if [ $n_behind -eq 0 ]; then
@@ -125,8 +122,6 @@ setprompt () {
     # path
     local -r pwd='%F{green}%~%f'
 
-    #local history_id='%F{green}%!%f'
-
     # exit status (if nonzero)
     local -r nonzero_exit_p="%(0?..%F{red}%?%f${_i})"
     # bg jobs (if any)
@@ -135,7 +130,7 @@ setprompt () {
     # HH:MM:SS timestamp
     local -r timestamp="%F{green}%D{%T}%f"
 
-    PS1="${p}${username}${_i_soft}${host}\$(_prompt_nix)\$(_prompt_git)${_i}${pwd}${s}
+    PS1="${p}${username}${_i_soft}${host}\$(_prompt_git)\$(_prompt_nix)${_i}${pwd}${s}
 ${prompt_sym} "
 
     PS2="%F{green}%_%f${_i}${prompt_sym}"
@@ -143,3 +138,4 @@ ${prompt_sym} "
     RPROMPT="${p}${nonzero_exit_p}${jobs_p}${timestamp}${s}"
 }
 setprompt
+unset -f setprompt
