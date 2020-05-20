@@ -52,3 +52,10 @@ history=0
 [app-name=mpd]
 format=<b>🎶 %s</b>\n%b
 width=400
+
+[app-name=Mumble]
+format=<b>🎧 %b</b>
+width=400
+
+[app-name=Mumble summary="Text message"]
+format=🎧 %b
