@@ -17,6 +17,7 @@ Host *
     # session meta
     Compression yes
     EscapeChar ^~
+    SendEnv LS_COLORS
 
     # hosts
     VisualHostKey  yes
