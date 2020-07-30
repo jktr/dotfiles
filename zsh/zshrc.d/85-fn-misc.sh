@@ -27,6 +27,12 @@ w3b () {
     w3m 'https://duckduckgo.com/?q='!"${params//\ /+}"
 }
 
+spectrogram () {
+  local -r f=/tmp/spectrum.jpg
+  echo $f
+  ffmpeg -y -loglevel error -i "$1" -lavfi showspectrumpic "$f" && feh "$f"
+}
+
 # gets weather forecast
 wttr () {
     curl "https://wttr.in/$@" 2>/dev/null | $PAGER -r
