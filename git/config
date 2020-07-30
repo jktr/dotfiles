@@ -37,6 +37,9 @@
   date = iso-strict
   #showSignature = true
 
+[pull]
+  rebase = true
+
 [push]
   followTags = true
   gpgSign = if-asked
