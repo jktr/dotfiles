@@ -7,11 +7,6 @@ setopt PROMPT_SUBST
 # preserve partial lines
 setopt PROMPT_SP
 
-# prompt component separator
-# placed here as it may be needed by shell functions
-readonly _i='%F{blue}|%f'
-readonly _i_soft='%F{blue}@%f'
-
 _prompt_nix () {
     case "${IN_NIX_SHELL}" in
         pure)   local -r color='%F{green}'  ;;
@@ -20,7 +15,7 @@ _prompt_nix () {
         *)      local -r color="%F{red}"    ;;
     esac
     local -r inputs="$(<<<"${buildInputs}" tr ' ' '\n'|cut -d- -f2|grep -v zsh|sort -u|paste -sd:)"
-    echo "${_i}${color}${inputs}"
+    echo " ${color}${inputs}"
 }
 
 
@@ -89,17 +84,13 @@ _prompt_git () {
         fi
     fi
 
-    echo "${_i}${ref}${_i_soft}${sha}"
+    echo " ${ref} ${sha}"
 }
 
 
 ## prompt proper
 
 setprompt () {
-
-    # delimiters
-    local -r p='%F{blue}[%f'  # prefix
-    local -r s=$'%F{blue}]%f' # suffix
 
     # username & prompt sym
     #  red    - root
@@ -123,19 +114,19 @@ setprompt () {
     local -r pwd='%F{green}%~%f'
 
     # exit status (if nonzero)
-    local -r nonzero_exit_p="%(0?..%F{red}%?%f${_i})"
+    local -r nonzero_exit_p="%(0?..%F{red}%?%f )"
     # bg jobs (if any)
-    local -r jobs_p="%(1j.%F{cyan}%j%f${_i}.)"
+    local -r jobs_p="%(1j.%F{cyan}%j%f .)"
 
     # HH:MM:SS timestamp
     local -r timestamp="%F{green}%D{%T}%f"
 
-    PS1="${p}${username}${_i_soft}${host}\$(_prompt_git)\$(_prompt_nix)${_i}${pwd}${s}
+    PS1="  ${username} ${host}\$(_prompt_git)\$(_prompt_nix) ${pwd}
 ${prompt_sym} "
 
-    PS2="%F{green}%_%f${_i}${prompt_sym}"
+    PS2="%F{green}%_%f ${prompt_sym}"
 
-    RPROMPT="${p}${nonzero_exit_p}${jobs_p}${timestamp}${s}"
+    RPROMPT="${nonzero_exit_p}${jobs_p}${timestamp}"
 }
 setprompt
 unset -f setprompt
