@@ -9,6 +9,7 @@ border-color=#444444
 
 # ui
 
+layer=overlay
 border-radius=3
 width=350
 height=400
