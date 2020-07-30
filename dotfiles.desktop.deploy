@@ -1,5 +1,5 @@
 # compound target
-desktop_dots=(@ 'desktop_bins' 'desktop_home_dots' 'desktop_dot_conf' 'desktop_dot_emacs')
+desktop_dots=(@ 'desktop_bins' 'desktop_home_dots' 'desktop_dot_conf')
 
 desktop_bins=(
   bin $HOME/bin
@@ -11,7 +11,6 @@ desktop_bins=(
 desktop_home_dots=(
   . $HOME
   d .config
-  d .emacs.d
   d .ghc
   @ ghc    .ghc/ghci.conf
   d .gnupg
@@ -49,11 +48,4 @@ desktop_dot_conf=(
   @ .       transmission-remote-cli
   @ .       xdg
   @ .       zsh
-)
-
-desktop_dot_emacs=(
-  emacs $HOME/.emacs.d
-  @ .  init.el
-  @ .  config
-  @ .  config-pkg
 )

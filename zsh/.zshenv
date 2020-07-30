@@ -15,8 +15,8 @@ for p in bin develop/bin games/bin; do
 done
 
 ## preferred applications
-export EDITOR='emacsclient --alternate-editor=nano --tty'
-export VISUAL='emacsclient --alternate-editor=nano --tty'
+export EDITOR='nvim'
+export VISUAL='nvim'
 export PAGER='less'
 export TERMINAL='kitty'
 if [ -n "$WAYLAND_DISPLAY" ]; then

@@ -48,11 +48,6 @@ setaliases () {
   alias userctl='systemctl --user --lines 0'
   alias systemctl='systemctl --lines 0'
 
-  # emacs
-  alias vemacs='emacsclient --create-frame --no-wait --alternate-editor=emacs'
-  alias emacs='emacsclient --tty --alternate-editor=nano'
-  alias nano='emacsclient --tty --alternate-editor=nano'
-
   # ffmpeg
   alias ffmpeg='ffmpeg -hide_banner'
   alias ffprobe='ffprobe -hide_banner'
@@ -80,6 +75,7 @@ setaliases () {
   alias icat='kitty +kitten icat'
   alias ip="ip $color_mode"
   alias irssi='irssi --config=<(sed "$(grep "PASSWORD_MANAGER" $XDG_CONFIG_HOME/irssi/config|cut -d\" -f2|cut -d":" -f2|xargs -IXXX sh -c '\''echo s\|PASSWORD_MANAGER:XXX\|$(pass XXX|head -1)\|'\'' |tr "\n" ";")" $XDG_CONFIG_HOME/irssi/config) --home $XDG_DATA_HOME/irssi/'
+  alias nano="$EDITOR"
   alias nix-shell='nix-shell --packages zsh --command "exec zsh"'
   alias nmtui='nmtui connect'
   alias screenshot='grim -g "$(slurp)" "screenshot-$(date --iso-8601=seconds).jpg"'
