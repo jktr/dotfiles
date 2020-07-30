@@ -47,8 +47,8 @@
 
   ## focus positional
   bindsym $mod+h focus left
-  bindsym $mod+t focus up
-  bindsym $mod+n focus down
+  bindsym $mod+t focus down
+  bindsym $mod+n focus up
   bindsym $mod+s focus right
 
   ## focus layers
