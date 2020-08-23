@@ -4,7 +4,8 @@
 text/plain;             less %s
 text/html;              w3m -T text/html %s; copiousoutput
 
-image;                  feh %s;  test=test -n "$DISPLAY"
+image;                  kitty +kitten icat %s; needsterminal; test=test -n "$KITTY_WINDOW_ID"
+image;                  feh %s; test=test -n "$DISPLAY"
 image;                  mpv --gpu-context=drm --pause %s
 
 application/pdf;        evince %s; test=test -n "$DISPLAY"
