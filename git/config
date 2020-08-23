@@ -81,7 +81,7 @@
   initial = commit --message 'initial commit'
 
   fixup = commit --no-gpg-sign --fixup
-  autosquash = "!f() { git rebase -i --autosquash "$1^"; }; f"
+  autosquash = "!f() { git rebase -i --autostash --autosquash "$1^"; }; f"
 
   changes = "!f() { \
     { git --no-pager log --max-count=1 --shortstat --color=always ${1:-HEAD};\
