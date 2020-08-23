@@ -91,10 +91,10 @@
   map = "!f() { echo 'Entering /'; git $@; git submodule foreach git $@; }; f"
 
   graph = log --graph --all --format=format:\
-'%C(yellow)%h\
-%C(bold black) %G?%C(reset)\
-%C(blue) %aN\
-%C(bold black) (%ar)%C(reset)\
+'%C(dim yellow)%h\
+%C(dim red) %G?%C(reset)\
+%C(dim green) %aN\
+%C(cyan) (%ar)%C(reset)\
 %C(green)%d%C(reset)\
 %n\
 %C(white)%s'
