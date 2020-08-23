@@ -39,9 +39,9 @@ unignore List-Archive X-RSS-URL Reply-To
 ## outbound
 set forward_format = 'Fwd: %s'
 set send_charset = 'us-ascii:utf-8'
-set fast_reply=yes
-#set edit_headers = yes
+set fast_reply = yes
 set date_format = '!%a %FT%T%z'
+set editor = 'cd $XDG_CONFIG_HOME/mutt/templates && exec $EDITOR'
 
 ## external configs
 # XXX: 'source' command doesn't glob
