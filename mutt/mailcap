@@ -11,8 +11,8 @@ image;                  mpv --gpu-context=drm --pause %s
 application/pdf;        evince %s; test=test -n "$DISPLAY"
 application/pdf;        less %s; needsterminal
 
-application/msword      libreoffice %s; test=test -n "$DISPLAY"
-application/vnd.*       libreoffice %s; test=test -n "$DISPLAY"
+application/msword;     libreoffice %s; test=test -n "$DISPLAY"
+application/vnd.*;      libreoffice %s; test=test -n "$DISPLAY"
 
 application;            $VISUAL %s; test=test -n "$DISPLAY"
 application;            $EDITOR %s; needsterminal
