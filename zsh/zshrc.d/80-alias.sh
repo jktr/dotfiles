@@ -30,8 +30,8 @@ setaliases () {
   alias //='cd -'
 
   # grep
-  alias grep="grep $color_mode_gnu --ignore-case"
-  alias egrep="grep $color_mode_gnu --perl-regexp"
+  alias grep="grep $color_mode --ignore-case"
+  alias egrep="grep $color_mode --perl-regexp"
   alias rg='rg --smart-case'
   alias rgrep='rg --smart-case'
 
