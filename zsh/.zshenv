@@ -59,3 +59,7 @@ export PATH="${PATH}:${GOPATH}/bin"
 
 # python
 export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/startup.py"
+
+# rust
+export CARGO_HOME="${HOME}/develop/cargo"
+export PATH="${PATH}:${CARGO_HOME}/bin"
