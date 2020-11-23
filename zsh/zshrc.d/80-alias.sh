@@ -79,7 +79,7 @@ setaliases () {
   alias nano="$EDITOR"
   alias nix-shell='nix-shell --packages zsh --command "exec zsh"'
   alias nmtui='nmtui connect'
-  alias screenshot='grim -g "$(slurp)" "screenshot-$(date --iso-8601=seconds).jpg"'
+  alias screenshot='grim -t jpeg -g "$(slurp)" "screenshot-$(date --iso-8601=seconds).jpg'
   alias ss='ss --numeric'
   alias token='dd if=/dev/urandom bs=32 count=1 status=none|sha256sum|cut -d" " -f1'
   alias torcurl='curl -x socks5h://localhost:9050'
