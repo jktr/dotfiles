@@ -43,6 +43,7 @@ setaliases () {
   alias df="df $human_mode_gnu"
   alias cp='cp --reflink=auto --sparse=auto'
   alias dd='dd status=progress'
+  alias rm='rm --interactive=once --dir'
 
   # systemd
   alias userctl='systemctl --user --lines 0'
