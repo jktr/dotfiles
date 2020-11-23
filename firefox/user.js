@@ -22,3 +22,6 @@ user_pref("toolkit.cosmeticAnimations.enabled", false);
 
 // theming
 user_pref("ui.systemUsesDarkTheme", 1);
+
+// features
+user_pref("image.avif.enabled", true);
