@@ -15,6 +15,18 @@ ff () {
     fi
 }
 
+# init new project
+new () {
+  mkdir -p "$@"
+  cd "$@"
+  [ -d .git ] && return
+  echo "# $@" > README.md
+  touch .gitignore
+  git init --quiet
+  git a README.md .gitignore
+  git commit --quiet -m 'initial commit'
+}
+
 # looks up args via duckduckgo
 w3d () {
     local -r params="$*"
