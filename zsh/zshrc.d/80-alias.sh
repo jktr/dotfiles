@@ -70,7 +70,7 @@ setaliases () {
   alias diff='git diff --no-index --exit-code'
   alias dmesg="dmesg $color_mode $human_mode"
   alias env='env|sort'
-  alias feh='feh --no-fehbg --image-bg black --conversion-timeout 1 --draw-filename --draw-exif --scale-down'
+  alias feh='feh --no-fehbg --image-bg black --conversion-timeout 1 --draw-filename --draw-exif --draw-actions --scale-down'
   alias free="free $human_mode"
   alias fzf='fzf --cycle --multi'
   alias icat='kitty +kitten icat'
