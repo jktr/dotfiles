@@ -1,7 +1,7 @@
 mailboxes imaps://imap.gmail.com
 
 alternates 'konrad.tegtmeier@gmail.com'
-set my_gmail_secret = `gpg --decrypt ~/.password-store/imap.gmail.com.gpg 2>/dev/null`
+set my_gmail_secret = `pass imap.gmail.com|head -n1`
 
 account-hook imaps://imap.gmail.com "\
   set imap_authenticators = login \

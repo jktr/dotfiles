@@ -1,0 +1,24 @@
+mailboxes  imaps://imap.c3pb.de
+
+alternates 'jktr@c3pb.de'
+set my_c3pb_secret = `pass c3pb.de|head -n1`
+
+account-hook imaps://imap.c3pb.de "\
+  set imap_authenticators = login \
+      imap_user           = jktr \
+      imap_pass           = $my_c3pb_secret \
+  "
+
+folder-hook imaps://imap.c3pb.de "\
+  set folder      = imaps://imap.c3pb.de \
+      spoolfile   = +INBOX \
+      postponed   = +Drafts \
+      record      = +Sent \
+      trash       = +Trash \
+      from        = jktr@c3pb.de \
+      realname    = 'jktr' \
+      smtp_url            = smtp://jktr@smtp.c3pb.de \
+      smtp_authenticators = login \
+      smtp_pass           = $my_c3pb_secret \
+  "
+
