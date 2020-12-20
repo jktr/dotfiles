@@ -25,6 +25,8 @@ Host *
     UpdateHostKeys ask
 
     # auth
+    KbdInteractiveAuthentication no
+    ChallengeResponseAuthentication no
     PasswordAuthentication   no
 
     # ssh keys on per-host basis
