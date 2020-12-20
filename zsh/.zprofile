@@ -1,5 +1,5 @@
 # enable the runtime dir for configs without env var interpolation
-ln -sf "$XDG_RUNTIME_DIR" ~/.local/runtime
+[ -n "$XDG_RUNTIME_DIR" ] && ln -sf "$XDG_RUNTIME_DIR" ~/.local/runtime
 
 # start session daemons
 systemctl --user start daemon.target &!
