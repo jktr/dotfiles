@@ -83,14 +83,15 @@ setaliases () {
   alias ss='ss --numeric'
   alias token='dd if=/dev/urandom bs=32 count=1 status=none|sha256sum|cut -d" " -f1'
   alias torcurl='curl -x socks5h://localhost:9050'
-  alias webcam='mpv --profile=low-latency --untimed /dev/video0'
 
   # display dependent
   if [ -n "$DISPLAY" ]; then
-    alias mpv='mpv --gpu-context=wayland'
+    alias    mpv='mpv --gpu-context=wayland'
+    alias webcam='mpv --gpu-context=wayland --profile=low-latency --untimed av://v4l2:/dev/video0'
     alias lock=swaylock
   else
-    alias mpv='mpv --gpu-context=drm'
+    alias    mpv='mpv --gpu-context=drm'
+    alias webcam='mpv --gpu-context=drm --profile=low-latency --untimed av://v4l2:/dev/video0'
     alias lock='vlock -a'
   fi
 }
