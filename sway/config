@@ -96,6 +96,12 @@
   bindsym $mod+Alt+n workspace next_on_output
   bindsym $mod+Alt+s workspace next
 
+  ## shift workspace
+  bindsym $mod+Shift+Alt+h move workspace to output left
+  bindsym $mod+Shift+Alt+t move workspace to output down
+  bindsym $mod+Shift+Alt+n move workspace to output up
+  bindsym $mod+Shift+Alt+s move workspace to output right
+
   ## focus workspace
   bindsym $mod+F1  workspace  1
   bindsym $mod+F2  workspace  2
