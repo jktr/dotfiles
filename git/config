@@ -83,6 +83,8 @@
 
   initial = commit --message 'initial commit'
 
+  force = push --force-with-lease
+
   fixup = commit --no-gpg-sign --fixup
   autosquash = "!f() { git rebase -i --autostash --autosquash "$1^"; }; f"
 
