@@ -14,7 +14,8 @@ _prompt_nix () {
         '')     return ;;
         *)      local -r color="%F{red}"    ;;
     esac
-    local -r inputs="$(<<<"${buildInputs}" tr ' ' '\n'|cut -d- -f2|grep -v zsh|sort -u|paste -sd:)"
+    local -r inputs="$(<<<"${buildInputs} ${nativeBuildInputs}" \
+      tr ' ' '\n'|awk NF|cut -d- -f2|sort -u|paste -sd:)"
     echo " ${color}${inputs}"
 }
 
