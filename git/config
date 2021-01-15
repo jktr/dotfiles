@@ -33,6 +33,9 @@
   prune = true
   parallel = 0
 
+[init]
+  defaultBranch = main
+
 [log]
   date = iso-strict
   #showSignature = true
