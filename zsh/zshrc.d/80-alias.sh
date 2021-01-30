@@ -81,7 +81,7 @@ setaliases () {
   alias screenshot='grim -t jpeg -g "$(slurp)" "screenshot-$(date --iso-8601=seconds).jpg'
   alias ss='ss --numeric'
   alias token='dd if=/dev/urandom bs=32 count=1 status=none|sha256sum|cut -d" " -f1'
-  alias torcurl='curl -x socks5h://localhost:9050'
+  alias torcurl='curl --proxy socks5h://localhost:9050'
 
   # display dependent
   if [ -n "$DISPLAY" ]; then
