@@ -54,6 +54,10 @@ history=0
 format=<b>🎶 %s</b>\n%b
 width=400
 
+[app-name=radio]
+format=🎶 <b>%s</b> is now hosting <b>%b</b>
+width=400
+
 [app-name=Mumble]
 format=<b>🎧 %b</b>
 width=400
