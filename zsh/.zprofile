@@ -14,6 +14,7 @@ if [ "$XDG_VTNR" -eq 1 ] && [ -z "$WAYLAND_DISPLAY" ]; then
 
   # XXX: various wayland compatability settings
   export XDG_SESSION_TYPE=wayland
+  export XDG_CURRENT_DESKTOP=sway
   export MOZ_ENABLE_WAYLAND=1
 
   exec systemd-cat --identifier=sway sway
