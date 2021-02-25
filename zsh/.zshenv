@@ -44,12 +44,6 @@ export GPG_TTY="$TTY"
 export PASSWORD_STORE_CLIP_TIME=10
 export PASSWORD_STORE_X_SELECTION=primary
 
-## other
-export IDF_PATH="${HOME}/develop/esp/esp-idf"
-export LESSOPEN="|lesspipe.sh %s"
-#export READNULLCMD="${PAGER}"
-#export RXVT_SOCKET="${XDG_RUNTIME_DIR}/urxvtd"
-
 
 ## development
 
