@@ -41,8 +41,8 @@ setopt INC_APPEND_HISTORY
 unsetopt SHARE_HISTORY
 
 HISTFILE=~/.zsh_history
-HISTSIZE=2000
-SAVEHIST=25000
+HISTSIZE=25000
+SAVEHIST=100000
 
 ## modules
 autoload -U colors && colors
