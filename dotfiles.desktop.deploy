@@ -5,6 +5,7 @@ desktop_bins=(
   bin $HOME/bin
   @ . barcode-grab
   @ . notify-song
+  @ . screenshot
   @ . with-journal
 )
 

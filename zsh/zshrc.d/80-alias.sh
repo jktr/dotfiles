@@ -78,7 +78,6 @@ setaliases () {
   alias irssi='irssi --config=<(sed "$(grep "PASSWORD_MANAGER" $XDG_CONFIG_HOME/irssi/config|cut -d\" -f2|cut -d":" -f2|xargs -IXXX sh -c '\''echo s\|PASSWORD_MANAGER:XXX\|$(pass XXX|head -1)\|'\'' |tr "\n" ";")" $XDG_CONFIG_HOME/irssi/config) --home $XDG_DATA_HOME/irssi/'
   alias nano="$EDITOR"
   alias nmtui='nmtui connect'
-  alias screenshot='grim -t jpeg -g "$(slurp)" "screenshot-$(date --iso-8601=seconds).jpg'
   alias ss='ss --numeric'
   alias token='dd if=/dev/urandom bs=32 count=1 status=none|sha256sum|cut -d" " -f1'
   alias torcurl='curl --proxy socks5h://localhost:9050'

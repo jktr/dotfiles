@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+set -uo pipefail
+
+readonly file="/run/user/${UID}/screenshot.png"
+
+case "${1:-unknown}" in
+  rectangle)
+    grim -g "$(slurp)" -|tee "$file"|wl-copy --type image/png
+    notify-send --app-name screenshot 'copied rectangle'
+    ;;
+  window)
+    readonly prog='..|select(type == "object" and .focused == true).rect|"\(.x),\(.y) \(.width)x\(.height)"'
+    grim -g "$(swaymsg -t get_tree| jq -r "$prog")" -|tee "$file"|wl-copy --type image/png
+    notify-send --app-name screenshot 'copied window'
+    ;;
+  desktop)
+    grim -|tee "$file"|wl-copy --type image/png
+    notify-send --app-name screenshot 'copied desktop'
+    ;;
+  *)
+    >&2 echo 'usage: screenshot [rectangle|window|desktop]'
+    exit 1
+    ;;
+esac
