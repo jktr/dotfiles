@@ -32,6 +32,7 @@ desktop_home_dots=(
 
 desktop_dot_conf=(
   . $HOME/.config
+  @ .       amfora
   @ .       git
   @ .       htop
   @ .       i3status
