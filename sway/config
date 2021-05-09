@@ -81,7 +81,6 @@
 ### fullscreen
 
   bindsym $mod+e fullscreen toggle
-  popup_during_fullscreen leave_fullscreen
 
 
 ### floating windows
