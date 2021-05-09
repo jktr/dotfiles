@@ -1,8 +1,6 @@
 ### ncmpcpp config
 
 ## mpd
-
-mpd_host = /run/mpd:6600
 mpd_music_dir = ~/multimedia/music
 
 
