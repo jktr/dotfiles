@@ -1,5 +1,13 @@
 ### fn-misc
 
+# run command when file was potentially changed
+on-changed () {
+  inotifywait --quiet --monitor -e close_write "$1" \
+    | while read -r filename event; do
+      ${@:2}
+  done
+}
+
 # fuzzy movement and execution via fzf
 ff () {
     unset f
