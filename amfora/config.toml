@@ -62,7 +62,7 @@ bind_new_tab = "c"
 bind_close_tab = "q"
 bind_quit = "Q"
 # bind_help
-# bind_sub: for viewing the subscriptions page
+bind_sub = "f"
 # bind_add_sub
 
 [url-handlers]
