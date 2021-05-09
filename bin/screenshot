@@ -1,22 +1,24 @@
 #!/usr/bin/env bash
 
-set -uo pipefail
+# requires: grim, slurp, wl-copy, coreutils, jq, bash, notify-send
 
-readonly file="/run/user/${UID}/screenshot.png"
+set -euo pipefail
+
+readonly file="${XDG_RUNTIME_DIR}/screenshot.png"
 
 case "${1:-unknown}" in
   rectangle)
     grim -g "$(slurp)" -|tee "$file"|wl-copy --type image/png
-    notify-send --app-name screenshot 'copied rectangle'
+    notify-send --app-name screenshot 'copied rectangle' --icon "$file"
     ;;
   window)
     readonly prog='..|select(type == "object" and .focused == true).rect|"\(.x),\(.y) \(.width)x\(.height)"'
     grim -g "$(swaymsg -t get_tree| jq -r "$prog")" -|tee "$file"|wl-copy --type image/png
-    notify-send --app-name screenshot 'copied window'
+    notify-send --app-name screenshot 'copied window' --icon "$file"
     ;;
   desktop)
     grim -|tee "$file"|wl-copy --type image/png
-    notify-send --app-name screenshot 'copied desktop'
+    notify-send --app-name screenshot 'copied desktop' --icon "$file"
     ;;
   *)
     >&2 echo 'usage: screenshot [rectangle|window|desktop]'
