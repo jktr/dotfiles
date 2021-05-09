@@ -46,6 +46,11 @@ default-timeout=0
 format=<b>%s</b>\n%b
 history=0
 
+[app-name=gomuks]
+format=<b>💬 %s</b>\n%b
+width=400
+default-timeout=5000
+
 [app-name=mutt]
 format=<b>📩 %s</b>\n%b
 history=0
