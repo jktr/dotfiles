@@ -40,6 +40,7 @@ elif [ -n "$dir" ]; then
     while [ "$dir" != '.' ]; do
         case "$(basename "$dir")" in
             MP3|FLAC|DISK*) ;;
+            /) break ;;
             *)
                 # XXX manual truncate
                 body+=("$(abbrev 40 "$(basename "$dir")")")
