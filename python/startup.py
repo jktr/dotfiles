@@ -14,10 +14,13 @@ import matplotlib; matplotlib.use('module://matplotlib-backend-kitty')
 import matplotlib.pyplot as plt
 import pandas as pd
 
-# https://amoffat.github.io/sh/
-import sh
-# https://3.python-requests.org/
-import requests
+try:
+    # https://amoffat.github.io/sh/
+    import sh
+    # https://3.python-requests.org/
+    import requests
+except Exception:
+    pass
 
 def slurp(f):
     from glob import glob
