@@ -22,6 +22,8 @@ try:
 except Exception:
     pass
 
+df, series = pd.DataFrame, pd.Series
+
 def slurp(f):
     from glob import glob
 
