@@ -82,6 +82,7 @@
   ss = submodule status
   v = verify-commit
 
+  wip = commit --message 'wip'
   initial = commit --message 'initial commit'
 
   force = push --force-with-lease
