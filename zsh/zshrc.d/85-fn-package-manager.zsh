@@ -84,15 +84,10 @@ elif >/dev/null command -v 'apk'; then
     )
 elif >/dev/null command -v 'nix'; then
     _pm=(
-        #'files' ''
-        'if'    'nix-env --query --available --description'
-        'in'    'nix-env --uninstall'
-        #'list'  ''
-        'ref'   'sudo nix-channel --update'
-        'rm'    'nix-env --install --remove-all'
+        'gcroots' 'tree /nix/var/nix/gcroots'
+        'gc'    'sudo nix-collect-garbage -d'
         'se'    'nix search'
-        'up'    'sudo nixos-rebuild switch'
-        'who'   'realpath'
+        'up'    'sudo nixos-rebuild switch --update-input nixpkgs --flake /etc/nixos'
     )
 fi
 
