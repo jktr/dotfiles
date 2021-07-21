@@ -19,6 +19,8 @@ desktop_home_dots=(
   d .lein
   @ leingingen .lein/profiles.clj
   @ mutt   .urlview
+  d .mixxx
+  @ mixxx .mixxx/Custom.kbd.cfg
   d .ssh
   d .ssh/keys
   @ ssh    .ssh/config
