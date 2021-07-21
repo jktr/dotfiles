@@ -4,6 +4,7 @@
 user_pref("network.dns.echconfig.enabled", true); // encrypted client hello
 user_pref("network.dns.use_https_rr_as_altsvc", true); // encrypted client hello
 user_pref("image.avif.enabled", true);
+//user_pref("widget.use-xdg-desktop-portal", true);
 
 // privacy
 user_pref("browser.privatebrowsing.autostart", true);
