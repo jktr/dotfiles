@@ -19,7 +19,7 @@ ff () {
         eval "$@ $(tr '\n' ' ' <<< "$f")"
     else
         [ $(wc -l <<< "$f") -ne 1 ] && return
-        echo "$f"
+        echo "\$f = $f"
     fi
 }
 
@@ -87,20 +87,18 @@ swath () {
 
 # submit file/stdin to pastebin, optionally signing it
 pastebin () {
-    local -r pastebin='https://0x0.st'
+    local -r pastebin='${PASTEBIN:-https://0x0.st}"
 
     if [ "$1" = '--sign' ]; then
         local -r filter='gpg --clearsign --output -'
         shift
-    else
-        local -r filter='cat'
     fi
 
-    if [ -n "$1" ]; then
-        local -r file="$1"
-    else
-        local -r file='-'
-    fi
+    [ -n "$1" ] && local -r file="$1"
 
-    $filter "$file" | curl -F'file=@-' "$pastebin"
+    if [ -n "${filter:-}" ]; then
+      $filter "${file:--}" |curl -F "file=@-" "$pastebin"
+    else
+      curl -F "file=@${file:--}" "$pastebin"
+    fi
 }
