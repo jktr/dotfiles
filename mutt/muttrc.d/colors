@@ -14,7 +14,6 @@ color tree        $my_color_sel     default
 
 # header
 color hdrdefault default default
-color header     $my_color_sel_alt $my_color_sel '^From'
 color header     $my_color_sel_alt $my_color_sel '^Subject'
 
 # gpg
