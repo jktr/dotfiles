@@ -75,7 +75,6 @@ setaliases () {
   alias fzf='fzf --cycle --multi'
   alias icat='kitty +kitten icat'
   alias ip="ip $color_mode"
-  alias irssi='irssi --config=<(sed "$(grep "PASSWORD_MANAGER" $XDG_CONFIG_HOME/irssi/config|cut -d\" -f2|cut -d":" -f2|xargs -IXXX sh -c '\''echo s\|PASSWORD_MANAGER:XXX\|$(pass XXX|head -1)\|'\'' |tr "\n" ";")" $XDG_CONFIG_HOME/irssi/config) --home $XDG_DATA_HOME/irssi/'
   alias mixxx='mixxx -platform xcb'
   alias nano="$EDITOR"
   alias nmtui='nmtui connect'
