@@ -16,8 +16,6 @@ desktop_home_dots=(
   @ ghc    .ghc/ghci.conf
   d .gnupg
   @ gnupg  .gnupg/gpg.conf
-  d .lein
-  @ leingingen .lein/profiles.clj
   @ mutt   .urlview
   d .mixxx
   @ mixxx .mixxx/Custom.kbd.cfg
