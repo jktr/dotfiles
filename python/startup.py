@@ -1,7 +1,7 @@
 import sys, os
 
 sys.path.append(
-    f'/home/{os.environ["USER"]}/.local/lib/python3.7/site-packages')
+    f'/home/{os.environ["USER"]}/.local/lib/python3/site-packages')
 
 import itertools as it
 import functools as ft
