@@ -14,5 +14,6 @@
 *.tar
 *.tar.*
 
-# history files
+# history & log files
 *_history
+*.log
