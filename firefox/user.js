@@ -29,5 +29,6 @@ user_pref("toolkit.cosmeticAnimations.enabled", false);
 
 // theming
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+user_pref("ui.prefersReducedMotion", 1); // only way to control fullscreen animation?
 user_pref("ui.systemUsesDarkTheme", 1);
 
