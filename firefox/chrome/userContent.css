@@ -1,0 +1,5 @@
+@-moz-document regexp("moz-extension://.+/sidebar/sidebar.html.*") {
+  :root, body, #background {
+    background-color: #353535 !important;
+  }
+}

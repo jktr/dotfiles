@@ -1,0 +1,26 @@
+#tabbar-container {
+ margin-left: .3ch;
+ margin-right: .3ch;
+}
+
+tab-item-substance:not(:hover) {
+  transition-duration: 500ms;
+}
+
+#tabbar-container:not(:hover) .tab {
+  --tab-indent: 0;
+}
+
+.tab .twisty {
+  visibility: hidden;
+  margin-left: -1.5ch;
+}
+
+.tab .label {
+  margin-left: 1.2ch;
+}
+
+.newtab-button,
+.tab .closebox {
+  display: none;
+}
