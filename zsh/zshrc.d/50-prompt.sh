@@ -7,6 +7,51 @@ setopt PROMPT_SUBST
 # preserve partial lines
 setopt PROMPT_SP
 
+_prompt_nix_flake () {
+
+  # this doesn't change during a shell, so use cached value
+  if [ -n "$_prompt_nix_flake_cache" ] \
+    && [ "$_prompt_nix_flake_cache" != 'none' ]; then
+    echo "$_prompt_nix_flake_cache"
+    return
+  fi
+
+  local name="$(ps --no-header -o comm:1 $$)"
+  local -r curr="$name"
+  local ppid="$$"
+
+  while true; do
+    ppid="$(ps --no-header -o ppid:1 "$ppid")"
+    name="$(ps --no-header -o comm:1 "$ppid")"
+    [ -n "$name" -a "$name" = "$curr" ] || break
+  done
+
+  local -r pstore="$(grep --null-data --basic-regexp '^PATH=' \
+    < "/proc/${ppid}/environ" \
+    |cut --zero-terminated -d= -f2- \
+    |tr '\0:' '\n\n' \
+    |grep --basic-regexp '^/nix/store/')"
+
+  local -r cstore="$(<<< "$PATH" cut -d= -f2- \
+    |tr ':' '\n' \
+    |grep --basic-regexp '^/nix/store/')"
+
+  local -r additions="$(comm -13 \
+    <(sort <<< "$pstore") <(sort <<< "$cstore") \
+    |cut -d- -f2|paste -sd:)"
+
+  if [ -z "$additions" ]; then
+    _prompt_nix_flake_cache='none'
+    return
+  fi
+
+  _prompt_nix_flake_cache=" %F{yellow}${additions}"
+  echo "$_prompt_nix_flake_cache"
+}
+_prompt_nix_flake >/dev/null # initialize the cache
+
+
+
 _prompt_nix () {
   case "${IN_NIX_SHELL}" in
     pure)   local -r color='%F{green}'  ;;
@@ -121,7 +166,7 @@ setprompt () {
   # HH:MM:SS timestamp
   local -r timestamp="%F{green}%D{%T}%f"
 
-  PS1="  ${username} ${host}\$(_prompt_git)\$(_prompt_nix) ${pwd}
+  PS1="  ${username} ${host}\$(_prompt_git)\$(_prompt_nix_flake) ${pwd}
 ${prompt_sym} "
 
   PS2="%F{green}%_%f ${prompt_sym}"
