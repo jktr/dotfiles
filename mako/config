@@ -9,22 +9,28 @@ border-color=#444444
 
 # ui
 
-layer=top
+layer=overlay
 border-radius=3
 width=350
 height=400
 group-by=app-name,summary,body
 
+# icons
+
+max-icon-size=256
+icon-location=bottom
+
 # behaviour
 
 default-timeout=5000
-max-history=5
 
 # format
 
 format=%a\n<b>%s</b>\n%b
 [grouped]
 format=%a (%g)\n<b>%s</b>\n%b
+[app-icon=]
+icon-location=left
 
 # urgency
 

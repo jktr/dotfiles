@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
+readonly musicdir=~/multimedia/music
+readonly state="/run/user/${UID}/coverart.state"
+
 # $1 len
 # $2 phrase
 abbrev () {
@@ -17,7 +22,7 @@ readonly title="${info[0]}"
 readonly artist="${info[1]}"
 readonly aartist="${info[2]}"
 readonly album="${info[3]}"
-         dir="${info[4]}"
+readonly dir="${info[4]}"
 
 [ -n "$title" ] || exit 1
 
@@ -28,6 +33,7 @@ else
     # XXX manual truncate
     summary="$(abbrev 35 "$title")"
 fi
+
 body=()
 
 # album line
@@ -37,18 +43,45 @@ if [ -n "$album" ]; then
 elif [ -n "$dir" ]; then
     # walk up directory tree until meaningful name is found
     # XXX very specific to my music sorting style
-    while [ "$dir" != '.' ]; do
-        case "$(basename "$dir")" in
+    walk="$dir"
+    while [ "$walk" != '.' ]; do
+        case "$(basename "$walk")" in
             MP3|FLAC|DISK*) ;;
             /) break ;;
             *)
                 # XXX manual truncate
-                body+=("$(abbrev 40 "$(basename "$dir")")")
+                body+=("$(abbrev 40 "$(basename "$walk")")")
                 break
                 ;;
         esac
-        dir="$(dirname "$dir")"
+        walk="$(dirname "$walk")"
     done
+fi
+
+coverart=''
+
+# coverart
+if [ -n "$dir" ]; then
+    # walk up directory tree until meaningful name is found
+    # XXX very specific to my music sorting style
+    walk="$dir"
+    while [ "$walk" != '.' ] && [ "$walk" != '/' ]; do
+        if [ -f "${musicdir}/${walk}/cover.jpg" ]; then
+          coverart="${musicdir}/${walk}/cover.jpg"
+          break;
+        elif [ -f "${musicdir}/${walk}/cover.png" ]; then
+          coverart="${musicdir}/${walk}/cover.png"
+          break
+        else
+          walk="$(dirname "$walk")"
+        fi
+    done
+fi
+
+if [ -n "$coverart" ] && [ -r "$state" ] && [ "$(< "$state")" = "$coverart" ]; then
+  coverart=''
+else
+  echo "$coverart" > "$state"
 fi
 
 # artist line
@@ -66,4 +99,4 @@ elif [ -z "$dir" ]; then
 fi
 
 export IFS=$'\n'
-notify-send --app-name mpd -- "$summary" "${body[*]}"
+notify-send --app-name mpd --icon "$coverart" -- "$summary" "${body[*]}"
