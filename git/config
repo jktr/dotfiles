@@ -17,6 +17,7 @@
 
 [blame]
   coloring = highlightRecent
+  ignoreRevsFile = .gitignorerevs
 
 [checkout]
   defaultRemote = origin
