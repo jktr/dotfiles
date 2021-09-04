@@ -52,6 +52,7 @@ export MPD_HOST=/run/mpd/mpd
 
 # go
 export GOPATH="${HOME}/develop/go"
+export GOPROXY=direct
 export PATH="${PATH}:${GOPATH}/bin"
 
 # python
