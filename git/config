@@ -62,6 +62,9 @@
   fetchJobs = 0
   recurse = true
 
+[tar "tar.zst"]
+  command = zstd --stdout
+
 [transfer]
   fsckObjects = true
 
