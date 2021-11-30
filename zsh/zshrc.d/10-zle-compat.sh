@@ -20,6 +20,7 @@ key[PageUp]=${terminfo[kpp]}
 key[PageDown]=${terminfo[knp]}
 key[F1]=${terminfo[kf1]}
 
+
 # bind keys to zsh's readline replacement
 [[ -n "${key[Home]}"     ]] && bindkey "${key[Home]}"     beginning-of-line
 [[ -n "${key[End]}"      ]] && bindkey "${key[End]}"      end-of-line
@@ -32,10 +33,6 @@ key[F1]=${terminfo[kf1]}
 [[ -n "${key[Right]}"    ]] && bindkey "${key[Right]}"    forward-char
 [[ -n "${key[AltRight]}" ]] && bindkey "${key[AltRight]}" emacs-forward-word
 
-autoload -Uz run-help
-autoload -Uz run-help-sudo
-autoload -Uz run-help-git
-[[ -n "${key[F1]}" ]] && bindkey "${key[F1]}" run-help
 
 # compatibility for console mode applications
 if [[ -n ${terminfo[smkx]} ]] && [[ -n ${terminfo[rmkx]} ]]; then
