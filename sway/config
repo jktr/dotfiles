@@ -15,9 +15,8 @@
 
   exec_always systemctl --user start graphical-session.target
 
-  bindsym $mod+d       exec dmenu_run
-  bindsym $mod+Shift+d exec pkill dmenu
-  bindsym $mod+Mod1+d  exec passmenu
+  bindsym $mod+d       $exec fuzzel
+  bindsym $mod+Mod1+d  $exec passmenu
 
   # ensure that we can always open a terminal
   bindsym $mod+Return     exec $terminal
