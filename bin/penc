@@ -1,0 +1,71 @@
+#!/usr/bin/env python3
+
+import argparse
+import os
+import re
+import sys
+import email.header as h
+import email.utils as e
+
+playlist_file = os.environ.get('XDG_RUNTIME_DIR', '/tmp') + '/playlist.m3u8'
+
+p = argparse.ArgumentParser()
+p.add_argument('--play', action='store_true')
+p.add_argument('--playlist', type=lambda x: open(x, 'w'), default=playlist_file)
+p.add_argument('--songfight', action='store_true')
+args = p.parse_args()
+
+subs = set()
+srcs = set()
+m3u8 = []
+
+sub, src, time, songfighter = None, None, None, None
+for line in sys.stdin:
+    if line.startswith('Subject: '):
+        sub = h.decode_header(line)[1][0].decode('utf-8')
+    elif line.startswith('From: '):
+        src = h.decode_header(line)[1][0].decode('utf-8')
+    elif line.startswith('Date: '):
+        line = h.decode_header(line)[1][0].decode('utf-8')
+        time = e.parsedate_to_datetime(line).isoformat()
+    elif line.startswith('Enclosure: '):
+        subs.add(sub)
+        srcs.add(src)
+        if sub and src:
+            if args.songfight:
+                m3u8.append(f'#EXTINF:-1,{songfighter or src} - {sub}')
+            else:
+                m3u8.append(f'#EXTINF:-1,{src} - {sub}')
+            sub = None
+        if time:
+            m3u8.append(f'#EXT-X-PROGRAM-DATE-TIME:{time}')
+            time = None
+        m3u8.append(line.removeprefix('Enclosure: ').rstrip())
+    elif args.songfight:
+        if se := re.match('^(.*) performs the Song Fight! challenge', line):
+            songfighter = se.group(1)
+
+headers = ['#EXTM3U', '#EXTENC:UTF-8', '#EXT-X-PLAYLIST-TYPE:VOD' ]
+
+srcs.discard(None)
+subs.discard(None)
+
+title = []
+if len(srcs) == 1:
+    src = srcs.pop()
+    title.append(src)
+    headers.append(f'#EXTART:{src}')
+if len(subs) == 1:
+    sub = subs.pop()
+    title.append(sub)
+    headers.append(f'#EXTALB:{sub}')
+
+if title:
+    headers.append(f'#PLAYLIST:{" - ".join(title)}')
+
+for entry in [ *headers, *m3u8 ]:
+    args.playlist.write(entry + '\n')
+args.playlist.close()
+
+if args.play:
+    os.execlp('mpv', 'mpv', playlist_file)
