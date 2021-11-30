@@ -24,23 +24,30 @@ except Exception:
 
 df, series = pd.DataFrame, pd.Series
 
-def slurp(f):
+def slurp(*fs, xf=lambda x: x, rf=lambda _: None):
     from glob import glob
+    fs = [x for xs in [glob(f) for f in fs] for x in xs]
+    if not fs:
+        return
 
-    if len(glob(f)) == 1:
-        f = glob(f)[0]
-    with open(f) as fh:
-        if f.endswith('.csv'):
-            import csv
-            return list(csv.reader(fh))
-        elif f.endswith('.json'):
-            import json
-            return json.load(fh)
-        elif f.endswith('.yaml') or f.endswith('.yml'):
-            import yaml
-            return yaml.safe_load(fh)
-        else:
-            return [l.strip() for l in fh]
+    acc = []
+    for f in fs:
+        with open(f) as fh:
+            if f.endswith('.csv'):
+                import csv
+                acc.extend(csv.DictReader(fh))
+            elif f.endswith('.json'):
+                import json
+                acc.append(json.load(fh))
+            elif f.endswith(('.yml', '.yaml')):
+                import yaml
+                acc.extend(x for x in yaml.safe_load_all(fh) if x is not None)
+            else:
+                acc.extend(x.strip() for x in fh)
+
+    for x in map(xf, acc):
+        rf(x)
+        yield x
 
 def figure3d(v=1, l=('X','Y','Z')):
     from mpl_toolkits.mplot3d import Axes3D

@@ -115,6 +115,9 @@
 %n\
 %C(white)%s'
 
+  heatmap = "!f() { git log --name-status --pretty=format: | sed '/^$/d' | cut --fields=2- | sort | uniq --count | sort --numeric-sort --reverse | head ; }; f"
+
+
   uncommit = reset --soft HEAD^
 
   shallow-clone = clone --depth=1

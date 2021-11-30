@@ -74,6 +74,7 @@ setaliases () {
   alias foot='footclient'
   alias free="free $human_mode"
   alias fzf='fzf --cycle --multi'
+  alias hist="sort|uniq --count|sort --numeric-sort|tail -n40"
   alias icat='kitty +kitten icat'
   alias ip="ip $color_mode"
   alias mixxx='mixxx -platform xcb'
