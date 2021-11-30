@@ -23,6 +23,7 @@ icon-location=bottom
 # behaviour
 
 default-timeout=5000
+on-button-middle=exec makoctl menu -n "$id" dmenu
 
 # format
 
@@ -45,6 +46,11 @@ default-timeout=5000
 [urgency=high]
 border-color=#900000
 default-timeout=0
+
+# actions
+
+[actionable=true]
+border-color=#ffffff
 
 # per-app overrides
 
