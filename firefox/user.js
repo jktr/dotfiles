@@ -1,5 +1,11 @@
 // user.js
 
+//webcam
+user_pref("media.navigator.video.h264.max_mbps", 1);
+user_pref("media.navigator.video.max_fr", 30);
+user_pref("media.navigator.video.default_height", 640);
+user_pref("media.navigator.video.default_width", 480);
+
 // experimental features
 user_pref("network.dns.echconfig.enabled", true); // encrypted client hello
 user_pref("network.dns.use_https_rr_as_altsvc", true); // encrypted client hello
