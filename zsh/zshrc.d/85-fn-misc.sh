@@ -1,13 +1,5 @@
 ### fn-misc
 
-# run command when file was potentially changed
-on-changed () {
-  inotifywait --quiet --monitor -e close_write "$1" \
-    | while read -r filename event; do
-      ${@:2}
-  done
-}
-
 # fuzzy movement and execution via fzf
 ff () {
     unset f
@@ -48,18 +40,6 @@ cd () {
   else
     builtin cd "$(dirname "$@")"
   fi
-}
-
-# looks up args via duckduckgo
-w3d () {
-    local -r params="$*"
-    w3m 'https://duckduckgo.com/?q='"${params//\ /+}" 
-}
-
-# looks up args via duckduckgo, using $1 as bang
-w3b () {
-    local -r params="$*"
-    w3m 'https://duckduckgo.com/?q='!"${params//\ /+}"
 }
 
 spectrogram () {
