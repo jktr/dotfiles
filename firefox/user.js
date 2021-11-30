@@ -17,6 +17,7 @@ user_pref("privacy.donottrackheader.enabled", true);
 user_pref("browser.firstparty.isolate", true); // cookie containers
 
 // usability
+user_pref("browser.shell.checkDefaultBrowser", false);
 user_pref("accessibility.blockautorefresh", true);
 user_pref("browser.download.useDownloadDir", false); // ff doesn't respect XDG
 user_pref("browser.newtabpage.enhanced", false); // not useful w/ CTR
@@ -31,4 +32,5 @@ user_pref("toolkit.cosmeticAnimations.enabled", false);
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 user_pref("ui.prefersReducedMotion", 1); // only way to control fullscreen animation?
 user_pref("ui.systemUsesDarkTheme", 1);
+user_pref("browser.uidensity", 1); // compact
 
