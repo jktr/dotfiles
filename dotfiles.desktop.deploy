@@ -48,5 +48,6 @@ desktop_dot_conf=(
   @ .       swaylock
   @ .       transmission-remote-cli
   @ .       xdg
+  @ .       xdg-desktop-portal-wlr
   @ .       zsh
 )
