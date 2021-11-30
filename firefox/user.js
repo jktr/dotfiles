@@ -1,5 +1,12 @@
 // user.js
 
+// rendering
+// https://wiki.archlinux.org/title/Firefox#Hardware_video_acceleration
+// await gpu wayland decoder process in FF 94+
+user_pref("gfx.webrender.all", true);
+user_pref("gfx.webrender.compositor.force-enabled", true);
+user_pref("media.ffmpeg.vaapi.enabled", true);
+
 //webcam
 user_pref("media.navigator.video.h264.max_mbps", 1);
 user_pref("media.navigator.video.max_fr", 30);
