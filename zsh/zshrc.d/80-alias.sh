@@ -71,6 +71,7 @@ setaliases () {
   alias dmesg="dmesg $color_mode $human_mode"
   alias env='env|sort'
   alias feh='feh --no-fehbg --image-bg black --conversion-timeout 1 --draw-filename --draw-exif --draw-actions --scale-down'
+  alias foot='footclient'
   alias free="free $human_mode"
   alias fzf='fzf --cycle --multi'
   alias icat='kitty +kitten icat'

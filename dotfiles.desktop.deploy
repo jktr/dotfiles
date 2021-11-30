@@ -35,6 +35,7 @@ desktop_dot_conf=(
   @ .       amfora
   @ .       git
   @ .       htop
+  @ .       foot
   @ .       i3status
   @ .       kitty
   @ .       mako

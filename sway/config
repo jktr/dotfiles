@@ -1,7 +1,9 @@
 ### base
 
   set $mod Mod4
-  set $terminal kitty
+  set $terminal footclient --no-wait
+
+  exec foot --server
 
   set $exec      exec with-journal
   set $exec_term exec $terminal with-journal --ncurses
@@ -19,7 +21,7 @@
 
   # ensure that we can always open a terminal
   bindsym $mod+Return     exec $terminal
-  bindsym $mod+Alt+Return exec kitty
+  bindsym $mod+Alt+Return exec foot 
 
 
 ### include
