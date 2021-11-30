@@ -6,6 +6,7 @@ mpd_music_dir = ~/multimedia/music
 
 ## UI
 jump_to_now_playing_song_at_start = yes
+song_window_title_format = ncmpcpp
 
 # style
 user_interface = alternative

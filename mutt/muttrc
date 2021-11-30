@@ -43,6 +43,10 @@ set fast_reply = yes
 set date_format = '!%a %FT%T%z'
 set editor = 'cd $XDG_CONFIG_HOME/mutt/templates && exec $EDITOR'
 
+## ui
+set ts_enabled = yes
+set ts_status_format = "mutt"
+
 ## external configs
 # XXX: 'source' command doesn't glob
 `find $XDG_CONFIG_HOME/mutt/muttrc.d -type f|sort|xargs -IXXX echo -n 'source "XXX";'`
