@@ -12,8 +12,6 @@ desktop_bins=(
 desktop_home_dots=(
   . $HOME
   d .config
-  d .ghc
-  @ ghc    .ghc/ghci.conf
   d .gnupg
   @ gnupg  .gnupg/gpg.conf
   @ mutt   .urlview
@@ -34,6 +32,7 @@ desktop_dot_conf=(
   . $HOME/.config
   @ .       amfora
   @ .       git
+  @ .       ghc
   @ .       htop
   @ .       foot
   @ .       i3status
