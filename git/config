@@ -99,6 +99,8 @@
   fixup = commit --no-gpg-sign --fixup
   autosquash = "!f() { git rebase -i --autostash --autosquash "$1^"; }; f"
 
+  contains = tag --contains
+
   changes = "!f() { \
     { git --no-pager log --max-count=1 --shortstat --color=always ${1:-HEAD};\
     echo; git --no-pager diff --color=always "${1:-HEAD}^" "${1:-HEAD}"; } \
