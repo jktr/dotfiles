@@ -56,6 +56,7 @@ setaliases () {
 
   # nixos
   alias nix-shell='nix-shell --command "exec zsh"'
+  alias nix='nix --print-build-logs'
 
   # mqtt
   alias msub='mosquitto_sub -h mqtt'

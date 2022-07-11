@@ -87,7 +87,7 @@ elif >/dev/null command -v 'nix'; then
         'gcroots' 'tree /nix/var/nix/gcroots'
         'gc'    'sudo nix-collect-garbage -d'
         'se'    'nix search'
-        'up'    'sudo nixos-rebuild switch --update-input nixpkgs --flake /etc/nixos'
+        'up'    'sudo nixos-rebuild switch --update-input nixpkgs --flake /etc/nixos --print-build-logs'
     )
 fi
 
