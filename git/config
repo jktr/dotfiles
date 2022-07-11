@@ -15,6 +15,9 @@
   pager = less -x4
   whitespace = tab-in-indent
 
+  # post-commit for stats
+  hooksPath = ~/.config/git/hooks/
+
 [blame]
   coloring = highlightRecent
   ignoreRevsFile = .gitignorerevs
