@@ -1,0 +1,18 @@
+#!/bin/sh
+
+mumble () { busctl --user call net.sourceforge.mumble.mumble / net.sourceforge.mumble.Mumble $@ ; }
+
+if [ "$(mumble isSelfMuted)" = 'b true' ]; then
+  mumble setSelfMuted b false
+  if [[ "$(mpc status)" =~ "[playing]" ]]; then
+    mpc pause >/dev/null
+  else
+    : #mpc stop >/dev/null
+  fi
+else
+  mumble setSelfMuted b true
+  if [[ "$(mpc status)" =~ "[paused]" ]]; then
+    sleep 0.5
+    [ "$(mumble getTalkingUsers)" == "as 0" ] && mpc play >/dev/null
+  fi
+fi
