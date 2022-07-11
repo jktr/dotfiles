@@ -17,11 +17,11 @@ ff () {
 
 # init new project
 new () {
-  mkdir -p "$@"
+  mkdir -p "$@" || return
   cd "$@"
   [ -d .git ] && return
   echo "# $@" > README.md
-  touch .gitignore
+  echo 'secret-*' >> .gitignore
   git init --quiet
   git a README.md .gitignore
   git commit --quiet -m 'initial commit'
