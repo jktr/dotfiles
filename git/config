@@ -45,6 +45,9 @@
   date = iso-strict
   #showSignature = true
 
+[merge]
+  conflictStyle = zdiff3
+
 [pull]
   rebase = interactive
 
