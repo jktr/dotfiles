@@ -38,7 +38,7 @@ def slurp(*fs, xf=lambda x: x, rf=lambda _: None):
                 acc.extend(csv.DictReader(fh))
             elif f.endswith('.json'):
                 import json
-                acc.append(json.load(fh))
+                acc.extend(json.load(fh))
             elif f.endswith(('.yml', '.yaml')):
                 import yaml
                 acc.extend(x for x in yaml.safe_load_all(fh) if x is not None)
