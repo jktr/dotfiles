@@ -18,7 +18,7 @@ done
 export EDITOR='nvim'
 export VISUAL='nvim'
 export PAGER='less'
-export TERMINAL='kitty'
+export TERMINAL='foot'
 if [ -n "$WAYLAND_DISPLAY" ]; then
   export BROWSER='firefox'
 else
