@@ -20,12 +20,26 @@ _prompt_nix_flake () {
   local -r curr="$name"
   local ppid="$$"
 
+  # walk tree up until first non-shell parent
   while true; do
     ppid="$(ps --no-header -o ppid:1 "$ppid")"
     name="$(ps --no-header -o comm:1 "$ppid")"
     [ -n "$name" -a "$name" = "$curr" ] || break
   done
 
+  ## FIXME
+  if ! [ -r /proc/${ppid}/environ ]; then
+    _prompt_nix_flake_cache='none'
+    return
+  fi
+
+  # check if we're running directly under something like sudo
+  if ! [ -r /proc/${ppid}/environ ]; then
+    _prompt_nix_flake_cache='none'
+    return
+  fi
+
+  # check for differences in PATH to us
   local -r pstore="$(grep --null-data --basic-regexp '^PATH=' \
     < "/proc/${ppid}/environ" \
     |cut --zero-terminated -d= -f2- \
