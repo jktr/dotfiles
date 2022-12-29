@@ -21,3 +21,8 @@
 
 # don't let rg/fd track .git
 .git/
+
+# secrets and environment files
+secret*
+env-*
+!*.gpg
