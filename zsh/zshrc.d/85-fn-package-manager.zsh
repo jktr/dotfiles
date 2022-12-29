@@ -69,6 +69,7 @@ elif >/dev/null command -v 'apt-get'; then
         'se'    'apt-cache search'
         'up'    'sudo apt-get dist-upgrade'
         'who'   'dpkg --search'
+        'why'   'apt-cache rdepends --installed --recurse'
     )
 elif >/dev/null command -v 'apk'; then
     _pm=(
