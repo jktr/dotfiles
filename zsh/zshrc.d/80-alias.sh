@@ -8,9 +8,10 @@ setaliases () {
   local human_mode_gnu='--human-readable'
 
   # tree
-  alias   t='tree -a'
-  alias  tt='tree -d'
-  alias ttt='tree -dL 2'
+  alias tree='tree --gitignore'
+  alias    t='tree --gitignore -a'
+  alias   tt='tree --gitignore -d'
+  alias  ttt='tree --gitignore -dL 2'
 
   # ls
   local ls_opts="$color_mode $human_mode_gnu \
