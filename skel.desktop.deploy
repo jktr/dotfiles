@@ -18,6 +18,7 @@ dir_mm=(
   d music
   d pics
   d pics/mpv-shot
+  d pics/screenshots
   d videos
   d videos/obs
 )

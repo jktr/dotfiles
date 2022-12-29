@@ -4,7 +4,8 @@
 
 set -euo pipefail
 
-readonly file="${XDG_RUNTIME_DIR:-/tmp}/screenshot.png"
+readonly default_file="${XDG_RUNTIME_DIR:-/tmp}/screenshot.png"
+readonly file="${2:-$default_file}"
 
 case "${1:-unknown}" in
   rectangle)
@@ -25,3 +26,5 @@ case "${1:-unknown}" in
     exit 1
     ;;
 esac
+
+echo "$file"
