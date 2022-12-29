@@ -113,7 +113,8 @@ _prompt_git () {
       sha="%F{cyan}${sha}%f"
     elif ! git diff-index --quiet --ignore-submodules --cached HEAD; then
       sha="%F{yellow}${sha}%f"
-    elif ! git -C "$dot_git/.." diff-index --quiet --ignore-submodules HEAD; then
+    elif ! timeout 0.05s git -C "$dot_git/.." diff-index \
+      --quiet --ignore-submodules --diff-filter=ad HEAD; then
       sha="%F{red}${sha}%f"
     else
       sha="%F{green}${sha}%f"
