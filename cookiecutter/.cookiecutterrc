@@ -1,0 +1,8 @@
+cookiecutters_dir: ~/develop/projects/cookiecutters/
+replay_dir: ~/.local/share/cookiecutter-replays/
+
+abbreviations:
+  gh: https://github.com/{0}.git
+
+default_context:
+  foo: bar

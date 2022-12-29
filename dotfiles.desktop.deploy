@@ -12,6 +12,7 @@ desktop_bins=(
 desktop_home_dots=(
   . $HOME
   d .config
+  @ cookiecutter   .cookiecutterrc
   d .gnupg
   @ gnupg  .gnupg/gpg.conf
   @ mutt   .urlview
