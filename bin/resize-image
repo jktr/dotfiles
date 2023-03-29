@@ -1,0 +1,41 @@
+#!/usr/bin/env python3
+
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+import sh
+import argparse
+
+p = argparse.ArgumentParser(description='vertical-video style resize to target size')
+p.add_argument('--width', default=1920, help='target width')
+p.add_argument('--height', default=1080, help='target height')
+p.add_argument('--preview', action='store_true', help='run feh on destination image')
+p.add_argument('src', help='path to source image')
+p.add_argument('dst', nargs='?', default='./out.png', help='path to destination image')
+args = p.parse_args()
+
+sh.convert(
+    args.src,
+    '-gravity', 'center',
+    '(',
+        '-clone', '0',
+        '-resize', f'{args.width}x{args.height}>',
+        '+append',
+    ')',
+    '(',
+        # optimization: resize + blur in single step
+        '-clone', '0',
+        '-resize', f'{args.width}x{args.height}>',
+        '-filter', 'Gaussian',
+        '-define', 'filter:sigma=3',
+        '-resize', f'{args.width}x{args.height}^',
+        '+append',
+    ')',
+    '-swap', '1,2',
+    '-delete', '0',
+    '-composite',
+    '-extent', f'{args.width}x{args.height}',
+    args.dst,
+)
+
+if args.preview:
+    sh.feh(args.dst, _fg=True)

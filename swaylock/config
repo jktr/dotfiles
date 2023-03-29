@@ -2,9 +2,12 @@
 
 # appearance
 color=710B03
-image=~/.wallpaper
 indicator-radius=80
 hide-keyboard-layout
+
+# defaults to color if nonexistant or unknown display
+image=LVDS-1:/run/user/1000/wallpaper/LVDS-1.png
+image=HDMI-A-1:/run/user/1000/wallpaper/HDMI-A-1.png
 
 # behaviour
 show-failed-attempts
