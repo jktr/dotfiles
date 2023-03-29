@@ -107,11 +107,6 @@
 
   contains = tag --contains
 
-  changes = "!f() { \
-    { git --no-pager log --max-count=1 --shortstat --color=always ${1:-HEAD};\
-    echo; git --no-pager diff --color=always "${1:-HEAD}^" "${1:-HEAD}"; } \
-    | $PAGER -r; }; f"
-
   map = "!f() { echo 'Entering /'; git $@; git submodule foreach git $@; }; f"
 
   graph = log --graph --all --format=format:\
