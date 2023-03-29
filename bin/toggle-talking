@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 mumble () { busctl --user call net.sourceforge.mumble.mumble / net.sourceforge.mumble.Mumble $@ ; }
 
 if [ "$(mumble isSelfMuted)" = 'b true' ]; then

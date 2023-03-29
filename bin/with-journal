@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 readonly journal='systemd-cat --stderr-priority=notice --'
 
 case "$1" in

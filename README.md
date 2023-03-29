@@ -11,6 +11,6 @@ to continue using it because it still works. There are better
 alternatives for dotfile management available today.
 
 Content is (C) Konrad Tegtmeier.
-License is GPLv3+, except where denoted otherwise.
+License is CC0, except where denoted otherwise.
 
 Maybe you'll get some use out of me publishing this.

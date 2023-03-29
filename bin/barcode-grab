@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 readonly f="/tmp/qr-$UID.jpg"
 
 grim -g "$(slurp)" "$f"
