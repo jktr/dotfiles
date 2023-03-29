@@ -12,6 +12,8 @@ desktop_bins=(
 desktop_home_dots=(
   . $HOME
   d .config
+  d .local/state
+  d .local/state/joplin.sync
   @ cookiecutter   .cookiecutterrc
   d .gnupg
   @ gnupg  .gnupg/gpg.conf
