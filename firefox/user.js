@@ -1,5 +1,7 @@
 // user.js
 
+user_pref("ui.textScaleFactor", 150);
+
 // rendering
 // https://wiki.archlinux.org/title/Firefox#Hardware_video_acceleration
 // await gpu wayland decoder process in FF 94+

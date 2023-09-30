@@ -6,6 +6,7 @@ indicator-radius=80
 hide-keyboard-layout
 
 # defaults to color if nonexistant or unknown display
+image=eDP-1:/run/user/1000/wallpaper/eDP-1.png
 image=LVDS-1:/run/user/1000/wallpaper/LVDS-1.png
 image=HDMI-A-1:/run/user/1000/wallpaper/HDMI-A-1.png
 
