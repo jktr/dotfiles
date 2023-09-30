@@ -39,7 +39,6 @@ user_pref("browser.urlbar.suggest.history", false);
 user_pref("browser.urlbar.suggest.openpage", false);
 user_pref("browser.aboutConfig.showWarning", false); // I'll be careful; I promise!
 user_pref("middlemouse.contentLoadURL", false); // Wayland/X11 primary selection
-user_pref("reader.parse-on-load.enabled", false);
 user_pref("toolkit.cosmeticAnimations.enabled", false);
 
 // theming
