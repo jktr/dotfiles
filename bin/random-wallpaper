@@ -3,15 +3,17 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import argparse
-import os
 import itertools
-import random
-import sh
 import json
+import os
 import pathlib
+import random
+import sys
 import time
 
 from typing import Tuple, Optional
+
+import sh
 
 p = argparse.ArgumentParser()
 p.add_argument('folders', nargs='+', type=pathlib.Path)
@@ -25,8 +27,8 @@ def get_outputs() -> dict[str, Tuple[int, int]]:
     outputs_ = str(sh.swaymsg('--type=get_outputs', '--raw'))
     for output in json.loads(outputs_):
         outputs[output['name']] = (
-            output['rect']['width'],
-            output['rect']['height'],
+            output['current_mode']['width'],
+            output['current_mode']['height'],
         )
     return outputs
 
@@ -83,7 +85,8 @@ while True:
                 '--transition-duration=1',
                 f'--outputs={output}')
             pic = None
-        except sh.ErrorReturnCode:
+        except sh.ErrorReturnCode as e:
+            print(e.stderr.decode(), file=sys.stderr)
             break # refresh outputs
 
         if args.initialize:
