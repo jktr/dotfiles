@@ -31,6 +31,7 @@ cd () {
     builtin cd "$@"
   elif command -v "$1" >/dev/null; then
     # resolve commands and cd to the directory that contains them
+    alias "$1" >/dev/null && unalias "$1"
     local p="$(dirname "$(realpath "$(command -v "$1")")")"
     # for nix store paths, go to derivation root instead of the bin directory
     [[ "$p" =~ /nix/store/ ]] && p="$(cut -d "/" -f-4 <<< "$p")"
