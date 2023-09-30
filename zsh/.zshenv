@@ -45,7 +45,7 @@ export PASSWORD_STORE_CLIP_TIME=10
 export PASSWORD_STORE_X_SELECTION=primary
 
 # other
-export MPD_HOST=/run/mpd/mpd
+export MPD_HOST=/run/mpd/socket
 export SYSTEMD_URLIFY=true
 
 
