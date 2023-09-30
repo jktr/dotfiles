@@ -83,6 +83,7 @@ setaliases () {
   alias nano="$EDITOR"
   alias nmtui='nmtui connect'
   alias ss='ss --numeric'
+  alias sudo='machinectl shell root@'
   alias token='command dd if=/dev/urandom bs=32 count=1 status=none|sha256sum|cut -d" " -f1'
   alias torcurl='curl --proxy socks5h://localhost:9050'
 
