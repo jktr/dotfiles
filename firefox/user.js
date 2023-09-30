@@ -22,7 +22,6 @@ user_pref("image.avif.enabled", true);
 //user_pref("widget.use-xdg-desktop-portal", true);
 
 // privacy
-user_pref("browser.privatebrowsing.autostart", true);
 user_pref("browser.search.suggest.enabled", false); // works only with built-in search
 user_pref("datareporting.healthreport.uploadEnabled", false);
 user_pref("extensions.pocket.enabled", false);
