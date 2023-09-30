@@ -15,7 +15,6 @@ Host *
     ControlPersist 300
 
     # session meta
-    Compression yes
     EscapeChar ^~
     SendEnv LS_COLORS
 
