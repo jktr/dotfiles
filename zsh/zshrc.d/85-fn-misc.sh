@@ -25,18 +25,6 @@ ff () {
     fi
 }
 
-# init new project
-new () {
-  mkdir -p "$@" || return
-  cd "$@"
-  [ -d .git ] && return
-  echo "# $@" > README.md
-  echo 'secret-*' >> .gitignore
-  git init --quiet
-  git a README.md .gitignore
-  git commit --quiet -m 'initial commit'
-}
-
 cd () {
   if [ $# != 1 ] || [ "$1" = - ] || [ -z "$1" ] || [ -d "$1" ]; then
     # normal cd
