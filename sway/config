@@ -34,6 +34,7 @@
   ## border
   default_border pixel 1
   default_floating_border pixel 1
+  smart_borders on
 
   ## colors
   # class                  border   backgr.  text     indica. child-border
