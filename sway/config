@@ -4,6 +4,7 @@
   set $terminal footclient --no-wait
 
   exec foot --server
+  exec mako
 
   set $exec      exec with-journal
   set $exec_term exec $terminal with-journal --ncurses
