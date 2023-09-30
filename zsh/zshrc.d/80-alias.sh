@@ -88,8 +88,8 @@ setaliases () {
 
   # display dependent
   if [ -n "$DISPLAY" ]; then
-    alias    mpv='mpv --gpu-context=wayland'
-    alias webcam='mpv --gpu-context=wayland --profile=low-latency --untimed av://v4l2:/dev/video0'
+    alias    mpv='mpv'
+    alias webcam='mpv --profile=low-latency --untimed av://v4l2:/dev/video0'
     alias lock=swaylock
   else
     alias    mpv='mpv --gpu-context=drm'
