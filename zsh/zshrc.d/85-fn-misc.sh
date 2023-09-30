@@ -1,5 +1,15 @@
 ### fn-misc
 
+tmp () (
+  readonly tmpdir=$(mktemp -d ${1:-})
+  [[ -z $tmpdir ]] && exit 1
+  TRAPEXIT() {
+    rm -rf $tmpdir
+  }
+  cd $tmpdir
+  zsh -is
+)
+
 # fuzzy movement and execution via fzf
 ff () {
     unset f
