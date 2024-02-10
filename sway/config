@@ -21,7 +21,7 @@
 
   # ensure that we can always open a terminal
   bindsym $mod+Return     exec $terminal
-  bindsym $mod+Alt+Return exec foot 
+  bindsym $mod+Alt+Return exec foot
 
 
 ### include
@@ -69,7 +69,7 @@
   bindsym $mod+a split horizontal
   bindsym $mod+o split vertical
 
-  ## move focused around
+  ## move focused window around
   bindsym $mod+Shift+h move left
   bindsym $mod+Shift+t move down
   bindsym $mod+Shift+n move up
@@ -90,10 +90,8 @@
 
   floating_modifier $mod
 
-  bindsym $mod+i sticky toggle
   bindsym $mod+Shift+space floating toggle
 
-#  for_window [floating] opacity set 0.75
 
 ### workspace binds
 
