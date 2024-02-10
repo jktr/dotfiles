@@ -26,10 +26,11 @@ def get_outputs() -> dict[str, Tuple[int, int]]:
     outputs = {}
     outputs_ = str(sh.swaymsg('--type=get_outputs', '--raw'))
     for output in json.loads(outputs_):
-        outputs[output['name']] = (
-            output['current_mode']['width'],
-            output['current_mode']['height'],
-        )
+        if output['dpms']:
+            outputs[output['name']] = (
+                output['current_mode']['width'],
+                output['current_mode']['height'],
+            )
     return outputs
 
 def find_images(roots: list[pathlib.Path]):
