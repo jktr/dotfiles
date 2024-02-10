@@ -2,6 +2,10 @@
 
 user_pref("ui.textScaleFactor", 150);
 
+// dns
+user_pref("network.trr.mode", 3);
+user_pref("network.trr.allow-rfc1918", true); // tailscale IPs
+
 // rendering
 // https://wiki.archlinux.org/title/Firefox#Hardware_video_acceleration
 // await gpu wayland decoder process in FF 94+
