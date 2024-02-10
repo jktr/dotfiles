@@ -47,6 +47,10 @@ set editor = 'cd $XDG_CONFIG_HOME/mutt/templates && exec $EDITOR'
 set ts_enabled = yes
 set ts_status_format = "mutt"
 
+# urls
+macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+
 ## external configs
 # XXX: 'source' command doesn't glob
 `find $XDG_CONFIG_HOME/mutt/muttrc.d -type f|sort|xargs -IXXX echo -n 'source "XXX";'`
