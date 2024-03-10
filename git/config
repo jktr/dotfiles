@@ -6,37 +6,37 @@
   signingKey = 0x1BDE5F6203DF5C97
   useConfigOnly = true
 
-[commit]
-#  gpgSign = true
-  verbose = true
-
-[core]
-  autocrlf = input
-  pager = less -x4
-  whitespace = tab-in-indent
-
-  # post-commit for stats
-  hooksPath = ~/.config/git/hooks/
+[branch]
+  sort = -committerdate
 
 [blame]
   coloring = highlightRecent
-  #ignoreRevsFile = .gitignorerevs
 
 [checkout]
   defaultRemote = origin
 
 [color "blame"]
-  recent = blue,12 month ago,white,1 month ago,red
+  highlightRecent = blue,12 month ago,white,1 month ago,red
+
+[commit]
+  cleanup = scissors
+  verbose = true
+
+[core]
+  autocrlf = input
+  hooksPath = ~/.config/git/hooks/
+  pager = less --tabs=4
 
 [diff]
-  algorithm = minimal
-  colorMoved = true
-  colorMovedWS = ignore-space-change
+  algorithm = histogram
+  colorMoved = default
+  colorMovedWS = allow-indentation-change
   mnemonicPrefix = true
 
 [fetch]
-  prune = true
   parallel = 0
+  prune = true
+  prunetags = true
 
 [init]
   defaultBranch = main
@@ -52,6 +52,7 @@
   rebase = interactive
 
 [push]
+  default = current
   followTags = true
   gpgSign = if-asked
   recurseSubmodules = check
@@ -59,14 +60,20 @@
 [rebase]
   abbreviateCommands = true
   autoStash = true
+  autosquash = true
+  missingCommitsCheck = error
 
 [status]
-  short = true
   branch = true
+  short = true
+  submoduleSummary = true
 
 [submodule]
   fetchJobs = 0
   recurse = true
+
+[tag]
+  sort = taggerdate
 
 [tar "tar.zst"]
   command = zstd --stdout
