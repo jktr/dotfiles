@@ -10,7 +10,6 @@ user_pref("network.trr.allow-rfc1918", true); // tailscale IPs
 // https://wiki.archlinux.org/title/Firefox#Hardware_video_acceleration
 // await gpu wayland decoder process in FF 94+
 user_pref("gfx.webrender.all", true);
-user_pref("gfx.webrender.compositor.force-enabled", true);
 user_pref("media.ffmpeg.vaapi.enabled", true);
 
 //webcam
