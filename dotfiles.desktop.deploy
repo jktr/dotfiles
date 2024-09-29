@@ -40,7 +40,6 @@ desktop_dot_conf=(
   @ .       htop
   @ .       foot
   @ .       i3status
-  @ .       kitty
   @ .       mako
   @ .       mpv
   @ .       mutt
