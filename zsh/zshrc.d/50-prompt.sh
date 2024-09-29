@@ -162,9 +162,11 @@ setprompt () {
   # host
   #  yellow - remote over ssh
   #  green  - default
-  if [ -n "$SSH_CLIENT" -o \
-     -n "$SSH2_CLIENT" -o \
-     -n "$SSH_TTY" ]; then
+  if [ -n "$SSH_CLIENT" \
+    -o -n "$SSH2_CLIENT" \
+    -o -n "$SSH_TTY" \
+    -o -n "$SUDO_UID" \
+  ]; then
     local -r host='%F{yellow}%m%f'
   else
     local -r host='%F{green}%m%f'

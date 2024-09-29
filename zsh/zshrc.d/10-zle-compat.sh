@@ -1,11 +1,9 @@
 ### zle-compat
 
-bindkey -e
-typeset -g -A key
-
 # compat aliases
 # ref: infocmp(1), terminfo(5)
 # ref: https://invisible-island.net/ncurses/terminfo.src.html#tic-xterm-256color
+typeset -g -A key
 key[Home]=${terminfo[khome]}
 key[End]=${terminfo[kend]}
 key[Insert]=${terminfo[kich1]}
