@@ -47,6 +47,7 @@ setaliases () {
   alias rm='rm --interactive=once --dir'
 
   # systemd
+  alias journalctl='journalctl --output=cat'
   alias userctl='systemctl --user --lines 0'
   alias systemctl='systemctl --lines 0'
 
