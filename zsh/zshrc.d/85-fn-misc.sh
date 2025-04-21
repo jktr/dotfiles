@@ -68,7 +68,7 @@ swath () {
 
 # submit file/stdin to pastebin, optionally signing it
 pastebin () {
-    local -r pastebin='${PASTEBIN:-https://0x0.st}"
+    local -r pastebin="${PASTEBIN:-https://0x0.st}"
 
     if [ "$1" = '--sign' ]; then
         local -r filter='gpg --clearsign --output -'
