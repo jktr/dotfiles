@@ -5,7 +5,7 @@
 systemctl --user start daemon.target &!
 
 # launch graphical environment
-if [ "$XDG_VTNR" -eq 1 ] && [ -z "$WAYLAND_DISPLAY" ]; then
+if [ "$XDG_VTNR" -eq 1 -o "$XDG_VTNR" -eq 2 ] && [ -z "$WAYLAND_DISPLAY" ]; then
 
   # XXX: ensure zsh picks up vars that depend on the graphical env
   export WAYLAND_DISPLAY=wayland-$RANDOM
