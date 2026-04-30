@@ -80,7 +80,7 @@ while True:
 
         try:
             print(output, pic)
-            sh.swww.img(tmp,
+            sh.awww.img(tmp,
                 '--transition-fps=60',
                 '--transition-type=random',
                 '--transition-duration=1',
